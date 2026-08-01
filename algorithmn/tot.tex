@@ -1,0 +1,28 @@
+
+% ------------------------------------------------------------------
+% Algorithm 1: ToT
+% ------------------------------------------------------------------
+\begin{algorithm}[t]
+\small
+\caption{Direct ToT Adaptation for Data Preparation}
+\label{alg:tot}
+\begin{algorithmic}[1]
+\Require Source tables $\mathcal{S}$ and target schema $\Sigma^*$
+\State Initialize a textual reasoning tree $G_0=(N,E)$ with $N=\{n_0\}$
+\State \textcolor{blue}{$n_0 \leftarrow \text{TextSerialize}(\mathcal{S}, \Sigma^*)$}
+\While{the search budget is not exhausted}
+    \State $n_i \leftarrow \mathtt{Select}(G_{t-1})$ 
+    \State \textcolor{blue}{$\{z_{t}^{(k)}\}_{k=1}^{K} \sim 
+    \Prob_{\text{LLM}}(\cdot \mid n_i, G_{t-1}, \mathcal{S}, \Sigma^*)$}
+    \State \textcolor{blue}{$\{v_{t}^{(k)}\}_{k=1}^{K} \sim 
+    \Prob_{\text{LLM}}(\cdot \mid z_t^{(k)}, \mathcal{S}, \Sigma^*)$}
+    \State \textcolor{blue}{$G_t \leftarrow \mathtt{Update}(G_{t-1}, \{z_t^{(k)}, v_t^{(k)}\}_{k=1}^{K})$}
+\EndWhile
+\State $z^* \leftarrow \mathtt{SelectBest}(G_T)$
+\State $\mathcal{P}^* \sim \Prob_{\text{LLM}}(\cdot \mid z^*, \mathcal{S}, \Sigma^*)$
+\Comment{translate final thought into executable pipeline}
+\State \textcolor{blue}{$D^* \leftarrow \mathtt{Env}(\mathcal{S}, \mathcal{P}^*)$}
+\State \Return $D^*$
+\end{algorithmic}
+\end{algorithm}
+

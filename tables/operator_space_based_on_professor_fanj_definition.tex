@@ -1,0 +1,72 @@
+\begin{table*}[t]
+  \centering
+  \caption{\bf Taxonomy of supported data preparation operators by functional type.}
+  \vspace{-0.6em}
+  \label{tbl:operator_space_type}
+
+  \small
+  \setlength{\tabcolsep}{6pt}
+  \renewcommand{\arraystretch}{1.12}
+
+  \resizebox{\textwidth}{!}{
+    \begin{tabular}{|l||l|}
+      \hline
+      \textbf{Operator Type} & \textbf{Operators} \\
+      \hline \hline
+
+      \textbf{Data Cleaning} &
+      \texttt{MissingValueImputation},
+      \texttt{Deduplicate},
+      \texttt{ErrorDetection},
+      \texttt{OutlierDetection},
+      \texttt{DropNA} \\
+      \hline
+
+      \textbf{Value Normalization} &
+      \texttt{ValueTransform},
+      \texttt{StandardizeDatetime},
+      \texttt{CastType} \\
+      \hline
+
+      \textbf{Schema Editing} &
+      \texttt{RenameColumn},
+      \texttt{SplitColumn},
+      \texttt{AddNewColumn},
+      \texttt{DropColumn},
+      \texttt{Concatenate},
+      \texttt{SelectColumn},
+      \texttt{Subtitle} \\
+      \hline
+
+      \textbf{Row Selection} &
+      \texttt{Filter},
+      \texttt{Sort},
+      \texttt{TopK} \\
+      \hline
+
+      \textbf{Aggregation} &
+      \texttt{GroupBy},
+      \texttt{Count},
+      \texttt{CalculateStatistic} \\
+      \hline
+
+      \textbf{Table Combination} &
+      \texttt{Join},
+      \texttt{Union},
+      \texttt{Append} \\
+      \hline
+
+      \textbf{Table Reshaping} &
+      \texttt{Pivot},
+      \texttt{Stack},
+      \texttt{WideToLong},
+      \texttt{Transpose},
+      \texttt{Explode} \\
+      \hline
+
+      \textbf{Program Synthesis} &
+      \texttt{ExeCode} \\
+      \hline
+    \end{tabular}
+  }
+\end{table*}

@@ -1,0 +1,209 @@
+\subsection{Experimental Setup} 
+\label{subsec:exp-setup}
+
+\stitle{Datasets.}
+As shown in Table~\ref{tbl:datasets}, we evaluate \sys on four datasets, including one public benchmark, two datasets synthesized using our synthesis method, and one real-world dataset. 
+% Dataset statistics are summarized in .
+
+(1) \textbf{Parrot}~\cite{ge2025text} is a benchmark for translating natural language into data preparation pipelines.
+% However, it does not provide ADP-style task specifications such as target schema descriptions.
+To make it suitable for ADP evaluation, we augment each case by generating the task specification from the target tables and operator sequences using an LLM~\cite{doubaoseed}. 
+% The resulting dataset contains 15,330 cases with pipeline lengths ranging from 1 to 8.
+
+Note that the public benchmark \textbf{Parrot}~\cite{ge2025text} mainly contains short operator pipelines and limited operator-type coverage. We therefore synthesize two datasets to provide more complex pipelines and broader operator coverage, using our method in Section~\ref{subsec:data_synthesis}. 
+
+
+(2) \textbf{Synth-Spider} is a dataset synthesized by our method from the Spider NL2SQL benchmark~\cite{spider_dataset}. Using the ADP task synthesis pipeline described in Section~\ref{subsec:data_synthesis}, we convert NL2SQL cases into ADP tasks with executable operator pipelines. 
+% The resulting dataset contains 6,788 training cases and 2,008 test cases, with ground-truth pipeline lengths ranging from 1 to 28.
+
+(3) \textbf{Synth-Bird} is another synthesized dataset constructed from the Bird benchmark~\cite{bird_dataset}, which features larger databases and more complex analytical queries. We apply the same synthesis procedure to generate ADP tasks from the Bird validation set.
+% , producing 1,150 cases with pipeline lengths ranging from 2 to 25. 
+As we use Synth-Bird only for evaluation, this dataset only has test split. 
+% Compared to Synth-Spider, this dataset involves longer transformation chains and heavier data processing.
+
+\revise{(4) \textbf{Buildings}~\cite{sharma2023automatic} is a real-world dataset comprising 105 tasks collected from data processing pipelines in the smart building domain across 21 energy companies. It involves messy, real-world data with complex multi-step data preparation operations. It only provides source tables and target table schema descriptions.
+% without step-by-step data preparation instructions, reflecting ambiguous data preparation requirements in practice.
+}
+
+%\stitle{Datasets.} 
+%We evaluate \sys using three datasets, covering both large-scale synthesized scenarios and challenging real-world tasks.
+%The statistics of the datasets are shown in Table~\ref{tbl:datasets}.
+
+% \bi
+% \item[(1)] \textbf{DP-Spider}~\cite{spider_dataset} is constructed based on the widely-used NL2SQL benchmark Spider~\cite{spider_dataset}. We utilize the Data Synthesis pipeline (Section~\ref{sec:data_synthesis}) to convert the NL2SQL cases into DP cases. It contains 6,788 training samples and 2,008 test samples, with ground truth pipeline lengths ranging from 1 to 28.
+% \item[(2)] \textbf{DP-Bird}~\cite{bird_dataset} is derived from the Bird~\cite{bird_dataset} benchmark, known for its large database contents and complex analytical requirements. Compared to DP-Spider, DP-Bird involves longer transformation horizons and more massive data processing. We synthesized cases specifically from the validation set of Bird, constructing 1,150 cases with ground truth pipeline lengths ranging from 2 to 25.
+% \item [(3)] \textbf{Parrot}~\cite{ge2025text} is a public dataset originally designed for translating natural language into operator pipeline. It lacks the DP requirements required by NL\nlwhat DP. To address this, we employed Doubao-Seed1.6~\cite{doubaoseed} to generate the DP requirements based on the target tables and operator sequences. Finally, we constructed 15,330 cases with pipeline lengths ranging from 1 to 8. 
+% \ei
+
+% \vspace{1mm}
+%\noindent
+%(1) \textbf{DP-Spider}~\cite{spider_dataset} is constructed based on the widely-used NL2SQL benchmark Spider~\cite{spider_dataset}. We utilize the Data Synthesis pipeline (Section~\ref{subsec:data_synthesis}) to convert the NL2SQL cases into DP cases. It contains 6,788 training samples and 2,008 test samples, with ground truth pipeline lengths ranging from 1 to 28.
+
+% \vspace{1mm}
+%\noindent 
+%(2) \textbf{DP-Bird}~\cite{bird_dataset} is derived from the Bird~\cite{bird_dataset} benchmark, known for its large database contents and complex analytical requirements. Compared to DP-Spider, DP-Bird involves longer transformation horizons and more massive data processing. We synthesized cases specifically from the validation set of Bird, constructing 1,150 cases with ground truth pipeline lengths ranging from 2 to 25.
+
+% \vspace{1mm}
+%\noindent
+%(3) \textbf{Parrot}~\cite{ge2025text} is a public dataset originally designed for translating natural language into operator pipeline. It lacks the DP requirements required by NL\nlwhat DP. To address this, we employed Doubao-Seed1.6~\cite{doubaoseed} to generate the DP requirements based on the target tables and operator sequences. Finally, we constructed 15,330 cases with pipeline lengths ranging from 1 to 8. 
+
+\stitle{Evaluation Methodology.}
+For comprehensive evaluation, all models are trained only on the \textbf{Synth-Spider} training set and evaluated under two test settings: \emph{in-domain} and \emph{out-of-domain}.
+
+\etitle{(1) In-domain Test.}
+We evaluate on the \textbf{Synth-Spider} test set, which is synthesized using the same procedure as the training data.
+% but with disjoint queries and databases.
+
+\etitle{(2) Out-of-domain Test.}
+% We evaluate on three datasets constructed from different sources and task formats.
+\textbf{Synth-Bird} is closer to the training distribution since it is generated by the same synthesis pipeline but from a different benchmark. \textbf{Parrot} is an independent dataset with different task characteristics. \revise{\textbf{Buildings} is a real-world dataset with complex multi-step data preparation.}
+
+%To strictly evaluate the generalization capability of \sys and avoid data leakage, we adopt a \textit{single-source training, multi-target evaluation} protocol. Specifically, we train \sys {exclusively} on the {DP-Spider} training set. The trained model is then evaluated on three distinct test sets.
+%DP-Spider Test \textbf{(In-Distribution)}: To assess performance on data with the same distribution as the training set.
+%DP-Bird \textbf{(Cross-Domain)}: To evaluate generalization to unseen domains with more complex table schemas, though synthesized via the same pipeline.
+%Parrot \textbf{(Out-of-Distribution)}: To evaluate zero-shot transfer capability on a completely independent public benchmark with different data distributions and requirement styles.
+%This rigorous setting challenges the model to learn intrinsic DP reasoning logic rather than memorizing dataset-specific patterns.
+
+\stitle{Baselines.} 
+We compare \sys with both \emph{prompting baselines} and \emph{training baselines}. Prompting baselines use off-the-shelf LLMs, while training baselines involve parameter updates.
+% via supervised or reinforcement learning.
+% with various inference strategies
+
+
+%We compare \sys with two major categories of baselines: \textit{Prompting Baselines} and \textit{Training Baselines}.
+% \textit{Prompting Baselines}, which utilize off-the-shelf LLMs with various inference strategies, and \textit{Training Baselines}, which involve parameter updates via supervised or reinforcement learning.
+
+\etitle{(1) Prompting Baselines.} These methods use frozen LLMs with different planning and search strategies to generate pipelines.
+%
+\begin{itemize}[leftmargin=*]
+    \item CodeGen~\cite{li2024towards,sapkota2025vibe} prompts an LLM to iteratively generate and execute data preparation code
+    % execute it, observe the output and refine the code 
+    until the target table is obtained.
+    % from source tables.
+    \item {Plan-and-Solve (PaS)}~\cite{wang2024chain} prompts an LLM to produce a plan and then generates an operator pipeline to obtain the target table. 
+    % using a two-stage strategy that first produces a high-level plan and then generates a complete operator sequence to obtain the target table.
+    \item {ReAct}~\cite{aksitov2023rest} is a linear reasoning agent that iteratively predicts the next operator based on previous execution results.
+    \item {MCTS-OP}~\cite{li2025alphasql} applies Monte Carlo Tree Search (MCTS) over individual operators defined in Section~\ref{subsec:operator_space}
+    % , using local node expansion and scalar rewards to guide search. We follow the framework of~\cite{li2025alphasql} and keep parameters as default.
+    \item {MontePrep}~\cite{ge2025monteprep} applies MCTS over actions such as schema mapping, operator discovery, code synthesis, and refinement instead of individual operators. 
+    % We use the released code with default settings.
+    % instead of individual operators. We use the authors’ released code with default settings.
+    \item {DeepAnalyze}~\cite{zhang2025deepanalyze} is an agentic LLM that generates data processing programs using supervised and reinforcement learning.
+    \item {AutoPrep}~\cite{fan2024autoprep} is a multi-agent framework for data preparation. It generates a high-level plan and then produces data preparation programs through specialized agents.
+    % Since it does not cover as many operators as our setting, we extend it following its original design.
+    \item \revise{{TRAE} and Claude Code (CC) are AI-powered coding agents with agentic coding capabilities. We evaluate them as representative state-of-the-art agentic coding systems\footnote{We use CC v2.1.119 and TRAE from \url{https://github.com/bytedance/trae-agent}.}.}
+\end{itemize}
+
+%\noindent
+
+
+%(1) \textbf{Prompting Baselines}. This category utilizes off-the-shelf LLMs with various inference strategies
+% is further divided into three subgroups based on the reasoning paradigm.
+
+% We implement two \textit{Direct Prompting} baselines. These methods rely on the reasoning capability of LLMs without complex iterative frameworks.
+
+%    \underline{{CodeGen}}~\cite{li2024towards,sapkota2025vibe} directly prompts the LLM to output the target data preparation code based on the input tables and target schema.
+%    
+%    \underline{{Plan-and-Solve (PaS)}}~\cite{wang2024chain} adopts a two-stage strategy where it first analyzes the input tables and NL requirements (Plan) and then generates a complete sequence of operators that will be executed to obtain the target table.
+
+% We compare with three \textit{Agentic Frameworks}. These methods employ iterative interaction loops to refine solutions.
+%
+%    \underline{{AutoPrep}}~\cite{lai2025auto} is a multi-agent framework focusing on table reconstruction and column transformation. It first generates a high-level DP plan with a Planner agent and then assigns several Programmer agents to implement specific DP programs. Since it does not consider multiple tables and data cleaning operators, we extend its capabilities following its original design.
+%    
+%    \underline{{ReAct}}~\cite{aksitov2023rest} predicts the next operator from the operator space defined in Section~\ref{subsec:operator_space} based on the execution results of previous steps, representing a standard linear reasoning agent.
+    
+    % \underline{{CodeGen}}~\cite{sapkota2025vibe} is an iterative framework that interacts with a Python interpreter. It generates code blocks, executes them, and observes outputs to refine the code until the task is completed.
+
+% We compare with two \textit{Search-based Frameworks}. These methods explore the solution space explicitly to find optimal paths.
+%
+%    \underline{{MCTS-OP}}: This method applies Monte Carlo Tree Search to the operator space defined in Section~\ref{subsec:operator_space}, relying on local node expansion and scalar rewards to navigate the search for DP operators. We follow~\cite{li2025alphasql} to design the MCTS framework and keep all parameters consistent with its public code repository.
+%    
+%    \underline{{MontePrep}}~\cite{ge2025monteprep}. Different from MCTS-OP, it defines five action types including \texttt{SchemaMapping}, \texttt{OperatorDiscovery}, \texttt{CodeSynthesis}, \texttt{CodeRefinement}, and \texttt{Termination} as atomic search units instead of DP operators. We implement MontePrep with their published code and keep all parameters as default.
+%    
+%    \underline{{DeepAnalyze}}~\cite{zhang2025deepanalyze} is a code agent model built upon Qwen3-8B. It conduct an SFT+RL training on data science tasks and leverages an CodeGen architecture. It achieves state-of-the-art (SOTA) performance in data analysis and report generation tasks.
+
+\etitle{(2) Training Baselines.} These baselines use the same backbone models as \sys but adopt different training strategies, allowing us to evaluate the effect of our agentic training framework.
+\begin{itemize}[leftmargin=*]
+    % \item {Imitation Learning (IL)}~\cite{li2025llms} fine-tunes the model on the high-quality reasoning trajectories distilled from strong teacher models (\eg DeepSeek-R1). Unlike standard SFT on (input, output) pairs, this baseline learns the step-by-step reasoning process.
+    \item {Imitation Learning (IL)}~\cite{li2025llms} fine-tunes the model on the high-quality trajectories distilled from strong teacher models.
+    % (\eg DeepSeek-R1). Unlike standard SFT on (input, output) pairs, this baseline learns the step-by-step reasoning process.
+    \item {RL-GRPO}~\cite{shao2024deepseekmath} applies reinforcement learning with Group Relative Policy Optimization using only outcome-level rewards.
+    % , without our curriculum and hybrid reward design.
+\end{itemize}
+
+
+\revise{
+\stitle{Prompt Design and Tuning for Baseline Methods.} 
+Specifically, (1) for methods with public implementations, i.e., MontePrep~\cite{ge2025monteprep}, DeepAnalyze~\cite{zhang2025deepanalyze}, AutoPrep~\cite{fan2024autoprep}, and MCTS-Op~\cite{li2025alphasql}, we use their official codebases and default configurations (e.g., prompt design, parameters, etc.). 
+When a method was designed for a different task and could not be directly applied to ADP, we adapted its prompt to the ADP setting and tuned its parameters using the same grid-search procedure adopted by \sys. For example, AutoPrep was designed for TableQA rather than autonomous data preparation, so we replaced its original prompt with an ADP-oriented prompt and tuned it accordingly.
+(2) For methods without public implementations, including CodeGen, ReAct, and PaS, we reimplemented them following the descriptions in their papers and applied the same prompt-tuning and parameter-selection procedure used for \sys. Therefore, all methods were evaluated under a comparable tuning method. Complete prompts, hyperparameters, and implementation details are provided in our technical report~\cite{technical_report}.
+}
+
+
+
+
+%\noindent
+%(2) \textbf{Training Baselines}. These methods train the backbone models for the data preparation task.
+%
+%    \underline{{SFT}} refers to Standard Supervised Fine-Tuning, where models are trained on the tree-based reasoning trajectories distilled from SOTA LLMs (\eg Claude-4). 
+%    
+%    \underline{{RL-GRPO}}~\cite{shao2024deepseekmath} refers to Reinforcement Learning with Group Relative Policy Optimization. This baseline optimizes the model directly using outcome rewards.
+     % (\eg execution success) to encourage correct final tables without relying solely on ground-truth paths.
+
+\stitle{Evaluation Metrics.}
+We evaluate all methods using three metrics.
+
+\etitle{(1) Exact Match Accuracy (Acc.)} measures the percentage of test cases where the produced table $\hat{T}$ matches the ground-truth table $T^*$. We follow the table matching method in~\cite{ge2025text}, which is invariant to row and column permutations but requires exact cell-value equality.
+
+\etitle{(2) Completion Rate (Comp.)} measures the percentage of test cases that produce a final output table. A case is counted as incomplete if execution exceeds the maximum interaction limit, triggers runtime errors, or produces an empty result.
+
+% \etitle{(3) Inference Cost (Cost)} measures the average monetary cost per case. For closed-source LLMs, we compute API cost using official pricing. For open-source models, we measure per-case end-to-end runtime under parallel requests and convert it to cost using the hourly price of the GPU instance. Specifically, the cost of case $i$ is computed as
+% $c_i = p_{\text{gpu}} \cdot t_i / 3600$,
+% and we report the average over all cases. We use an A800-80G GPU priced at \$0.91/hour ({\url{https://cloud.vast.ai/}).
+
+\etitle{(3) Inference Cost (Cost)} measures the average monetary cost per case. For closed-source LLMs, we use official API pricing. For open-source models, we convert end-to-end runtime to cost using the hourly GPU price:
+$c_i = p_{\text{gpu}} t_i / 3600$,
+where $t_i$ is the runtime in seconds. We report the average over all cases, using an A800-80G GPU priced at \$0.91/hour.
+
+%\stitle{Evaluation Metrics.} 
+%We adopt four metrics for evaluation.
+
+% % \vspace{1mm} \noindent
+% \vspace{1mm}
+%\noindent
+%{(1) {\bf Exact Matching Accuracy (Acc.).}}
+%We measure the percentage of test cases where the method produces a target table $\hat{T}$ that exactly matches the ground truth table $T^*$.
+%We adopt the table matching protocol from \cite{ge2025text}, which accounts for row/column permutation invariance but strictly checks for cell value equality.
+
+% % \vspace{1mm} \noindent
+% \vspace{1mm}
+%\noindent
+%{(2) {\bf Completion Rate (Comp.).}}
+%We calculate the percentage of test cases where the method successfully yields a final output table.
+%A failure is recorded if the agent exceeds the maximum interaction turns, raises runtime exceptions or generates empty table.
+
+% % \vspace{1mm} \noindent
+% \vspace{1mm}
+%\noindent {(3) {\bf Inference Cost.}} We quantify the the economic efficiency of all methods. For methods based on closed-sourced LLMs, we calculate the API cost based on the official pricing policy with the caching mechanism. For methods based on open-source LLMs, we deploy the models on rented GPU servers using vLLM, and measure the per-case end-to-end processing time under parallel client requests. We then convert the time cost into monetary cost using the cloud provider's hourly rental price. Specifically, let $p_{\text{gpu}}$ denote the on-demand price (USD/hour) of the GPU instance, and $t_i$ denote the processing time (seconds) of case $i$ measured under the target concurrency. the inference cost is computed as $c_i = p_{\text{gpu}} \cdot \frac{t_i}{3600}$, and we report the average cost over all cases, \ie $\bar{c} = \frac{1}{N}\sum_{i=1}^{N} c_i$. Specifically, we deploy the model on server with one A800-80G GPU, which is priced by \$0.91 per hour\footnote{\url{https://cloud.vast.ai/}}.
+
+
+% {(3) {\bf API Cost.}} \fmh{Maybe Inference Cost? \$0.91 per hour per A800 gpu on \url{https://cloud.vast.ai/}} % https://getdeploying.com/gpus/nvidia-a800
+% % 或者在AWS上 A100的价格算：%4.10 per hour
+% We quantify the economic efficiency by calculating the average API cost for each case.
+% The cost estimation is based on the official pricing policy with the {context caching} mechanism.
+% % This metric highlights the trade-off between DP performance and financial costs in real-world scenarios.
+
+% \noindent
+% {(4) {\bf Latency.}}
+% We measure the time efficiency by recording the average consumed time required for open-source models to complete a task.
+% To ensure fair comparison, we perform inferences on a single NVIDIA A800 GPU and disable parallel invocation strategies.
+
+\stitle{Backbone LLMs and \sys Variants.}
+We implement \sys on both closed-source and open-source LLM backbones.
+
+\etitle{(1) Closed-source backbones.}
+We implement \sys with our proposed tree-based agentic reasoning directly on the strongest proprietary models, including GPT-5 (\ie gpt-5-mini-2025-08-07) and Claude-4 (\ie claude-sonnet-4-20250514).
+
+\etitle{(2) Open-source backbones.}
+We implement \sys based on open-source LLMs, \ie Qwen2.5~\cite{hui2024qwen2} (with {0.5B}, {1.5B}, {3B}, {7B} and 14B parameters) and Qwen3~\cite{yang2025qwen3} ({0.6B}, {1.7B}, {4B}, {8B} and 14B). 
+% For these models, we apply our agentic training procedure and then evaluate them with the same inference framework.

@@ -1,0 +1,54 @@
+\begin{table}[t]
+  \centering
+  \caption{\bf Comparison between \sys and Agentic Coding Systems.}
+  \vspace{-1em}
+  \label{\labelprefix tbl:agentic_coding_system_exp}
+  \resizebox{0.98\columnwidth}{!}{
+    \begin{tabular}{|c|c||c|c|c|c|c|c|}
+      \hline
+      \multirow{2}{*}{\textbf{LLM}} & \multirow{2}{*}{\textbf{Method}} 
+      & \multicolumn{2}{c|}{\textbf{Synth-Spider}} 
+      & \multicolumn{2}{c|}{\textbf{Synth-Bird}} 
+      & \multicolumn{2}{c|}{\textbf{Parrot}} \\
+      \cline{3-8}
+      & & \textbf{Acc.} & \textbf{Cost (\$)} 
+        & \textbf{Acc.} & \textbf{Cost (\$)} 
+        & \textbf{Acc.} & \textbf{Cost (\$)} \\
+      \hline \hline
+
+      \multirow{2}{*}{GPT-5}
+        & TRAE
+        & \textbf{72.36} & 0.038
+        & \textbf{61.75} & 0.033
+        & 41.19 & 0.041 \\
+        \cline{2-8}
+
+        & \textbf{\sys}
+        & 71.76 & \textbf{0.014}
+        & 60.46 & \textbf{0.015}
+        & \textbf{41.33} & \textbf{0.009} \\
+      \hline
+      \hline
+
+      \multirow{3}{*}{Claude-4}
+        & CC
+        & 72.71 & 0.169
+        & \textbf{68.33} & \underline{0.141}
+        & \underline{42.98} & 0.188 \\
+        \cline{2-8}
+
+        & TRAE
+        & \textbf{73.80} & \underline{0.148}
+        & 66.93 & 0.160
+        & 41.93 & \underline{0.125} \\
+        \cline{2-8}
+
+        & \textbf{\sys}
+        & \underline{73.46} & \textbf{0.054}
+        & \underline{67.43} & \textbf{0.062}
+        & \textbf{46.07} & \textbf{0.044} \\
+      \hline
+    \end{tabular}
+  }
+  \vspace{-1em}
+\end{table}

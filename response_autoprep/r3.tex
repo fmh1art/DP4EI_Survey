@@ -1,0 +1,115 @@
+%!TEX root = ../main.tex
+\subsection*{Responses to Reviewer \#3}
+\label{cover_letter:r3}
+
+\begin{shaded}
+{
+\stitle{R3W1:} 
+\emph{The proposed approach focus on a limited number of data prep operations, which makes doubtful its generality.}
+
+\stitle{R3D1:}
+\emph{The paper focuses on three specific high-level data preparation operations: column augmentation, value normalization, and column filtering. While these are crucial for many TQA tasks, real-world data often presents a broader range of inconsistencies and complexities that the current operations may not address. For instance, the paper doesn't discuss how AutoPrep would handle missing data, erroneous values, or nested data. The paper mentions that the system can be extended to support new tasks, but it does not provide a comprehensive discussion on the practical aspects of adding new operation types.}
+}
+\end{shaded}
+
+\noindent{\bf RESPONSE}: 
+We thank the reviewer for highlighting these important issues.
+In response, we first examine the extensibility (\ie the ``generality'' mentioned by the reviewer) of \sys to support new tasks, and then discuss its ability to handle a broader range of data prep issues.
+
+\stitle{Whether \sys can be extended to support new tasks?}
+In the revised version, we have added a \textbf{new experiment} (\ie \textbf{Exp-\ref{exp:scalability_exp_new_op_type}}) to evaluate ``\emph{the practical aspects of adding new operation types}'' mentioned by the reviewer (our main change \textbf{M\ref{modify:new-exps} (4)}). 
+
+Specifically, we introduce a new type of data prep operation: \textbf{table transformation}, which was extensively studied in the VLDB 2023 Best Paper~\cite{li2023auto}. The goal of table transformation is to convert a non-relational table format into a relational one. As existing TQA benchmark datasets do not consider this type of data prep issue, we construct a new dataset, \textbf{TransTQ}, with the assistance of LLMs. This dataset is publicly available on our GitHub repository. In particular, we prompt an LLM to identify tables from WikiTQ where inverse transformation operations (\eg pivot and stack~\cite{li2023auto}) can be applied, thereby generating non-relational versions of structured tables. These transformed tables replace the originals to evaluate whether \sys can effectively address such data prep challenges, which differ significantly from the column derivation, normalization, and filtering tasks primarily studied in our work.
+
+As shown in \textbf{Table~\ref{tbl:new_operator_new_operation} of Section~\ref{subsec:evaluation_on_generalization}}, without explicit guidance for handling table transformations, all baseline TQA methods exhibit poor accuracy. In contrast, thanks to the modular design of our multi-agent framework, incorporating a new logical operation (\term{Transform}) requires only minimal human effort, yet significantly boosts \sys's performance to outperform all baselines, \eg outperforming the second-best method by \textbf{9.31} points. Moreover, we also validate that adding this new operation does not degrade the performance of \sys on the original WikiTQ dataset, confirming that its multi-agent architecture is well extensible to support the seamless integration of new data prep functionalities.
+
+
+\stitle{How \sys handles more data prep issues?}
+We agree with the reviewer that the previous version lacked discussion on handling more complex scenarios such as missing data, erroneous values, and nested data. To address this, we have revised \textbf{Section~\ref{subsec:prog-pool}} to discuss these cases. Specifically, the physical operator $\mathtt{infer}$ enables \sys to process values that cannot be handled by standard functions, such as missing or erroneous values. Furthermore, because our Analysis Sketch is defined using SQL-style syntax, which naturally supports querying nested data, we can identify the relevant data prep requirements and apply appropriate operations on the nested structures accordingly.
+
+Moreover, we have conducted a \textbf{new experiment} on the WikiTQ dataset to analyze the impact of missing values and duplicates in TQA tasks (see our main change \textbf{M\ref{modify:new-exps} (7)}). The results indicate that such issues are rare and have minimal impact on current TQA benchmarks, largely due to the controlled construction process of these datasets.
+Please see the response of \textbf{R1R1} for more details.
+
+Nevertheless, we acknowledge that issues such as missing values and duplicates are common in real-world datasets. We leave the exploration of these broader data prep challenges to future work (our main change \textbf{M6}).
+
+
+
+\begin{shaded}
+{
+\stitle{R3W2:}
+\emph{The paper does not provide details about the generation of the LLM prompts.}
+
+\stitle{R3D2}: 
+\emph{The paper omits detailed information about the LLM prompts used in AutoPrep but they are central to the functionality of the system and without the details, it is difficult to assess the validity of the results.}
+
+}
+\end{shaded}
+
+\noindent{\bf RESPONSE}: Thanks for the comments. As suggested, we have provided all the detailed \textbf{LLM prompts} used by \sys (our main change \textbf{M\ref{modify:technical-details}}), which are presented in \textbf{Appendix D} of our technical report~\cite{technical_report} due to space limitations.
+
+%in Figures~\ref{fig:prompt_planner_analysis_sketch_wikitq} - \ref{fig:prompt_nl2py_tabfact} in \textbf{Appendix~\ref{appendix:prompts_in_autoprep}}.
+
+
+\begin{shaded}
+{
+\stitle{R3W3:}
+\emph{While the paper mentions that column filtering can reduce the cost of LLM inference, a more thorough discussion of the computational cost and efficiency of AutoPrep is needed.}
+
+\stitle{R3D3:}
+\emph{It is not clear what is the overhead of using a multi agent framework. The paper should include metrics such as processing time, memory usage, and API costs, especially for large tables and complex data preparation operations. In addition, the authors claim that AutoPrep addresses question specific data problems at the online query stage, but there is no discussion on the implications of this design for real-time use.}
+}
+\end{shaded}
+
+\noindent{\bf RESPONSE}: 
+As suggested, we have added a \textbf{new experiment} to evaluat the overhead of \sys in terms of both processing time and API cost, and compared it against baseline methods (our main change \textbf{M\ref{modify:new-exps} (3)}).
+
+The results for both small and large tables are shown in \textbf{Figure~\ref{fig:time_money_acc_scatter_map} of Section~\ref{subsec:efficiency_evaluation}}.
+As shown, \sys achieves the best overall performance with insignificant time and monetary costs. Specifically, its cost is lower than all methods except Off-Prep and ICL-Prep. However, \sys significantly outperforms these two baselines in accuracy, achieving improvements of at least \textbf{9.36} and \textbf{5.77} points on small and large tables, respectively. Furthermore, as table size increases, \sys maintains a much more stable time and cost overhead compared to other state-of-the-art TQA methods.
+This efficiency stems from the program-based data prep mechanism of \sys, which avoids high latency and API expenses associated with directly processing tables via LLMs. For instance, in the column derivation task on Table $T_1$ (Figure~\ref{fig:issue_instances_incomplete}), CoTable invokes LLMs to generate a full list of country codes. In contrast, \sys only generates a physical operator $\mathtt{extract}$ and executes it to produce the column, which results in significantly lower time and monetary costs, particularly on large tables.
+
+\stitle{Finding: 
+\sys achieves the best accuracy with lower cost across varying table sizes, highlighting its practicality for real-time use.
+}
+
+%We have added \textbf{a new experiment} to evaluate the efficiency of \sys and other methods in \textbf{Exp~\ref{exp:efficiency_evaluation}}. Please refer to \textbf{M\ref{modify:newexp_overhead_comparison}} for more details.
+
+%except two data prep baselines
+%\stitle{How efficient is \sys?} As shown in Figure~\ref{fig:time_money_acc_scatter_map}, \sys achieves the \textbf{best} performance with \textbf{less} time and monetary cost than all TQA methods. Moreover, the overhead of \sys remains stable when varying the sizes of the tables. This is because all data prep operations in \sys are conducted by programs, avoiding the substantial time costs and financial expenses associated with directly processing tables with LLMs. 
+
+%\stitle{Using \sys online.} The average execution time to answer a question with \sys is \textbf{6.07s} and \textbf{7.35s} on small and large tables, and the average monetary cost is \textbf{\$0.0013} and \textbf{\$0.0014}. Therefore, the high efficiency of \sys well supports real-time use.
+% \begin{shaded}
+% {
+% \noindent \emph{\underline{R3D1}: 
+% % Describe the opportunity of using \sys for new data prep task, i.e., missing data, erroneous values and nested data. Moreover, describe how can we add a new type of logical operator for \sys?
+% D1(W1): The paper focuses on three specific high-level data preparation operations: column derivation, value normalization, and column filtering. While these are crucial for many TQA tasks, real-world data often presents a broader range of inconsistencies and complexities that the current operations may not address. For instance, the paper doesn't discuss how AutoPrep would handle missing data, erroneous values, or nested data. The paper mentions that the system can be extended to support new tasks, but it does not provide a comprehensive discussion on the practical aspects of adding new operation types.
+% }
+% }
+% \end{shaded}
+% \vspace{-0.5em}
+% \noindent{\bf RESPONSE}: See in R2D3.
+
+
+% \begin{shaded}
+% {
+% \noindent \emph{\underline{R3D2}: 
+% % Request for detailed information of prompts in technical report.
+% D2 (W2): The paper omits detailed information about the LLM prompts used in AutoPrep but they are central to the functionality of the system and without the details, it is difficult to assess the validity of the results.
+% }
+% }
+% \end{shaded}
+% \vspace{-0.5em}
+% \noindent{\bf RESPONSE}: See in R2D2.
+
+
+% \begin{shaded}
+% {
+% \noindent \emph{\underline{R3D3}: 
+% % Discuss the computation overhead such as processing time, memory usage, and API costs, especially for large tables and complex data preparation operations. Moreover, talk about practical application of \sys.
+% D3(W3): It is not clear what is the overhead of using a multi agent framework. The paper should include metrics such as processing time, memory usage, and API costs, especially for large tables and complex data preparation operations. In addition, the authors claim that AutoPrep addresses question specific data problems at the online query stage, but there is no discussion on the implications of this design for real-time use.
+% }
+% }
+% \end{shaded}
+% \vspace{-0.5em}
+% \noindent{\bf RESPONSE}: Seen in Figure~\ref{fig:time_money_acc_scatter_map}
+
+% \input{plots/tex/time_money_acc_scatter_map}

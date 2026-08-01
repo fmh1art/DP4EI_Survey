@@ -1,0 +1,59 @@
+%!TEX root = ../main.tex
+\subsection*{Dear VLDB Meta-Reviewer and Reviewers,}
+
+\noindent 
+%We would like to thank the meta-reviewer and reviewers for the thorough reading of our paper and for your valuable comments.
+%The paper has been revised according to the reviewers' comments, from clarifications to new datasets, new baseline and new experiments.
+We sincerely thank the meta-reviewer and reviewers for their thorough reading and insightful feedback. 
+In response, we have made substantial revisions to the paper, including clarifications, the introduction of new datasets, additional baselines, and new experiments.
+The updated contents in the paper are highlighted in \revise{blue}.
+Figures and tables in the response letter are numbered with Roman numerals (\eg Table I and Figure II), while those in the main paper use Arabic numerals (\eg Table 1 and Figure 2).
+
+%The figures and tables in the response letter are numbered with Roman letters (\eg Table I, Figure II), while in the main paper are numbered with Arabic letters (\eg Table 1, Figure 2).
+
+%Below, we first summarize the \textbf{main changes}, followed by \textbf{detailed responses} to the meta-reviewer and all reviewers.
+
+Below, we first summarize the \textbf{main changes}, and then present \textbf{detailed responses} to each reviewer and the meta-reviewer.
+
+\subsection*{Our Main Changes}
+
+\stitle{M\modificationnum\label{modify:motivation} [Clarification on Motivation]:} 
+We have revised the \textbf{Introduction} to more clearly justify our motivation.
+Specifically, we clarified the data prep challenges in TQA.
+To this end, we have updated \textbf{Figure~\ref{fig:error_instance_record}} by renaming the original categories \emph{column-level}, \emph{cell-level}, and \emph{table-level} to more precise terms: \emph{missing semantics}, \emph{inconsistent values}, and \emph{irrelevant columns}, respectively.
+We have also revised the examples in \textbf{Figure~\ref{fig:issue_instances}} to better demonstrate typical data preparation issues and further clarify the connections between these issues and corresponding question-aware data prep tasks.
+
+\stitle{M\modificationnum\label{modify:problem-novelty} [Justification on Problem Novelty]:}
+We have revised the \textbf{Introduction} to better justify the novelty of \emph{question-aware data preparation}. Specifically, we highlight that, in contrast to traditional data preparation, question-aware data prep introduces a novel challenge, namely \emph{semantic alignment between structured tables and natural language questions}.
+
+
+\stitle{M\modificationnum\label{modify:new-exps} [Seven Groups of New Experiments]:}
+We have significantly revised the experimental sections in response to reviewer feedback, incorporating \textbf{seven new groups of experiments}.
+%%
+\begin{itemize}[leftmargin=15pt]
+	\item[(1)] We have compared \sys with a new baseline, \textbf{Off-Prep}, which performs \emph{offline} data preparation on all tables in the TQA task. The experimental results are presented in \textbf{Table~\ref{tbl:vs_other_prep_method}}, with detailed analysis provided in \textbf{Exp-\ref{exp:compare_dataprep_baseline} of Section~\ref{subsec:Data_Prep_Method_Comparision}}.
+	%
+	\item[(2)] We have compared \sys with a new baseline \textbf{AutoTQA}~\cite{DBLP:journals/pvldb/ZhuCXLSZSTL24}, a SOTA TQA method that also adopts a multi-agent, LLM-based framework.
+	The experimental results are reported in \textbf{Table~\ref{tbl:vs_other_prep_method}}, and detailed analysis is provided in \textbf{Exp-\ref{exp:compare_SOTA_TQA_with_prep} of Section~\ref{subsec:Data_Prep_Method_Comparision}}.
+	%
+	\item[(3)] We have evaluated the overhead of \sys in terms of both processing time and API cost, and compared it against baseline methods.
+    The experimental results are reported in \textbf{Figure~\ref{fig:time_money_acc_scatter_map}}, with detailed analysis provided in \textbf{Exp-\ref{exp:efficiency_evaluation} of Section~\ref{subsec:efficiency_evaluation}}.
+	%
+	\item[(4)] We have evaluated the \emph{extensibility} of \sys for new operation types. The experimental results are reported in 
+	\textbf{Table~\ref{tbl:new_operator_new_operation}} and detailed analysis is provided in \textbf{Exp-\ref{exp:scalability_exp_new_op_type} of Section~\ref{subsec:evaluation_on_generalization}}.	
+	%
+	\item[(5)] We have conducted new experiments to validate the superiority of our proposed framework \sys across different table sizes and various question difficulties. Due to space constraints, the detailed results and analysis are presented in \textbf{Appendix B.1 and B.2 of our technical report~\cite{technical_report}}.
+	%
+	\item[(6)] As discussed in Section~\ref{subsec:prog-idea}, we prompt the LLM to write code to implement the logical operation if no suitable function in the function pool can meet the requirement, which we denote as $\mathtt{CustomCode}$.
+	To evaluate the effectiveness of LLM-based $\mathtt{CustomCode}$ in helping \sys generalize to cases that require new physical operations, we have conducted new experiments. Due to space constraints, the detailed experimental results and analysis are provided in \textbf{Appendix B.3 of our technical report~\cite{technical_report}}.
+    \item[(7)] We have investigated the impact of additional data prep issues, \ie missing values and duplications, in TQA tasks. Due to space limitations, the corresponding experimental results are presented in \textbf{Appendix B.4 of our technical report~\cite{technical_report}}.
+\end{itemize} 
+
+\stitle{M\modificationnum\label{modify:error-analysis} [Details of Error Analysis]:}
+We have provided detailed error analysis in Figure~\ref{fig:error_instance_record}, which serves as a key motivation for our proposed solution. Due to space limitations, the full analysis is presented in \textbf{Appendix A of our technical report~\cite{technical_report}}.
+
+\stitle{M\modificationnum\label{modify:technical-details} [Technical Details]:}
+We have revised \textbf{Sections~\ref{sec:the_planner_agent} and \ref{sec:the_programmer_and_executor}} to provide more comprehensive technical details. In addition, we have included all the detailed \textbf{LLM prompts}, which are presented in \textbf{Appendix D of our technical report~\cite{technical_report}} due to space limitations.
+
+\stitle{M\modificationnum\label{modify:future-work} [Future Work]:}
+We have revised \textbf{Section~\ref{sec:conclusion_and_future_work}} to identify three promising directions as our future work, \ie extending data prep capabilities of \sys,  supporting multi-table TQA, and enabling question-aware data preparation over enterprise datasets.

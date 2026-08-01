@@ -1,0 +1,80 @@
+%!TEX root = ../main.tex
+
+\section{Training Framework Details}
+\label{sec:appendix_training_details}
+
+In this section, we provide additional details on the Progressive Agentic Training framework described in Section~\ref{sec:agentic_training_framework}, including the cold-start curriculum stages, environment token masking, and hybrid reward design.
+
+\subsection{Cold-Start Curriculum Stage 1: Operator Syntax Learning}
+\label{subsec:appendix_stage1}
+
+As described in Section~\ref{subsec:cold_start}, Stage 1 focuses on the syntax and semantics of individual operators. We provide additional details on the data construction process.
+
+\stitle{Data Construction.}
+Given source tables and a ground-truth operator pipeline $\mathcal{P}_{\text{total}} = (o^{(1)}, \dots, o^{(N)})$, we first execute these operators sequentially to collect a sequence of intermediate table sets $\{\mathcal{T}_{0}, \dots, \mathcal{T}_{N}\}$. Then, we sample a contiguous sub-sequence of operators $\mathcal{P}_{\text{sub}} = (o^{(i)}, \dots, o^{(j)})$ with the corresponding input intermediate table set $\mathcal{T}_{\text{in}}=\mathcal{T}_{i-1}$ and output intermediate table set $\mathcal{T}_{\text{out}}=\mathcal{T}_{j}$.
+
+\stitle{Sub-sequence Sampling Strategy.}
+To ensure diverse and balanced training data, we employ the following sampling strategy:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Variable length.} We sample sub-sequences of varying lengths (1 to 5 operators) to expose the model to both single-operator and multi-operator transformations.
+    \item \textbf{Random starting point.} For each ground-truth pipeline, we randomly select the starting position $i$ and then sample the ending position $j$ based on the desired sub-sequence length.
+    \item \textbf{Coverage.} We ensure that all operator types appear in the training data with sufficient frequency by oversampling rare operator types.
+\end{itemize}
+
+Through this process, we construct the operator syntax learning dataset $\mathcal{D}_{\text{op}}$ consisting of training triples $(\mathcal{P}_{\text{sub}}, \mathcal{T}_{\text{in}}, \mathcal{T}_{\text{out}})$, and optimize the loss $\mathcal{L}_{\text{op}}$ defined in Eq.~(\ref{eq:sft_op_learn}).
+
+\subsection{Cold-Start Curriculum Stage 2: Reasoning Procedure Learning}
+\label{subsec:appendix_stage2}
+
+Stage 2 aligns the model with the tree-based agentic reasoning mechanism. We provide additional details on the teacher model distillation process.
+
+\stitle{Teacher Model Distillation.}
+We employ five open-source LLMs as teacher models to generate diverse reasoning trajectories. For each ADP task defined by source tables $\mathcal{S}$ and a target schema $\Sigma^\ast$, we use In-Context Learning with elaborate prompts that exemplify the tree-based reasoning process. The prompts include:
+\begin{itemize}[leftmargin=*]
+    \item The complete operator space definition.
+    \item Two few-shot examples demonstrating the \action{plan}--\action{expand}--\action{execute}--\action{answer} interaction protocol.
+    \item The current source tables and target schema specification.
+\end{itemize}
+
+\stitle{Input Perturbation $\Phi$.}
+To enhance robustness, we apply input perturbations $\Phi$ to the source tables before generating trajectories. Specifically, we:
+\begin{itemize}[leftmargin=*]
+    \item Randomly shuffle the order of columns in each source table.
+    \item Randomly shuffle the order of rows in each source table.
+    \item Randomly shuffle the order of source tables when multiple tables are present.
+\end{itemize}
+These perturbations ensure that the model does not rely on spurious positional correlations and learns to identify the correct columns and tables based on semantic content rather than position.
+
+\stitle{Process Reward Filtering.}
+The generated candidate trajectories are filtered using the process reward function $R_{\text{llm}}(\tau)$ (Section~\ref{subsec:rl_reward}). We retain only trajectories with $R_{\text{llm}}(\tau) > 0.8$ to ensure high training quality. This filtering process reduces the initial ~20,000 candidate trajectories to 11,198 high-quality samples.
+
+\subsection{Environment Token Masking}
+\label{subsec:appendix_token_masking}
+
+As described in Section~\ref{subsec:rl_reward}, each trajectory contains both agent-generated tokens and environment-generated tokens. We provide additional details on the binary token mask implementation.
+
+\stitle{Masking Mechanism.}
+In our interaction protocol, a trajectory $\tau = (r_1, \dots, r_m)$ interleaves agent actions and environment observations. Specifically:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Agent-generated tokens} (unmasked, $M_t = 1$): Tokens within \action{plan}, \action{expand}, and \action{answer} blocks. These correspond to the agent's decision-making outputs and should be optimized by the policy gradient.
+    \item \textbf{Environment-generated tokens} (masked, $M_t = 0$): Tokens within \action{execute} blocks. These are deterministic execution outputs (\eg serialized intermediate tables, error traces) that are not under the agent's control and should not contribute to policy gradient updates.
+\end{itemize}
+
+The binary mask $M_t$ is applied to the loss function in Eq.~(\ref{eq:sft_reasoning_learn}) during SFT and to the policy gradient objective during RL. This ensures that the model is only optimized for its own decision-making, not for predicting environment outputs.
+
+\subsection{Hybrid Reward Details}
+\label{subsec:appendix_hybrid_reward}
+
+We provide additional details on the hybrid reward design described in Section~\ref{subsec:rl_reward}.
+
+\stitle{Hyperparameters.}
+The hybrid reward weights are set to $\alpha = 1$, $\beta = 1$, and $\gamma = 1$, \ie the total reward is the direct sum of the three components: $R(\tau) = R_{\text{out}}(\tau) + R_{\text{part}}(\tau) + R_{\text{llm}}(\tau)$. Note that $R_{\text{out}}$ takes a value of 2.0 for exact match and 0.0 otherwise, while $R_{\text{part}} \in [0, 1]$ and $R_{\text{llm}} \in [0, 1]$. This design gives the outcome reward a dominant weight (up to 2.0) to strongly incentivize exact correctness, while the partial and process rewards provide denser learning signals for trajectories that do not achieve exact match.
+
+\stitle{LLM-as-Judge Scoring.}
+The process reward $R_{\text{llm}}(\tau)$ is computed by an instruction-tuned LLM (\eg GPT-4o) that evaluates each trajectory on three criteria:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Plan--action consistency} (weight: 1/3): Whether the generated operator pipeline (from \action{expand}) correctly implements the plan (from \action{plan}).
+    \item \textbf{Feedback responsiveness} (weight: 1/3): Whether subsequent \action{plan} outputs explicitly respond to the prior execution feedback (\eg reported error traces).
+    \item \textbf{Backtracking justification} (weight: 1/3): Whether parent-node switches are supported by recorded failure evidence from the current branch.
+\end{itemize}
+Each criterion is scored on a scale of 0 to 1, and the final $R_{\text{llm}}(\tau)$ is the average of the three scores. The LLM judge is prompted with the full trajectory including all \action{plan}, \action{expand}, and \action{execute} blocks, along with the evaluation rubric.

@@ -1,0 +1,139 @@
+\begin{table*}[t]
+  \centering
+  % 建议修改 Caption 以说明分块比较
+  \caption{\bf Comparison of \sys and baselines. Best and second-best results are marked in \textbf{bold} and underlined within each category (SOTA LLMs, Open-Source LLMs, and Training Methods). Improvements of our method over the best Open-Source LLMs are shown in parentheses.}
+  \label{tbl:main_exp_result}
+  \resizebox{\textwidth}{!}{
+    \begin{tabular}{|c|c||c|c||c|c|c|c|}
+      \hline
+      % ___ 表头修改：删除 Standard / Generalization，multirow 改为 2 ___
+      \multirow{2}{*}{\textbf{Method}} & \multirow{2}{*}{\textbf{LLM}} & 
+      \multicolumn{2}{c||}{\textbf{DP-Spider}} & \multicolumn{2}{c|}{\textbf{DP-Bird}} & \multicolumn{2}{c|}{\textbf{Parrot}} \\ \cline{3-8}
+
+       & & \textbf{Acc.} & \textbf{Comp.} & \textbf{Acc.} & \textbf{Comp.} & \textbf{Acc.} & \textbf{Comp.} \\
+      \hline \hline
+      
+      % =======================================================
+      % Part 1: SOTA LLMs (Group 1 Comparison)
+      % =======================================================
+      \multicolumn{8}{|c|}{\cellcolor{gray!10}\textbf{SOTA LLMs (Prompting)}} \\ \hline
+      
+      % CodeGen
+      \multirow{3}{*}{CodeGen} 
+      & GPT-5 & 62.90 & 92.73\% & 55.88 & 83.96\% & 38.40 & 93.33\% \\
+      & Claude-4 & 59.51 & 86.65\% & 50.55 & 70.27\% & 42.63 & 91.93\% \\ 
+      & DS-R1 & 56.23 & 86.11\% & 52.09 & 76.99\% & 36.06 & 93.53\% \\ \hline
+
+      % PaS
+      \multirow{3}{*}{PaS} 
+      & GPT-5 & 52.29 & 85.26\% & 36.65 & 73.85\% & 39.39 & 95.32\% \\
+      & Claude-4 & 46.91 & 79.83\% & 27.59 & 61.55\% & 41.19 & 93.43\% \\
+      & DS-R1 & 44.92 & 72.66\% & 34.41 & 51.34\% & 35.86 & 89.69\% \\ \hline
+
+      % MCTS-OP
+      \multirow{3}{*}{MCTS-OP} 
+      & GPT-5 & 61.55 & \underline{97.41\%} & 47.71 & \underline{95.02\%} & 33.72 & \textbf{99.20\%} \\
+      & Claude-4 & 66.58 & \textbf{99.05\%} & \underline{58.91} & \textbf{95.32\%} & 41.68 & 98.51\% \\
+      & DS-R1 & 62.10 & 96.07\% & 50.85 & 95.77\% & 33.02 & 95.32\% \\ \hline
+
+      % MontePrep
+      \multirow{3}{*}{MontePrep} 
+      & GPT-5 & 41.09 & 65.14\% & 27.14 & 51.00\% & \textbf{42.98} & 85.21\% \\
+      & Claude-4 & 44.27 & 59.46\% & 26.05 & 45.37\% & 41.93 & 69.72\% \\
+      & DS-R1 & 33.52 & 53.54\% & 17.63 & 33.22\% & 42.58 & 82.77\% \\ \hline 
+
+      % AutoPrep
+      \multirow{3}{*}{AutoPrep} 
+      & GPT-5 & 51.54 & 82.87\% & 45.42 & 79.63\% & 38.25 & 85.96\% \\
+      & Claude-4 & 63.70 & 97.01\% & 46.71 & 91.24\% & 40.79 & \underline{99.15\%} \\
+      & DS-R1 & 54.53 & 84.61\% & 40.09 & 89.49\% & 33.17 & 96.96\% \\ \hline
+
+      % CodeGen
+      % \multirow{3}{*}{\shortstack{Agentic\\Coding}} 
+      \multirow{3}{*}{CodeGen} 
+      & GPT-5 & 64.39 & 92.38\% & 56.82 & 89.89\% & 40.29 & 95.72\% \\
+      & Claude-4 & 62.05 & 82.82\% & 57.62 & 73.85\% & 41.14 & 92.83\% \\
+      & DS-R1 & 59.71 & 78.09\% & 45.27 & 65.49\% & 35.91 & 88.30\% \\ \hline
+
+      % ReAct
+      \multirow{3}{*}{ReAct} 
+      & GPT-5 & \underline{67.03} & 97.31\% & 57.37 & 93.38\% & 40.19 & 97.26\% \\
+      & Claude-4 & \textbf{69.92} & 96.86\% & \textbf{59.91} & 89.09\% & \underline{42.88} & 96.12\% \\
+      & DS-R1 & 59.11 & 85.91\% & 59.31 & 89.64\% & 38.84 & 97.21\% \\ \hline\hline
+      
+      \multirow{3}{*}{\shortstack{\textbf{\sys}\\\textbf{\textsc{-P} (Ours)}}}
+      & {Claude} & 73.46 & 99.85\% & 67.43 & 97.91\% & 46.07 & 99.70\% \\
+      & {GPT} & 71.76 & 98.21\% & 60.46 & 92.53\% & 41.33 & 97.26\% \\
+      & DS-R1 & 65.23 & 93.92\% & 60.16 & 88.65\% & 39.64 & 98.26\% \\
+      \hline\hline
+      
+
+      % =======================================================
+      % Part 2: Open-Source LLMs (Group 2 Comparison)
+      % =======================================================
+      \multicolumn{8}{|c|}{\cellcolor{gray!10}\textbf{Open-Source LLMs (Prompting)}} \\ \hline
+
+      % CodeGen
+      \multirow{2}{*}{CodeGen} 
+      & Qwen3-8B & 29.53 & 45.22\% & 19.12 & 32.52\% & 24.25 & 56.27\% \\
+      & Qwen3-14B & 41.83 & 67.08\% & 27.74 & 48.71\% & \textbf{31.52} & \textbf{86.16\%} \\ \hline
+
+      % PaS
+      \multirow{2}{*}{PaS} 
+      & Qwen3-8B & 4.68 & 7.42\% & 0.65 & 4.33\% & 3.09 & 8.32\% \\
+      & Qwen3-14B & 7.67 & 20.67\% & 3.09 & 21.86\% & 9.56 & 22.36\% \\ \hline
+
+      % ReAct
+      \multirow{2}{*}{MCTS-OP} 
+      & Qwen3-8B & 12.9 & 15.19\% & 0.9 & 73.56\% & 17.33 & 23.71\% \\
+      & Qwen3-14B & 21.91 & 72.56\% & 7.22 & 78.69\% & 24.95 & 83.02\% \\ \hline
+
+      % ReAct
+      \multirow{2}{*}{MontePrep} 
+      & Qwen3-8B & 8.81 & 19.97\% & 13.7 & 21.96\% & 25.95 & 56.08\% \\
+      & Qwen3-14B & 9.46 & 19.62\% & 18.63 & 38.15\% & 26.94 & 57.87\% \\ \hline
+
+      % AutoPrep
+      \multirow{2}{*}{AutoPrep} 
+      & Qwen3-8B & 26.44 & 50.85\% & 8.52 & 42.28\% & 25.20 & 70.42\% \\
+      & Qwen3-14B & 36.75 & 71.61\% & 10.41 & 39.89\% & 28.54 & 74.05\% \\ \hline
+
+      % CodeGen
+      % \multirow{2}{*}{\shortstack{Agentic\\Coding}} 
+      \multirow{2}{*}{CodeGen} 
+      & Qwen3-8B & 6.27 & 12.1\% & 7.47 & 15.69\% & 7.27 & 25.5\% \\
+      & Qwen3-14B & \textbf{45.47} & 68.18\% & \textbf{29.48} & 49.20\% & \underline{30.83} & \underline{81.08\%} \\ \hline
+
+      % ReAct
+      \multirow{2}{*}{ReAct} 
+      & Qwen3-8B & 29.63 & 52.59\% & 10.41 & 46.22\% & 22.11 & 57.97\% \\
+      & Qwen3-14B & \underline{40.39} & 69.02\% & 16.04 & 46.56\% & 30.80 & 76.44\% \\ \hline
+
+      % DeepAnalyze
+      \multirow{1}{*}{DeepAnalyze*} 
+      & Qwen3-8B & 35.66 & \textbf{82.02\%} & 1.74 & \textbf{62.17\%} & 29.01 & 66.67\% \\ \hline\hline
+
+      % =======================================================
+      % Part 3: Training Methods (Group 3 Comparison)
+      % =======================================================
+      \multicolumn{8}{|c|}{\cellcolor{gray!10}\textbf{Training Methods (Only Trained on DP-Spider)}} \\ \hline
+
+      % SFT
+      \multirow{2}{*}{SFT} 
+      & Qwen3-8B & 58.62 & 92.63\% & 41.63 & 83.98\% & 33.26 & 91.36\% \\
+      & Qwen3-14B & 59.61 & 88.65\% & 44.16 & 74.75\% & 34.58 & 88.13\% \\ \hline
+
+      % RL-GRPO
+      \multirow{2}{*}{RL-GRPO} 
+      & Qwen3-8B & 47.81 & 76.54\% & 29.95 & 68.69\% & 32.82 & 85.05\% \\
+      & Qwen3-14B & - & - & - & - & - & - \\ \hline
+
+      % DeepPrep-T (Ours)
+      \multirow{2}{*}{\shortstack{\textbf{\bfsys} \textbf{(Ours)}}}
+      & Qwen3-8B & \underline{65.23} \footnotesize{(+19.76)} & \textbf{97.40\%} \footnotesize{(+15.38\%)} & \underline{47.53} \footnotesize{(+18.05)} & \underline{86.70\%} \footnotesize{(+24.53\%)} & \underline{36.22} \footnotesize{(+4.70)} & \underline{94.60\%} \footnotesize{(+8.44\%)} \\
+      & Qwen3-14B & \textbf{67.18} \footnotesize{(+22.31)} & \underline{97.21\%} \footnotesize{(+15.19\%)} & \textbf{54.09} \footnotesize{(+24.61)} & \textbf{92.26\%} \footnotesize{(+30.09\%)} & \textbf{40.44} \footnotesize{(+8.92)} & \textbf{96.41\%} \footnotesize{(+10.25\%)} \\
+      \hline
+    \end{tabular}
+  }
+  \vspace{-0.5em}
+\end{table*}

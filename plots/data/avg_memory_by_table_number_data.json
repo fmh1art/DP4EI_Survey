@@ -1,0 +1,44 @@
+{
+  "Synth-Spider": {
+    "categories": [
+      "1",
+      "2",
+      ">=3"
+    ],
+    "values": [
+      66.51371372767858,
+      68.82013494318181,
+      68.54012044270833
+    ],
+    "metric": "memory",
+    "data_type": "table_number"
+  },
+  "Synth-Bird": {
+    "categories": [
+      "1",
+      "2",
+      ">=3"
+    ],
+    "values": [
+      78.9964599609375,
+      83.37817581300813,
+      81.08064516129032
+    ],
+    "metric": "memory",
+    "data_type": "table_number"
+  },
+  "Parrot": {
+    "categories": [
+      "1",
+      "2",
+      ">=3"
+    ],
+    "values": [
+      124.41463765337423,
+      128.7445556640625,
+      0.0
+    ],
+    "metric": "memory",
+    "data_type": "table_number"
+  }
+}

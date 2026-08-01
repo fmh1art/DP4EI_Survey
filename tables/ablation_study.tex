@@ -1,0 +1,54 @@
+\begin{table}[t]
+    \centering
+    \caption{\bf Detailed Ablation Studies on PAT (Qwen3-8B).}
+    \vspace{-1em}
+    \label{tbl:ablation_results_split}
+    
+    % --- Subtable 1: Cold Start ---
+    \begin{subtable}[t]{0.88\columnwidth}
+        \centering
+        \caption{\bf{Ablation study on Cold Start stage. OSL represent Operator syntax Learning module in Section~\ref{subsec:cold_start}.}}
+        \label{subtbl:cold_start}
+        \vspace{-0.5em}
+        \resizebox{0.99\linewidth}{!}{
+        \begin{tabular}{|c||c|c|c|c|c|c|}
+            \hline
+            \multirow{2}{*}{\textbf{Method}} & \multicolumn{2}{c|}{\textbf{Synth-Spider}} & \multicolumn{2}{c|}{\textbf{Synth-Bird}} & \multicolumn{2}{c|}{\textbf{Parrot}} \\ \cline{2-7}
+             & \textbf{Acc.} & \textbf{Comp.} & \textbf{Acc.} & \textbf{Comp.} & \textbf{Acc.} & \textbf{Comp.} \\
+            \hline \hline
+            % Row 1: Curriculum SFT
+            Cold-Start & \textbf{60.66} & \textbf{91.63\%} & \textbf{45.27} & \textbf{81.39\%} & \textbf{36.22} & \textbf{92.16\%} \\
+            % Row 2: w/o Operator Learning
+            w/o OSL & {59.65} & {90.54\%} & {43.30} & {80.43\%} & {36.15} & {91.08\%} \\
+            \hline
+        \end{tabular}
+        }
+    \end{subtable}
+    
+    \vspace{0.5em}
+    
+    % --- Subtable 2: Multiturn RL ---
+    \begin{subtable}[t]{0.93\columnwidth}
+        \centering
+        \caption{\bf{Ablation study on the reward of Multiturn RL stage.}}
+        \label{subtbl:rl_stage}
+        \vspace{-0.5em}
+        \resizebox{0.99\linewidth}{!}{
+        \begin{tabular}{|c||c|c|c|c|c|c|}
+            \hline
+            \multirow{2}{*}{\textbf{Method}} & \multicolumn{2}{c|}{\textbf{Synth-Spider}} & \multicolumn{2}{c|}{\textbf{Synth-Bird}} & \multicolumn{2}{c|}{\textbf{Parrot}} \\ \cline{2-7}
+             & \textbf{Acc.} & \textbf{Comp.} & \textbf{Acc.} & \textbf{Comp.} & \textbf{Acc.} & \textbf{Comp.} \\
+            \hline \hline
+            % Row 1: V0-v1-v2 (Full sysem)
+            \sys & \textbf{65.99} & \underline{97.46\%} & \textbf{53.39} & \underline{92.78\%} & \textbf{39.93} & \underline{98.46\%} \\
+            % Row 2: v0-v1 (w/o R_llm)
+            w/o $R_{\text{llm}}$ & \underline{64.54} & 96.96\% & \underline{51.67} & 92.31\% & \underline{39.12} & 94.21\% \\
+            % Row 3: v0 (w/o R_llm, R_part)
+            w/o $R_{\text{llm}}, R_{\text{part}}$ & 61.85 & \textbf{98.71\%} & 47.15 & \textbf{95.57\%} & 37.22 & \textbf{99.34\%} \\
+            \hline
+        \end{tabular}
+        }
+    \end{subtable}
+    
+  \vspace{-1em}
+\end{table}

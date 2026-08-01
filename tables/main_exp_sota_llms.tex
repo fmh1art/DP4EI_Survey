@@ -1,0 +1,97 @@
+\begin{table}[t]
+    \centering
+    \caption{\bf Comparison of \sys and baselines on SOTA LLMs. Results on more LLMs (DoubaoSeed1.6-Thinking, DeepSeek-V3.1 and DoubaoSeed1.6-flash) can be found in our technique report ~\cite{technical_report}.}
+    \label{tbl:sota_exp}
+    \vspace{-1em}
+
+    % =======================================================
+    % Subtable 2: SOTA - Claude-4
+    % =======================================================
+    \begin{subtable}[t]{\columnwidth}
+        \centering
+        \caption{\bf{Results on SOTA LLMs (Backbone: Claude-4).}}
+        \label{subtbl:sota_claude}
+        \vspace{-0.15em}
+        \resizebox{0.99\linewidth}{!}{
+        \begin{tabular}{|c||c|c|c|c|c|c|}
+            \hline
+            \multirow{2}{*}{\textbf{Method}} & \multicolumn{2}{c|}{\textbf{DP-Spider}} & \multicolumn{2}{c|}{\textbf{DP-Bird}} & \multicolumn{2}{c|}{\textbf{Parrot}} \\ \cline{2-7}
+             & \textbf{Acc.} & \textbf{Comp.} & \textbf{Acc.} & \textbf{Comp.} & \textbf{Acc.} & \textbf{Comp.} \\
+            \hline \hline
+            CodeGen & 59.51 & 86.65\% & 50.55 & 70.27\% & 40.44 & 91.93\% \\ 
+            PaS & 46.91 & 79.83\% & 27.59 & 61.55\% & 41.19 & 93.43\% \\
+            MCTS-OP & 66.58 & \underline{99.05\%} & 58.91 & \underline{95.32\%} & 41.68 & 98.51\% \\
+            MontePrep & 44.27 & 59.46\% & 26.05 & 45.37\% & 41.93 & 69.72\% \\
+            AutoPrep & 63.70 & 97.01\% & 46.71 & 91.24\% & 40.79 & \underline{99.15\%} \\
+            CodeGen & 62.05 & 82.82\% & 57.62 & 73.85\% & 41.14 & 92.83\% \\
+            ReAct & \underline{69.92} & 96.86\% & \underline{59.91} & 89.09\% & \underline{42.88} & 96.12\% \\
+            \hline
+            \begin{tabular}{@{}c@{}}\textbf{\sys}\\ \textbf{\textsc{-P} (Ours)}\end{tabular} & \textbf{73.46} & \textbf{99.85\%} & \textbf{67.43} & \textbf{97.91\%} & \textbf{46.07} & \textbf{99.70\%} \\
+            \hline
+        \end{tabular}
+        }
+    \end{subtable}
+
+    \vspace{0.5em}
+
+    % =======================================================
+    % Subtable 1: SOTA - GPT-5
+    % =======================================================
+    \begin{subtable}[t]{\columnwidth}
+        \centering
+        \caption{\bf{Results on SOTA LLMs (Backbone: GPT-5).}}
+        \label{subtbl:sota_gpt}
+        \vspace{-0.15em}
+        \resizebox{0.99\linewidth}{!}{
+        \begin{tabular}{|c||c|c|c|c|c|c|}
+            \hline
+            \multirow{2}{*}{\textbf{Method}} & \multicolumn{2}{c|}{\textbf{DP-Spider}} & \multicolumn{2}{c|}{\textbf{DP-Bird}} & \multicolumn{2}{c|}{\textbf{Parrot}} \\ \cline{2-7}
+             & \textbf{Acc.} & \textbf{Comp.} & \textbf{Acc.} & \textbf{Comp.} & \textbf{Acc.} & \textbf{Comp.} \\
+            \hline \hline
+            CodeGen & 62.90 & 92.73\% & 55.88 & 83.96\% & 38.40 & 93.33\% \\
+            PaS & 52.29 & 85.26\% & 36.65 & 73.85\% & 39.39 & 95.32\% \\
+            MCTS-OP & 61.55 & \underline{97.41\%} & 47.71 & \textbf{95.02\%} & 33.72 & \textbf{99.20\%} \\
+            MontePrep & 41.09 & 65.14\% & 27.14 & 51.00\% & \textbf{42.98} & 85.21\% \\
+            AutoPrep & 51.54 & 82.87\% & 45.42 & 79.63\% & 38.25 & 85.96\% \\
+            CodeGen & 64.39 & 92.38\% & 56.82 & 89.89\% & 40.29 & 95.72\% \\
+            ReAct & \underline{67.03} & 97.31\% & \underline{57.37} & \underline{93.38\%} & 40.19 & {96.36\%} \\ % re-run the exp
+            \hline
+            \begin{tabular}{@{}c@{}}\textbf{\sys}\\ \textbf{\textsc{-P} (Ours)}\end{tabular} & \textbf{71.76} & \textbf{98.21\%} & \textbf{60.46} & 92.53\% & \underline{41.33} & \underline{97.26\%} \\
+            \hline
+        \end{tabular}
+        }
+    \end{subtable}
+
+    \vspace{0.5em}
+
+    % =======================================================
+    % Subtable 3: SOTA - DeepSeek-R1
+    % =======================================================
+    \begin{subtable}[t]{\columnwidth}
+        \centering
+        \caption{\bf{Results on SOTA LLMs (Backbone: DeepSeek-R1).}}
+        \label{subtbl:sota_dsr1}
+        \vspace{-0.15em}
+        \resizebox{0.99\linewidth}{!}{
+        \begin{tabular}{|c||c|c|c|c|c|c|}
+            \hline
+            \multirow{2}{*}{\textbf{Method}} & \multicolumn{2}{c|}{\textbf{DP-Spider}} & \multicolumn{2}{c|}{\textbf{DP-Bird}} & \multicolumn{2}{c|}{\textbf{Parrot}} \\ \cline{2-7}
+             & \textbf{Acc.} & \textbf{Comp.} & \textbf{Acc.} & \textbf{Comp.} & \textbf{Acc.} & \textbf{Comp.} \\
+            \hline \hline
+            CodeGen & 56.23 & 86.11\% & 52.09 & 76.99\% & 36.06 & 93.53\% \\
+            PaS & 44.92 & 72.66\% & 34.41 & 51.34\% & 35.86 & 89.69\% \\
+            MCTS-OP & \underline{62.10} & \textbf{96.07\%} & 50.85 & \textbf{95.77\%} & 33.02 & 95.32\% \\
+            MontePrep & 33.52 & 53.54\% & 17.63 & 33.22\% & \textbf{42.58} & 82.77\% \\
+            AutoPrep & 54.53 & 84.61\% & 40.09 & 89.49\% & 33.17 & 96.96\% \\
+            CodeGen & 59.71 & 78.09\% & 45.27 & 65.49\% & 35.91 & 88.30\% \\
+            ReAct & 59.11 & 85.91\% & \underline{59.31} & \underline{89.64\%} & 38.84 & \underline{97.21\%} \\ 
+            \hline
+            % \textbf{\sys-P (Ours)} & \textbf{65.23} & \underline{93.92\%} & \textbf{60.16} & 88.65\% & \underline{39.64} & \textbf{98.26\%} \\
+            \begin{tabular}{@{}c@{}}\textbf{\sys}\\ \textbf{\textsc{-P} (Ours)}\end{tabular} & \textbf{65.23} & \underline{93.92\%} & \textbf{60.16} & 88.65\% & \underline{39.64} & \textbf{98.26\%} \\
+            \hline
+        \end{tabular}
+        }
+    \end{subtable}
+
+    
+\end{table}

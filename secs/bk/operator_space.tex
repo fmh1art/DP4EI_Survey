@@ -1,0 +1,36 @@
+%!TEX root = ../main.tex
+\begin{table}[t]
+  \centering
+  \caption{Operator Space. We only present typical operators for each category.
+  % \jie{full list in reference?}
+  A complete version can be found in~\cite{technical_report}.
+  }
+  \vspace{-1em}
+  \resizebox{0.99\linewidth}{!}{
+  \begin{tabular}{|c|l|l|} 
+    \hline
+    \textbf{Type}                & \textbf{Operator}      & \textbf{Typical Parameters}                   \\
+    \hline \hline   
+    \multirow{5}{*}{\makecell{Data \\ Cleaning}}    
+                                          & StandardizeString      & column, func                            \\
+                                          & StandardizeDatetime    & column, date\_format                    \\
+                                          & ErrorDetection         & column, func                            \\
+										  & DropNA                 & subset, how                                   \\
+                                          & Deduplicate            & subset, keep                                  \\ \hline \hline 
+    \multirow{5}{*}{\makecell{Column \\ Transformation}} & AddNewColumn           & func                                          \\
+                                          & Cast                   & column, dtype                                 \\
+                                          & Explode                & column, split\_comma                          \\
+                                          & RenameColumn           & rename\_map                                   \\
+                                          & SplitColumn            & src\_column, func                            \\ \hline \hline 
+    \multirow{5}{*}{\makecell{Table \\ Reconstruction}}    & Join                   & left, right, on, how                          \\
+                                          & Pivot                  & index, columns, values               \\
+                                          & Stack                  & id\_vars, value\_vars \\
+                                          & WideToLong             & subnames, i, j, sep, suffix                   \\
+                                          & CalculateStatistic     & tables, var\_name, func                 \\ \hline \hline 
+    \multirow{2}{*}{Other}                & CodeGen         & tables, code                            \\
+                                          & Terminate              & output\_tables \\ \hline                              
+  \end{tabular}
+  }
+  \label{tbl:operator_space}
+  \vspace{-0.5em}
+\end{table}

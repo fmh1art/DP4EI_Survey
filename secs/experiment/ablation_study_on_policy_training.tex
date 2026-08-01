@@ -1,0 +1,30 @@
+\subsection{Ablation Studies}
+\label{expsec: ablation_on_policy_learning}
+
+\revise{
+
+\input{tables/ablation_study_overall}
+
+\stitle{Exp-\expnum\label{exp:ablation_analysis_overall}: Overall Ablation Studies of \sys.} We evaluate the contribution of two modules (TAR and PAT) in \sys. The results are reported in Table~\ref{\labelprefix tbl:overall_ablation_study}.
+% The results show that the performance gains cannot be explained solely by stronger backbone models. 
+As reported, removing PAT while retaining TAR causes substantial degradation, reducing accuracy by 43.78 on Synth-Spider, 44.52 on Synth-Bird, and 14.66 on Parrot. This indicates that the model must first learn the operator syntax and reasoning protocol before tree-based reasoning can be effectively utilized.
+Further removing TAR causes the method to degenerate into single-turn operator generation, leading to a larger performance drop (by 61.31 on Synth-Spider). Meanwhile, the completion rate falls to near-zero levels. This demonstrates that TAR is critical for leveraging execution feedback, and recovering from erroneous decisions through backtracking.
+}
+
+\input{tables/ablation_study}
+
+\stitle{Exp-\expnum\label{exp:ablation_analysis}: Detailed Ablation Studies on Progressive Agentic Training.}
+We evaluate the contribution of specific components within our progressive agentic training. The results are detailed in Table~\ref{tbl:ablation_results_split}. 
+
+Table~\ref{subtbl:cold_start} demonstrates that cold-start curriculum is useful. Removing this component causes a simultaneous decline in both accuracy and completion rate across all datasets. For instance, the completion rate on Synth-Spider drops from 91.63 to 90.54.
+Because this component familiarizes the model with the operator syntax and parameters. Without it, the model tends to generate non-executable actions and fail to complete the reasoning trajectory. 
+
+Table~\ref{subtbl:rl_stage} validates the design of our reward function in RL.
+First, removing process reward ($R_{\text{llm}}$) results in an accuracy drop, which shows that $R_{\text{llm}}$ prevents ``reward hacking''. Without semantic verification, the policy learns to satisfy superficial schema constraints, such as renaming columns, while neglecting the actual data transformation logic.
+Second, relying solely on outcome rewards (w/o $R_{\text{out}}, R_{\text{part}}$) yields the highest completion rate but the lowest accuracy.
+This suggests that sparse rewards induce conservative behavior. The agent avoids complex exploration or backtracking to minimize the risk of runtime errors. Thus, it prioritizes safe but incorrect paths to ensure the episode terminates successfully.
+
+\begin{shaded}
+\noindent \textbf{Finding \findingnum \&\findingnum: Each key component of \sys contributes to its overall performance.
+}
+\end{shaded}

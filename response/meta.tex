@@ -1,0 +1,45 @@
+%!TEX root = ../main.tex
+\subsection*{Responses to Meta-Reviewer}
+
+We sincerely thank the Meta-Reviewer for the constructive feedback and the opportunity to revise our work. 
+We have carefully addressed the revision items by conducting new experiments on real-world datasets, clarifying the novel contributions, and performing rigorous scalability analyses.
+
+\begin{shaded}
+{
+\stitle{MC1:} 
+\emph{Identify a real scenario and run the system on real data, rigorously, to determine its strengths and limitations.}
+}
+\end{shaded}
+
+\noindent{\bf RESPONSE}: 
+We have significantly expanded our evaluation to include real-world scenarios. Specifically, we have evaluated \sys on the Buildings dataset~\cite{sharma2023automatic}, a real-world benchmark comprising 105 tasks derived from data processing pipelines collected from 21 energy companies. \sys achieves the highest accuracy among all methods while maintaining relatively low inference cost, confirming that the advantages observed on synthetic benchmarks transfer to real-world scenarios. We have also added a dedicated failure analysis on the Buildings benchmark, identifying two key challenges largely absent in synthesized benchmarks: ambiguous column semantics (50\% of failures) and underspecified data preparation requirements (33\% of failures). Please refer to the detailed responses in \textbf{R1W3}, \textbf{R1D5}, \textbf{R2W2}/\textbf{R2D2}, and \textbf{R3W4}/\textbf{R3D2}.
+
+\begin{shaded}
+{
+\stitle{MC2:} 
+\emph{Identify the generalizable contributions which make the approach followed by the work novel.}
+}
+\end{shaded}
+
+\noindent{\bf RESPONSE}: 
+We have revised the paper to explicitly clarify the technical novelty of \sys, distinguishing it from general purpose agentic frameworks. We highlight our contributions in three specific dimensions: (1) The agentic reasoning tree with materialized execution states and failure-aware branching, which differs from ToT/MCTS that operate over text/latent space with scalar reward signals. (2) Progressive agentic training with environment token masking and hybrid reward design. and (3) Reversible noise injection with verification-in-the-loop for data synthesis. Please see the responses to \textbf{R2W1}/\textbf{R2D1} and \textbf{R3W1}.
+
+\begin{shaded}
+{
+\stitle{MC3:} 
+\emph{Address individual, actionable, criticisms raised in the reviews.}
+}
+\end{shaded}
+
+\noindent{\bf RESPONSE}: 
+We have addressed all specific technical concerns raised by the reviewers. Most notably:
+\begin{itemize}[leftmargin=*]
+    \item[(1)] {Real-World Evaluation \& Failure Analysis.} We have evaluated on the Buildings dataset and conducted a dedicated error analysis. Please refer to \textbf{R1W3}, \textbf{R1D5}, \textbf{R2W2}/\textbf{R2D2}, \textbf{R3W4}/\textbf{R3D2}.
+    \item[(2)] {Scalability \& Sensitivity.} We have conducted new experiments analyzing how \sys behaves (accuracy, runtime and memory usage) with increasing table sizes (rows/columns), varying exploration turns, source table numbers, and pipeline lengths. Please refer to \textbf{R1D3}, \textbf{R2W4}/\textbf{R2D4}, \textbf{R3W3}/\textbf{R3D1}.
+    \item[(3)] {Implementation Details \& Fairness.} We have provided comprehensive details regarding prompt construction, state representation, and baseline configurations to ensure reproducibility. Please refer to \textbf{R1W2}/\textbf{R1D1}, \textbf{R2W3}/\textbf{R2D3}.
+    \item[(4)] {Baselines.} We have clarified the comparison with Code Agents and added Claude Code (CC) and TRAE as new agentic coding baselines. Please refer to \textbf{R1W1}.
+    \item[(5)] {Ablation Study.} We have added an overall ablation study isolating the contributions of the tree-based reasoning framework and progressive agentic training. Please refer to \textbf{R3D4}.
+    \item[(6)] {Operator Diversity Analysis.} We have conducted a finer-grained analysis of operator coverage and compositional diversity between Synth-Spider and Parrot, along with a cross-training experiment. Please refer to \textbf{R1D4}.
+    \item[(7)] {Deterministic Environment.} We have clarified that the environment is deterministic and replaced the probabilistic notation with a deterministic transition function. Please refer to \textbf{R3W2}/\textbf{R3D3}.
+    \item[(8)] {Failure Branch Reuse.} We have revised the manuscript to explain how failure branches are preserved with error traces and reused to inform future exploration. Please refer to \textbf{R1D2}.
+\end{itemize}

@@ -1,0 +1,91 @@
+\section{Agentic Tree-based Reasoning Framework}
+\label{sec:tree_based_agentic_reasoning}
+
+Given a set of source tables $\mathcal{D}$ and a \textit{Target Schema Specification} $\mathcal{S}$, the goal of \sys is to synthesize an operator pipeline $\Pi$ that transforms $\mathcal{D}$ into a target table $T^*$ satisfying $\mathcal{S}$.
+A naive approach is to prompt an LLM to generate the entire transformation code in a single pass. However, this ``black-box'' generation suffers from two critical limitations: (1) Without access to intermediate execution states, the model frequently references non-existent columns or hallucinates data types, leading to runtime failures.
+(2) LLMs often regenerate boilerplate logic for standard transformations, increasing token costs and latency.
+
+To mitigate these issues, we propose an Agentic Tree-based Reasoning framework. Instead of generating arbitrary code, our agent orchestrates a sequence of pre-defined, high-reliability operators. This decouples logical planning from physical implementation, ensuring both robustness and expressivity.
+
+\subsection{Supported Operator Space}
+\label{subsec:op_space}
+ 
+\input{tables/operator_space_type}
+
+To balance modularity with flexibility, we define a comprehensive library of 31 data preparation (DP) operators. As summarized in Table~\ref{tbl:operator_space}, these operators are categorized into Data Cleaning, Column Transformation, Table Reconstruction, and Auxiliary functions.
+Unlike rigid rule-based systems, our operators are designed to be parameter-flexible, accepting both scalar arguments and Python code snippets (e.g., lambda functions) to handle complex semantic logic.
+
+
+\stitle{Data Cleaning Operators.} These operators address data quality issues such as inconsistencies, missing values, and outliers.
+\begin{itemize}[leftmargin=1em]
+    \item \texttt{Standardize(column, func)}. It unifies the format of a column based on user-defined transformation logic. For instance, to normalize the \texttt{title} column in Figure~\ref{fig:introduction_example}, the agent invokes this operator with \texttt{func} set to {\small\texttt{lambda x: ' '.join([s.capitalize() for s in x.split()])}}. This allows \sys to handle arbitrary formatting rules beyond simple casing.
+    \item \texttt{ErrorDetection(column, func)}. It appends a boolean column indicating whether values in the target column satisfy a specific validity constraint defined by \texttt{func}. This explicit error flagging empowers the agent to perform conditional cleaning in subsequent steps.
+    \item \texttt{DropNA(subset, how)}. It filters tuples containing null values. The \texttt{subset} argument restricts the inspection scope to specific columns, while \texttt{how} (``any'' or ``all'') determines the strictness of the elimination condition.
+\end{itemize}
+
+
+\stitle{Column Transformation.} These operators perform vertical manipulations on table attributes, focusing on schema alignment and feature derivation.
+\begin{itemize}[leftmargin=1em]
+    \item \texttt{SplitColumn(src\_col, func)}. It decomposes a composite column into multiple attributes. Crucially, unlike previous works that restrict splitting to static delimiters~\cite{yang2021auto}, our operator accepts a Python function to parse complex patterns. Considering the example in Figure~\ref{fig:introduction_example}, splitting ``Rating: 8.5 (2021)'' into ``Score'' and ``Year'' is achieved via custom parsing logic passed to \texttt{func}.
+    \item \texttt{RenameColumn(rename\_map)}. It aligns the schema of the intermediate table with the target schema specification. It accepts a dictionary (e.g., {\small\texttt{\{'sid':'student\_id'\}}}) that maps current column names to their semantic counterparts in the target description.
+\end{itemize}
+
+
+\stitle{Table Reconstruction.} These operators modify the structural topology and row composition of the tables to match the target granularity.
+\begin{itemize}[leftmargin=1em]
+    \item \texttt{Pivot(index, columns, values, aggfunc)}. Following~\cite{DBLP:journals/pvldb/LiHYWC23}, this operator restructures the table schema by rotating unique values from one column into multiple columns. The \texttt{aggfunc} parameter handles collisions where multiple source tuples map to a single cell.
+    \item \texttt{Stack(id\_vars, value\_vars)}. It performs the inverse of pivoting, converting wide-format tables into long-format. It generates two new columns \texttt{var\_name} and \texttt{value\_name} to store variable identifiers and values, respectively.
+    \item \texttt{Explode(column)}. It normalizes attributes containing list-like structures. For example, in Figure~\ref{fig:introduction_example}, this operator flattens the multi-valued \texttt{genres} column (``Action, Crime'') into distinct tuples, ensuring 1NF compliance.
+\end{itemize}
+
+
+\stitle{Auxiliary Operators.} To ensure the system can handle edge cases and complex logic beyond standard operators, we introduce auxiliary functions.
+\begin{itemize}[leftmargin=1em]
+    \item \texttt{CalculateStatistic(table, stat\_name, func)}. It derives scalar metadata (e.g., mean, variance) from a relation using aggregation logic encapsulated in \texttt{func}. The result is stored in a dedicated statistics registry for downstream decision-making.
+    \item \texttt{ExeCode(tables, target, func)}. It serves as an ``escape hatch'' for requirements exceeding the expressivity of predefined operators. It allows the agent to synthesize arbitrary Python programs (e.g., invoking an external API or performing complex regex extraction) to generate a new table. This hybrid design integrates the reliability of atomic operators with the unbounded generalization of program synthesis.
+\end{itemize}
+
+
+\stitle{Comparison with previous work.} 
+\sys distinguishes itself from previous work through two key design choices.
+(1) {Unified Scope.} While systems like Auto-Tables~\cite{DBLP:journals/pvldb/LiHYWC23} focus solely on table reconstruction, \sys is the first to holistically address cleaning, transformation, and reconstruction within a single framework.
+(2) {Hybrid Granularity.} Unlike Auto-Pipeline~\cite{yang2021auto}, which relies on heuristic rules with restricted parameters (e.g., static split delimiters), our operators accept Python code strings (e.g., \texttt{func} in \texttt{SplitColumn}). This enables \sys to handle complex, context-dependent logic while maintaining the structural benefits of an operator-based approach.
+
+\subsection{Agentic Tree-based Reasoning}
+
+
+A prevalent paradigm for operator orchestration is \textit{ReAct}~\cite{aksitov2023rest}, which generates operators sequentially, using execution feedback to mitigate hallucinations. However, ReAct is fundamentally a linear chain constrained by \textit{irreversibility}. It plans based solely on the current state and cannot backtrack to rectify early-stage errors (e.g., an incorrect filter applied steps ago), often leading to failure in complex, multi-step tasks.
+
+To address this, \sys adopts an {Agentic Tree-based Reasoning} strategy. We model the reasoning process as a search over a global state tree $\mathcal{T}$, where each node represents an operator and its resulting table state. The agent navigates this space using four atomic primitives:
+(1) \textbf{<analyze} evaluates the current state tree to determine the strategic direction (e.g., continue, backtrack, or terminate).
+(2) \textbf{<expand} generates a sequence of operators (with parameters) to extend a branch from a selected node.
+(3) \textbf{<execute} invokes the physical executor to run the operators, updating the tree with results or error tracebacks.
+(4) \textbf{<solution} signals that a leaf node satisfies the target schema specification $\mathcal{S}$ and extracts the final pipeline.
+
+
+Formally, the reasoning process proceeds as follows. At time step $t$, the agent analyzes the serialized state tree $\mathcal{T}_t$ with the {<analyze} action and generate a high-level plan $P_t$. Based on $P_t$, the workflow diverges into two paths:
+
+\noindent\textbf{Case I: Exploration (Expand \& Execute).}
+If the plan dictates further manipulation, the agent triggers the \texttt{<expand} action. It selects a parent node $n_{parent}$ (which may be the current leaf or a prior node for backtracking) and synthesizes a new operator sequence $\Delta \Pi$:
+\begin{equation}
+    (n_{parent}, \Delta \Pi) = \text{LLM}(\mathcal{T}_t, P_t, \textit{<expand})
+\end{equation}
+The external executor then processes $\Delta \Pi$. For each operator, it returns the execution result $r$ (the transformed table or an error message):
+\begin{equation}
+    r = \text{Executor}(n_{parent}, \Delta \Pi)
+\end{equation}
+The global state tree is updated by appending the new node $n_{new}$, preserving the full history for future reasoning:
+\begin{equation}
+    \mathcal{T}_{t+1} \leftarrow \mathcal{T}_t \cup \{ n_{parent} \xrightarrow{\Delta \Pi, r} n_{new} \}
+\end{equation}
+
+\noindent\textbf{Case II: Termination (Solution Extraction).}
+If $P_t$ confirms that a leaf node $n_{leaf}$ satisfies the target specification $\mathcal{S}$, the agent triggers \texttt{<solution}:
+\begin{equation}
+    \Pi^* = \text{LLM}(\mathcal{T}_t, P_t, \textit{<solution})
+\end{equation}
+The system then extracts and returns the optimal operator path $\Pi^*$ from the root to $n_{leaf}$.
+
+
+\noindent\textbf{Implementation Note on Node Selection.}
+To implement the selection of $n_{parent}$ robustly, we avoid explicit numerical indexing (e.g., ``Select Node 5''), as LLMs often struggle with precise numeracy~\cite{wallace2019nlp}. Instead, we adopt a \textit{path-oriented} strategy: during the \texttt{<expand} phase, the LLM outputs the operator sequence starting from the root. The system performs a prefix matching between the generated sequence and the existing tree paths. The first point of divergence implicitly identifies the parent node. This design leverages the generative strength of LLMs while abstracting away the complexity of tree management.

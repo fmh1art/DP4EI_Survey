@@ -1,0 +1,28 @@
+\section{Introduction}
+\label{sec:intro}
+
+\input{plots/tex/ELT_overview}
+
+% 介绍什么是ELT，重要性。目前应用场景中ELT费时费力
+Extract-Load-Transform (ELT) refers to the pipeline of extracting data from various data sources, loading them to a cloud data warehouses and transform to the required format, which enables significant downstream applications such as Business Intelligence ~\cite{weng2024datalab} and Decision Making. 
+
+\stitle{Challenges in ELT pipeline generation.} In practical scenarios, implementing an ELT pipeline often demands significant human resources and technical expertise. For instance, building an ELT pipeline can involve over 100 data engineers collaborating on the development, testing, and deployment phases~\cite{redditETL}. Figure~\ref{fig:ELT_overview} shows a real example of ELT pipeline construction for BI analysis. As illustrated, ELT pipeline generation faces two main challenges that make the task extremely complex. 
+
+\etitle{\textbf{(1) Extract data from diverse sources in different format.}} The data required by downstream analysis task are usually stored in different platforms. Maintaining and invoking the interfaces of different data sources and processing functions for different data format is time-consuming and laborious.
+
+\etitle{\textbf{(2) Data Inconsistency Issues when Transforming data.}} Semantic inconsistency is common in cross-source data, which requires to conduct schema matching, entity alignment, missing value imputation, etc., before data transformation.
+
+Recently, researchers try to develop Data Engineering agents based on LLMs to reduce or even completely replace the human effort in ELT pipeline construction~\cite{jin2025elt}. ELT-Bench~\cite{jin2025elt} first proposes a End-to-End benchmark and implement LLM based agents integrated with predefined operators on ELT pipeline generation. It adopts ReAct~\cite{yao2022react} paradigm to generate the next ELT operator step by step based on the previous observation.
+
+\stitle{Challenges in developing ELT Agents.} Due to the complexity of the ELT task, the performance of simply designed agents is very limited. It mainly face xxx technical challenges as bellow.
+
+\etitle{\textbf{C1: The planning and reasoning capabilities for ELT task.}} An ELT task requires complex and long-link reasoning under the project-level file directory, including configuration information reading, code generation, code execution, self-critic, etc. Moreover, it requires to modify or discard previous operations and generate the correct one based on the current observation.
+
+\etitle{\textbf{C2: Long Memory Management for ELT agents.}} Due to the complexity of the task, agents usually need to generate a very long sequence of operators and maintain the execution results together as memory, which usually exceeds the maximized input token length of LLMs. Also, the next operator generation is only related to several previous operators and their observation before. Thus, it is critical to design an effective memory management system for ELT pipeline generation.
+
+\etitle{\textbf{C3: Interact with multiple environments.}} The nature of the ELT task requires us to write code and interact with different systems. For example, we need to write standard SQLs to load data from local DB and write Snowflake SQLs to process data in the cloud data warehouse.
+
+% 模型层面的问题不是本文关注的重点
+% \etitle{C3: Developing a unified model that can address multiple Complex task.}
+
+To solve the above challenges, we propose a Multi-Agent System for automatic ELT pipeline generation.

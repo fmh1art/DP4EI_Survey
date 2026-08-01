@@ -1,0 +1,37 @@
+\subsection{Overall Comparison}
+\label{expsec:overall_comparison}
+
+\input{tables/main_exp_open_llms}
+% \input{tables/main_exp_sota_llms}
+
+% \input{plots/tex/pareto_front_spider}
+% \input{plots/tex/pareto_front_bird}
+% \input{plots/tex/pareto_front_parrot}
+\input{plots/tex/combined_pareto_front_compare}
+
+\noindent
+\textbf{Exp-\expnum\label{exp:training_comparison}: Comparison of \sys with prompting and training baselines.}
+We evaluate the effectiveness of our training strategies by comparing \sys with extensive prompting baselines and training baselines. The results on Qwen3-14B and Qwen3-8B are presented in Table~\ref{tbl:opensource_exp}.
+
+First, \sys establishes new SOTA results. As shown in Table~\ref{subtbl:open_qwen14b}, \sys (Qwen3-14B) achieves an accuracy of \textbf{67.18} on DP-Spider. This significantly outperforms the best prompting baseline AgenticCoding by a margin of 21.71. Furthermore, it surpasses the standard SFT baseline. Specifically, as shown in Table~\ref{subtbl:open_qwen8b}, \sys (Qwen3-8B) achieves higher Accuracy than SFT baselines on Qwen3-14B, with an improvement by 4.29 points. This validates that by adopting the policy training strategy on the synthesized data, we can unleash the agentic tree-based reasoning capability of small-size open-source LLMs.
+
+Second, \sys exhibits robust generalization capabilities under the \textit{single-source training, multi-target evaluation} setting. On the complex cross-domain dataset DP-Bird, \sys consistently widens the performance gap against SFT on both backbones. Specifically, \sys (Qwen3-14B) achieves 54.09 accuracy, outperforming SFT (48.01) by a margin of 6.08 points. Similarly, the 8B model achieves 53.39 accuracy, maintaining a strong lead over its SFT baseline (43.30). This indicates that \sys learns the intrinsic reasoning logic of DP rather than merely memorizing schema-specific patterns from the training set. % 而非学到特定模式
+
+Third, \sys significantly outperforms general-purpose data agents. We observe that DeepAnalyze (Table~\ref{subtbl:open_qwen8b}) struggles in data preparation. While it achieves moderate performance on DP-Spider (35.66), its accuracy collapses to 1.74 on DP-Bird. This failure highlights the necessity of a dedicated DP agent. General agents lack the specialized domain knowledge required to handle multi-hop table transformations. In contrast, \sys leverages high-quality synthesized trajectories to master these domain-specific challenges.
+
+\begin{shaded}
+\noindent \textbf{Finding \findingnum: \sys achieves best performance on both 8B and 14B scales and demonstrating strong generalization capabilities.}
+\end{shaded}
+
+\noindent \textbf{Exp-\expnum\label{exp:prompting_comparison}: Comparison of \sysp with prompting baselines on SOTA LLMs.}
+We compare \sysp with various prompting baselines across three datasets using three SOTA LLM backbones. The detailed results are reported in Table~\ref{tbl:sota_exp}. 
+
+First, \sysp consistently achieves the highest accuracy on complex domain-specific datasets. As shown in Table~\ref{subtbl:sota_claude}, with the Claude-4 backbone, \sysp achieves \textbf{73.46} accuracy on DP-Spider and \textbf{67.43} on DP-Bird. This significantly outperforms the strongest linear baseline, ReAct, by margins of 3.54 and 7.52 respectively. Similarly, on the DeepSeek-R1 backbone (Table~\ref{subtbl:sota_dsr1}), \sysp maintains its lead with \textbf{65.23} accuracy on DP-Spider compared to MCTS-OP (62.10). This performance gain stems from our operator-assisted agentic tree framework. Our framework leverages a global state tree. This structure enables divide-and-conquer strategies that effectively decompose complex, multi-hop DP requirements into manageable sub-tasks.
+
+Second, \sysp demonstrates superior robustness and stability compared to search-based methods. \sysp maintains high performance across all datasets and backbones. In contrast, the performance of MontePrep collapses on complex tasks like DP-Bird (dropping to 27.14). This indicates that \sysp does not rely on chance or dataset-specific heuristics. Instead, it sysematically explores the solution space using the predefined operator set.
+
+Third, \sysp exhibits significantly higher complete rate than linear baselines, particularly on weaker backbones or difficult tasks. On DeepSeek-R1 (Table~\ref{subtbl:sota_dsr1}), \sysp achieves a 93.92\% compilation rate on DP-Spider, whereas ReAct drops to 85.91\% and MontePrep to 53.54\%. This advantage is attributed to the backtracking capability of our agentic tree-based reasoning. Linear methods like AgenticCoding and ReAct suffer from irreversible error propagation where one incorrect step invalidates the entire script. While \sysp detects execution failures at intermediate nodes and backtracks to alternative paths.
+
+\begin{shaded}
+\noindent \textbf{Finding \findingnum: \sysp achieves the overall best Accuracy while consistently maintaining a high Completion Rate (>88\%) across diverse LLM backbones.}
+\end{shaded}

@@ -1,0 +1,62 @@
+\subsection{Overall Comparison}
+\label{expsec:overall_comparison}
+
+\input{tables/main_exp_open_llms}
+% \input{tables/main_exp_sota_llms}
+
+% \input{plots/tex/pareto_front_spider}
+% \input{plots/tex/pareto_front_bird}
+% \input{plots/tex/pareto_front_parrot}
+\input{plots/tex/combined_pareto_front_compare}
+
+\stitle{Exp-\expnum\label{exp:training_comparison}: Accuracy and Completion Rate Comparison.}
+We compare \sys with prompting baselines and training baselines on accuracy and completion rate. 
+Results on Qwen3-14B and Qwen3-8B are reported in Table~\ref{tbl:opensource_exp}, as they are strong open-source backbones at two model scales commonly used in code and data tasks. Additional backbone results are presented in later experiments.
+
+\etitle{(1) In-Domain Test.}
+\sys achieves the highest accuracy and completion rate across both backbones on the Synth-Spider test set. On Qwen3-14B, it reaches 67.18 accuracy (Table~\ref{subtbl:open_qwen14b}), exceeding the strongest prompting baseline CodeGen by 21.71 points and the strongest training baseline by 5.48 points, with similar gains in completion rate.
+% In contrast, the general-purpose data agent DeepAnalyze achieves 35.66 accuracy on the same dataset. 
+These gains stem from combining tree-structured exploration with execution-grounded actions, enabling the agent to revise earlier decisions and avoid invalid operator sequences.
+% during pipeline construction.
+
+\etitle{(2) Out-of-Domain Test.}
+Under the single-source training method, \sys maintains a clear advantage on out-of-domain datasets. On Synth-Bird, \sys (Qwen3-14B) achieves 54.09 accuracy compared with 48.01 for IL, and the 8B model achieves 53.39 versus 43.30. On Parrot, we observe a similar ordering among methods. DeepAnalyze shows much lower performance on Synth-Bird (1.74 accuracy), indicating limited robustness when pipeline length and operator dependencies increase. These results align with our training design, where progressive curriculum and hybrid rewards expose the model to multi-step, feedback-driven reasoning trajectories rather than single-pass program generation.
+
+%\noindent
+%\textbf{Exp-\expnum\label{exp:training_comparison}: Accuracy and Complete Rate Comparison.}
+%We evaluate the effectiveness of our training strategies by comparing \sys with extensive prompting baselines and training baselines. The results on Qwen3-14B and Qwen3-8B are presented in Table~\ref{tbl:opensource_exp}.
+
+%First, \sys establishes new SOTA results. As shown in Table~\ref{subtbl:open_qwen14b}, \sys (Qwen3-14B) achieves an accuracy of \textbf{67.18} on DP-Spider. This significantly outperforms the best prompting baseline CodeGen by a margin of 21.71 and the best training baselines by a margin of 5.48. Similarly, this advantage is consistent on Complete Rate.
+%This substantial improvement validates that the integration of online tree-based agentic reasoning with offline progressive agentic training empowers the agent to autonomously rectify intermediate execution errors and robustly converge to the target schema.
+%
+%Second, \sys exhibits robust generalization capabilities under the \textit{single-source training, multi-target evaluation} setting. On the complex cross-domain dataset DP-Bird, \sys consistently widens the performance gap against SFT on both backbones. Specifically, \sys (Qwen3-14B) achieves 54.09 accuracy, outperforming SFT (48.01) by a margin of 6.08 points. Similarly, the 8B model achieves 53.39 accuracy, maintaining a strong lead over its SFT baseline (43.30). This indicates that \sys learns the intrinsic reasoning logic of DP rather than merely memorizing schema-specific patterns from the training set. 
+
+%Third, \sys significantly outperforms general-purpose data agents. We observe that DeepAnalyze (Table~\ref{subtbl:open_qwen8b}) struggles in data preparation. While it achieves moderate performance on DP-Spider (35.66), its accuracy collapses to 1.74 on DP-Bird. This highlights the necessity of a dedicated agent for ADP task.
+% General agents lack the specialized domain knowledge required to handle multi-hop table transformations. In contrast, \sys leverages high-quality synthesized trajectories to master these domain-specific challenges.
+
+\begin{shaded}
+\noindent \textbf{Finding \findingnum: \sys achieves the highest accuracy and completion rate among the compared methods and shows good generalization across datasets.}
+\end{shaded}
+
+% \stitle{Finding \findingnum:} \sys achieves the highest accuracy and completion rate among the compared methods and shows good generalization across datasets.
+
+\noindent
+\textbf{Exp-\expnum\label{exp:prompting_comparison}: Cost–Accuracy Trade-off Comparison.}
+We compare methods under a cost–accuracy trade-off by jointly evaluating accuracy and cost. Figure~\ref{fig:combined_pareto_front_compare} plots prompting baselines and \sys variants across different LLM backbones, and shows two Pareto frontiers: \textit{Previous Pareto}, computed from baselines only, and \textit{Ours Pareto}, computed after adding \sys.
+
+%We further assess \sys's practical utility by jointly considering Exact Matching Accuracy and Inference Cost. Figure~\ref{fig:combined_pareto_front_compare} shows all prompting baselines and \sys variants across different LLM backbones, and overlays two Pareto frontiers: \textit{Previous Pareto}, computed from baselines only, and \textit{Ours Pareto}, computed after adding \sys.
+
+First, \sys lies on or near the Pareto frontier in most settings and extends the frontier across all three datasets. In Figure~\ref{fig:combined_pareto_front_compare}, the \textit{Ours Pareto} curve is shifted toward the upper-left relative to the \textit{Previous Pareto}, meaning that \sys achieves higher accuracy at the same cost, or similar accuracy at lower cost. This appears on Synth-Spider, Synth-Bird, and Parrot, indicating that the cost–accuracy advantage is consistent across datasets and backbones.
+
+Second, \sys reaches accuracy close to strong closed-source baselines at substantially lower cost. On Synth-Spider, \sys (Qwen3-14B) achieves 67.18 accuracy at a very low cost, achieving a comparable accuracy with ReAct on Claude-4 (69.92 accuracy) while reducing cost by about 57$\times$. 
+This is attributed to our design that uses structured tree-based reasoning to guide smaller or open models toward valid pipelines with fewer failed executions.
+
+\revise{Third, compared with the agentic coding systems TRAE and Claude Code, \sys achieves comparable accuracy at much lower cost. 
+For example, with GPT-5, \sys achieves accuracy comparable to TRAE while reducing cost by 2.7$\times$ on Synth-Spider. This further demonstrates the cost-effectiveness of \sys.}
+
+%Third, \sys remains competitive under more complex scenarios. On Synth-Bird, several search-based baselines show noticeably lower accuracy (\eg MontePrep around 25), whereas \sys continues to appear on the Pareto frontier. A similar trend is observed on Parrot. This suggests that the cost–accuracy behavior of \sys is stable when pipeline length increases.
+
+
+\begin{shaded}
+\noindent \textbf{Finding \findingnum: \sys extends the cost–accuracy Pareto frontier, achieving accuracy close to strong closed-source baselines at substantially lower inference cost.}
+\end{shaded}

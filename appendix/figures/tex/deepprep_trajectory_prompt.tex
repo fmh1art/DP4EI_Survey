@@ -1,0 +1,10 @@
+%!TEX root = ../../main.tex
+\begin{figure*}[!t]
+    \centering 
+    \includegraphics[width=0.85\textwidth]{appendix/figures/fig/deepprep_trajectory_prompt.pdf.pdf}
+    \vspace{-0.5em}
+    \caption{The trajectory prompt template of \sys during multi-turn interaction. After each exploration turn, the execution results of the operator chain are appended as \texttt{<observation>} blocks, which contain the sampled intermediate table data and a \texttt{<reminder>} tag indicating the remaining exploration turns. The agent can then analyze the observation with \texttt{<think/>} and either continue exploring with \texttt{<operator>} or output the final pipeline with \texttt{<solution>}.
+    }
+    \label{fig:deepprep_trajectory_prompt}
+    % \vspace{-1em}
+\end{figure*}

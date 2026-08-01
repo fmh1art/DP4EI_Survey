@@ -1,0 +1,47 @@
+%!TEX root = ../main.tex
+\begin{table}[t]
+  \centering
+  \caption{Operator Space}
+  \vspace{-1em}
+  \resizebox{0.99\linewidth}{!}{
+  \begin{tabular}{|c|l|l|} 
+    \hline
+    \textbf{Type}                & \textbf{Operator}      & \textbf{Typical Parameters}                   \\
+    \hline \hline   
+    \multirow{7}{*}{\makecell{Data \\ Cleaning}}    
+                                          & StandardizeString      & column, func                            \\
+                                          & ErrorDetection         & column, func                            \\
+										  & DropNA                 & subset, how                                   \\
+                                          & MVI & column, mode                            \\
+                                          & OutlierDetection       & column, mode, action                    \\
+                                          & StandardizeDatetime    & column, date\_format                    \\
+                                          & Deduplicate            & subset, keep                                  \\ \hline \hline 
+    \multirow{7}{*}{\makecell{Column \\ Transformation}} & AddNewColumn           & func                                          \\
+                                          & Cast                   & column, dtype                                 \\
+                                          & Explode                & column, split\_comma                          \\
+                                          & RenameColumn           & rename\_map                                   \\
+                                          & DropColumn             & drop\_columns                                 \\
+                                          & SplitColumn            & src\_column, func                            \\
+                                          & Concatenate            & columns, func                    \\ \hline \hline 
+    \multirow{15}{*}{\makecell{Table \\ Transformation}}    & Join                   & left, right, on, how                          \\
+                                          & Union                  & tables, how                                   \\
+                                          & Append                 & src\_table, appended\_table  			\\ 
+                                          & Pivot                  & index, columns, values               \\
+                                          & Transpose              & -                                             \\
+                                          & Stack                  & id\_vars, value\_vars \\
+                                          & WideToLong             & subnames, i, j, sep, suffix                   \\
+                                          & Subtitle               & title                                         \\
+                                          & Sort                   & by, ascending                                 \\
+                                          & GroupBy                & by, agg                                       \\
+                                          & TopK                   & k                                             \\ 
+											& Filter                 & func                            				\\
+                                          & SelectColumn           & columns                                       \\
+                                          & Count                  & table\_name                                   \\
+                                          & CalculateStatistic     & tables, var\_name, func                 \\ \hline \hline 
+    \multirow{2}{*}{Other}                & CodeGen         & tables, code                            \\
+                                          & Terminate              & output\_tables \\ \hline                              
+  \end{tabular}
+  }
+  \label{tbl:operator_space}
+  % \vspace{-1em}
+\end{table}

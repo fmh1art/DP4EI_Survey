@@ -1,0 +1,31 @@
+
+
+\begin{algorithm}[t]
+\small
+\caption{\sys: Tree-Based Agentic Inference}
+\label{alg:sys}
+\begin{algorithmic}[1]
+\Require Source tables $S$ and target schema $\Sigma^*$
+\State Initialize $G_0 = (N, E)$ with $N=\{n_0\}$, \textcolor{blue}{$n_0 \leftarrow \mathcal{S}$}
+\While{the agent does not use \action{answer}}
+    \State \textcolor{blue}{$\psi_t \sim \Prob_{\text{LLM}}(\cdot \mid G_{t-1}, \Sigma^*, \psi_{<<t})$} \Comment{\action{plan}}
+    \State \textcolor{blue}{$\mathcal{P}_t \sim \Prob_{\text{LLM}}(\cdot \mid G_{t-1}, \psi_t)$} \Comment{\action{expand} from chosen parent}
+    \State $n_{\text{curr}} \leftarrow \text{parent node identified by } \psi_t$
+    \For{each operator $o$ in $\mathcal{P}_t$}
+        \State \textcolor{blue}{$\mathcal{T}_{\text{out}} \leftarrow o(n_{\text{curr}})$} \Comment{\textcolor{blue}{\action{execute} operator on current state}}
+        \If{execution succeeds}
+            \State $n_{\text{new}} \leftarrow \text{new node with state } \mathcal{T}_{\text{out}}$
+            \State $N \leftarrow N \cup \{n_{\text{new}}\}$; $E \leftarrow E \cup \{(n_{\text{curr}} \xrightarrow{o} n_{\text{new}})\}$
+            \State $n_{\text{curr}} \leftarrow n_{\text{new}}$
+        \Else
+            \State \textcolor{blue}{Annotate $n_{\text{curr}}$ with failure trace}
+            \State \textbf{break} 
+        \EndIf
+    \EndFor
+    \State $G_t \leftarrow (N, E)$
+\EndWhile
+\State $n_\text{leaf}\leftarrow \mathtt{select} (\cdot|S,\Sigma^*, G_t)$
+\State $D^*\leftarrow n_\text{leaf}$
+\State \Return $D^*$
+\end{algorithmic}
+\end{algorithm}

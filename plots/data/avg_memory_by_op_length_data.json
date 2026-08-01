@@ -1,0 +1,44 @@
+{
+  "Synth-Spider": {
+    "categories": [
+      "1-6",
+      "6-8",
+      "8-20"
+    ],
+    "values": [
+      65.0412168560606,
+      68.52082534509202,
+      68.90500710227273
+    ],
+    "metric": "memory",
+    "data_type": "op_length"
+  },
+  "Synth-Bird": {
+    "categories": [
+      "1-6",
+      "6-8",
+      "8-20"
+    ],
+    "values": [
+      79.16939155629139,
+      80.7995407516892,
+      85.6691092609489
+    ],
+    "metric": "memory",
+    "data_type": "op_length"
+  },
+  "Parrot": {
+    "categories": [
+      "1-6",
+      "6-8",
+      "8-20"
+    ],
+    "values": [
+      116.13048792177914,
+      125.54037267080746,
+      135.90760030864197
+    ],
+    "metric": "memory",
+    "data_type": "op_length"
+  }
+}

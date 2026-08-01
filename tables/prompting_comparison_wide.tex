@@ -1,0 +1,66 @@
+\begin{table*}[t]
+  \centering
+  \caption{\bf Comparison of \sys and baselines across three datasets and five LLM backbones. Results are formatted as $\text{Accuracy}_{\text{Completion}}$. LLM abbreviations: Claude (Claude-4), DB (DoubaoSeed-1.6), R1 (DeepSeek-R1), V3.1 (DeepSeek-V3.1).}
+  \vspace{-1em}
+  \label{tbl:prompting_exp_result_wide}
+  % \setlength{\tabcolsep}{3pt} % 稍微调整列间距
+  \resizebox{\textwidth}{!}{
+    \begin{tabular}{|c||ccccc|ccccc|ccccc|}
+      \hline
+      \multirow{2}{*}{\textbf{Method}} & \multicolumn{5}{c|}{\textbf{DP-Spider}} & \multicolumn{5}{c|}{\textbf{DP-Bird}} & \multicolumn{5}{c|}{\textbf{Parrot}} \\
+      \cline{2-16}
+       & \textbf{Claude} & \textbf{GPT-5} & \textbf{DB} & \textbf{R1} & \textbf{V3.1} 
+       & \textbf{Claude} & \textbf{GPT-5} & \textbf{DB} & \textbf{R1} & \textbf{V3.1} 
+       & \textbf{Claude} & \textbf{GPT-5} & \textbf{DB} & \textbf{R1} & \textbf{V3.1} \\
+      \hline \hline
+      
+      CodeGen 
+      & 59.5\textsubscript{87.5} & 62.9\textsubscript{94.6} & 57.9\textsubscript{85.6} & 56.2\textsubscript{88.7} & 33.7\textsubscript{54.8} 
+      & 50.6\textsubscript{72.7} & 56.9\textsubscript{86.5} & 50.8\textsubscript{72.3} & 52.1\textsubscript{78.1} & 36.4\textsubscript{56.7} 
+      & 42.6\textsubscript{95.3} & 38.4\textsubscript{96.2} & 37.5\textsubscript{91.2} & 36.1\textsubscript{96.0} & 34.2\textsubscript{91.5} \\
+      % \hline
+      
+      PlanAndAction 
+      & 46.9\textsubscript{79.8} & 52.3\textsubscript{85.3} & 41.7\textsubscript{64.7} & 44.9\textsubscript{72.7} & 24.8\textsubscript{63.5} 
+      & 27.6\textsubscript{61.6} & 36.7\textsubscript{73.9} & 26.8\textsubscript{51.2} & 34.4\textsubscript{51.3} & 12.0\textsubscript{49.2} 
+      & 41.2\textsubscript{93.4} & 39.4\textsubscript{95.3} & 33.8\textsubscript{82.2} & 35.9\textsubscript{89.7} & 35.7\textsubscript{84.9} \\
+      \hline\hline
+      
+      ReAct 
+      & \underline{69.9}\textsubscript{96.9} & \underline{67.8}\textsubscript{97.3} & 58.2\textsubscript{88.0} & 59.1\textsubscript{85.9} & 39.6\textsubscript{61.1} 
+      & \underline{60.7}\textsubscript{89.1} & \underline{57.4}\textsubscript{93.4} & \underline{55.9}\textsubscript{84.3} & \underline{59.3}\textsubscript{89.6} & 29.4\textsubscript{46.8} 
+      & \underline{42.9}\textsubscript{96.1} & 40.2\textsubscript{97.3} & \underline{41.0}\textsubscript{94.6} & 38.8\textsubscript{97.2} & 36.5\textsubscript{78.9} \\
+      % \hline
+      
+      CodeGen 
+      & 62.1\textsubscript{99.9} & 64.4\textsubscript{100} & \underline{60.9}\textsubscript{99.9} & 59.7\textsubscript{99.8} & \underline{51.3}\textsubscript{100} 
+      & 57.6\textsubscript{100} & 56.8\textsubscript{99.6} & \textbf{58.7}\textsubscript{99.7} & 45.3\textsubscript{99.8} & \textbf{48.5}\textsubscript{99.8} 
+      & 41.1\textsubscript{98.3} & 40.3\textsubscript{98.5} & 38.2\textsubscript{98.6} & 35.9\textsubscript{100} & \underline{37.2}\textsubscript{98.1} \\
+      % \hline
+      
+      AutoPrep 
+      & 63.7\textsubscript{95.4} & 51.5\textsubscript{91.5} & 57.4\textsubscript{99.3} & 54.5\textsubscript{95.9} & 47.2\textsubscript{99.0} 
+      & 46.7\textsubscript{95.0} & 45.4\textsubscript{94.3} & 41.7\textsubscript{97.2} & 40.1\textsubscript{96.7} & 33.1\textsubscript{97.9} 
+      & 40.8\textsubscript{98.4} & 38.3\textsubscript{98.7} & 34.2\textsubscript{98.9} & 33.2\textsubscript{99.0} & 29.5\textsubscript{98.4} \\
+      \hline\hline
+      
+      MCTS-OP 
+      & 66.6\textsubscript{100} & 61.6\textsubscript{99.3} & 60.1\textsubscript{99.1} & \underline{62.1}\textsubscript{98.3} & 37.3\textsubscript{97.7} 
+      & 58.9\textsubscript{98.3} & 47.7\textsubscript{97.9} & 45.6\textsubscript{97.9} & 50.9\textsubscript{99.7} & 17.0\textsubscript{81.2} 
+      & 41.7\textsubscript{99.9} & 33.7\textsubscript{99.6} & 32.3\textsubscript{95.4} & 33.0\textsubscript{100} & 29.4\textsubscript{99.2} \\
+      % \hline
+      
+      MontePrep 
+      & 44.3\textsubscript{59.5} & 41.1\textsubscript{65.1} & 22.6\textsubscript{37.0} & 33.5\textsubscript{53.5} & 35.9\textsubscript{61.7} 
+      & 26.1\textsubscript{45.4} & 27.1\textsubscript{51.0} & 11.4\textsubscript{21.6} & 17.6\textsubscript{33.2} & 23.5\textsubscript{55.9} 
+      & 41.9\textsubscript{69.7} & \textbf{44.3}\textsubscript{85.2} & 38.0\textsubscript{66.3} & \textbf{43.2}\textsubscript{82.8} & 33.2\textsubscript{67.2} \\
+      \hline \hline
+      
+      \textbf{\sys} 
+      & \textbf{73.5}\textsubscript{99.9} & \textbf{71.8}\textsubscript{98.2} & \textbf{64.0}\textsubscript{93.0} & \textbf{65.2}\textsubscript{93.9} & \textbf{55.7}\textsubscript{91.4} 
+      & \textbf{67.4}\textsubscript{97.9} & \textbf{60.5}\textsubscript{92.5} & 51.1\textsubscript{87.7} & \textbf{60.2}\textsubscript{88.7} & \underline{40.0}\textsubscript{76.9} 
+      & \textbf{46.1}\textsubscript{99.7} & \underline{41.3}\textsubscript{97.3} & \textbf{42.1}\textsubscript{98.4} & \underline{39.6}\textsubscript{98.3} & \textbf{37.8}\textsubscript{96.7} \\
+      \hline
+    \end{tabular}
+  }
+\end{table*}

@@ -1,0 +1,40 @@
+\begin{table}[t]
+  \centering
+  \caption{\bf{Compare \sys with previous methods. Abbreviations: TR (Table Reconstruction), CT (Column Transformation), DC (Data Cleaning), \# Op. (Operator Number).}}
+  \vspace{-1em}
+  
+  \scalebox{0.9}{
+  \begin{tabular}{|c||c|c|c||c|c|}
+    \hline
+    \textbf{Method} & 
+    \textbf{TR} & 
+    \textbf{CT} & 
+    \textbf{DC} & 
+    \textbf{NL-\nlwhat} & 
+    \textbf{\# Op.} \\
+    \hline \hline
+    
+    Auto-Join~\cite{DBLP:journals/pvldb/ZhuHC17} & \usym{2717} & \usym{2713} & \usym{2717} & \usym{2717} & 5 \\
+    \hline
+    Auto-Tables~\cite{DBLP:journals/pvldb/LiHYWC23} & \usym{2713} & \usym{2717} & \usym{2717} & \usym{2717} & 8 \\
+    \hline
+    Auto-Suggest~\cite{DBLP:conf/sigmod/YanH20} & \usym{2713} & \usym{2717} & \usym{2717} & \usym{2717} & 5 \\
+    \hline
+    Auto-Prep~\cite{lai2025auto} & \usym{2713} & \usym{2713} & \usym{2717} & \usym{2717} & 7 \\
+    \hline
+    Auto-Pipeline~\cite{yang2021auto} & \usym{2713} & \usym{2713} & \usym{2717} & \usym{2717} & 12 \\
+    \hline
+    % AutoPrep~\cite{fan2024autoprep} & \usym{2713} & \usym{2713} & \usym{2717} & \usym{2717} & 11 \\
+    % \hline
+    % Parrot~\cite{ge2025text} & \usym{2713} & \usym{2713} & \usym{2713} & \usym{2717} & 17 \\
+    % \hline \hline
+    
+    % \textbf{Ours\jie{name of the method}} 
+    \bfsys
+    & \textbf{\usym{2713}} & \textbf{\usym{2713}} & \textbf{\usym{2713}} & \textbf{\usym{2713}} & \textbf{31} \\
+    \hline
+  \end{tabular}
+  }
+  \label{tbl:compared_with_other_works}
+  \vspace{-0.5em}
+\end{table}

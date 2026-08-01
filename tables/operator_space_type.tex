@@ -1,0 +1,56 @@
+\begin{table}[t]
+  \centering
+  \caption{\bf Overview of the Operator Space in \sys.}
+  \vspace{-1em}
+  \label{tbl:operator_space}
+  \resizebox{1.0\columnwidth}{!}{
+    \begin{tabular}{|c||l|}
+      \hline
+      \textbf{Category} & \textbf{Operators} \\
+      \hline \hline
+
+      % --- Cell-level ---
+      \textbf{Cell-level}
+      & \texttt{ValueTransform}, \texttt{StandardizeDatetime}, \texttt{CastType} \\
+      \hline \hline
+
+      % --- Row-level ---
+      \multirow{3}{*}{\textbf{Row-level}}
+      & \texttt{Filter}, \texttt{Sort}, \texttt{TopK}, \texttt{Deduplicate} \\
+      & \texttt{DropNA}, \texttt{MissingValueImputation}, \texttt{ErrorDetection} \\
+      & \texttt{OutlierDetection} \\
+      \hline \hline
+
+      % --- Column-level ---
+      \multirow{2}{*}{\textbf{Column-level}}
+      & \texttt{SplitColumn}, \texttt{RenameColumn}, \texttt{AddNewColumn}, \texttt{DropColumn} \\
+      & \texttt{Concatenate}, \texttt{SelectColumn}, \texttt{Subtitle} \\
+      \hline \hline
+
+      % --- Table-level ---
+      \multirow{2}{*}{\textbf{Table-level}}
+      & \texttt{Pivot}, \texttt{Stack}, \texttt{WideToLong}, \texttt{Transpose}, \texttt{Explode} \\
+      & \texttt{Join}, \texttt{Union}, \texttt{Append} \\
+      \hline \hline
+
+      % --- Aggregation ---
+      \textbf{Aggregation}
+      & \texttt{GroupBy}, \texttt{Count}, \texttt{CalculateStatistic} \\
+      \hline \hline
+
+      % --- Escape Hatch ---
+      \textbf{Escape Hatch}
+      & \texttt{ExeCode} \\
+      \hline
+
+      % If you must include Terminate, uncomment the following:
+      % \hline \hline
+      % \textbf{Control} & \texttt{Terminate} \\
+      % \hline
+
+    \end{tabular}
+  }
+  \vspace{-0.5em}
+\end{table}
+
+
