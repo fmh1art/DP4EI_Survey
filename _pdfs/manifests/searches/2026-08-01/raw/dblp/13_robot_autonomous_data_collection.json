@@ -1,0 +1,539 @@
+{
+  "result": {
+    "query": "robot* autonomous* data* collection*",
+    "status": {
+      "@code": "200",
+      "text": "OK"
+    },
+    "time": {
+      "@unit": "msecs",
+      "text": "17.57"
+    },
+    "completions": {
+      "@total": "2",
+      "@computed": "2",
+      "@sent": "2",
+      "c": [
+        {
+          "@sc": "12",
+          "@dc": "12",
+          "@oc": "12",
+          "@id": "69688390",
+          "text": "collection"
+        },
+        {
+          "@sc": "1",
+          "@dc": "1",
+          "@oc": "1",
+          "@id": "69688399",
+          "text": "collections"
+        }
+      ]
+    },
+    "hits": {
+      "@total": "13",
+      "@computed": "13",
+      "@sent": "13",
+      "@first": "0",
+      "hit": [
+        {
+          "@score": "5",
+          "@id": "102570",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "180/6077",
+                  "text": "Zakir Ullah"
+                },
+                {
+                  "@pid": "40/3934-49",
+                  "text": "Dong Wang 0049"
+                },
+                {
+                  "@pid": "168/6132",
+                  "text": "Jinqiang Wang"
+                },
+                {
+                  "@pid": "155/4344",
+                  "text": "Zixiao Zhu"
+                },
+                {
+                  "@pid": "62/2726",
+                  "text": "Qing Xia"
+                },
+                {
+                  "@pid": "171/7364",
+                  "text": "Peter B. Shull"
+                }
+              ]
+            },
+            "title": "Autonomous Data Collection via Model-Free Reinforcement Learning Enables Control of Magnetic Soft Robots.",
+            "venue": "Robotics Auton. Syst.",
+            "volume": "201",
+            "pages": "105464",
+            "year": "2026",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/ras/UllahWWZXS26",
+            "doi": "10.1016/J.ROBOT.2026.105464",
+            "ee": "https://doi.org/10.1016/j.robot.2026.105464",
+            "url": "https://dblp.org/rec/journals/ras/UllahWWZXS26"
+          },
+          "url": "URL#102570"
+        },
+        {
+          "@score": "4",
+          "@id": "172673",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "78/11061",
+                  "text": "Tingting Huang"
+                },
+                {
+                  "@pid": "172/6622",
+                  "text": "Yingyang Chen"
+                },
+                {
+                  "@pid": "121/8026",
+                  "text": "Sixian Qin"
+                },
+                {
+                  "@pid": "171/1136",
+                  "text": "Zhijian Lin"
+                },
+                {
+                  "@pid": "116/1011-36",
+                  "text": "Jun Li 0036"
+                },
+                {
+                  "@pid": "58/6810-39",
+                  "text": "Li Wang 0039"
+                }
+              ]
+            },
+            "title": "Towards Edge Intelligence via Autonomous Navigation: A Robot-Assisted Data Collection Approach.",
+            "venue": "ICC Workshops",
+            "pages": "1-6",
+            "year": "2026",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/icc/HuangCQLLW26",
+            "doi": "10.1109/ICCWORKSHOPS63917.2026.11586500",
+            "ee": "https://doi.org/10.1109/ICCWorkshops63917.2026.11586500",
+            "url": "https://dblp.org/rec/conf/icc/HuangCQLLW26"
+          },
+          "url": "URL#172673"
+        },
+        {
+          "@score": "4",
+          "@id": "248108",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "78/11061",
+                  "text": "Tingting Huang"
+                },
+                {
+                  "@pid": "172/6622",
+                  "text": "Yingyang Chen"
+                },
+                {
+                  "@pid": "121/8026",
+                  "text": "Sixian Qin"
+                },
+                {
+                  "@pid": "171/1136",
+                  "text": "Zhijian Lin"
+                },
+                {
+                  "@pid": "116/1011-36",
+                  "text": "Jun Li 0036"
+                },
+                {
+                  "@pid": "58/6810-39",
+                  "text": "Li Wang 0039"
+                }
+              ]
+            },
+            "title": "Towards Edge Intelligence via Autonomous Navigation: A Robot-Assisted Data Collection Approach.",
+            "venue": "CoRR",
+            "volume": "abs/2604.03623",
+            "year": "2026",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2604-03623",
+            "doi": "10.48550/ARXIV.2604.03623",
+            "ee": "https://doi.org/10.48550/arXiv.2604.03623",
+            "url": "https://dblp.org/rec/journals/corr/abs-2604-03623"
+          },
+          "url": "URL#248108"
+        },
+        {
+          "@score": "4",
+          "@id": "1180976",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "287/4981",
+                  "text": "Suvir Mirchandani"
+                },
+                {
+                  "@pid": "236/5069",
+                  "text": "Suneel Belkhale"
+                },
+                {
+                  "@pid": "259/9917",
+                  "text": "Joey Hejna"
+                },
+                {
+                  "@pid": "276/7630",
+                  "text": "Evelyn Choi"
+                },
+                {
+                  "@pid": "380/7100",
+                  "text": "Md Sazzad Islam"
+                },
+                {
+                  "@pid": "117/3174",
+                  "text": "Dorsa Sadigh"
+                }
+              ]
+            },
+            "title": "So You Think You Can Scale Up Autonomous Robot Data Collection?",
+            "venue": "CoRL",
+            "pages": "2791-2810",
+            "year": "2024",
+            "type": "Conference and Workshop Papers",
+            "access": "open",
+            "key": "conf/corl/MirchandaniBHCI24",
+            "ee": "https://proceedings.mlr.press/v270/mirchandani25a.html",
+            "url": "https://dblp.org/rec/conf/corl/MirchandaniBHCI24"
+          },
+          "url": "URL#1180976"
+        },
+        {
+          "@score": "4",
+          "@id": "1329890",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "260/6286",
+                  "text": "Sachintha Balasooriya"
+                },
+                {
+                  "@pid": "14/2296",
+                  "text": "Yoshihiro Sato"
+                },
+                {
+                  "@pid": "67/234",
+                  "text": "Takeshi Oishi"
+                }
+              ]
+            },
+            "title": "Autonomous Robotic Platform for Proximal Data Collection Amongst Foliage Utilizing an Anisotropically Flexible Manipulator.",
+            "venue": "SII",
+            "pages": "1498-1503",
+            "year": "2024",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/sii/BalasooriyaSO24",
+            "doi": "10.1109/SII58957.2024.10417644",
+            "ee": "https://doi.org/10.1109/SII58957.2024.10417644",
+            "url": "https://dblp.org/rec/conf/sii/BalasooriyaSO24"
+          },
+          "url": "URL#1329890"
+        },
+        {
+          "@score": "4",
+          "@id": "1339168",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "18/1796",
+                  "text": "Yuan Wei"
+                },
+                {
+                  "@pid": "324/6225",
+                  "text": "Kangneoung Lee"
+                },
+                {
+                  "@pid": "13/2003",
+                  "text": "Kiju Lee"
+                }
+              ]
+            },
+            "title": "Autonomous Field Navigation of Mobile Robots for Data Collection and Monitoring in Agricultural Crop Fields.",
+            "venue": "UR",
+            "pages": "707-712",
+            "year": "2024",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/urai/WeiLL24",
+            "doi": "10.1109/UR61395.2024.10597470",
+            "ee": "https://doi.org/10.1109/UR61395.2024.10597470",
+            "url": "https://dblp.org/rec/conf/urai/WeiLL24"
+          },
+          "url": "URL#1339168"
+        },
+        {
+          "@score": "4",
+          "@id": "1464046",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "287/4981",
+                  "text": "Suvir Mirchandani"
+                },
+                {
+                  "@pid": "236/5069",
+                  "text": "Suneel Belkhale"
+                },
+                {
+                  "@pid": "259/9917",
+                  "text": "Joey Hejna"
+                },
+                {
+                  "@pid": "276/7630",
+                  "text": "Evelyn Choi"
+                },
+                {
+                  "@pid": "380/7100",
+                  "text": "Md Sazzad Islam"
+                },
+                {
+                  "@pid": "117/3174",
+                  "text": "Dorsa Sadigh"
+                }
+              ]
+            },
+            "title": "So You Think You Can Scale Up Autonomous Robot Data Collection?",
+            "venue": "CoRR",
+            "volume": "abs/2411.01813",
+            "year": "2024",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2411-01813",
+            "doi": "10.48550/ARXIV.2411.01813",
+            "ee": "https://doi.org/10.48550/arXiv.2411.01813",
+            "url": "https://dblp.org/rec/journals/corr/abs-2411-01813"
+          },
+          "url": "URL#1464046"
+        },
+        {
+          "@score": "4",
+          "@id": "2435893",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "276/5341",
+                  "text": "Michele Antonazzi"
+                },
+                {
+                  "@pid": "148/3323",
+                  "text": "Matteo Luperto"
+                },
+                {
+                  "@pid": "68/489",
+                  "text": "Nicola Basilico"
+                },
+                {
+                  "@pid": "07/5478",
+                  "text": "N. Alberto Borghese"
+                }
+              ]
+            },
+            "title": "Enhancing Door Detection for Autonomous Mobile Robots with Environment-Specific Data Collection.",
+            "venue": "CoRR",
+            "volume": "abs/2203.03959",
+            "year": "2022",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2203-03959",
+            "doi": "10.48550/ARXIV.2203.03959",
+            "ee": "https://doi.org/10.48550/arXiv.2203.03959",
+            "url": "https://dblp.org/rec/journals/corr/abs-2203-03959"
+          },
+          "url": "URL#2435893"
+        },
+        {
+          "@score": "4",
+          "@id": "2648433",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "147/4446",
+                  "text": "James McMahon"
+                },
+                {
+                  "@pid": "56/1461",
+                  "text": "Erion Plaku"
+                }
+              ]
+            },
+            "title": "Autonomous Data Collection With Timed Communication Constraints for Unmanned Underwater Vehicles.",
+            "venue": "IEEE Robotics Autom. Lett.",
+            "volume": "6",
+            "number": "2",
+            "pages": "1832-1839",
+            "year": "2021",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/ral/McMahonP21",
+            "doi": "10.1109/LRA.2021.3060709",
+            "ee": "https://doi.org/10.1109/LRA.2021.3060709",
+            "url": "https://dblp.org/rec/journals/ral/McMahonP21"
+          },
+          "url": "URL#2648433"
+        },
+        {
+          "@score": "4",
+          "@id": "4316822",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "147/4446",
+                  "text": "James McMahon"
+                },
+                {
+                  "@pid": "56/1461",
+                  "text": "Erion Plaku"
+                }
+              ]
+            },
+            "title": "Autonomous Data Collection With Limited Time for Underwater Vehicles.",
+            "venue": "IEEE Robotics Autom. Lett.",
+            "volume": "2",
+            "number": "1",
+            "pages": "112-119",
+            "year": "2017",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/ral/McMahonP17",
+            "doi": "10.1109/LRA.2016.2553175",
+            "ee": "https://doi.org/10.1109/LRA.2016.2553175",
+            "url": "https://dblp.org/rec/journals/ral/McMahonP17"
+          },
+          "url": "URL#4316822"
+        },
+        {
+          "@score": "4",
+          "@id": "4767253",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "29/4046",
+                  "text": "Richard Wang"
+                },
+                {
+                  "@pid": "v/ManuelaMVeloso",
+                  "text": "Manuela M. Veloso"
+                },
+                {
+                  "@pid": "s/SrinivasanSeshan",
+                  "text": "Srinivasan Seshan"
+                }
+              ]
+            },
+            "title": "Active sensing data collection with autonomous mobile robots.",
+            "venue": "ICRA",
+            "pages": "2583-2588",
+            "year": "2016",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/icra/WangVS16",
+            "doi": "10.1109/ICRA.2016.7487415",
+            "ee": "https://doi.org/10.1109/ICRA.2016.7487415",
+            "url": "https://dblp.org/rec/conf/icra/WangVS16"
+          },
+          "url": "URL#4767253"
+        },
+        {
+          "@score": "4",
+          "@id": "5393378",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "98/7735",
+                  "text": "Hung Manh La"
+                },
+                {
+                  "@pid": "49/7580",
+                  "text": "Nenad Gucunski"
+                },
+                {
+                  "@pid": "153/7492",
+                  "text": "Seong-Hoon Kee"
+                },
+                {
+                  "@pid": "65/3546",
+                  "text": "Jingang Yi"
+                },
+                {
+                  "@pid": "16/10782",
+                  "text": "Turgay Senlet"
+                },
+                {
+                  "@pid": "01/16",
+                  "text": "Luan Nguyen"
+                }
+              ]
+            },
+            "title": "Autonomous robotic system for bridge deck data collection and analysis.",
+            "venue": "IROS",
+            "pages": "1950-1955",
+            "year": "2014",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/iros/LaGKYSN14",
+            "doi": "10.1109/IROS.2014.6942821",
+            "ee": "https://doi.org/10.1109/IROS.2014.6942821",
+            "url": "https://dblp.org/rec/conf/iros/LaGKYSN14"
+          },
+          "url": "URL#5393378"
+        },
+        {
+          "@score": "4",
+          "@id": "8469549",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "38/237",
+                  "text": "Stanley K. Honey"
+                },
+                {
+                  "@pid": "245/8565",
+                  "text": "Marvin S. White"
+                }
+              ]
+            },
+            "title": "Cartographic Databases.",
+            "venue": "Autonomous Robot Vehicles",
+            "pages": "250-258",
+            "year": "1990",
+            "type": "Parts in Books or Collections",
+            "access": "closed",
+            "key": "books/sp/90/HoneyW90",
+            "doi": "10.1007/978-1-4613-8997-2_19",
+            "ee": "https://doi.org/10.1007/978-1-4613-8997-2_19",
+            "url": "https://dblp.org/rec/books/sp/90/HoneyW90"
+          },
+          "url": "URL#8469549"
+        }
+      ]
+    }
+  }
+}

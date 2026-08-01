@@ -1,0 +1,156 @@
+{
+  "result": {
+    "query": "robot* data* mixing*",
+    "status": {
+      "@code": "200",
+      "text": "OK"
+    },
+    "time": {
+      "@unit": "msecs",
+      "text": "33.15"
+    },
+    "completions": {
+      "@total": "1",
+      "@computed": "1",
+      "@sent": "1",
+      "c": {
+        "@sc": "3",
+        "@dc": "3",
+        "@oc": "3",
+        "@id": "70496021",
+        "text": "mixing"
+      }
+    },
+    "hits": {
+      "@total": "3",
+      "@computed": "3",
+      "@sent": "3",
+      "@first": "0",
+      "hit": [
+        {
+          "@score": "4",
+          "@id": "1059045",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "338/7891",
+                  "text": "Mikel De Iturrate Reyzabal"
+                },
+                {
+                  "@pid": "353/5906",
+                  "text": "Mingcong Chen"
+                },
+                {
+                  "@pid": "81/6685",
+                  "text": "Wei Huang"
+                },
+                {
+                  "@pid": "40/2838",
+                  "text": "Sébastien Ourselin"
+                },
+                {
+                  "@pid": "82/6141-1",
+                  "text": "Hongbin Liu 0001"
+                }
+              ]
+            },
+            "title": "DaFoEs: Mixing Datasets Towards the Generalization of Vision-State Deep-Learning Force Estimation in Minimally Invasive Robotic Surgery.",
+            "venue": "IEEE Robotics Autom. Lett.",
+            "volume": "9",
+            "number": "3",
+            "pages": "2527-2534",
+            "year": "2024",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/ral/ReyzabalCHO024",
+            "doi": "10.1109/LRA.2024.3356984",
+            "ee": "https://doi.org/10.1109/LRA.2024.3356984",
+            "url": "https://dblp.org/rec/journals/ral/ReyzabalCHO024"
+          },
+          "url": "URL#1059045"
+        },
+        {
+          "@score": "3",
+          "@id": "1058435",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "386/3897",
+                  "text": "Jiazhe Guo"
+                },
+                {
+                  "@pid": "41/4917",
+                  "text": "Cheng Chang"
+                },
+                {
+                  "@pid": "89/6935-1",
+                  "text": "Zhiheng Li 0001"
+                },
+                {
+                  "@pid": "53/2189-13",
+                  "text": "Li Li 0013"
+                }
+              ]
+            },
+            "title": "Mixing Left and Right-Hand Driving Data in a Hierarchical Framework With LLM Generation.",
+            "venue": "IEEE Robotics Autom. Lett.",
+            "volume": "9",
+            "number": "10",
+            "pages": "8290-8297",
+            "year": "2024",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/ral/GuoCLL24",
+            "doi": "10.1109/LRA.2024.3443494",
+            "ee": "https://doi.org/10.1109/LRA.2024.3443494",
+            "url": "https://dblp.org/rec/journals/ral/GuoCLL24"
+          },
+          "url": "URL#1058435"
+        },
+        {
+          "@score": "3",
+          "@id": "1362962",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "338/7891",
+                  "text": "Mikel De Iturrate Reyzabal"
+                },
+                {
+                  "@pid": "353/5906",
+                  "text": "Mingcong Chen"
+                },
+                {
+                  "@pid": "81/6685",
+                  "text": "Wei Huang"
+                },
+                {
+                  "@pid": "40/2838",
+                  "text": "Sébastien Ourselin"
+                },
+                {
+                  "@pid": "82/6141-1",
+                  "text": "Hongbin Liu 0001"
+                }
+              ]
+            },
+            "title": "DaFoEs: Mixing Datasets towards the generalization of vision-state deep-learning Force Estimation in Minimally Invasive Robotic Surgery.",
+            "venue": "CoRR",
+            "volume": "abs/2401.09239",
+            "year": "2024",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2401-09239",
+            "doi": "10.48550/ARXIV.2401.09239",
+            "ee": "https://doi.org/10.48550/arXiv.2401.09239",
+            "url": "https://dblp.org/rec/journals/corr/abs-2401-09239"
+          },
+          "url": "URL#1362962"
+        }
+      ]
+    }
+  }
+}

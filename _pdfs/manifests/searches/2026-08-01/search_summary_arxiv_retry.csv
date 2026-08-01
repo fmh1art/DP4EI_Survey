@@ -1,0 +1,4 @@
+source,query,reported_total,retrieved,within_year_range,error
+arXiv,"cat:cs.RO AND all:""data quality""",81,81,81,
+arXiv,"cat:cs.RO AND all:""data filtering""",12,12,12,
+arXiv,"cat:cs.RO AND (all:""automatic annotation"" OR all:relabeling OR all:segmentation)",3146,300,300,

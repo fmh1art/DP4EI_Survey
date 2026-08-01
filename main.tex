@@ -1,101 +1,56 @@
-\documentclass[sigconf, nonacm]{acmart}
+\documentclass[sigconf,nonacm]{acmart}
 
+% This repository preserves the original conference template while using a
+% neutral, non-published manuscript header.  Submission-specific copyright,
+% DOI, and venue metadata should be added only after a venue is selected.
+\setcopyright{none}
+\settopmatter{printacmref=false,printccs=false,printfolios=true}
+\renewcommand\footnotetextcopyrightpermission[1]{}
 
-%% The following content must be adapted for the final version
-% paper-specific
-\newcommand\vldbdoi{10.14778/3836663.3836695}
-\newcommand\vldbpages{3371 - 3384}
-% issue-specific
-\newcommand\vldbvolume{19}
-\newcommand\vldbissue{11}
-\newcommand\vldbyear{2026}
-% should be fine as it is
-\newcommand\vldbauthors{\authors}
-\newcommand\vldbtitle{\sys: An LLM-Powered Agentic System for Autonomous Data Preparation} 
-% leave empty if no availability url should be set
-\newcommand\vldbavailabilityurl{https://github.com/ruc-datalab/DeepPrep}
-% whether page numbers should be shown or not, use 'plain' for review versions, 'empty' for camera ready
-\newcommand\vldbpagestyle{empty} 
-\usepackage{framed}
 \input{_commands}
 \input{_notations}
 
 \begin{document}
-\pagestyle{\vldbpagestyle}
+\setlength{\emergencystretch}{2em}
 
-%\title{DeepPrep: Autonomous Data Preparation via\\ Agentic Tree-Structured Planning}
-
-\title{\sys: An LLM-Powered Agentic System for \\Autonomous Data Preparation}
-
-% \newcommand{\revise}[1]{{\color{black} #1}}
-% \newcommand{\revise}[1]{{\color{blue} #1}}
-% \input{response/_root}
+\title{From Raw Interactions to Trainable Distributions:\
+Data Preparation for Embodied Intelligence}
 
 \input{_authors}
 
 \begin{abstract}
-Data preparation, which aims to transform heterogeneous and noisy raw tables into analysis-ready data, remains a major bottleneck in data science.
-Recent approaches leverage large language models (LLMs) to automate data preparation from natural language specifications. However, existing LLM-powered methods either make decisions without grounding in intermediate execution results, or rely on linear interaction processes that offer limited support for revising earlier decisions.
-To address these limitations, we propose \sys, an LLM-powered agentic system for autonomous data preparation. \sys constructs data preparation pipelines through iterative, execution-grounded interaction with an environment that materializes intermediate table states and returns runtime feedback. To overcome the limitations of linear interaction, \sys organizes pipeline construction with tree-based agentic reasoning, enabling structured exploration and non-local revision based on execution feedback.
-To enable effective learning of such behaviors, we propose a progressive agentic training framework, together with data synthesis that supplies diverse and complex ADP tasks.
-Extensive experiments show that \sys achieves data preparation accuracy comparable to strong closed-source models (\eg GPT-5) while incurring 15$\times$ lower inference cost, while establishing state-of-the-art performance among open-source baselines and generalizing effectively across diverse datasets.
-
-
-%Autonomous data preparation (ADP) is critical for reducing the time-consuming burden of transforming heterogeneous and noisy raw tables into analysis-ready data. While recent Large Language Model (LLM) based agents show promise, they typically rely on linear, append-only reasoning trajectories that lack sufficient grounding in intermediate execution results, making it difficult to recover from early errors in complex pipelines. To address these limitations, we propose \sys, an LLM-powered agentic framework that constructs data preparation pipelines through iterative planning, orchestration, and execution. Unlike existing ReAct-style methods, \sys employs a tree-based agentic reasoning mechanism, allowing the agent to systematically explore the solution space, backtrack upon execution failures, and revise decisions based on runtime feedback. To effectively optimize the agent, we introduce a progressive agentic training strategy that stages learning from simple operator usage to full tree-based reasoning, augmented by synthesized tasks derived from NL2SQL benchmarks to overcome data scarcity. Extensive experiments demonstrate that \sys achieves data preparation accuracy comparable to closed-source frontier models (e.g., GPT-5) at 57× lower inference cost, while establishing state-of-the-art performance among open-source baselines with strong cross-domain generalization.
-
-% \fmh{Focus on DP instead of LLM.}
-% Tabular data preparation (DP) is a fundamental yet labor-intensive step in data analysis pipelines. 
-% While recent Large Language Model (LLM)–based agents have shown promise in automating DP from natural language specifications, they are limited in complex, interdependent DP tasks in which the validity of early transformations depends on later operations, a dependency pattern that linear and irreversible agent frameworks are not designed to handle.
-% To address these limitations, we propose \textbf{\sys}, a trainable framework for natural language–controlled data preparation based on tree-structured reasoning. \sys explicitly maintains a hierarchical execution state tree, enabling precise localization and revision of erroneous transformations without discarding valid progress.
-% To equip \sys with robust long-chain reasoning capabilities, we introduce a scalable data synthesis method covering diverse DP operations and a multi-stage policy learning framework that integrates curriculum learning with multi-turn Reinforcement Learning (RL). 
-% Extensive experiments demonstrate that \sys achieves state-of-the-art performance, with \sys surpassing GPT-5 based baselines and \syst exhibiting strong scaling laws where an 8B model rivals proprietary giants. \jie{Delete this. We open-source our code, synthesized datasets, and trained agents to facilitate community research.}
-
-% \peng{Revise abstract this to: Tabular data preparation (DP) is a fundamental yet labor-intensive step in data analysis pipelines. While recent Large Language Model (LLM)–based agents have shown promise in automating DP from natural language specifications, they are limited in complex, interdependent DP tasks in which the correctness of early transformations depends on later operations, a dependency pattern that linear and irreversible agent frameworks are not designed to handle. To address these limitations, we propose \textbf{\sys}, a trainable framework for natural language–controlled data preparation based on tree-structured reasoning. \sys explicitly maintains a hierarchical execution state tree, enabling precise localization and revision of erroneous transformations without discarding valid progress.
-% ...
-% }
+\input{secs/00abstract}
 \end{abstract}
- 
-\newcommand{\revise}[1]{{\color{black} #1}}
-% \newcommand{\revise}[1]{{\color{blue} #1}}
 
-% \input{response/_root}
-
-\renewcommand{\labelprefix}{}
+\keywords{embodied intelligence, robot learning, vision-language-action models,
+data preparation, data curation, data synthesis, data engines}
 
 \maketitle
 
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
-\begingroup
-\footnotetext[2]{Work done during Meihao Fan’s internship at ByteDance.}
-\footnotetext[3]{Ju Fan and Tieying Zhang are the corresponding authors.}
-\endgroup
-
-\input{_other_info}
-
 \input{secs/01introduction}
-\input{secs/02preliminaries}
-\input{secs/03overview}
-% \input{secs/04tree_based_operation_orchestrationframework}
-\input{secs/04tree_based_operation_orchestrationframework}
-\input{secs/05policy_learning}
-% \input{secs/06data_synthesis}
-\input{secs/experiment}
-\input{secs/07related_work}
-% \input{secs/07conclusion_and_future_work}
+\input{secs/02scope_method}
+\input{secs/03problem_taxonomy}
+\input{secs/04acquisition_alignment}
+\input{secs/05semantic_curation}
+\input{secs/06augmentation_evolution}
+\input{secs/07evaluation_synthesis}
+\input{secs/08research_agenda}
+\input{secs/09conclusion}
 
 \begin{acks}
- % This work was supported by the National National Natural Science Foundation of China (Grant Nos. 62436010, 62441230) and the Outstanding Innovative Talents Cultivation Funded Programs 2025 of Renmin University of China.
-% We thank all the anonymous reviewers for their insightful and valuable comments. 
-This work was partially supported by the National Natural Science Foundation of China (Grant Nos. 62436010, 62441230), the Scientific Research Innovation Capability Support Project for Young Faculty (Grant No. SRICSPYF-ZY2025001), Beijing Natural Science Foundation (L244010) and the Outstanding Innovative Talents Cultivation Funded Programs 2025 of Renmin University of China.
+This work was partially supported by the National Natural Science Foundation of
+China (Grant Nos. 62436010 and 62441230), the Scientific Research Innovation
+Capability Support Project for Young Faculty (Grant No. SRICSPYF-ZY2025001),
+the Beijing Natural Science Foundation (L244010), and the Outstanding Innovative
+Talents Cultivation Funded Programs 2025 of Renmin University of China.
 \end{acks}
 
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{citations/survey_ref,citations/survey_extra}
 
 \clearpage
-\newpage
-\bibliographystyle{ACM-Reference-Format}
-\bibliography{citations/ref} 
-
-% \balance
-% \input{appendix/_root}
+\appendix
+\input{appendix/survey_protocol}
+\input{appendix/evidence_map}
 
 \end{document}

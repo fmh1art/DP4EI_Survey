@@ -1,0 +1,154 @@
+{
+  "result": {
+    "query": "vision* language* action* data* engine*",
+    "status": {
+      "@code": "200",
+      "text": "OK"
+    },
+    "time": {
+      "@unit": "msecs",
+      "text": "20.73"
+    },
+    "completions": {
+      "@total": "1",
+      "@computed": "1",
+      "@sent": "1",
+      "c": {
+        "@sc": "2",
+        "@dc": "2",
+        "@oc": "2",
+        "@id": "69867942",
+        "text": "engines"
+      }
+    },
+    "hits": {
+      "@total": "2",
+      "@computed": "2",
+      "@sent": "2",
+      "@first": "0",
+      "hit": [
+        {
+          "@score": "6",
+          "@id": "130603",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "222/8592",
+                  "text": "Ziyao Wang"
+                },
+                {
+                  "@pid": "212/7855",
+                  "text": "Bingying Wang"
+                },
+                {
+                  "@pid": "285/4608",
+                  "text": "Hanrong Zhang"
+                },
+                {
+                  "@pid": "254/0526",
+                  "text": "Tingting Du"
+                },
+                {
+                  "@pid": "224/5480",
+                  "text": "Tianyang Chen"
+                },
+                {
+                  "@pid": "353/7384",
+                  "text": "Guoheng Sun"
+                },
+                {
+                  "@pid": "309/9333",
+                  "text": "Yexiao He"
+                },
+                {
+                  "@pid": "377/3867",
+                  "text": "Zheyu Shen"
+                },
+                {
+                  "@pid": "394/7617",
+                  "text": "Wanghao Ye"
+                },
+                {
+                  "@pid": "33/2805-5",
+                  "text": "Ang Li 0005"
+                }
+              ]
+            },
+            "title": "Vision-Language-Action in Robotics: A Survey of Datasets, Benchmarks, and Data Engines.",
+            "venue": "Trans. Mach. Learn. Res.",
+            "volume": "2026",
+            "year": "2026",
+            "type": "Journal Articles",
+            "access": "open",
+            "key": "journals/tmlr/WangWZDCSHSYL26",
+            "ee": "https://openreview.net/forum?id=tAaWFpvnmm",
+            "url": "https://dblp.org/rec/journals/tmlr/WangWZDCSHSYL26"
+          },
+          "url": "URL#130603"
+        },
+        {
+          "@score": "6",
+          "@id": "259051",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "222/8592",
+                  "text": "Ziyao Wang"
+                },
+                {
+                  "@pid": "212/7855",
+                  "text": "Bingying Wang"
+                },
+                {
+                  "@pid": "285/4608",
+                  "text": "Hanrong Zhang"
+                },
+                {
+                  "@pid": "254/0526",
+                  "text": "Tingting Du"
+                },
+                {
+                  "@pid": "68/10575-1",
+                  "text": "Tianlong Chen 0001"
+                },
+                {
+                  "@pid": "353/7384",
+                  "text": "Guoheng Sun"
+                },
+                {
+                  "@pid": "309/9333",
+                  "text": "Yexiao He"
+                },
+                {
+                  "@pid": "377/3867",
+                  "text": "Zheyu Shen"
+                },
+                {
+                  "@pid": "394/7617",
+                  "text": "Wanghao Ye"
+                },
+                {
+                  "@pid": "33/2805-5",
+                  "text": "Ang Li 0005"
+                }
+              ]
+            },
+            "title": "Vision-Language-Action in Robotics: A Survey of Datasets, Benchmarks, and Data Engines.",
+            "venue": "CoRR",
+            "volume": "abs/2604.23001",
+            "year": "2026",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2604-23001",
+            "doi": "10.48550/ARXIV.2604.23001",
+            "ee": "https://doi.org/10.48550/arXiv.2604.23001",
+            "url": "https://dblp.org/rec/journals/corr/abs-2604-23001"
+          },
+          "url": "URL#259051"
+        }
+      ]
+    }
+  }
+}

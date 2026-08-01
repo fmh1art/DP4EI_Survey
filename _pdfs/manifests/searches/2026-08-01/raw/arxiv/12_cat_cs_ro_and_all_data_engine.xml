@@ -1,0 +1,1872 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/Dal0OhFYozMMno6gXhbPziW02J4</id>
+  <title>arXiv Query: search_query=cat:cs.RO AND all:"data engine"&amp;id_list=&amp;start=0&amp;max_results=300</title>
+  <updated>2026-08-01T17:01:43Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:cs.RO+AND+all:%22data+engine%22&amp;start=0&amp;max_results=300&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>300</opensearch:itemsPerPage>
+  <opensearch:totalResults>40</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2607.21588v1</id>
+    <title>AXIS: A Growable Community-Driven Data Engine for Scalable Robot Manipulation</title>
+    <updated>2026-07-23T17:58:08Z</updated>
+    <link href="https://arxiv.org/abs/2607.21588v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.21588v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Learning effective robot manipulation policies requires diverse, high-quality demonstrations, yet existing data pipelines are often difficult to scale because they rely on specialized hardware, centralized operators, or fixed task suites. We present AXIS, a growable community-driven data engine and benchmark for scalable robot learning, which enables browser-based teleoperation for large-scale demonstration collection, automatically generates and validates new manipulation tasks, and transforms community-collected demonstrations into training-ready data through automated success checking, quality filtering, trajectory smoothing, and visual and physics-based augmentation. The AXIS dataset currently contains 207 diverse tasks and 50K+ trajectories. Meanwhile, AXIS organizes data into task snapshots and evaluates policies with a systematic held-out protocol. We compare vision-language-action (VLA) policies under a unified AXIS evaluation suite and analyze scaling behavior across different data volumes. Continual pretraining on AXIS substantially improves the overall success rate of $π_{0.5}$ by 5.8%, outperforms the model pretrained on RoboCasa365 by 37.3%, and exhibits consistent scaling with increasing data volume, with the largest gains observed under layout, sensor-noise, and camera perturbations.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-23T17:58:08Z</published>
+    <arxiv:comment>Project Website: https://axisaiorg.github.io/AXIS-V1/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Mengfei Zhao</name>
+    </author>
+    <author>
+      <name>Dihong Huang</name>
+    </author>
+    <author>
+      <name>Yikai Tang</name>
+    </author>
+    <author>
+      <name>Peihao Li</name>
+    </author>
+    <author>
+      <name>Mingxuan Yan</name>
+    </author>
+    <author>
+      <name>Ruiqi Zhuang</name>
+    </author>
+    <author>
+      <name>Yanjia Huang</name>
+    </author>
+    <author>
+      <name>Jie Wang</name>
+    </author>
+    <author>
+      <name>Hai Zhai</name>
+    </author>
+    <author>
+      <name>Tony Zhou</name>
+    </author>
+    <author>
+      <name>Rui Zhang</name>
+    </author>
+    <author>
+      <name>Zhexi Luo</name>
+    </author>
+    <author>
+      <name>Yuchen Huang</name>
+    </author>
+    <author>
+      <name>Jianfei Yang</name>
+    </author>
+    <author>
+      <name>Jiachen Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.19194v2</id>
+    <title>Cognitive Dual-Process Planning for Autonomous Driving with Structured Scene Knowledge and Verifiable Reasoning-Action Consistency</title>
+    <updated>2026-07-22T03:53:48Z</updated>
+    <link href="https://arxiv.org/abs/2607.19194v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.19194v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>High-level planning for autonomous driving is a knowledge-intensive engineering decision task that requires accurate scene understanding, timely inference, and internally consistent action selection. Vision-language models (VLMs) can make intermediate reasoning explicit, but their use in deployed planners is constrained by costly structured supervision, unnecessary reasoning in routine scenes, and possible inconsistencies between generated rationales and driving actions. We present a cognitive dual-process planning framework that represents planning-relevant scene knowledge in a machine-parsable structured chain-of-thought (S-CoT) schema. An automated data engine integrates perception foundation models, critical-path filtering, and an expert VLM to generate S-CoT supervision without manual annotation of individual rationales. A lightweight visual Arbiter estimates scene complexity from multilevel vision-encoder features before language decoding and routes each input to either fast meta-action prediction or slow structured reasoning. For slow-path outputs, a deterministic rule-based validator checks whether the parsed S-CoT fields are consistent with the final meta-action and provides verifiable rewards for Group Relative Policy Optimization (GRPO). In a 195-scene manual audit, the generated annotations achieve 91.8\% CoT accuracy and a 98.5\% Logical Consistency Score (LCS). On 574 manually verified NAVSIM test samples, the planner achieves 80.14\% planning accuracy and 97.20\% LCS while reducing average latency by 17.39\% relative to applying slow reasoning to every scene. Evaluation on external long-tail subsets further identifies conditions under which routing and planning performance degrade. Together, these results show how explicit scene knowledge can be operationalized through adaptive reasoning and rule-based verification to support high-level VLM planning decisions.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-21T15:29:21Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Zhongyao Yang</name>
+    </author>
+    <author>
+      <name>Haoyu Li</name>
+    </author>
+    <author>
+      <name>Yu Yan</name>
+    </author>
+    <author>
+      <name>Zhuangxuan Yu</name>
+    </author>
+    <author>
+      <name>Jiangfeng Nan</name>
+    </author>
+    <author>
+      <name>Jinrui Nan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.13154v2</id>
+    <title>Worlds in One Demo: A Synthetic Data Engine for Learning Open-World Mobile Manipulation</title>
+    <updated>2026-07-17T03:42:10Z</updated>
+    <link href="https://arxiv.org/abs/2607.13154v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.13154v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Learning open-world mobile manipulation policies requires vast data to achieve spatial generalization, long-horizon robustness, and scene generalization. Current prevailing data collection paradigms, teleoperation and UMI, demand prohibitive human effort and cost at scale. To scale beyond the limits of manual data collection, we seek to maximize the value of each human demonstration by scalable data generation. To this end, we introduce WANDA: learning open-World mobile mANipulation from one demonstration via a synthetic DAta engine. WANDA first reconstructs background Gaussian splats and robot-object interaction trajectories from source RGBD observations, as a world substrate for later planning and rendering. It then rearranges contact-rich robot-object interaction segments into extensive spatial configurations, utilizing whole-body motion planning to chain them into new trajectories. To enhance long-horizon robustness, it applies Corrective State Expansion to increase the robot and object state diversity at different stages of mobile manipulation. To unlock cross-environment generalization, trajectories are synthesized on diverse generated 3D worlds from everyday photos. Furthermore, we synthesize photo-realistic observations by compositing rendered robot and object meshes with Gaussian splatting backgrounds. We evaluate our approach on extensive simulation and real-world tasks in various scenes. Experiments show that policies trained with WANDA achieve long-horizon robustness, broad spatial generalization and cross-environment generalization from one real demonstration. Moreover, WANDA naturally supports cross-embodiment data generation, validated by zero-shot deployment on another mobile manipulator with a distinct morphology.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-14T18:04:58Z</published>
+    <arxiv:comment>Project website: https://wanda.lecar-lab.org/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Lingxiao Guo</name>
+    </author>
+    <author>
+      <name>Huanyu Li</name>
+    </author>
+    <author>
+      <name>Guanya Shi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.11643v1</id>
+    <title>Xiaomi-Robotics-U0: Unified Embodied Synthesis with World Foundation Model</title>
+    <updated>2026-07-13T14:57:58Z</updated>
+    <link href="https://arxiv.org/abs/2607.11643v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.11643v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recent foundation image and video generation models offer strong generalization and controllability, but their direct application to embodied scenarios is limited by requirements for multi-view consistency, geometric coherence, and robot embodiment constraints. Existing methods typically adapt foundation models with limited robot data, often sacrificing visual knowledge acquired during large-scale pre-training. We present Xiaomi-Robotics-U0, a 38-billion-parameter multimodal autoregressive model for unified embodied synthesis. It treats embodied generation as an extension of foundation image and video generation and jointly optimizes text-to-image generation, image editing, embodied scene generation, embodied transfer, and embodied video generation. This unified framework preserves the generalization of the pre-trained world foundation model while adapting it to embodied settings. Xiaomi-Robotics-U0 is the first model to support high-quality multi-view scene generation across multiple robot embodiments and to introduce structured, controllable embodied transfer for fine-grained editing while preserving multi-view consistency and interaction dynamics. It achieves state-of-the-art results on single-step and sequential generation tasks, outperforming GPT-Image-2.0 in human evaluations of embodied scene generation and transfer, ranking first on World Arena for embodied video generation, and improving the out-of-distribution success rate of pi_0.5 from 36.9% to 63.2% on challenging real-world manipulation tasks. These results show that foundation world models can serve both as embodied world models and scalable data engines for embodied intelligence. Code and checkpoints are available at https://robotics.xiaomi.com/xiaomi-robotics-u0.html.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-13T14:57:58Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Xinghang Li</name>
+    </author>
+    <author>
+      <name>Jun Guo</name>
+    </author>
+    <author>
+      <name>Qiwei Li</name>
+    </author>
+    <author>
+      <name>Long Qian</name>
+    </author>
+    <author>
+      <name>Hang Lai</name>
+    </author>
+    <author>
+      <name>Yueze Wang</name>
+    </author>
+    <author>
+      <name>Hongyu Yan</name>
+    </author>
+    <author>
+      <name>Jiahang Cao</name>
+    </author>
+    <author>
+      <name>Xi Chen</name>
+    </author>
+    <author>
+      <name>Jingen Qu</name>
+    </author>
+    <author>
+      <name>Jiaxi Song</name>
+    </author>
+    <author>
+      <name>Nan Sun</name>
+    </author>
+    <author>
+      <name>Hanye Zhao</name>
+    </author>
+    <author>
+      <name>Futeng Liu</name>
+    </author>
+    <author>
+      <name>Wanli Peng</name>
+    </author>
+    <author>
+      <name>Heyun Wang</name>
+    </author>
+    <author>
+      <name>Yunhong Wang</name>
+    </author>
+    <author>
+      <name>Caoyu Xia</name>
+    </author>
+    <author>
+      <name>Jack Zhao</name>
+    </author>
+    <author>
+      <name>Diyun Xiang</name>
+    </author>
+    <author>
+      <name>Hangjun Ye</name>
+    </author>
+    <author>
+      <name>Heng Qu</name>
+    </author>
+    <author>
+      <name>Huaping Liu</name>
+    </author>
+    <author>
+      <name>Jason Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.06558v2</id>
+    <title>RynnWorld-Teleop: An Action-Conditioned World Model for Digital Teleoperation</title>
+    <updated>2026-07-12T13:53:14Z</updated>
+    <link href="https://arxiv.org/abs/2607.06558v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.06558v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Scaling robot learning requires massive, diverse trajectory data, yet collection is currently bottlenecked by physical teleoperation, where every demonstration binds operator time to specific hardware and workspaces. We introduce digital teleoperation, a paradigm that decouples data collection from physical constraints by replacing the real robot with a generative world model. In this framework, an operator's hand-pose stream drives a robot-centric generative world model to synthesize high-fidelity egocentric videos from a single reference image. The recorded pose stream serves as an embodiment-agnostic action label transferable to any target robot via standard retargeting, yielding complete state-action trajectories for imitation learning independent of physical hardware. We instantiate this paradigm in RynnWorld-Teleop, a system that integrates depth-aware skeletal conditioning, progressive human-to-robot training on a video Diffusion Transformer, and streaming autoregressive distillation. This pipeline compresses the generative process into a single-pass inference, enabling 40+ FPS, real-time interactive generation on a single H100 GPU. Policies trained exclusively on RynnWorld-Teleop-generated data achieve effective zero-shot Sim2Real transfer across dexterous and diverse bimanual tasks. Moreover, augmenting real-world datasets with our digitally teleoperated data consistently improves success rates, demonstrating that RynnWorld-Teleop serves as a high-fidelity, scalable data engine for the next generation of robotic agents.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-07T17:58:11Z</published>
+    <arxiv:comment>Project Page: https://alibaba-damo-academy.github.io/RynnWorld-Teleop.github.io, Github: https://github.com/alibaba-damo-academy/RynnWorld-Teleop</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Haoyu Zhao</name>
+    </author>
+    <author>
+      <name>Xingyue Zhao</name>
+    </author>
+    <author>
+      <name>Hangyu Li</name>
+    </author>
+    <author>
+      <name>Biao Gong</name>
+    </author>
+    <author>
+      <name>Kehan Li</name>
+    </author>
+    <author>
+      <name>Siteng Huang</name>
+    </author>
+    <author>
+      <name>Xin Li</name>
+    </author>
+    <author>
+      <name>Deli Zhao</name>
+    </author>
+    <author>
+      <name>Zhongyu Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.05765v1</id>
+    <title>Image2Sim: Scaling Embodied Navigation via Generative Neural Simulator</title>
+    <updated>2026-07-07T02:42:41Z</updated>
+    <link href="https://arxiv.org/abs/2607.05765v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.05765v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Embodied navigation aims to build agents that interpret multimodal goals, reason in 3D space, and reach target destinations reliably in the real world. However, progress remains constrained by the lack of scalable, high-fidelity, and physically grounded interactive environments. Although real-world scanned datasets offer visual realism, they are limited by scale. In contrast, synthetic simulators scale more easily but often exhibit large sim-to-real gaps. We introduce Image2Sim, a real-time neural simulation framework that constructs high-quality interactive environments from posed RGB-D image sequences. The central idea is to decouple 3D spatial anchoring from photorealistic observation synthesis. For scene construction, Image2Sim uses a feed-forward feature Gaussian model that lifts posed RGB-D observations into a 3D feature-Gaussian representation in a single pass. For rendering, we propose a Geometry-Aware One-Step Pixel Flow model that transforms sparse and noisy Gaussian projections into high-quality panoramic RGB-D observations. Image2Sim also serves as a fully automated embodied data engine that generates high-fidelity observations, executable actions, and diverse navigation instructions at scale. It converts large collections of videos and images into nearly 20K interactive scenes and synthesizes more than 10 million navigation training samples. Navigation models trained entirely in these neural environments achieve strong improvements on major benchmarks and transfer effectively to real-world zero-shot settings. These results suggest that scalable neural simulation can serve as a practical training substrate for embodied navigation at scale.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-07T02:42:41Z</published>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Zihan Wang</name>
+    </author>
+    <author>
+      <name>Seungjun Lee</name>
+    </author>
+    <author>
+      <name>Yinghao Xu</name>
+    </author>
+    <author>
+      <name>Gim Hee Lee</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17385v2</id>
+    <title>EgoInfinity: A Web-Scale 4D Hand-Object Interaction Data Engine for Any-View Robot Retargeting and Video-to-Action Robot Learning</title>
+    <updated>2026-06-19T08:44:25Z</updated>
+    <link href="https://arxiv.org/abs/2606.17385v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17385v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Internet videos constitute the largest reservoir of embodied human manipulation knowledge, yet converting arbitrary RGB footage into actionable robot training data remains a major bottleneck. Existing lab- or factory-collected datasets are narrow in scale and diversity, limiting open-world robot learning. Instead of proposing a static dataset, we introduce EgoInfinity, a universal 4D hand-object interaction data engine that enables web-scale data generation for robot retargeting and learning. EgoInfinity is a modular engine integrating perception, segmentation, reconstruction, interaction-aware refinement, and retargeting to automate this traditionally unscalable video-to-action problem without human-in-the-loop annotation. Its modular design lets the engine continuously benefit from advances in any incorporated component. With EgoInfinity, in-the-wild human manipulation videos are lifted into agent-agnostic, metric 4D hand-object representations, including hand trajectories, 6-DoF object poses, and contact-relevant states. Rather than naively connecting standalone components, EgoInfinity combines cross-module metric calibration with interaction-aware refinement to improve physical reliability, reducing drift and contact inconsistencies common in pure visual reconstruction. We further propose a novel motion retargeter that compiles the recovered 3D hand motions into executable joint trajectories for diverse robot morphologies, enabling video-to-action retargeting on any robot from arbitrary viewpoints and shot sizes (e.g., the human body is only partially visible). We validate EgoInfinity across perception fidelity, kinematic feasibility, contact consistency, cross-embodiment generalization, and real-robot skill acquisition (e.g., grasping, cutting, wiping, and pouring), demonstrating a scalable bridge from internet videos to executable robot behavior for open-world robot learning.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T00:44:16Z</published>
+    <arxiv:comment>24 pages. Project page: https://huggingface.co/spaces/Rice-RobotPI-Lab/EgoInfinity</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Gaotian Wang</name>
+    </author>
+    <author>
+      <name>Kejia Ren</name>
+    </author>
+    <author>
+      <name>Andrew Morgan</name>
+    </author>
+    <author>
+      <name>Yiting Chen</name>
+    </author>
+    <author>
+      <name>Howard H. Qian</name>
+    </author>
+    <author>
+      <name>Podshara Chanrungmaneekul</name>
+    </author>
+    <author>
+      <name>Kaiyu Hang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.13840v1</id>
+    <title>Multi-Agent Embodied Autonomous Driving: From V2X Information Exchange to Shared World Models</title>
+    <updated>2026-06-11T19:10:13Z</updated>
+    <link href="https://arxiv.org/abs/2606.13840v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.13840v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autonomous driving is shifting from isolated vehicle intelligence toward multi-agent embodied systems that share perception, infer intent, and coordinate action under uncertainty. This survey examines this transition through the lens of Shared World Models (SWMs): predictive cross-agent representations maintained across vehicles, infrastructure, and other traffic participants. We review more than 380 publications spanning vehicle-to-everything (V2X) communication, collaborative perception, inter-agent cognition, cooperative planning, end-to-end cooperative driving, and simulation and data engines for closed-loop validation. The organizing question is how exchanged observations become aligned state, intent-aware interaction, and coordinated downstream action. Across the surveyed literature, evaluation remains concentrated in simulation, curated benchmarks, and offline protocols. Foundation-model-based coordination also lacks verified real-time safety guarantees in open traffic. These gaps motivate key research priorities for multi-agent embodied autonomous driving (MAEAD): verifiable shared-state maintenance, robust intent and plan alignment, and safe coordinated action under communication, latency, and deployment constraints.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-11T19:10:13Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Senkang Hu</name>
+    </author>
+    <author>
+      <name>Zhengru Fang</name>
+    </author>
+    <author>
+      <name>Yihang Tao</name>
+    </author>
+    <author>
+      <name>Zihan Fang</name>
+    </author>
+    <author>
+      <name>Sam Tak Wu Kwong</name>
+    </author>
+    <author>
+      <name>Yuguang Fang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.13578v2</id>
+    <title>LabVLA: Grounding Vision-Language-Action Models in Scientific Laboratories</title>
+    <updated>2026-06-15T17:50:36Z</updated>
+    <link href="https://arxiv.org/abs/2606.13578v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.13578v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Scientific laboratories increasingly rely on AI systems to reason about experiments, but the physical act of doing science remains largely outside their reach. AI can help read literature, generate hypotheses, and plan protocols, yet the execution of those protocols at the bench still requires a human operator. Vision-Language-Action (VLA) models provide one possible interface between written protocols and robot execution, but existing policies are trained mostly on household and tabletop demonstrations and rarely encounter the instruments, transparent liquids, or fixed protocol workflows found in scientific laboratories. Closing this gap requires both laboratory-specific supervision and a unified learning framework that can accommodate the diverse robot embodiments used to execute experimental protocols. We therefore identify data and embodiment as central bottlenecks alongside model design. To address the data side, we build RoboGenesis, a simulation-based workflow and data engine that composes configured laboratory workflows from atomic skills, validates and filters rollouts, and exports structured demonstrations across supported robot profiles. On the policy side, we present LabVLA, trained with a two-stage recipe: FAST action token pretraining first makes the Qwen3-VL-4B-Instruct backbone action aware before any continuous control is learned, and flow matching posttraining then attaches a DiT action expert under knowledge insulation. On the LabUtopia benchmark, LabVLA achieves the highest average success rate among all evaluated baselines under both in-distribution and out-of-distribution settings.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MM" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-11T17:03:53Z</published>
+    <arxiv:comment>Work in progress. Project website at https://zjunlp.github.io/LabVLA/</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Baochang Ren</name>
+    </author>
+    <author>
+      <name>Xinjie Liu</name>
+    </author>
+    <author>
+      <name>Xi Chen</name>
+    </author>
+    <author>
+      <name>Yanshuo Liu</name>
+    </author>
+    <author>
+      <name>Chenxi Li</name>
+    </author>
+    <author>
+      <name>Daqi Gao</name>
+    </author>
+    <author>
+      <name>Zeqin Su</name>
+    </author>
+    <author>
+      <name>Jintao Xing</name>
+    </author>
+    <author>
+      <name>Zirui Xue</name>
+    </author>
+    <author>
+      <name>Rui Li</name>
+    </author>
+    <author>
+      <name>Xiangyu Zhao</name>
+    </author>
+    <author>
+      <name>Shuofei Qiao</name>
+    </author>
+    <author>
+      <name>Minting Pan</name>
+    </author>
+    <author>
+      <name>Wangmeng Zuo</name>
+    </author>
+    <author>
+      <name>Lei Bai</name>
+    </author>
+    <author>
+      <name>Dongzhan Zhou</name>
+    </author>
+    <author>
+      <name>Ningyu Zhang</name>
+    </author>
+    <author>
+      <name>Huajun Chen</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.14767v1</id>
+    <title>Synthetic-to-Real Pipeline for Safe Landing Zone Detection</title>
+    <updated>2026-06-09T01:32:07Z</updated>
+    <link href="https://arxiv.org/abs/2606.14767v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.14767v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>As Uncrewed Aerial Vehicles (UAVs) transition toward higher levels of autonomy, the ability to perform unassisted recovery in non-cooperative, unstructured environments becomes critical. Achieving safe autonomous landing requires high-fidelity semantic resolution to distinguish navigable terrain from hazardous obstacles, yet development is often hindered by the scarcity of annotated aerial datasets. This work proposes a comprehensive perception and data generation pipeline designed to bridge the sim-to-real gap for autonomous landing tasks. We introduce a procedural synthetic data engine that generates photorealistic urban environments with automated semantic annotations through domain randomization. A Transformer-based OneFormer architecture is fine-tuned exclusively on this synthetic data, leveraging multi-head self-attention mechanisms for global context resolution. To ensure operational safety, a deterministic landing module utilizes a Euclidean Distance Transform (EDT) and dynamic inference logic to identify the largest inscribed safe landing zones while maintaining strict clearance buffers around obstacles. Quantitative benchmarking against the UAVid dataset demonstrates robust semantic segmentation performance, while qualitative validation on real-world UAV footage confirms the system's ability to identify collision-free landing sites in unseen environments. Our results highlight the potential of high-fidelity procedural simulation to eliminate the need for manual annotation while providing robust, edge-deployable situational awareness for autonomous UAV recovery.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-09T01:32:07Z</published>
+    <arxiv:comment>Proceedings of Conference on Robots and Vision (CRV) 2026, Vancouver, British Columbia , Canada</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Shrikant Banerjee</name>
+    </author>
+    <author>
+      <name>Reza Faieghi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2605.27365v2</id>
+    <title>LocateAnything: Fast and High-Quality Vision-Language Grounding with Parallel Box Decoding</title>
+    <updated>2026-05-27T02:30:49Z</updated>
+    <link href="https://arxiv.org/abs/2605.27365v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.27365v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Vision-language models (VLMs) commonly formulate visual grounding and detection as a coordinate-token generation problem, serializing each 2D box into multiple 1D tokens that are learned and decoded largely independently. This token-by-token decoding mismatches the coupled structure of box geometry and creates a practical inference bottleneck due to strictly sequential generation. We introduce LocateAnything, a unified generative grounding and detection framework based on Parallel Box Decoding (PBD). By decoding geometric elements such as bounding boxes and points as atomic units in a single step, LocateAnything preserves intra-box geometric coherence and unlocks substantial parallelism. We show that PBD improves both decoding throughput and localization accuracy. We further develop a scalable data engine and curate LocateAnything-Data, a large-scale dataset with more than 138 million training samples, substantially increasing data diversity for high-precision localization. Extensive evaluations show that LocateAnything advances the speed-accuracy frontier, achieving significantly higher decoding throughput while improving high-IoU localization quality across diverse benchmarks. The results highlight the complementary benefits of Parallel Box Decoding and large-scale training data in enabling efficient and precise unified visual grounding and detection.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-05-26T17:59:12Z</published>
+    <arxiv:comment>fix github link</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Shihao Wang</name>
+    </author>
+    <author>
+      <name>Shilong Liu</name>
+    </author>
+    <author>
+      <name>Yuanguo Kuang</name>
+    </author>
+    <author>
+      <name>Xinyu Wei</name>
+    </author>
+    <author>
+      <name>Yangzhou Liu</name>
+    </author>
+    <author>
+      <name>Zhiqi Li</name>
+    </author>
+    <author>
+      <name>Yunze Man</name>
+    </author>
+    <author>
+      <name>Guo Chen</name>
+    </author>
+    <author>
+      <name>Andrew Tao</name>
+    </author>
+    <author>
+      <name>Guilin Liu</name>
+    </author>
+    <author>
+      <name>Jan Kautz</name>
+    </author>
+    <author>
+      <name>Lei Zhang</name>
+    </author>
+    <author>
+      <name>Zhiding Yu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2605.22816v1</id>
+    <title>AwareVLN: Reasoning with Self-awareness for Vision-Language Navigation</title>
+    <updated>2026-05-21T17:58:26Z</updated>
+    <link href="https://arxiv.org/abs/2605.22816v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.22816v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Vision-and-Language Navigation (VLN) requires an agent to ground language instructions to its own movement within a visual environment. While state-of-the-art methods leverage the reasoning capabilities of Vision-Language Models (VLMs) for end-to-end action prediction, they often lack an explicit and explainable understanding of the relationships between the agent, the instruction, and the scene. Conversely, explicitly building a scene map for heuristic planning is intuitively appealing but relies on additional 3D sensors and hinders large-scale vision-language pre-training. To bridge this gap, we propose AwareVLN, a novel framework that equips the navigation model with a self-aware reasoning mechanism, enabling it to understand the agent's state and task progress in a fully end-to-end and data-driven manner. Our approach features two key innovations: (1) a structural reasoning module that fosters spatial and task-oriented self-awareness, and (2) an automatic data engine with progress division for effective training. Extensive experiments on various datasets in Habitat simulator show our AwareVLN significantly outperforms previous state-of-the-art vision-language navigation methods. Project page: https://gwxuan.github.io/AwareVLN/.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-05-21T17:58:26Z</published>
+    <arxiv:comment>Accepted to CVPR 2026. Project page: https://gwxuan.github.io/AwareVLN/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Wenxuan Guo</name>
+    </author>
+    <author>
+      <name>Xiuwei Xu</name>
+    </author>
+    <author>
+      <name>Yichen Liu</name>
+    </author>
+    <author>
+      <name>Xiangyu Li</name>
+    </author>
+    <author>
+      <name>Hang Yin</name>
+    </author>
+    <author>
+      <name>Huangxing Chen</name>
+    </author>
+    <author>
+      <name>Wenzhao Zheng</name>
+    </author>
+    <author>
+      <name>Jianjiang Feng</name>
+    </author>
+    <author>
+      <name>Jie Zhou</name>
+    </author>
+    <author>
+      <name>Jiwen Lu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2605.21372v1</id>
+    <title>Closed Loop Dynamic Driving Data Mixture for Real-Synthetic Co-Training</title>
+    <updated>2026-05-20T16:36:26Z</updated>
+    <link href="https://arxiv.org/abs/2605.21372v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.21372v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Data scaling is fundamental to modern deep learning, and grows increasingly critical as autonomous driving shifts to end-to-end learning. Real-world driving data is expensive to annotate and scene-biased, making real-synthetic co-training with near-infinite synthetic data a promising direction. However, naively incorporating all available synthetic data is inefficient and leads to distribution shifts, and optimizing data mixture under practical training budgets remains a critical yet under-explored problem. In this sense, we claim that the mixture of training data requires clear guidance in terms of scene types and quantities. Particularly in this work, we conceptualize the data mixture approximately as a dynamic optimization process that iteratively adjusts the training data mixture to maximize model performance, guided by closed-loop evaluation feedback, and propose AutoScale, a fully automated closed-loop data engine unifying scene representation, data mixture optimization and retrieval, as well as model training and evaluation. Specifically, we propose Graph Regularized AutoEncoder (Graph-RAE) for driving scene representations, introduce Cluster-aware Gradient Ascent (Cluster-GA) for cluster-wise importance estimation and reweighting, and perform cluster-guided vector retrieval to select high-value samples. Experiments on NavSim demonstrate that AutoScale outperforms vanilla co-training and cross-domain baselines, achieving better performance with fewer synthetic samples under constrained budgets.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-05-20T16:36:26Z</published>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Hongzhi Ruan</name>
+    </author>
+    <author>
+      <name>Pei Liu</name>
+    </author>
+    <author>
+      <name>Weiliang Ma</name>
+    </author>
+    <author>
+      <name>Zhengning Li</name>
+    </author>
+    <author>
+      <name>Xueyang Zhang</name>
+    </author>
+    <author>
+      <name>Jun Ma</name>
+    </author>
+    <author>
+      <name>Dan Xu</name>
+    </author>
+    <author>
+      <name>Kun Zhan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2605.15298v1</id>
+    <title>PhysBrain 1.0 Technical Report</title>
+    <updated>2026-05-14T18:11:47Z</updated>
+    <link href="https://arxiv.org/abs/2605.15298v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.15298v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Vision-language-action models have advanced rapidly, but robot trajectories alone provide limited coverage for learning broad physical understanding. PhysBrain 1.0 studies a complementary route: converting large-scale human egocentric video into structured physical commonsense supervision before robot adaptation. Our data engine extracts scene elements, spatial dynamics, action execution, and depth-aware relations, then turns them into question-answer supervision for training PhysBrain VLMs. The resulting physical priors are further transferred to VLA policies through a capability-preserving and language-sensitive adaptation design. Across multimodal QA benchmarks and embodied control benchmarks, including ERQA, PhysBench, SimplerEnv-WidowX, LIBERO, and RoboCasa, PhysBrain 1.0 achieves SOTA results and shows especially strong out-of-domain performance on SimplerEnv. These results suggest that scaling physical commonsense from human interaction video can provide an effective bridge from multimodal understanding to robot action.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-05-14T18:11:47Z</published>
+    <arxiv:comment>Project Page: https://phys-brain.github.io</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Shijie Lian</name>
+    </author>
+    <author>
+      <name>Bin Yu</name>
+    </author>
+    <author>
+      <name>Xiaopeng Lin</name>
+    </author>
+    <author>
+      <name>Changti Wu</name>
+    </author>
+    <author>
+      <name>Hang Yuan</name>
+    </author>
+    <author>
+      <name>Xiaolin Hu</name>
+    </author>
+    <author>
+      <name>Zhaolong Shen</name>
+    </author>
+    <author>
+      <name>Yuzhuo Miao</name>
+    </author>
+    <author>
+      <name>Haishan Liu</name>
+    </author>
+    <author>
+      <name>Yuxuan Tian</name>
+    </author>
+    <author>
+      <name>Yukun Shi</name>
+    </author>
+    <author>
+      <name>Cong Huang</name>
+    </author>
+    <author>
+      <name>Kai Chen</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2605.09410v1</id>
+    <title>RePO-VLA: Recovery-Driven Policy Optimization for Vision-Language-Action Models</title>
+    <updated>2026-05-10T08:24:05Z</updated>
+    <link href="https://arxiv.org/abs/2605.09410v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.09410v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Vision-Language-Action (VLA) models remain brittle in long-horizon, contact-rich manipulation because success-only imitation provides little supervision for execution drift, while failed rollouts are often discarded. We introduce RePO-VLA, a recovery-driven policy optimization framework that assigns distinct roles to success, recovery, and failure trajectories. RePO-VLA first applies Recovery-Aware Initialization (RAI), slicing recovery segments and resetting history so corrective actions depend on the current adverse state rather than the preceding failure. It then learns a Progress-Aware Semantic Value Function (PAS-VF), aligning spatiotemporal trajectory features with instructions and successful references. The resulting labels salvage useful failure prefixes via reliability decay, while low-value labels mark drift and terminal breakdowns, teaching differences among nominal, failed, and corrective actions. The data engine turns adverse states into planner-generated or human-collected corrective rollouts, teaching recovery to the success manifold. Value-Conditioned Refinement (VCR) trains the policy to prefer high-progress actions. At deployment, a fixed high value ($v=1.0$) biases actions toward the learned success manifold without online failure detectors or heuristic retries. We introduce FRBench, with standardized error injection and recovery-focused evaluation. Across simulated and real-world bimanual tasks, RePO-VLA improves robustness, raising adversarial success from 20% to 75% on average and up to 80% in scaled real-world trials.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-05-10T08:24:05Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Weijia Liufu</name>
+    </author>
+    <author>
+      <name>Xiaoyu Guo</name>
+    </author>
+    <author>
+      <name>Ruiyi Chen</name>
+    </author>
+    <author>
+      <name>Jingzhi Liu</name>
+    </author>
+    <author>
+      <name>Kaidong Zhang</name>
+    </author>
+    <author>
+      <name>Xiwen Liang</name>
+    </author>
+    <author>
+      <name>Jianqi Lin</name>
+    </author>
+    <author>
+      <name>Dawei Sun</name>
+    </author>
+    <author>
+      <name>Yuze Wang</name>
+    </author>
+    <author>
+      <name>Rongtao Xu</name>
+    </author>
+    <author>
+      <name>Bingqian Lin</name>
+    </author>
+    <author>
+      <name>Bowen Yang</name>
+    </author>
+    <author>
+      <name>Tongtong Cao</name>
+    </author>
+    <author>
+      <name>Bowen Peng</name>
+    </author>
+    <author>
+      <name>Dongyu Zhang</name>
+    </author>
+    <author>
+      <name>Guangrun Wang</name>
+    </author>
+    <author>
+      <name>Min Wang</name>
+    </author>
+    <author>
+      <name>Liang Lin</name>
+    </author>
+    <author>
+      <name>Xiaodan Liang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2605.00244v1</id>
+    <title>Lucid-XR: An Extended-Reality Data Engine for Robotic Manipulation</title>
+    <updated>2026-04-30T21:25:20Z</updated>
+    <link href="https://arxiv.org/abs/2605.00244v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.00244v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We introduce Lucid-XR, a generative data engine for creating diverse and realistic-looking multi-modal data to train real-world robotic systems. At the core of Lucid-XR is vuer, a web-based physics simulation environment that runs directly on the XR headset, enabling internet-scale access to immersive, latency-free virtual interactions without requiring specialized equipment. The complete system integrates on-device physics simulation with human-to-robot pose retargeting. Data collected is further amplified by a physics-guided video generation pipeline steerable via natural language specifications. We demonstrate zero-shot transfer of robot visual policies to unseen, cluttered, and badly lit evaluation environments, after training entirely on Lucid-XR's synthetic data. We include examples across dexterous manipulation tasks that involve soft materials, loosely bound particles, and rigid body contact. Project website: https://lucidxr.github.io</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-30T21:25:20Z</published>
+    <arxiv:comment>Project website: https://lucidxr.github.io</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yajvan Ravan</name>
+    </author>
+    <author>
+      <name>Adam Rashid</name>
+    </author>
+    <author>
+      <name>Alan Yu</name>
+    </author>
+    <author>
+      <name>Kai McClennen</name>
+    </author>
+    <author>
+      <name>Gio Huh</name>
+    </author>
+    <author>
+      <name>Kevin Yang</name>
+    </author>
+    <author>
+      <name>Zhutian Yang</name>
+    </author>
+    <author>
+      <name>Qinxi Yu</name>
+    </author>
+    <author>
+      <name>Xiaolong Wang</name>
+    </author>
+    <author>
+      <name>Phillip Isola</name>
+    </author>
+    <author>
+      <name>Ge Yang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2604.23001v1</id>
+    <title>Vision-Language-Action in Robotics: A Survey of Datasets, Benchmarks, and Data Engines</title>
+    <updated>2026-04-24T20:41:59Z</updated>
+    <link href="https://arxiv.org/abs/2604.23001v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2604.23001v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Despite remarkable progress in Vision--Language--Action (VLA) models, a central bottleneck remains underexamined: the data infrastructure that underlies embodied learning. In this survey, we argue that future advances in VLA will depend less on model architecture and more on the co-design of high-fidelity data engines and structured evaluation protocols. To this end, we present a systematic, data-centric analysis of VLA research organized around three pillars: datasets, benchmarks, and data engines. For datasets, we categorize real-world and synthetic corpora along embodiment diversity, modality composition, and action space formulation, revealing a persistent fidelity-cost trade-off that fundamentally constrains large-scale collection. For benchmarks, we analyze task complexity and environment structure jointly, exposing structural gaps in compositional generalization and long-horizon reasoning evaluation that existing protocols fail to address. For data engines, we examine simulation-based, video-reconstruction, and automated task-generation paradigms, identifying their shared limitations in physical grounding and sim-to-real transfer. Synthesizing these analyses, we distill four open challenges: representation alignment, multimodal supervision, reasoning assessment, and scalable data generation. Addressing them, we argue, requires treating data infrastructure as a first-class research problem rather than a background concern.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-24T20:41:59Z</published>
+    <arxiv:comment>This is a survey paper. The survey is already accepted by TMLR after peer-review. The OpenReview link is here: https://openreview.net/forum?id=tAaWFpvnmm</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Ziyao Wang</name>
+    </author>
+    <author>
+      <name>Bingying Wang</name>
+    </author>
+    <author>
+      <name>Hanrong Zhang</name>
+    </author>
+    <author>
+      <name>Tingting Du</name>
+    </author>
+    <author>
+      <name>Tianyang Chen</name>
+    </author>
+    <author>
+      <name>Guoheng Sun</name>
+    </author>
+    <author>
+      <name>Yexiao He</name>
+    </author>
+    <author>
+      <name>Zheyu Shen</name>
+    </author>
+    <author>
+      <name>Wanghao Ye</name>
+    </author>
+    <author>
+      <name>Ang Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2604.17651v1</id>
+    <title>Infrastructure-Centric World Models: Bridging Temporal Depth and Spatial Breadth for Roadside Perception</title>
+    <updated>2026-04-19T22:50:32Z</updated>
+    <link href="https://arxiv.org/abs/2604.17651v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2604.17651v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>World models, generative AI systems that simulate how environments evolve, are transforming autonomous driving, yet all existing approaches adopt an ego-vehicle perspective, leaving the infrastructure viewpoint unexplored. We argue that infrastructure-centric world models offer a fundamentally complementary capability: the bird's-eye, multi-sensor, persistent viewpoint that roadside systems uniquely possess. Central to our thesis is a spatio-temporal complementarity: fixed roadside sensors excel at temporal depth, accumulating long-term behavioral distributions including rare safety-critical events, while vehicle-borne sensors excel at spatial breadth, sampling diverse scenes across large road networks. This paper presents a vision for Infrastructure-centric World Models (I-WM) in three phases: (I) generative scene understanding with quality-aware uncertainty propagation, (II) physics-informed predictive dynamics with multi-agent counterfactual reasoning, and (III) collaborative world models for V2X communication via latent space alignment. We propose a dual-layer architecture, annotation-free perception as a multi-modal data engine feeding end-to-end generative world models, with a phased sensor strategy from LiDAR through 4D radar and signal phase data to event cameras. We establish a taxonomy of driving world model paradigms, position I-WM relative to LeCun's JEPA, Li Fei-Fei's spatial intelligence, and VLA architectures, and introduce Infrastructure VLA (I-VLA) as a novel unification of roadside perception, language commands, and traffic control actions. Our vision builds upon existing multi-LiDAR pipelines and identifies open-source foundations for each phase, providing a path toward infrastructure that understands and anticipates traffic.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-19T22:50:32Z</published>
+    <arxiv:comment>18 pages, 7 tables, 1 figure, vision paper</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Siyuan Meng</name>
+    </author>
+    <author>
+      <name>Chengbo Ai</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2604.11320v1</id>
+    <title>CLASP: Closed-loop Asynchronous Spatial Perception for Open-vocabulary Desktop Object Grasping</title>
+    <updated>2026-04-13T11:22:37Z</updated>
+    <link href="https://arxiv.org/abs/2604.11320v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2604.11320v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Robot grasping of desktop object is widely used in intelligent manufacturing, logistics, and agriculture.Although vision-language models (VLMs) show strong potential for robotic manipulation, their deployment in low-level grasping faces key challenges: scarce high-quality multimodal demonstrations, spatial hallucination caused by weak geometric grounding, and the fragility of open-loop execution in dynamic environments. To address these challenges, we propose Closed-Loop Asynchronous Spatial Perception(CLASP), a novel asynchronous closed-loop framework that integrates multimodal perception, logical reasoning, and state-reflective feedback. First, we design a Dual-Pathway Hierarchical Perception module that decouples high-level semantic intent from geometric grounding. The design guides the output of the inference model and the definite action tuples, reducing spatial illusions. Second, an Asynchronous Closed-Loop Evaluator is implemented to compare pre- and post-execution states, providing text-based diagnostic feedback to establish a robust error-correction loop and improving the vulnerability of traditional open-loop execution in dynamic environments. Finally, we design a scalable multi-modal data engine that automatically synthesizes high-quality spatial annotations and reasoning templates from real and synthetic scenes without human teleoperation. Extensive experiments demonstrate that our approach significantly outperforms existing baselines, achieving an 87.0% overall success rate. Notably, the proposed framework exhibits remarkable generalization across diverse objects, bridging the sim-to-real gap and providing exceptional robustness in geometrically challenging categories and cluttered scenarios.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-13T11:22:37Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yiran Ling</name>
+    </author>
+    <author>
+      <name>Wenxuan Li</name>
+    </author>
+    <author>
+      <name>Siying Dong</name>
+    </author>
+    <author>
+      <name>Yize Zhang</name>
+    </author>
+    <author>
+      <name>Xiaoyao Huang</name>
+    </author>
+    <author>
+      <name>Jing Jiang</name>
+    </author>
+    <author>
+      <name>Ruonan Li</name>
+    </author>
+    <author>
+      <name>Jie Liu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2604.08544v2</id>
+    <title>SIM1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds</title>
+    <updated>2026-04-10T10:13:54Z</updated>
+    <link href="https://arxiv.org/abs/2604.08544v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2604.08544v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Robotic manipulation with deformable objects represents a data-intensive regime in embodied learning, where shape, contact, and topology co-evolve in ways that far exceed the variability of rigids. Although simulation promises relief from the cost of real-world data acquisition, prevailing sim-to-real pipelines remain rooted in rigid-body abstractions, producing mismatched geometry, fragile soft dynamics, and motion primitives poorly suited for cloth interaction. We posit that simulation fails not for being synthetic, but for being ungrounded. To address this, we introduce SIM1, a physics-aligned real-to-sim-to-real data engine that grounds simulation in the physical world. Given limited demonstrations, the system digitizes scenes into metric-consistent twins, calibrates deformable dynamics through elastic modeling, and expands behaviors via diffusion-based trajectory generation with quality filtering. This pipeline transforms sparse observations into scaled synthetic supervision with near-demonstration fidelity. Experiments show that policies trained on purely synthetic data achieve parity with real-data baselines at a 1:15 equivalence ratio, while delivering 90% zero-shot success and 50% generalization gains in real-world deployment. These results validate physics-aligned simulation as scalable supervision for deformable manipulation and a practical pathway for data-efficient policy learning.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-09T17:59:52Z</published>
+    <arxiv:comment>Website: https://internrobotics.github.io/sim1.github.io/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yunsong Zhou</name>
+    </author>
+    <author>
+      <name>Hangxu Liu</name>
+    </author>
+    <author>
+      <name>Xuekun Jiang</name>
+    </author>
+    <author>
+      <name>Xing Shen</name>
+    </author>
+    <author>
+      <name>Yuanzhen Zhou</name>
+    </author>
+    <author>
+      <name>Hui Wang</name>
+    </author>
+    <author>
+      <name>Baole Fang</name>
+    </author>
+    <author>
+      <name>Yang Tian</name>
+    </author>
+    <author>
+      <name>Mulin Yu</name>
+    </author>
+    <author>
+      <name>Qiaojun Yu</name>
+    </author>
+    <author>
+      <name>Li Ma</name>
+    </author>
+    <author>
+      <name>Hengjie Li</name>
+    </author>
+    <author>
+      <name>Hanqing Wang</name>
+    </author>
+    <author>
+      <name>Jia Zeng</name>
+    </author>
+    <author>
+      <name>Jiangmiao Pang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2604.05014v1</id>
+    <title>StarVLA: A Lego-like Codebase for Vision-Language-Action Model Developing</title>
+    <updated>2026-04-06T17:59:21Z</updated>
+    <link href="https://arxiv.org/abs/2604.05014v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2604.05014v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Building generalist embodied agents requires integrating perception, language understanding, and action, which are core capabilities addressed by Vision-Language-Action (VLA) approaches based on multimodal foundation models, including recent advances in vision-language models and world models. Despite rapid progress, VLA methods remain fragmented across incompatible architectures, codebases, and evaluation protocols, hindering principled comparison and reproducibility. We present StarVLA, an open-source codebase for VLA research. StarVLA addresses these challenges in three aspects. First, it provides a modular backbone--action-head architecture that supports both VLM backbones (e.g., Qwen-VL) and world-model backbones (e.g., Cosmos) alongside representative action-decoding paradigms, all under a shared abstraction in which backbone and action head can each be swapped independently. Second, it provides reusable training strategies, including cross-embodiment learning and multimodal co-training, that apply consistently across supported paradigms. Third, it integrates major benchmarks, including LIBERO, SimplerEnv, RoboTwin~2.0, RoboCasa-GR1, and BEHAVIOR-1K, through a unified evaluation interface that supports both simulation and real-robot deployment. StarVLA also ships simple, fully reproducible single-benchmark training recipes that, despite minimal data engineering, already match or surpass prior methods on multiple benchmarks with both VLM and world-model backbones. To our best knowledge, StarVLA is one of the most comprehensive open-source VLA frameworks available, and we expect it to lower the barrier for reproducing existing methods and prototyping new ones. StarVLA is being actively maintained and expanded; we will update this report as the project evolves. The code and documentation are available at https://github.com/starVLA/starVLA.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-06T17:59:21Z</published>
+    <arxiv:comment>Open-source VLA infra, Technical Report</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>StarVLA Community</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2603.08260v1</id>
+    <title>Seed2Scale: A Self-Evolving Data Engine for Embodied AI via Small to Large Model Synergy and Multimodal Evaluation</title>
+    <updated>2026-03-09T11:30:45Z</updated>
+    <link href="https://arxiv.org/abs/2603.08260v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2603.08260v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Existing data generation methods suffer from exploration limits, embodiment gaps, and low signal-to-noise ratios, leading to performance degradation during self-iteration. To address these challenges, we propose Seed2Scale, a self-evolving data engine that overcomes the data bottleneck through a heterogeneous synergy of "small-model collection, large-model evaluation, and target-model learning". Starting with as few as four seed demonstrations, the engine employs the lightweight Vision-Language-Action model, SuperTiny, as a dedicated collector, leveraging its strong inductive bias for robust exploration in parallel environments. Concurrently, a pre-trained Vision-Language Model is integrated as a Verifer to autonomously perform success/failure judgment and quality scoring for the massive generated trajectories. Seed2Scale effectively mitigates model collapse, ensuring the stability of the self-evolution process. Experimental results demonstrate that Seed2Scale exhibits signifcant scaling potential: as iterations progress, the success rate of the target model shows a robust upward trend, achieving a performance improvement of 131.2%. Furthermore, Seed2Scale signifcantly outperforms existing data augmentation methods, providing a scalable and cost-effective pathway for the large-scale development of Generalist Embodied AI. Project page: https://terminators2025.github.io/Seed2Scale.github.io</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-03-09T11:30:45Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Cong Tai</name>
+    </author>
+    <author>
+      <name>Zhaoyu Zheng</name>
+    </author>
+    <author>
+      <name>Haixu Long</name>
+    </author>
+    <author>
+      <name>Hansheng Wu</name>
+    </author>
+    <author>
+      <name>Zhengbin Long</name>
+    </author>
+    <author>
+      <name>Haodong Xiang</name>
+    </author>
+    <author>
+      <name>Rong Shi</name>
+    </author>
+    <author>
+      <name>Zhuo Cui</name>
+    </author>
+    <author>
+      <name>Shizhuang Zhang</name>
+    </author>
+    <author>
+      <name>Gang Qiu</name>
+    </author>
+    <author>
+      <name>He Wang</name>
+    </author>
+    <author>
+      <name>Ruifeng Li</name>
+    </author>
+    <author>
+      <name>Biao Liu</name>
+    </author>
+    <author>
+      <name>Zhenzhe Sun</name>
+    </author>
+    <author>
+      <name>Tao Shen</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2602.11598v1</id>
+    <title>ABot-N0: Technical Report on the VLA Foundation Model for Versatile Embodied Navigation</title>
+    <updated>2026-02-12T05:30:20Z</updated>
+    <link href="https://arxiv.org/abs/2602.11598v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2602.11598v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Embodied navigation has long been fragmented by task-specific architectures. We introduce ABot-N0, a unified Vision-Language-Action (VLA) foundation model that achieves a ``Grand Unification'' across 5 core tasks: Point-Goal, Object-Goal, Instruction-Following, POI-Goal, and Person-Following. ABot-N0 utilizes a hierarchical ``Brain-Action'' architecture, pairing an LLM-based Cognitive Brain for semantic reasoning with a Flow Matching-based Action Expert for precise, continuous trajectory generation.
+  To support large-scale learning, we developed the ABot-N0 Data Engine, curating 16.9M expert trajectories and 5.0M reasoning samples across 7,802 high-fidelity 3D scenes (10.7 $\text{km}^2$). ABot-N0 achieves new SOTA performance across 7 benchmarks, significantly outperforming specialized models. Furthermore, our Agentic Navigation System integrates a planner with hierarchical topological memory, enabling robust, long-horizon missions in dynamic real-world environments.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-02-12T05:30:20Z</published>
+    <arxiv:comment>Project Page: https://amap-cvlab.github.io/ABot-Navigation/ABot-N0/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Zedong Chu</name>
+    </author>
+    <author>
+      <name>Shichao Xie</name>
+    </author>
+    <author>
+      <name>Xiaolong Wu</name>
+    </author>
+    <author>
+      <name>Yanfen Shen</name>
+    </author>
+    <author>
+      <name>Minghua Luo</name>
+    </author>
+    <author>
+      <name>Zhengbo Wang</name>
+    </author>
+    <author>
+      <name>Fei Liu</name>
+    </author>
+    <author>
+      <name>Xiaoxu Leng</name>
+    </author>
+    <author>
+      <name>Junjun Hu</name>
+    </author>
+    <author>
+      <name>Mingyang Yin</name>
+    </author>
+    <author>
+      <name>Jia Lu</name>
+    </author>
+    <author>
+      <name>Yingnan Guo</name>
+    </author>
+    <author>
+      <name>Kai Yang</name>
+    </author>
+    <author>
+      <name>Jiawei Han</name>
+    </author>
+    <author>
+      <name>Xu Chen</name>
+    </author>
+    <author>
+      <name>Yanqing Zhu</name>
+    </author>
+    <author>
+      <name>Yuxiang Zhao</name>
+    </author>
+    <author>
+      <name>Xin Liu</name>
+    </author>
+    <author>
+      <name>Yirong Yang</name>
+    </author>
+    <author>
+      <name>Ye He</name>
+    </author>
+    <author>
+      <name>Jiahang Wang</name>
+    </author>
+    <author>
+      <name>Yang Cai</name>
+    </author>
+    <author>
+      <name>Tianlin Zhang</name>
+    </author>
+    <author>
+      <name>Li Gao</name>
+    </author>
+    <author>
+      <name>Liu Liu</name>
+    </author>
+    <author>
+      <name>Mingchao Sun</name>
+    </author>
+    <author>
+      <name>Fan Jiang</name>
+    </author>
+    <author>
+      <name>Chiyu Wang</name>
+    </author>
+    <author>
+      <name>Zhicheng Liu</name>
+    </author>
+    <author>
+      <name>Hongyu Pan</name>
+    </author>
+    <author>
+      <name>Honglin Han</name>
+    </author>
+    <author>
+      <name>Zhining Gu</name>
+    </author>
+    <author>
+      <name>Kuan Yang</name>
+    </author>
+    <author>
+      <name>Jianfang Zhang</name>
+    </author>
+    <author>
+      <name>Di Jing</name>
+    </author>
+    <author>
+      <name>Zihao Guan</name>
+    </author>
+    <author>
+      <name>Wei Guo</name>
+    </author>
+    <author>
+      <name>Guoqing Liu</name>
+    </author>
+    <author>
+      <name>Di Yang</name>
+    </author>
+    <author>
+      <name>Xiangpo Yang</name>
+    </author>
+    <author>
+      <name>Menglin Yang</name>
+    </author>
+    <author>
+      <name>Hongguang Xing</name>
+    </author>
+    <author>
+      <name>Weiguo Li</name>
+    </author>
+    <author>
+      <name>Mu Xu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2602.08971v2</id>
+    <title>WorldArena: A Unified Benchmark for Evaluating Perception and Functional Utility of Embodied World Models</title>
+    <updated>2026-02-11T10:50:05Z</updated>
+    <link href="https://arxiv.org/abs/2602.08971v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2602.08971v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>While world models have emerged as a cornerstone of embodied intelligence by enabling agents to reason about environmental dynamics through action-conditioned prediction, their evaluation remains fragmented. Current evaluation of embodied world models has largely focused on perceptual fidelity (e.g., video generation quality), overlooking the functional utility of these models in downstream decision-making tasks. In this work, we introduce WorldArena, a unified benchmark designed to systematically evaluate embodied world models across both perceptual and functional dimensions. WorldArena assesses models through three dimensions: video perception quality, measured with 16 metrics across six sub-dimensions; embodied task functionality, which evaluates world models as data engines, policy evaluators, and action planners integrating with subjective human evaluation. Furthermore, we propose EWMScore, a holistic metric integrating multi-dimensional performance into a single interpretable index. Through extensive experiments on 14 representative models, we reveal a significant perception-functionality gap, showing that high visual quality does not necessarily translate into strong embodied task capability. WorldArena benchmark with the public leaderboard is released at https://world-arena.ai, providing a framework for tracking progress toward truly functional world models in embodied AI.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-02-09T18:09:20Z</published>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Yu Shang</name>
+    </author>
+    <author>
+      <name>Zhuohang Li</name>
+    </author>
+    <author>
+      <name>Yiding Ma</name>
+    </author>
+    <author>
+      <name>Weikang Su</name>
+    </author>
+    <author>
+      <name>Xin Jin</name>
+    </author>
+    <author>
+      <name>Ziyou Wang</name>
+    </author>
+    <author>
+      <name>Lei Jin</name>
+    </author>
+    <author>
+      <name>Xin Zhang</name>
+    </author>
+    <author>
+      <name>Yinzhou Tang</name>
+    </author>
+    <author>
+      <name>Haisheng Su</name>
+    </author>
+    <author>
+      <name>Chen Gao</name>
+    </author>
+    <author>
+      <name>Wei Wu</name>
+    </author>
+    <author>
+      <name>Xihui Liu</name>
+    </author>
+    <author>
+      <name>Dhruv Shah</name>
+    </author>
+    <author>
+      <name>Zhaoxiang Zhang</name>
+    </author>
+    <author>
+      <name>Zhibo Chen</name>
+    </author>
+    <author>
+      <name>Jun Zhu</name>
+    </author>
+    <author>
+      <name>Yonghong Tian</name>
+    </author>
+    <author>
+      <name>Tat-Seng Chua</name>
+    </author>
+    <author>
+      <name>Wenwu Zhu</name>
+    </author>
+    <author>
+      <name>Yong Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2601.05243v1</id>
+    <title>Generate, Transfer, Adapt: Learning Functional Dexterous Grasping from a Single Human Demonstration</title>
+    <updated>2026-01-08T18:59:30Z</updated>
+    <link href="https://arxiv.org/abs/2601.05243v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2601.05243v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Functional grasping with dexterous robotic hands is a key capability for enabling tool use and complex manipulation, yet progress has been constrained by two persistent bottlenecks: the scarcity of large-scale datasets and the absence of integrated semantic and geometric reasoning in learned models. In this work, we present CorDex, a framework that robustly learns dexterous functional grasps of novel objects from synthetic data generated from just a single human demonstration. At the core of our approach is a correspondence-based data engine that generates diverse, high-quality training data in simulation. Based on the human demonstration, our data engine generates diverse object instances of the same category, transfers the expert grasp to the generated objects through correspondence estimation, and adapts the grasp through optimization. Building on the generated data, we introduce a multimodal prediction network that integrates visual and geometric information. By devising a local-global fusion module and an importance-aware sampling mechanism, we enable robust and computationally efficient prediction of functional dexterous grasps. Through extensive experiments across various object categories, we demonstrate that CorDex generalizes well to unseen object instances and significantly outperforms state-of-the-art baselines.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-01-08T18:59:30Z</published>
+    <arxiv:comment>Project Page: https://cordex-manipulation.github.io/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Xingyi He</name>
+    </author>
+    <author>
+      <name>Adhitya Polavaram</name>
+    </author>
+    <author>
+      <name>Yunhao Cao</name>
+    </author>
+    <author>
+      <name>Om Deshmukh</name>
+    </author>
+    <author>
+      <name>Tianrui Wang</name>
+    </author>
+    <author>
+      <name>Xiaowei Zhou</name>
+    </author>
+    <author>
+      <name>Kuan Fang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2512.02729v1</id>
+    <title>RoboWheel: A Data Engine from Real-World Human Demonstrations for Cross-Embodiment Robotic Learning</title>
+    <updated>2025-12-02T13:10:16Z</updated>
+    <link href="https://arxiv.org/abs/2512.02729v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2512.02729v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We introduce Robowheel, a data engine that converts human hand object interaction (HOI) videos into training-ready supervision for cross morphology robotic learning. From monocular RGB or RGB-D inputs, we perform high precision HOI reconstruction and enforce physical plausibility via a reinforcement learning (RL) optimizer that refines hand object relative poses under contact and penetration constraints. The reconstructed, contact rich trajectories are then retargeted to cross-embodiments, robot arms with simple end effectors, dexterous hands, and humanoids, yielding executable actions and rollouts. To scale coverage, we build a simulation-augmented framework on Isaac Sim with diverse domain randomization (embodiments, trajectories, object retrieval, background textures, hand motion mirroring), which enriches the distributions of trajectories and observations while preserving spatial relationships and physical plausibility. The entire data pipeline forms an end to end pipeline from video,reconstruction,retargeting,augmentation data acquisition. We validate the data on mainstream vision language action (VLA) and imitation learning architectures, demonstrating that trajectories produced by our pipeline are as stable as those from teleoperation and yield comparable continual performance gains. To our knowledge, this provides the first quantitative evidence that HOI modalities can serve as effective supervision for robotic learning. Compared with teleoperation, Robowheel is lightweight, a single monocular RGB(D) camera is sufficient to extract a universal, embodiment agnostic motion representation that could be flexibly retargeted across embodiments. We further assemble a large scale multimodal dataset combining multi-camera captures, monocular videos, and public HOI corpora for training and evaluating embodied models.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-12-02T13:10:16Z</published>
+    <arxiv:comment>27 Pages, 21 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yuhong Zhang</name>
+    </author>
+    <author>
+      <name>Zihan Gao</name>
+    </author>
+    <author>
+      <name>Shengpeng Li</name>
+    </author>
+    <author>
+      <name>Ling-Hao Chen</name>
+    </author>
+    <author>
+      <name>Kaisheng Liu</name>
+    </author>
+    <author>
+      <name>Runqing Cheng</name>
+    </author>
+    <author>
+      <name>Xiao Lin</name>
+    </author>
+    <author>
+      <name>Junjia Liu</name>
+    </author>
+    <author>
+      <name>Zhuoheng Li</name>
+    </author>
+    <author>
+      <name>Jingyi Feng</name>
+    </author>
+    <author>
+      <name>Ziyan He</name>
+    </author>
+    <author>
+      <name>Jintian Lin</name>
+    </author>
+    <author>
+      <name>Zheyan Huang</name>
+    </author>
+    <author>
+      <name>Zhifang Liu</name>
+    </author>
+    <author>
+      <name>Haoqian Wang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2511.19861v2</id>
+    <title>GigaWorld-0: World Models as Data Engine to Empower Embodied AI</title>
+    <updated>2025-11-30T11:53:27Z</updated>
+    <link href="https://arxiv.org/abs/2511.19861v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2511.19861v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>World models are emerging as a foundational paradigm for scalable, data-efficient embodied AI. In this work, we present GigaWorld-0, a unified world model framework designed explicitly as a data engine for Vision-Language-Action (VLA) learning. GigaWorld-0 integrates two synergistic components: GigaWorld-0-Video, which leverages large-scale video generation to produce diverse, texture-rich, and temporally coherent embodied sequences under fine-grained control of appearance, camera viewpoint, and action semantics; and GigaWorld-0-3D, which combines 3D generative modeling, 3D Gaussian Splatting reconstruction, physically differentiable system identification, and executable motion planning to ensure geometric consistency and physical realism. Their joint optimization enables the scalable synthesis of embodied interaction data that is visually compelling, spatially coherent, physically plausible, and instruction-aligned. Training at scale is made feasible through our efficient GigaTrain framework, which exploits FP8-precision and sparse attention to drastically reduce memory and compute requirements. We conduct comprehensive evaluations showing that GigaWorld-0 generates high-quality, diverse, and controllable data across multiple dimensions. Critically, VLA model (e.g., GigaBrain-0) trained on GigaWorld-0-generated data achieve strong real-world performance, significantly improving generalization and task success on physical robots without any real-world interaction during training.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-11-25T03:00:42Z</published>
+    <arxiv:comment>Project Page: https://giga-world-0.github.io/</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name> GigaWorld Team</name>
+    </author>
+    <author>
+      <name>Angen Ye</name>
+    </author>
+    <author>
+      <name>Boyuan Wang</name>
+    </author>
+    <author>
+      <name>Chaojun Ni</name>
+    </author>
+    <author>
+      <name>Guan Huang</name>
+    </author>
+    <author>
+      <name>Guosheng Zhao</name>
+    </author>
+    <author>
+      <name>Haoyun Li</name>
+    </author>
+    <author>
+      <name>Jiagang Zhu</name>
+    </author>
+    <author>
+      <name>Kerui Li</name>
+    </author>
+    <author>
+      <name>Mengyuan Xu</name>
+    </author>
+    <author>
+      <name>Qiuping Deng</name>
+    </author>
+    <author>
+      <name>Siting Wang</name>
+    </author>
+    <author>
+      <name>Wenkang Qin</name>
+    </author>
+    <author>
+      <name>Xinze Chen</name>
+    </author>
+    <author>
+      <name>Xiaofeng Wang</name>
+    </author>
+    <author>
+      <name>Yankai Wang</name>
+    </author>
+    <author>
+      <name>Yu Cao</name>
+    </author>
+    <author>
+      <name>Yifan Chang</name>
+    </author>
+    <author>
+      <name>Yuan Xu</name>
+    </author>
+    <author>
+      <name>Yun Ye</name>
+    </author>
+    <author>
+      <name>Yang Wang</name>
+    </author>
+    <author>
+      <name>Yukun Zhou</name>
+    </author>
+    <author>
+      <name>Zhengyuan Zhang</name>
+    </author>
+    <author>
+      <name>Zhehao Dong</name>
+    </author>
+    <author>
+      <name>Zheng Zhu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2511.19528v1</id>
+    <title>Discover, Learn, and Reinforce: Scaling Vision-Language-Action Pretraining with Diverse RL-Generated Trajectories</title>
+    <updated>2025-11-24T07:54:49Z</updated>
+    <link href="https://arxiv.org/abs/2511.19528v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2511.19528v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Scaling vision-language-action (VLA) model pre-training requires large volumes of diverse, high-quality manipulation trajectories. Most current data is obtained via human teleoperation, which is expensive and difficult to scale. Reinforcement learning (RL) methods learn useful skills through autonomous exploration, making them a viable approach for generating data. However, standard RL training collapses to a narrow execution pattern, limiting its utility for large-scale pre-training. We propose Discover, Lea rn and Reinforce (DLR), an information-theoretic pattern discovery framework that generates multiple distinct, high-success behavioral patterns for VLA pretraining. Empirically, DLR generates a markedly more diverse trajectory corpus on LIBERO. Specifically, it learns multiple distinct, high-success strategies for the same task where standard RL discovers only one, and hence it covers substantially broader regions of the state-action space. When adapted to unseen downstream task suites, VLA models pretrained on our diverse RL data surpass counterparts trained on equal-sized standard RL datasets. Moreover, DLR exhibits positive data-scaling behavior that single-pattern RL lacks. These results position multi-pattern RL as a practical, scalable data engine for embodied foundation models.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-11-24T07:54:49Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Rushuai Yang</name>
+    </author>
+    <author>
+      <name>Zhiyuan Feng</name>
+    </author>
+    <author>
+      <name>Tianxiang Zhang</name>
+    </author>
+    <author>
+      <name>Kaixin Wang</name>
+    </author>
+    <author>
+      <name>Chuheng Zhang</name>
+    </author>
+    <author>
+      <name>Li Zhao</name>
+    </author>
+    <author>
+      <name>Xiu Su</name>
+    </author>
+    <author>
+      <name>Yi Chen</name>
+    </author>
+    <author>
+      <name>Jiang Bian</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2510.12072v1</id>
+    <title>EmboMatrix: A Scalable Training-Ground for Embodied Decision-Making</title>
+    <updated>2025-10-14T02:26:52Z</updated>
+    <link href="https://arxiv.org/abs/2510.12072v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2510.12072v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Embodied decision-making enables agents to translate high-level goals into executable actions through continuous interactions within the physical world, forming a cornerstone of general-purpose embodied intelligence. Large language models (LLMs), with their general decision-making capabilities, offer a promising path to realize this potential; however, LLMs trained solely on language lack exposure to physical environments, limiting their true embodied understanding. To bridge this gap, we propose the concept of a training ground: a comprehensive infrastructure that provides task and scene simulation, embodied interaction, and feedback signals, offering a one-stop solution for LLM acquire genuine embodied decision-making skills. In this work, we present EmboMatrix, the first training ground of its kind, providing massive and diverse tasks with efficient simulation and precise rewards. EmboMatrix incorporates a series of novel techniques: a multi-agent data engine for large-scale task and scene generation, a distributed heterogeneous-hardware system for scalable simulation, and a multi-level reward architecture for precise supervision. Leveraging EmboMatrix, we cultivate EmboBrain, an LLM whose embodied decision-making abilities emerge from extensive embodied interactions. Experiments show that EmboBrain-7B surpasses the 671B DeepSeek-R1 baseline by 9.5\% on two challenging embodied decision-making benchmarks, demonstrating the power of interactive, environment-grounded learning for building truly intelligent embodied agents.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-10-14T02:26:52Z</published>
+    <arxiv:comment>10 pages 8 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Zixing Lei</name>
+    </author>
+    <author>
+      <name>Sheng Yin</name>
+    </author>
+    <author>
+      <name>Yichen Xiong</name>
+    </author>
+    <author>
+      <name>Yuanzhuo Ding</name>
+    </author>
+    <author>
+      <name>Wenhao Huang</name>
+    </author>
+    <author>
+      <name>Yuxi Wei</name>
+    </author>
+    <author>
+      <name>Qingyao Xu</name>
+    </author>
+    <author>
+      <name>Yiming Li</name>
+    </author>
+    <author>
+      <name>Weixin Li</name>
+    </author>
+    <author>
+      <name>Yunhong Wang</name>
+    </author>
+    <author>
+      <name>Siheng Chen</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2509.22407v2</id>
+    <title>EMMA: Generalizing Real-World Robot Manipulation via Generative Visual Transfer</title>
+    <updated>2026-03-16T09:11:10Z</updated>
+    <link href="https://arxiv.org/abs/2509.22407v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2509.22407v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The generalization of vision-language-action (VLA) models heavily relies on diverse training data. However, acquiring large-scale data for robot manipulation across varied object appearances is costly and labor-intensive. To address this limitation, we introduce Embodied Manipulation Media Adaptation (EMMA), a framework for augmenting VLA policies that combines a generative data engine with an effective training pipeline. We introduce DreamTransfer, a diffusion Transformer-based architecture for generating multi-view consistent and geometrically grounded embodied manipulation videos. DreamTransfer enables visual editing of robot videos through prompts, allowing for changes to the foreground, background, and lighting while preserving their 3D structure and geometric validity. We also utilize a hybrid training set of real and generated data and propose AdaMix to enhance the training process. AdaMix is a training strategy that adaptively weights samples according to policy performance to emphasize challenging samples. Comprehensive evaluations demonstrate that videos created by DreamTransfer yield substantial improvements over previous video generation techniques in multi-view consistency, geometric accuracy, and text-conditioning precision. We conduct extensive evaluations with a total of more than 1800 trials in both simulated and real-world robotic environments. In real-world robotic tasks with zero-shot visual settings, our framework achieves a relative performance increase of over 92% compared to training with real data alone, and improves by an additional 17% with AdaMix, demonstrating its efficacy in enhancing policy generalization.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-09-26T14:34:44Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Zhehao Dong</name>
+    </author>
+    <author>
+      <name>Xiaofeng Wang</name>
+    </author>
+    <author>
+      <name>Zheng Zhu</name>
+    </author>
+    <author>
+      <name>Yirui Wang</name>
+    </author>
+    <author>
+      <name>Yang Wang</name>
+    </author>
+    <author>
+      <name>Yukun Zhou</name>
+    </author>
+    <author>
+      <name>Boyuan Wang</name>
+    </author>
+    <author>
+      <name>Chaojun Ni</name>
+    </author>
+    <author>
+      <name>Runqi Ouyang</name>
+    </author>
+    <author>
+      <name>Wenkang Qin</name>
+    </author>
+    <author>
+      <name>Xinze Chen</name>
+    </author>
+    <author>
+      <name>Yun Ye</name>
+    </author>
+    <author>
+      <name>Guan Huang</name>
+    </author>
+    <author>
+      <name>Zhen Lu</name>
+    </author>
+    <author>
+      <name>Yue Yang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2509.02530v1</id>
+    <title>Manipulation as in Simulation: Enabling Accurate Geometry Perception in Robots</title>
+    <updated>2025-09-02T17:29:38Z</updated>
+    <link href="https://arxiv.org/abs/2509.02530v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2509.02530v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Modern robotic manipulation primarily relies on visual observations in a 2D color space for skill learning but suffers from poor generalization. In contrast, humans, living in a 3D world, depend more on physical properties-such as distance, size, and shape-than on texture when interacting with objects. Since such 3D geometric information can be acquired from widely available depth cameras, it appears feasible to endow robots with similar perceptual capabilities. Our pilot study found that using depth cameras for manipulation is challenging, primarily due to their limited accuracy and susceptibility to various types of noise. In this work, we propose Camera Depth Models (CDMs) as a simple plugin on daily-use depth cameras, which take RGB images and raw depth signals as input and output denoised, accurate metric depth. To achieve this, we develop a neural data engine that generates high-quality paired data from simulation by modeling a depth camera's noise pattern. Our results show that CDMs achieve nearly simulation-level accuracy in depth prediction, effectively bridging the sim-to-real gap for manipulation tasks. Notably, our experiments demonstrate, for the first time, that a policy trained on raw simulated depth, without the need for adding noise or real-world fine-tuning, generalizes seamlessly to real-world robots on two challenging long-horizon tasks involving articulated, reflective, and slender objects, with little to no performance degradation. We hope our findings will inspire future research in utilizing simulation data and 3D information in general robot policies.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-09-02T17:29:38Z</published>
+    <arxiv:comment>32 pages, 18 figures, project page: https://manipulation-as-in-simulation.github.io/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Minghuan Liu</name>
+    </author>
+    <author>
+      <name>Zhengbang Zhu</name>
+    </author>
+    <author>
+      <name>Xiaoshen Han</name>
+    </author>
+    <author>
+      <name>Peng Hu</name>
+    </author>
+    <author>
+      <name>Haotong Lin</name>
+    </author>
+    <author>
+      <name>Xinyao Li</name>
+    </author>
+    <author>
+      <name>Jingxiao Chen</name>
+    </author>
+    <author>
+      <name>Jiafeng Xu</name>
+    </author>
+    <author>
+      <name>Yichu Yang</name>
+    </author>
+    <author>
+      <name>Yunfeng Lin</name>
+    </author>
+    <author>
+      <name>Xinghang Li</name>
+    </author>
+    <author>
+      <name>Yong Yu</name>
+    </author>
+    <author>
+      <name>Weinan Zhang</name>
+    </author>
+    <author>
+      <name>Tao Kong</name>
+    </author>
+    <author>
+      <name>Bingyi Kang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2508.03692v3</id>
+    <title>LiDARCrafter: Dynamic 4D World Modeling from LiDAR Sequences</title>
+    <updated>2025-12-02T00:21:44Z</updated>
+    <link href="https://arxiv.org/abs/2508.03692v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2508.03692v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Generative world models have become essential data engines for autonomous driving, yet most existing efforts focus on videos or occupancy grids, overlooking the unique LiDAR properties. Extending LiDAR generation to dynamic 4D world modeling presents challenges in controllability, temporal coherence, and evaluation standardization. To this end, we present LiDARCrafter, a unified framework for 4D LiDAR generation and editing. Given free-form natural language inputs, we parse instructions into ego-centric scene graphs, which condition a tri-branch diffusion network to generate object structures, motion trajectories, and geometry. These structured conditions enable diverse and fine-grained scene editing. Additionally, an autoregressive module generates temporally coherent 4D LiDAR sequences with smooth transitions. To support standardized evaluation, we establish a comprehensive benchmark with diverse metrics spanning scene-, object-, and sequence-level aspects. Experiments on the nuScenes dataset using this benchmark demonstrate that LiDARCrafter achieves state-of-the-art performance in fidelity, controllability, and temporal consistency across all levels, paving the way for data augmentation and simulation. The code and benchmark are released to the community.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-08-05T17:59:56Z</published>
+    <arxiv:comment>AAAI 2026 Oral Presentation; 38 pages, 18 figures, 12 tables; Project Page at https://lidarcrafter.github.io</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Ao Liang</name>
+    </author>
+    <author>
+      <name>Youquan Liu</name>
+    </author>
+    <author>
+      <name>Yu Yang</name>
+    </author>
+    <author>
+      <name>Dongyue Lu</name>
+    </author>
+    <author>
+      <name>Linfeng Li</name>
+    </author>
+    <author>
+      <name>Lingdong Kong</name>
+    </author>
+    <author>
+      <name>Huaici Zhao</name>
+    </author>
+    <author>
+      <name>Wei Tsang Ooi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2506.21547v1</id>
+    <title>SAM4D: Segment Anything in Camera and LiDAR Streams</title>
+    <updated>2025-06-26T17:59:14Z</updated>
+    <link href="https://arxiv.org/abs/2506.21547v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2506.21547v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We present SAM4D, a multi-modal and temporal foundation model designed for promptable segmentation across camera and LiDAR streams. Unified Multi-modal Positional Encoding (UMPE) is introduced to align camera and LiDAR features in a shared 3D space, enabling seamless cross-modal prompting and interaction. Additionally, we propose Motion-aware Cross-modal Memory Attention (MCMA), which leverages ego-motion compensation to enhance temporal consistency and long-horizon feature retrieval, ensuring robust segmentation across dynamically changing autonomous driving scenes. To avoid annotation bottlenecks, we develop a multi-modal automated data engine that synergizes VFM-driven video masklets, spatiotemporal 4D reconstruction, and cross-modal masklet fusion. This framework generates camera-LiDAR aligned pseudo-labels at a speed orders of magnitude faster than human annotation while preserving VFM-derived semantic fidelity in point cloud representations. We conduct extensive experiments on the constructed Waymo-4DSeg, which demonstrate the powerful cross-modal segmentation ability and great potential in data annotation of proposed SAM4D.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-06-26T17:59:14Z</published>
+    <arxiv:comment>Accepted by ICCV2025, Project Page: https://SAM4D-Project.github.io</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Jianyun Xu</name>
+    </author>
+    <author>
+      <name>Song Wang</name>
+    </author>
+    <author>
+      <name>Ziqian Ni</name>
+    </author>
+    <author>
+      <name>Chunyong Hu</name>
+    </author>
+    <author>
+      <name>Sheng Yang</name>
+    </author>
+    <author>
+      <name>Jianke Zhu</name>
+    </author>
+    <author>
+      <name>Qiang Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2505.09723v1</id>
+    <title>EnerVerse-AC: Envisioning Embodied Environments with Action Condition</title>
+    <updated>2025-05-14T18:30:53Z</updated>
+    <link href="https://arxiv.org/abs/2505.09723v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2505.09723v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Robotic imitation learning has advanced from solving static tasks to addressing dynamic interaction scenarios, but testing and evaluation remain costly and challenging due to the need for real-time interaction with dynamic environments. We propose EnerVerse-AC (EVAC), an action-conditional world model that generates future visual observations based on an agent's predicted actions, enabling realistic and controllable robotic inference. Building on prior architectures, EVAC introduces a multi-level action-conditioning mechanism and ray map encoding for dynamic multi-view image generation while expanding training data with diverse failure trajectories to improve generalization. As both a data engine and evaluator, EVAC augments human-collected trajectories into diverse datasets and generates realistic, action-conditioned video observations for policy testing, eliminating the need for physical robots or complex simulations. This approach significantly reduces costs while maintaining high fidelity in robotic manipulation evaluation. Extensive experiments validate the effectiveness of our method. Code, checkpoints, and datasets can be found at &lt;https://annaj2178.github.io/EnerverseAC.github.io&gt;.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-05-14T18:30:53Z</published>
+    <arxiv:comment>Website: https://annaj2178.github.io/EnerverseAC.github.io</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yuxin Jiang</name>
+    </author>
+    <author>
+      <name>Shengcong Chen</name>
+    </author>
+    <author>
+      <name>Siyuan Huang</name>
+    </author>
+    <author>
+      <name>Liliang Chen</name>
+    </author>
+    <author>
+      <name>Pengfei Zhou</name>
+    </author>
+    <author>
+      <name>Yue Liao</name>
+    </author>
+    <author>
+      <name>Xindong He</name>
+    </author>
+    <author>
+      <name>Chiming Liu</name>
+    </author>
+    <author>
+      <name>Hongsheng Li</name>
+    </author>
+    <author>
+      <name>Maoqing Yao</name>
+    </author>
+    <author>
+      <name>Guanghui Ren</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2504.04573v1</id>
+    <title>DexTOG: Learning Task-Oriented Dexterous Grasp with Language</title>
+    <updated>2025-04-06T18:23:10Z</updated>
+    <link href="https://arxiv.org/abs/2504.04573v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2504.04573v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This study introduces a novel language-guided diffusion-based learning framework, DexTOG, aimed at advancing the field of task-oriented grasping (TOG) with dexterous hands. Unlike existing methods that mainly focus on 2-finger grippers, this research addresses the complexities of dexterous manipulation, where the system must identify non-unique optimal grasp poses under specific task constraints, cater to multiple valid grasps, and search in a high degree-of-freedom configuration space in grasp planning. The proposed DexTOG includes a diffusion-based grasp pose generation model, DexDiffu, and a data engine to support the DexDiffu. By leveraging DexTOG, we also proposed a new dataset, DexTOG-80K, which was developed using a shadow robot hand to perform various tasks on 80 objects from 5 categories, showcasing the dexterity and multi-tasking capabilities of the robotic hand. This research not only presents a significant leap in dexterous TOG but also provides a comprehensive dataset and simulation validation, setting a new benchmark in robotic manipulation research.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-04-06T18:23:10Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <arxiv:journal_ref>IEEE Robotics and Automation Letters, vol. 10, no. 2, pp. 995-1002, Feb. 2025</arxiv:journal_ref>
+    <author>
+      <name>Jieyi Zhang</name>
+    </author>
+    <author>
+      <name>Wenqiang Xu</name>
+    </author>
+    <author>
+      <name>Zhenjun Yu</name>
+    </author>
+    <author>
+      <name>Pengfei Xie</name>
+    </author>
+    <author>
+      <name>Tutian Tang</name>
+    </author>
+    <author>
+      <name>Cewu Lu</name>
+    </author>
+    <arxiv:doi>10.1109/LRA.2024.3518116</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/LRA.2024.3518116" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2504.04338v1</id>
+    <title>Data Scaling Laws for End-to-End Autonomous Driving</title>
+    <updated>2025-04-06T03:23:48Z</updated>
+    <link href="https://arxiv.org/abs/2504.04338v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2504.04338v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autonomous vehicle (AV) stacks have traditionally relied on decomposed approaches, with separate modules handling perception, prediction, and planning. However, this design introduces information loss during inter-module communication, increases computational overhead, and can lead to compounding errors. To address these challenges, recent works have proposed architectures that integrate all components into an end-to-end differentiable model, enabling holistic system optimization. This shift emphasizes data engineering over software integration, offering the potential to enhance system performance by simply scaling up training resources. In this work, we evaluate the performance of a simple end-to-end driving architecture on internal driving datasets ranging in size from 16 to 8192 hours with both open-loop metrics and closed-loop simulations. Specifically, we investigate how much additional training data is needed to achieve a target performance gain, e.g., a 5% improvement in motion prediction accuracy. By understanding the relationship between model performance and training dataset size, we aim to provide insights for data-driven decision-making in autonomous driving development.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-04-06T03:23:48Z</published>
+    <arxiv:comment>15 pages, 11 figures, 4 tables, CVPR 2025 Workshop on Autonomous Driving</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Alexander Naumann</name>
+    </author>
+    <author>
+      <name>Xunjiang Gu</name>
+    </author>
+    <author>
+      <name>Tolga Dimlioglu</name>
+    </author>
+    <author>
+      <name>Mariusz Bojarski</name>
+    </author>
+    <author>
+      <name>Alperen Degirmenci</name>
+    </author>
+    <author>
+      <name>Alexander Popov</name>
+    </author>
+    <author>
+      <name>Devansh Bisla</name>
+    </author>
+    <author>
+      <name>Marco Pavone</name>
+    </author>
+    <author>
+      <name>Urs Müller</name>
+    </author>
+    <author>
+      <name>Boris Ivanovic</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2501.01895v3</id>
+    <title>EnerVerse: Envisioning Embodied Future Space for Robotics Manipulation</title>
+    <updated>2025-11-16T02:11:26Z</updated>
+    <link href="https://arxiv.org/abs/2501.01895v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2501.01895v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We introduce EnerVerse, a generative robotics foundation model that constructs and interprets embodied spaces. EnerVerse employs a chunk-wise autoregressive video diffusion framework to predict future embodied spaces from instructions, enhanced by a sparse context memory for long-term reasoning. To model the 3D robotics world, we adopt a multi-view video representation, providing rich perspectives to address challenges like motion ambiguity and 3D grounding. Additionally, EnerVerse-D, a data engine pipeline combining generative modeling with 4D Gaussian Splatting, forms a self-reinforcing data loop to reduce the sim-to-real gap. Leveraging these innovations, EnerVerse translates 4D world representations into physical actions via a policy head (EnerVerse-A), achieving state-of-the-art performance in both simulation and real-world tasks. For efficiency, EnerVerse-A reuses features from the first denoising step and predicts action chunks, achieving about 280 ms per 8-step action chunk on a single RTX 4090. Further video demos, dataset samples could be found in our project page.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-01-03T17:00:33Z</published>
+    <arxiv:comment>Accepted by NeurIPS 2025. Website: https://sites.google.com/view/enerverse</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Siyuan Huang</name>
+    </author>
+    <author>
+      <name>Liliang Chen</name>
+    </author>
+    <author>
+      <name>Pengfei Zhou</name>
+    </author>
+    <author>
+      <name>Shengcong Chen</name>
+    </author>
+    <author>
+      <name>Zhengkai Jiang</name>
+    </author>
+    <author>
+      <name>Yue Hu</name>
+    </author>
+    <author>
+      <name>Yue Liao</name>
+    </author>
+    <author>
+      <name>Peng Gao</name>
+    </author>
+    <author>
+      <name>Hongsheng Li</name>
+    </author>
+    <author>
+      <name>Maoqing Yao</name>
+    </author>
+    <author>
+      <name>Guanghui Ren</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2409.11512v3</id>
+    <title>Good Grasps Only: A data engine for self-supervised fine-tuning of pose estimation using grasp poses for verification</title>
+    <updated>2024-12-12T08:59:33Z</updated>
+    <link href="https://arxiv.org/abs/2409.11512v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2409.11512v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this paper, we present a novel method for self-supervised fine-tuning of pose estimation. Leveraging zero-shot pose estimation, our approach enables the robot to automatically obtain training data without manual labeling. After pose estimation the object is grasped, and in-hand pose estimation is used for data validation. Our pipeline allows the system to fine-tune while the process is running, removing the need for a learning phase. The motivation behind our work lies in the need for rapid setup of pose estimation solutions. Specifically, we address the challenging task of bin picking, which plays a pivotal role in flexible robotic setups. Our method is implemented on a robotics work-cell, and tested with four different objects. For all objects, our method increases the performance and outperforms a state-of-the-art method trained on the CAD model of the objects. Project page available at gogoengine.github.io</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-09-17T19:26:21Z</published>
+    <arxiv:comment>8 pages, 7 figures, 3 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Frederik Hagelskjær</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2403.03541v1</id>
+    <title>Seamless Virtual Reality with Integrated Synchronizer and Synthesizer for Autonomous Driving</title>
+    <updated>2024-03-06T08:37:36Z</updated>
+    <link href="https://arxiv.org/abs/2403.03541v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2403.03541v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Virtual reality (VR) is a promising data engine for autonomous driving (AD). However, data fidelity in this paradigm is often degraded by VR inconsistency, for which the existing VR approaches become ineffective, as they ignore the inter-dependency between low-level VR synchronizer designs (i.e., data collector) and high-level VR synthesizer designs (i.e., data processor). This paper presents a seamless virtual reality SVR platform for AD, which mitigates such inconsistency, enabling VR agents to interact with each other in a shared symbiotic world. The crux to SVR is an integrated synchronizer and synthesizer IS2 design, which consists of a drift-aware lidar-inertial synchronizer for VR colocation and a motion-aware deep visual synthesis network for augmented reality image generation. We implement SVR on car-like robots in two sandbox platforms, achieving a cm-level VR colocalization accuracy and 3.2% VR image deviation, thereby avoiding missed collisions or model clippings. Experiments show that the proposed SVR reduces the intervention times, missed turns, and failure rates compared to other benchmarks. The SVR-trained neural network can handle unseen situations in real-world environments, by leveraging its knowledge learnt from the VR space.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-03-06T08:37:36Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>He Li</name>
+    </author>
+    <author>
+      <name>Ruihua Han</name>
+    </author>
+    <author>
+      <name>Zirui Zhao</name>
+    </author>
+    <author>
+      <name>Wei Xu</name>
+    </author>
+    <author>
+      <name>Qi Hao</name>
+    </author>
+    <author>
+      <name>Shuai Wang</name>
+    </author>
+    <author>
+      <name>Chengzhong Xu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2401.12888v2</id>
+    <title>Data-Centric Evolution in Autonomous Driving: A Comprehensive Survey of Big Data System, Data Mining, and Closed-Loop Technologies</title>
+    <updated>2024-01-26T16:41:01Z</updated>
+    <link href="https://arxiv.org/abs/2401.12888v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2401.12888v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The aspiration of the next generation's autonomous driving (AD) technology relies on the dedicated integration and interaction among intelligent perception, prediction, planning, and low-level control. There has been a huge bottleneck regarding the upper bound of autonomous driving algorithm performance, a consensus from academia and industry believes that the key to surmount the bottleneck lies in data-centric autonomous driving technology. Recent advancement in AD simulation, closed-loop model training, and AD big data engine have gained some valuable experience. However, there is a lack of systematic knowledge and deep understanding regarding how to build efficient data-centric AD technology for AD algorithm self-evolution and better AD big data accumulation. To fill in the identified research gaps, this article will closely focus on reviewing the state-of-the-art data-driven autonomous driving technologies, with an emphasis on the comprehensive taxonomy of autonomous driving datasets characterized by milestone generations, key features, data acquisition settings, etc. Furthermore, we provide a systematic review of the existing benchmark closed-loop AD big data pipelines from the industrial frontier, including the procedure of closed-loop frameworks, key technologies, and empirical studies. Finally, the future directions, potential applications, limitations and concerns are discussed to arouse efforts from both academia and industry for promoting the further development of autonomous driving. The project repository is available at: https://github.com/LincanLi98/Awesome-Data-Centric-Autonomous-Driving.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-01-23T16:28:30Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Lincan Li</name>
+    </author>
+    <author>
+      <name>Wei Shao</name>
+    </author>
+    <author>
+      <name>Wei Dong</name>
+    </author>
+    <author>
+      <name>Yijun Tian</name>
+    </author>
+    <author>
+      <name>Qiming Zhang</name>
+    </author>
+    <author>
+      <name>Kaixiang Yang</name>
+    </author>
+    <author>
+      <name>Wenjie Zhang</name>
+    </author>
+  </entry>
+</feed>

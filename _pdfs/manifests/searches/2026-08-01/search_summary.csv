@@ -1,0 +1,29 @@
+source,query,reported_total,retrieved,within_year_range,error
+DBLP,robot data curation,3,3,3,
+DBLP,robot demonstration selection,5,5,3,
+DBLP,robot data quality,38,38,35,
+DBLP,robot data filtering,15,15,6,
+DBLP,robot data mixing,3,3,3,
+DBLP,robot trajectory annotation segmentation,0,0,0,
+DBLP,robot instruction relabeling,0,0,0,RuntimeError: curl: (28) Operation timed out after 45000 milliseconds with 0 bytes received
+DBLP,robot demonstration augmentation,0,0,0,RuntimeError: curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received
+DBLP,robot synthetic demonstration generation,0,0,0,RuntimeError: curl: (28) Operation timed out after 45000 milliseconds with 0 out of 0 bytes received
+DBLP,robot world model data generation,0,0,0,
+DBLP,robot self improvement data,0,0,0,
+DBLP,robot online post training,0,0,0,
+DBLP,robot autonomous data collection,0,0,0,RuntimeError: curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received
+DBLP,cross embodiment action alignment,0,0,0,RuntimeError: curl: (28) Operation timed out after 45000 milliseconds with 0 bytes received
+DBLP,vision language action data engine,2,2,2,
+DBLP,embodied data preparation,0,0,0,
+arXiv,"cat:cs.RO AND all:""data curation""",37,37,37,
+arXiv,"cat:cs.RO AND all:""demonstration selection""",2,2,2,
+arXiv,"cat:cs.RO AND all:""data quality""",0,0,0,"ParseError: XML or text declaration not at start of entity: line 1594, column 946"
+arXiv,"cat:cs.RO AND all:""data filtering""",0,0,0,"ParseError: not well-formed (invalid token): line 217, column 10"
+arXiv,"cat:cs.RO AND all:""data mixing""",8,8,8,
+arXiv,"cat:cs.RO AND (all:""automatic annotation"" OR all:relabeling OR all:segmentation)",0,0,0,"ParseError: XML or text declaration not at start of entity: line 8190, column 575"
+arXiv,"cat:cs.RO AND (all:""data augmentation"" OR all:""synthetic demonstrations"")",396,300,300,
+arXiv,"cat:cs.RO AND (all:""world model"" AND all:""data generation"")",25,25,25,
+arXiv,"cat:cs.RO AND (all:""self-improvement"" OR all:""online post-training"")",68,68,68,
+arXiv,"cat:cs.RO AND all:""autonomous data collection""",16,16,15,
+arXiv,"cat:cs.RO AND (all:""cross-embodiment"" OR all:""action alignment"")",283,283,283,
+arXiv,"cat:cs.RO AND all:""data engine""",40,40,40,

@@ -1,0 +1,204 @@
+{
+  "result": {
+    "query": "robot* data* curation*",
+    "status": {
+      "@code": "200",
+      "text": "OK"
+    },
+    "time": {
+      "@unit": "msecs",
+      "text": "22.89"
+    },
+    "completions": {
+      "@total": "1",
+      "@computed": "1",
+      "@sent": "1",
+      "c": {
+        "@sc": "3",
+        "@dc": "3",
+        "@oc": "3",
+        "@id": "69723555",
+        "text": "curation"
+      }
+    },
+    "hits": {
+      "@total": "3",
+      "@computed": "3",
+      "@sent": "3",
+      "@first": "0",
+      "hit": [
+        {
+          "@score": "3",
+          "@id": "234538",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "345/8323",
+                  "text": "Haeone Lee"
+                },
+                {
+                  "@pid": "376/8512",
+                  "text": "Taywon Min"
+                },
+                {
+                  "@pid": "29/1204",
+                  "text": "Junsu Kim"
+                },
+                {
+                  "@pid": "409/8086",
+                  "text": "Sinjae Kang"
+                },
+                {
+                  "@pid": "211/7883",
+                  "text": "Fangchen Liu"
+                },
+                {
+                  "@pid": "168/8304",
+                  "text": "Lerrel Pinto"
+                },
+                {
+                  "@pid": "183/6849",
+                  "text": "Kimin Lee"
+                }
+              ]
+            },
+            "title": "Quality over Quantity: Demonstration Curation via Influence Functions for Data-Centric Robot Learning.",
+            "venue": "CoRR",
+            "volume": "abs/2603.09056",
+            "year": "2026",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2603-09056",
+            "doi": "10.48550/ARXIV.2603.09056",
+            "ee": "https://doi.org/10.48550/arXiv.2603.09056",
+            "url": "https://dblp.org/rec/journals/corr/abs-2603-09056"
+          },
+          "url": "URL#234538"
+        },
+        {
+          "@score": "3",
+          "@id": "290090",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "96/6771",
+                  "text": "Tao Xu"
+                },
+                {
+                  "@pid": "18/4231",
+                  "text": "Jiaxin Wang"
+                },
+                {
+                  "@pid": "260/1543",
+                  "text": "Runhao Zhang"
+                },
+                {
+                  "@pid": "340/4339",
+                  "text": "Jiayi Guan"
+                },
+                {
+                  "@pid": "368/0296",
+                  "text": "Xianchao Zeng"
+                },
+                {
+                  "@pid": "343/6902",
+                  "text": "Weixi Song"
+                },
+                {
+                  "@pid": "27/3481",
+                  "text": "Xinyu Zhou"
+                },
+                {
+                  "@pid": "412/8979",
+                  "text": "Zhetao Chen"
+                },
+                {
+                  "@pid": "09/4891",
+                  "text": "Guang Chen"
+                },
+                {
+                  "@pid": "198/9345",
+                  "text": "Yong-Lu Li 0001"
+                }
+              ]
+            },
+            "title": "ATHENA: Accelerated Multi-Task Heterogeneous Influence Functions for Robot Data Curation.",
+            "venue": "CoRR",
+            "volume": "abs/2606.16208",
+            "year": "2026",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2606-16208",
+            "doi": "10.48550/ARXIV.2606.16208",
+            "ee": "https://doi.org/10.48550/arXiv.2606.16208",
+            "url": "https://dblp.org/rec/journals/corr/abs-2606-16208"
+          },
+          "url": "URL#290090"
+        },
+        {
+          "@score": "3",
+          "@id": "757393",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "259/9917",
+                  "text": "Joey Hejna"
+                },
+                {
+                  "@pid": "287/4981",
+                  "text": "Suvir Mirchandani"
+                },
+                {
+                  "@pid": "218/5246",
+                  "text": "Ashwin Balakrishna"
+                },
+                {
+                  "@pid": "215/3608",
+                  "text": "Annie Xie"
+                },
+                {
+                  "@pid": "238/0472",
+                  "text": "Ayzaan Wahid"
+                },
+                {
+                  "@pid": "139/0769",
+                  "text": "Jonathan Tompson"
+                },
+                {
+                  "@pid": "61/8732",
+                  "text": "Pannag Sanketi"
+                },
+                {
+                  "@pid": "62/8135",
+                  "text": "Dhruv Shah"
+                },
+                {
+                  "@pid": "153/1976",
+                  "text": "Coline Devin"
+                },
+                {
+                  "@pid": "117/3174",
+                  "text": "Dorsa Sadigh"
+                }
+              ]
+            },
+            "title": "Robot Data Curation with Mutual Information Estimators.",
+            "venue": "CoRR",
+            "volume": "abs/2502.08623",
+            "year": "2025",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2502-08623",
+            "doi": "10.48550/ARXIV.2502.08623",
+            "ee": "https://doi.org/10.48550/arXiv.2502.08623",
+            "url": "https://dblp.org/rec/journals/corr/abs-2502-08623"
+          },
+          "url": "URL#757393"
+        }
+      ]
+    }
+  }
+}

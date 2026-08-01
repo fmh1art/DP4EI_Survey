@@ -1,0 +1,548 @@
+{
+  "result": {
+    "query": "robot* data* filtering*",
+    "status": {
+      "@code": "200",
+      "text": "OK"
+    },
+    "time": {
+      "@unit": "msecs",
+      "text": "22.62"
+    },
+    "completions": {
+      "@total": "1",
+      "@computed": "1",
+      "@sent": "1",
+      "c": {
+        "@sc": "15",
+        "@dc": "15",
+        "@oc": "15",
+        "@id": "69928361",
+        "text": "filtering"
+      }
+    },
+    "hits": {
+      "@total": "15",
+      "@computed": "15",
+      "@sent": "15",
+      "@first": "0",
+      "hit": [
+        {
+          "@score": "4",
+          "@id": "2647867",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "210/9891",
+                  "text": "Alessandro Albini"
+                },
+                {
+                  "@pid": "24/5811",
+                  "text": "Giorgio Cannata"
+                },
+                {
+                  "@pid": "02/9945",
+                  "text": "Perla Maiolino"
+                }
+              ]
+            },
+            "title": "A Local Filtering Technique for Robot Skin Data.",
+            "venue": "IEEE Robotics Autom. Lett.",
+            "volume": "6",
+            "number": "4",
+            "pages": "7774-7780",
+            "year": "2021",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/ral/AlbiniCM21",
+            "doi": "10.1109/LRA.2021.3098457",
+            "ee": "https://doi.org/10.1109/LRA.2021.3098457",
+            "url": "https://dblp.org/rec/journals/ral/AlbiniCM21"
+          },
+          "url": "URL#2647867"
+        },
+        {
+          "@score": "4",
+          "@id": "4283057",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "127/4679",
+                  "text": "Pablo Arturo Martínez"
+                },
+                {
+                  "@pid": "09/1280-3",
+                  "text": "Xiao Lin 0003"
+                },
+                {
+                  "@pid": "31/927",
+                  "text": "Mario Castelán"
+                },
+                {
+                  "@pid": "35/6496",
+                  "text": "Josep R. Casas"
+                },
+                {
+                  "@pid": "89/5162",
+                  "text": "Gustavo Arechavaleta"
+                }
+              ]
+            },
+            "title": "A closed-loop approach for tracking a humanoid robot using particle filtering and depth data.",
+            "venue": "Intell. Serv. Robotics",
+            "volume": "10",
+            "number": "4",
+            "pages": "297-312",
+            "year": "2017",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/isrob/MartinezLCCA17",
+            "doi": "10.1007/S11370-017-0230-0",
+            "ee": "https://doi.org/10.1007/s11370-017-0230-0",
+            "url": "https://dblp.org/rec/journals/isrob/MartinezLCCA17"
+          },
+          "url": "URL#4283057"
+        },
+        {
+          "@score": "3",
+          "@id": "719739",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "258/2035",
+                  "text": "Yixin Deng"
+                },
+                {
+                  "@pid": "46/6054",
+                  "text": "Keru Wang"
+                },
+                {
+                  "@pid": "88/8279",
+                  "text": "Stephen J. Redmond"
+                }
+              ]
+            },
+            "title": "Filtering Human Demonstration Datasets to Improve Policy Learning for Robotic Manipulation.",
+            "venue": "SSRR",
+            "pages": "96-101",
+            "year": "2025",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/ssrr/DengWR25",
+            "doi": "10.1109/SSRR68451.2025.11391300",
+            "ee": "https://doi.org/10.1109/SSRR68451.2025.11391300",
+            "url": "https://dblp.org/rec/conf/ssrr/DengWR25"
+          },
+          "url": "URL#719739"
+        },
+        {
+          "@score": "3",
+          "@id": "2350164",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "277/7992",
+                  "text": "Ofer Dagan"
+                },
+                {
+                  "@pid": "125/5800",
+                  "text": "Nisar R. Ahmed"
+                }
+              ]
+            },
+            "title": "Conservative Filtering for Heterogeneous Decentralized Data Fusion in Dynamic Robotic Systems.",
+            "venue": "IROS",
+            "pages": "5840-5847",
+            "year": "2022",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/iros/DaganA22",
+            "doi": "10.1109/IROS47612.2022.9981414",
+            "ee": "https://doi.org/10.1109/IROS47612.2022.9981414",
+            "url": "https://dblp.org/rec/conf/iros/DaganA22"
+          },
+          "url": "URL#2350164"
+        },
+        {
+          "@score": "3",
+          "@id": "2437230",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "277/7992",
+                  "text": "Ofer Dagan"
+                },
+                {
+                  "@pid": "125/5800",
+                  "text": "Nisar R. Ahmed"
+                }
+              ]
+            },
+            "title": "Conservative Filtering for Heterogeneous Decentralized Data Fusion in Dynamic Robotic Systems.",
+            "venue": "CoRR",
+            "volume": "abs/2203.07142",
+            "year": "2022",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2203-07142",
+            "doi": "10.48550/ARXIV.2203.07142",
+            "ee": "https://doi.org/10.48550/arXiv.2203.07142",
+            "url": "https://dblp.org/rec/journals/corr/abs-2203-07142"
+          },
+          "url": "URL#2437230"
+        },
+        {
+          "@score": "3",
+          "@id": "3986327",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "168/1340",
+                  "text": "Adam Barton"
+                },
+                {
+                  "@pid": "37/5410",
+                  "text": "Eva Volná"
+                },
+                {
+                  "@pid": "90/11004",
+                  "text": "Martin Kotyrba"
+                }
+              ]
+            },
+            "title": "Control of autonomous robot behavior using data filtering through adaptive resonance theory.",
+            "venue": "Vietnam. J. Comput. Sci.",
+            "volume": "5",
+            "number": "2",
+            "pages": "85-94",
+            "year": "2018",
+            "type": "Journal Articles",
+            "access": "open",
+            "key": "journals/vjcs/BartonVK18",
+            "doi": "10.1007/S40595-017-0103-7",
+            "ee": "https://doi.org/10.1007/s40595-017-0103-7",
+            "url": "https://dblp.org/rec/journals/vjcs/BartonVK18"
+          },
+          "url": "URL#3986327"
+        },
+        {
+          "@score": "3",
+          "@id": "4081942",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "138/6295",
+                  "text": "Mehmet Turan"
+                },
+                {
+                  "@pid": "200/7940",
+                  "text": "Yasin Almalioglu"
+                },
+                {
+                  "@pid": "32/10334",
+                  "text": "Hunter Gilbert"
+                },
+                {
+                  "@pid": "64/6554",
+                  "text": "Helder Araújo"
+                },
+                {
+                  "@pid": "41/6613",
+                  "text": "A. Taylan Cemgil"
+                },
+                {
+                  "@pid": "25/3694",
+                  "text": "Metin Sitti"
+                }
+              ]
+            },
+            "title": "EndoSensorFusion: Particle Filtering-Based Multi-Sensory Data Fusion with Switching State-Space Model for Endoscopic Capsule Robots.",
+            "venue": "ICRA",
+            "pages": "1-8",
+            "year": "2018",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/icra/TuranAGACS18",
+            "doi": "10.1109/ICRA.2018.8460472",
+            "ee": "https://doi.org/10.1109/ICRA.2018.8460472",
+            "url": "https://dblp.org/rec/conf/icra/TuranAGACS18"
+          },
+          "url": "URL#4081942"
+        },
+        {
+          "@score": "3",
+          "@id": "4416146",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "135/8381",
+                  "text": "Jun-ichiro Furukawa"
+                },
+                {
+                  "@pid": "126/9782",
+                  "text": "Asuka Takai"
+                },
+                {
+                  "@pid": "75/6424",
+                  "text": "Jun Morimoto"
+                }
+              ]
+            },
+            "title": "Database-driven approach for Biosignal-based robot control with collaborative filtering.",
+            "venue": "Humanoids",
+            "pages": "606-611",
+            "year": "2017",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/humanoids/FurukawaTM17",
+            "doi": "10.1109/HUMANOIDS.2017.8246934",
+            "ee": "https://doi.org/10.1109/HUMANOIDS.2017.8246934",
+            "url": "https://dblp.org/rec/conf/humanoids/FurukawaTM17"
+          },
+          "url": "URL#4416146"
+        },
+        {
+          "@score": "3",
+          "@id": "4547704",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "138/6295",
+                  "text": "Mehmet Turan"
+                },
+                {
+                  "@pid": "200/7940",
+                  "text": "Yasin Almalioglu"
+                },
+                {
+                  "@pid": "32/10334",
+                  "text": "Hunter Gilbert"
+                },
+                {
+                  "@pid": "64/6554",
+                  "text": "Helder Araújo"
+                },
+                {
+                  "@pid": "41/6613",
+                  "text": "A. Taylan Cemgil"
+                },
+                {
+                  "@pid": "25/3694",
+                  "text": "Metin Sitti"
+                }
+              ]
+            },
+            "title": "EndoSensorFusion: Particle Filtering-Based Multi-sensory Data Fusion with Switching State-Space Model for Endoscopic Capsule Robots.",
+            "venue": "CoRR",
+            "volume": "abs/1709.03401",
+            "year": "2017",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-1709-03401",
+            "ee": "http://arxiv.org/abs/1709.03401",
+            "url": "https://dblp.org/rec/journals/corr/abs-1709-03401"
+          },
+          "url": "URL#4547704"
+        },
+        {
+          "@score": "3",
+          "@id": "4688716",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "234/0034",
+                  "text": "Nikolay Borgest"
+                },
+                {
+                  "@pid": "234/0010",
+                  "text": "Maksim Korovin"
+                }
+              ]
+            },
+            "title": "Ontological Approach Towards Semantic Data Filtering in the Interface Design Applied to the Interface Design and Dialogue Creation for the &quot;Robot-Aircraft Designer&quot; Informational System.",
+            "venue": "ACS",
+            "pages": "93-101",
+            "year": "2016",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/acs2/BorgestK16",
+            "doi": "10.1007/978-3-319-48429-7_9",
+            "ee": "https://doi.org/10.1007/978-3-319-48429-7_9",
+            "url": "https://dblp.org/rec/conf/acs2/BorgestK16"
+          },
+          "url": "URL#4688716"
+        },
+        {
+          "@score": "3",
+          "@id": "5252266",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "132/0715",
+                  "text": "Waleed A. Abdulhafiz"
+                },
+                {
+                  "@pid": "78/6027",
+                  "text": "Alaa M. Khamis"
+                }
+              ]
+            },
+            "title": "Bayesian Approach with Pre- and Post-Filtering to Handle Data Uncertainty and Inconsistency in Mobile Robot Local Positioning.",
+            "venue": "J. Intell. Syst.",
+            "volume": "23",
+            "number": "2",
+            "pages": "133-154",
+            "year": "2014",
+            "type": "Journal Articles",
+            "access": "open",
+            "key": "journals/jois/AbdulhafizK14",
+            "doi": "10.1515/JISYS-2013-0078",
+            "ee": "https://doi.org/10.1515/jisys-2013-0078",
+            "url": "https://dblp.org/rec/journals/jois/AbdulhafizK14"
+          },
+          "url": "URL#5252266"
+        },
+        {
+          "@score": "3",
+          "@id": "5936497",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "49/1485",
+                  "text": "Stephen Tully"
+                },
+                {
+                  "@pid": "05/8369",
+                  "text": "Andrea Bajo"
+                },
+                {
+                  "@pid": "01/2076",
+                  "text": "George Kantor"
+                },
+                {
+                  "@pid": "c/HowieChoset",
+                  "text": "Howie Choset"
+                },
+                {
+                  "@pid": "88/5715",
+                  "text": "Nabil Simaan"
+                }
+              ]
+            },
+            "title": "Constrained filtering with contact detection data for the localization and registration of continuum robots in flexible environments.",
+            "venue": "ICRA",
+            "pages": "3388-3394",
+            "year": "2012",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/icra/TullyBKCS12",
+            "doi": "10.1109/ICRA.2012.6225080",
+            "ee": "https://doi.org/10.1109/ICRA.2012.6225080",
+            "url": "https://dblp.org/rec/conf/icra/TullyBKCS12"
+          },
+          "url": "URL#5936497"
+        },
+        {
+          "@score": "3",
+          "@id": "6225038",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "30/4457",
+                  "text": "Mahdi Azizian"
+                },
+                {
+                  "@pid": "p/RajnikantVPatel",
+                  "text": "Rajni V. Patel"
+                }
+              ]
+            },
+            "title": "Data fusion for catheter tracking using Kalman filtering: applications in robot-assisted catheter insertion.",
+            "venue": "Image-Guided Procedures",
+            "pages": "796413",
+            "year": "2011",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/miigp/AzizianP11a",
+            "doi": "10.1117/12.878148",
+            "ee": "https://doi.org/10.1117/12.878148",
+            "url": "https://dblp.org/rec/conf/miigp/AzizianP11a"
+          },
+          "url": "URL#6225038"
+        },
+        {
+          "@score": "3",
+          "@id": "6342036",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "76/1423",
+                  "text": "Ludovic Brethes"
+                },
+                {
+                  "@pid": "69/4879",
+                  "text": "Frédéric Lerasle"
+                },
+                {
+                  "@pid": "65/113",
+                  "text": "Patrick Danès"
+                },
+                {
+                  "@pid": "90/4409",
+                  "text": "Mathias Fontmarty"
+                }
+              ]
+            },
+            "title": "Particle filtering strategies for data fusion dedicated to visual tracking from a mobile robot.",
+            "venue": "Mach. Vis. Appl.",
+            "volume": "21",
+            "number": "4",
+            "pages": "427-448",
+            "year": "2010",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/mva/BrethesLDF10",
+            "doi": "10.1007/S00138-008-0174-7",
+            "ee": "https://doi.org/10.1007/s00138-008-0174-7",
+            "url": "https://dblp.org/rec/journals/mva/BrethesLDF10"
+          },
+          "url": "URL#6342036"
+        },
+        {
+          "@score": "3",
+          "@id": "6511170",
+          "info": {
+            "authors": {
+              "author": {
+                "@pid": "20/2217",
+                "text": "Maja Karasalo"
+              }
+            },
+            "title": "Data Filtering and Control Design for Mobile Robots.",
+            "year": "2009",
+            "type": "Books and Theses",
+            "access": "closed",
+            "key": "phd/basesearch/Karasalo09",
+            "ee": "https://nbn-resolving.org/urn:nbn:se:kth:diva-11011",
+            "url": "https://dblp.org/rec/phd/basesearch/Karasalo09"
+          },
+          "url": "URL#6511170"
+        }
+      ]
+    }
+  }
+}

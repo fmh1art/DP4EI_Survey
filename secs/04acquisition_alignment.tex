@@ -1,0 +1,167 @@
+%!TEX root = ../main.tex
+\section{Source Design, Ingestion, and Alignment}
+\label{sec:acquisition}
+
+Preparation starts before the first byte is recorded.  An acquisition interface
+determines what states can be visited, how accurately actions are labeled, which
+failures are observable, and how expensive later alignment will be.  This section
+therefore includes source design when it intentionally controls compatibility or
+coverage, while leaving hardware design itself outside our scope.
+
+\subsection{Sources Have Complementary Training Roles}
+
+Real-robot teleoperation offers the strongest observation--action--physics
+alignment but is expensive and biased by the available robot, operator, and task
+script.  DROID reduces site bias through a common mobile manipulator and protocol
+deployed across 18 institutions, yielding roughly 76,000 demonstrations in
+diverse scenes~\cite{khazatsky2024droid_2403_12945}.  BridgeData V2 emphasizes an
+open, multi-task collection on a consistent platform~\cite{walke2023bridgedata_2308_12952}.
+Open X-Embodiment takes the opposite integration route: convert existing
+datasets into a common interface and train across institutions and robots
+~\cite{collaboration2023open_2310_08864}.  The former controls acquisition while
+the latter accepts heterogeneity and moves work into post-hoc alignment.
+RoboTurk decouples demonstrators from the robot through remote crowdsourcing,
+making operator latency and identity preparation metadata rather than incidental
+noise~\cite{mandlekar2018roboturk_1811_02790}.  AXIS further integrates
+community collection, task generation, filtering, smoothing, and augmentation as
+a growable engine~\cite{zhao2026axis_2607_21588}; as a recent preprint, it is
+evidence of an emerging system pattern rather than a mature standard.
+
+Portable human-operated interfaces move collection away from continuous target
+robot access.  UMI reproduces relevant gripper geometry, recovers 6-DoF motion,
+and reduces observation mismatch at deployment~\cite{chi2024universal_2402_10329}.
+Human videos offer much greater semantic and environmental breadth, but usually
+lack robot states, metric scale, actions, forces, and reliable task boundaries;
+their use spans representation pretraining, observation transfer, and action
+reconstruction~\cite{ma2026robot_2604_27621}.  EgoMimic co-trains aligned
+egocentric human and robot demonstrations, whereas HOP reconstructs 3-D
+hand--object interaction and retargets it into robot experience
+~\cite{kareer2024egomimic_2410_24221,singh2024hand_2409_08273}; both illustrate
+that ``human video'' becomes action supervision only through explicit geometric
+and embodiment assumptions.  Simulation offers exact state and
+controllable long-tail generation but inherits asset, rendering, dynamics, and
+contact mismatch.  Autonomous execution, as in AutoRT, produces records from the
+current policy in the actual environment, directly exposing its support gaps but
+also concentrating data around its existing competence
+~\cite{ahn2024autort_2401_12963}.
+
+No source dominates along correctness, diversity, scale, and target alignment.
+The more useful abstraction is a \emph{role}: web/human video for broad visual and
+task semantics; portable human demonstrations for motion and temporal structure;
+multi-robot corpora for shared visuomotor priors; target-robot teleoperation for
+control and contact calibration; successful task demonstrations for adaptation;
+and failed/recovery execution for post-training and safety.  Routing by role
+prevents ``lower-fidelity'' data from being discarded when it supplies a
+different signal, and prevents weakly aligned data from silently supervising
+precise target actions.
+
+\subsection{Coverage Must Be Designed, Not Counted}
+
+Episode count collapses several axes: task concepts, objects, backgrounds,
+viewpoints, initial conditions, operators, embodiments, success/failure modes,
+and transition density.  Repeating a narrow configuration can reduce estimator
+variance without expanding support; adding a new environment can expand support
+but also introduce a confounded action convention.  The acquisition target should
+therefore be a structured coverage tensor rather than a global quota.  A practical
+engine tracks cells such as $(\text{skill},\text{object},\text{scene},
+\text{embodiment},\text{outcome})$, uncertainty in each cell, and marginal cost.
+Controlled real-robot scaling experiments similarly find that, after enough
+repetition, expanding object and environment diversity is more valuable than
+additional demonstrations of the same configuration in their task setting
+~\cite{lin2024data_2410_18647}.  The fitted scaling law should not be transferred
+unchanged across learners or collection protocols, but its factorized experiment
+is the relevant form of evidence.
+
+Active acquisition then chooses a candidate task $q$ by an objective such as
+\begin{equation}
+q^*=\arg\max_q
+\frac{\widehat{\Delta\utility}(q)+\alpha\,\Delta\mathrm{coverage}(q)
+-\beta\,\mathrm{risk}(q)}{\mathrm{cost}(q)}.
+\end{equation}
+Uncertainty alone is unsafe: it can select sensor corruption, infeasible tasks,
+or states outside the robot's recovery envelope.  Value must be gated by
+executability and safety, and by whether the resulting record can be labeled well
+enough to train from.  Autonomous engines make this objective operational, but
+most current systems still use hand-designed task proposals and success filters
+rather than calibrated marginal utility.
+
+\subsection{Ingestion and Technical Quality Control}
+
+Technical validity is the cheapest part of the evidence ladder and should be
+resolved before semantic scoring.  A minimum ingestion contract checks:
+
+\begin{itemize}[leftmargin=*]
+    \item file readability, schema/version compatibility, units, shapes, and
+    required fields;
+    \item monotonic clocks, dropped frames, cross-stream synchronization, and
+    command-to-actuation delay;
+    \item camera intrinsics/extrinsics, robot description, joint limits, reset
+    boundaries, and controller identity;
+    \item image blur/exposure/occlusion and sensor saturation, missingness, or
+    implausible jumps; and
+    \item action range, idle fraction, clipping, jerk, collisions, and emergency
+    interventions.
+\end{itemize}
+
+These checks should emit repair decisions and uncertainty, not only pass/fail.
+Interpolation can repair short sensor gaps but may fabricate contact transitions;
+smoothing can remove teleoperation jitter but also erase deliberate high-frequency
+corrections.  The unmodified raw stream, repair parameters, and reason code must
+remain in lineage.  In contact-rich multimodal data such as RH20T, time alignment
+across vision, proprioception, force/torque, audio, and touch is itself a semantic
+precondition, not mere storage hygiene~\cite{fang2023rh20t_2307_00595}.
+
+\subsection{Four Layers of Cross-Embodiment Alignment}
+
+Common schemas enable loading and batching, but shape compatibility does not
+imply supervision compatibility.  Cross-embodiment alignment has at least four
+layers.
+
+\textbf{Structural alignment} maps fields, modalities, missing degrees of freedom,
+and gripper or hand state into a common schema.  Fixed action slots plus an
+embodiment mask make heterogeneity explicit, but padding only states that a degree
+of freedom is absent.
+
+\textbf{Spatial and control alignment} specifies whether actions are joint
+positions, velocities, absolute or delta end-effector poses, forces, or discrete
+tokens; the reference frame; rotation convention; units; controller gains; and
+whether a command is a target or an executed state.  Converting to a camera- or
+end-effector-centric representation can remove base-placement variation, but
+calibration error then becomes label noise.  Some mappings are many-to-one:
+compressing a dexterous hand into ``gripper openness'' loses interaction
+semantics and is not invertible.
+
+\textbf{Temporal alignment} reconciles sensor rate, controller rate, observation
+latency, action horizon, interpolation, and chunk semantics.  A visually aligned
+frame paired with a command issued several control cycles later teaches a
+different conditional distribution.  Resampling must be anti-aliased, contact
+boundaries should not be averaged away, and both command and measured execution
+times should be retained when delays vary.
+
+\textbf{Behavioral alignment} asks whether the same normalized action has the
+same consequence under different morphology, kinematics, compliance, and
+controllers.  This is the least solved layer.  An embodiment-conditioned action
+encoder can incorporate kinematic graphs and control metadata, while cycle or
+rollout consistency can test whether mapped actions reproduce the intended state
+transition.  Open X-Embodiment demonstrates the benefit of a common training
+interface, but its heterogeneity also motivates mixture and learner-aware methods
+such as Re-Mix~\cite{collaboration2023open_2310_08864,hejna2024re_2408_14037}.
+
+\subsection{Jointly Transform All Coupled Modalities}
+
+Any spatial or temporal transformation must act consistently on observations,
+states, actions, language, and success conditions.  Mirroring an image without
+mirroring lateral actions and ``left/right'' language creates confident label
+error.  Changing camera pose requires transforming camera-frame actions.  Time
+reversal is valid only for a reversible segment and an appropriately reversed
+task description; it is generally invalid for pouring, breaking, or frictional
+contact.  We call this the \emph{co-transformation principle}: an augmentation is
+valid only if it preserves the coupled state transition and task semantics, not
+merely image plausibility.
+
+Finally, preparation artifacts need a data contract: source and license,
+collection context, robot and controller, coordinate frames, clocks, transformations,
+automatic and human labels, confidence, exclusion/routing reasons, train/test
+relationships, and version hashes.  Without this contract, later influence
+scores, failure reports, and model versions cannot be traced back to the decision
+that produced a training example.

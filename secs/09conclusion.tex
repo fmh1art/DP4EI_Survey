@@ -1,0 +1,24 @@
+%!TEX root = ../main.tex
+\section{Conclusion}
+\label{sec:conclusion}
+
+Embodied intelligence does not learn from raw episode counts; it learns from the
+distribution produced after a sequence of often hidden decisions.  By organizing
+those decisions along operation, signal, utility evidence, and lifecycle axes,
+this survey connects acquisition, alignment, semantic enrichment, curation,
+mixture design, synthesis, validation, and deployment feedback within one
+problem.  The synthesis rejects two convenient simplifications: data quality is
+not a policy-independent scalar, and generated plausibility is not physical or
+training validity.
+
+The most consequential shift is from one-shot cleaning to target-conditional
+feedback control.  This shift makes stronger evidence possible---the policy can
+reveal which data it needs---but also creates error-amplification, collapse, and
+safety risks.  Progress therefore depends on calibrated links between cheap
+proxies and controlled policy utility; transition-level, cross-embodiment
+semantics; independent layered verification; structured failure and recovery;
+and joint accounting of preparation, training, and robot cost.  A shared raw-pool
+benchmark and versioned lineage would turn these principles into comparable
+experiments.  Under that discipline, data preparation can become an independent,
+reproducible research layer for embodied foundation models rather than an
+unreported collection of engineering choices.

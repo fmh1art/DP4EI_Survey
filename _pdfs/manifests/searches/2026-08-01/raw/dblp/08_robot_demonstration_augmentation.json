@@ -1,0 +1,136 @@
+{
+  "result": {
+    "query": "robot* demonstration* augmentation*",
+    "status": {
+      "@code": "200",
+      "text": "OK"
+    },
+    "time": {
+      "@unit": "msecs",
+      "text": "13.82"
+    },
+    "completions": {
+      "@total": "1",
+      "@computed": "1",
+      "@sent": "1",
+      "c": {
+        "@sc": "3",
+        "@dc": "3",
+        "@oc": "3",
+        "@id": "69475866",
+        "text": "augmentation"
+      }
+    },
+    "hits": {
+      "@total": "3",
+      "@computed": "3",
+      "@sent": "3",
+      "@first": "0",
+      "hit": [
+        {
+          "@score": "3",
+          "@id": "648254",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "282/0847",
+                  "text": "Ezra Ameperosa"
+                },
+                {
+                  "@pid": "230/9034",
+                  "text": "Jeremy A. Collins"
+                },
+                {
+                  "@pid": "253/0832",
+                  "text": "Mrinal Jain"
+                },
+                {
+                  "@pid": "123/5728",
+                  "text": "Animesh Garg"
+                }
+              ]
+            },
+            "title": "RoCoDA: Counterfactual Data Augmentation for Data-Efficient Robot Learning from Demonstrations.",
+            "venue": "ICRA",
+            "pages": "13250-13256",
+            "year": "2025",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/icra/AmeperosaCJG25",
+            "doi": "10.1109/ICRA55743.2025.11128694",
+            "ee": "https://doi.org/10.1109/ICRA55743.2025.11128694",
+            "url": "https://dblp.org/rec/conf/icra/AmeperosaCJG25"
+          },
+          "url": "URL#648254"
+        },
+        {
+          "@score": "3",
+          "@id": "850538",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "77/6456",
+                  "text": "Abraham George"
+                },
+                {
+                  "@pid": "206/7414",
+                  "text": "Amir Barati Farimani"
+                }
+              ]
+            },
+            "title": "LLM Trainer: Automated Robotic Data Generating via Demonstration Augmentation using LLMs.",
+            "venue": "CoRR",
+            "volume": "abs/2509.20070",
+            "year": "2025",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2509-20070",
+            "doi": "10.48550/ARXIV.2509.20070",
+            "ee": "https://doi.org/10.48550/arXiv.2509.20070",
+            "url": "https://dblp.org/rec/journals/corr/abs-2509-20070"
+          },
+          "url": "URL#850538"
+        },
+        {
+          "@score": "3",
+          "@id": "1471479",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "282/0847",
+                  "text": "Ezra Ameperosa"
+                },
+                {
+                  "@pid": "230/9034",
+                  "text": "Jeremy A. Collins"
+                },
+                {
+                  "@pid": "253/0832",
+                  "text": "Mrinal Jain"
+                },
+                {
+                  "@pid": "123/5728",
+                  "text": "Animesh Garg"
+                }
+              ]
+            },
+            "title": "RoCoDA: Counterfactual Data Augmentation for Data-Efficient Robot Learning from Demonstrations.",
+            "venue": "CoRR",
+            "volume": "abs/2411.16959",
+            "year": "2024",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2411-16959",
+            "doi": "10.48550/ARXIV.2411.16959",
+            "ee": "https://doi.org/10.48550/arXiv.2411.16959",
+            "url": "https://dblp.org/rec/journals/corr/abs-2411-16959"
+          },
+          "url": "URL#1471479"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/W+z/9f2bb1Be87rmc6AMKXaNTy0</id>
+  <title>arXiv Query: search_query=cat:cs.RO AND all:"data mixing"&amp;id_list=&amp;start=0&amp;max_results=300</title>
+  <updated>2026-08-01T17:00:05Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:cs.RO+AND+all:%22data+mixing%22&amp;start=0&amp;max_results=300&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>300</opensearch:itemsPerPage>
+  <opensearch:totalResults>8</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2606.23617v1</id>
+    <title>RECALL: Recovery Experience Collection for Active Lifelong Learning in Vision-Language-Action Models</title>
+    <updated>2026-06-22T17:12:50Z</updated>
+    <link href="https://arxiv.org/abs/2606.23617v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.23617v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Vision-Language-Action (VLA) models are commonly fine-tuned through passive imitation learning, where additional demonstrations are collected for tasks where the policy performs poorly. This approach incurs several downsides: it requires the robot to fail before data collection is triggered, provides little guidance about which states require supervision, and wastes demonstrator effort on redundant parts of the task where the policy already performs well. In this paper, we propose an active, continual learning paradigm for VLAs. We demonstrate that active, uncertainty-guided data collection leads to more efficient fine-tuning than when using passively-collected demonstrations. However, we also find that fine-tuning only on actively-collected recovery data leads to catastrophic forgetting. We evaluate techniques for continual learning, including replay-based data mixing and elastic weight consolidation, and identify tradeoffs between plasticity to uncertainty-guided recovery data and retention of previously learned behaviors. Overall, our work contributes an empirical study of active continual learning for autoregressive VLAs, establishing that uncertainty-guided recovery demonstrations can improve adaptation efficiency while also revealing open challenges when targeted new data is incorporated into large robot policies.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-22T17:12:50Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Ulas Berk Karli</name>
+    </author>
+    <author>
+      <name>Tesca Fitzgerald</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2604.13001v2</id>
+    <title>XRZero-G0: Pushing the Frontier of Dexterous Robotic Manipulation with Interfaces, Quality and Ratios</title>
+    <updated>2026-04-16T16:19:28Z</updated>
+    <link href="https://arxiv.org/abs/2604.13001v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2604.13001v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The acquisition of high-quality, action-aligned demonstration data remains a fundamental bottleneck in scaling foundation models for dexterous robot manipulation. Although robot-free human demonstrations (e.g., the UMI paradigm) offer a scalable alternative to traditional teleoperation, current systems are constrained by sub-optimal hardware ergonomics, open-loop workflows, and a lack of systematic data-mixing strategies. To address these limitations, we present XRZero-G0, a hardware-software co-designed system for embodied data collection and policy learning. The system features an ergonomic, virtual reality interface equipped with a top-view camera and dual specialized grippers to directly improve collection efficiency. To ensure dataset reliability, we propose a closed-loop collection, inspection, training, and evaluation pipeline for non-proprioceptive data. This workflow achieves an 85% data validity rate and establishes a transparent mechanism for quality control. Furthermore, we investigate the empirical scaling behaviors and optimal mixing ratios of robot-free data. Extensive experiments indicate that combining a minimal volume of real-robot data with large-scale robot-free data (e.g., a 10:1 ratio) achieves performance comparable to exclusively real-robot datasets, while reducing acquisition costs by a factor of twenty. Utilizing XRZero-G0, we construct a 2,000-hour robot-free dataset that enables zero-shot cross-embodiment transfer to a target physical robot, demonstrating a highly scalable methodology for generalized real-world manipulation.Our project repository: https://github.com/X-Square-Robot/XRZero-G0</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-14T17:34:21Z</published>
+    <arxiv:comment>Technical Report</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>James Wang</name>
+    </author>
+    <author>
+      <name>Primo Pu</name>
+    </author>
+    <author>
+      <name>Zephyr Fung</name>
+    </author>
+    <author>
+      <name>Alex Wang</name>
+    </author>
+    <author>
+      <name>Sam Wang</name>
+    </author>
+    <author>
+      <name>Bender Deng</name>
+    </author>
+    <author>
+      <name>Kevin Wang</name>
+    </author>
+    <author>
+      <name>Zivid Liu</name>
+    </author>
+    <author>
+      <name>Chris Pan</name>
+    </author>
+    <author>
+      <name>Panda Yang</name>
+    </author>
+    <author>
+      <name>Andy Zhai</name>
+    </author>
+    <author>
+      <name>Lucy Liang</name>
+    </author>
+    <author>
+      <name>Shalfun Li</name>
+    </author>
+    <author>
+      <name>Johnny Sun</name>
+    </author>
+    <author>
+      <name>Jacky Xu</name>
+    </author>
+    <author>
+      <name>Will Tian</name>
+    </author>
+    <author>
+      <name>Kai Yan</name>
+    </author>
+    <author>
+      <name>Kohler Ye</name>
+    </author>
+    <author>
+      <name>Scott Li</name>
+    </author>
+    <author>
+      <name>Qian Wang</name>
+    </author>
+    <author>
+      <name>Roy Gan</name>
+    </author>
+    <author>
+      <name>Hao Wang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2603.06280v1</id>
+    <title>SuperSuit: An Isomorphic Bimodal Interface for Scalable Mobile Manipulation</title>
+    <updated>2026-03-06T13:40:30Z</updated>
+    <link href="https://arxiv.org/abs/2603.06280v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2603.06280v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>High-quality, long-horizon demonstrations are essential for embodied AI, yet acquiring such data for tightly coupled wheeled mobile manipulators remains a fundamental bottleneck. Unlike fixed-base systems, mobile manipulators require continuous coordination between $SE(2)$ locomotion and precise manipulation, exposing limitations in existing teleoperation and wearable interfaces. We present \textbf{SuperSuit}, a bimodal data acquisition framework that supports both robot-in-the-loop teleoperation and active demonstration under a shared kinematic interface. Both modalities produce structurally identical joint-space trajectories, enabling direct data mixing without modifying downstream policies. For locomotion, SuperSuit maps natural human stepping to continuous planar base velocities, eliminating discrete command switches. For manipulation, it employs a strictly isomorphic wearable arm in both modes, while policy training is formulated in a shift-invariant delta-joint representation to mitigate calibration offsets and structural compliance without inverse kinematics. Real-world experiments on long-horizon mobile manipulation tasks show 2.6$\times$ higher demonstration throughput in active mode compared to a teleoperation baseline, comparable policy performance when substituting teleoperation data with active demonstrations at fixed dataset size, and monotonic performance improvement as active data volume increases. These results indicate that consistent kinematic representations across collection modalities enable scalable data acquisition for long-horizon mobile manipulation.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-03-06T13:40:30Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Tongqing Chen</name>
+    </author>
+    <author>
+      <name>Hang Wu</name>
+    </author>
+    <author>
+      <name>Jiasen Wang</name>
+    </author>
+    <author>
+      <name>Xiaotao Li</name>
+    </author>
+    <author>
+      <name>Zhu Jin</name>
+    </author>
+    <author>
+      <name>Lu Fang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2510.23525v1</id>
+    <title>DPGLA: Bridging the Gap between Synthetic and Real Data for Unsupervised Domain Adaptation in 3D LiDAR Semantic Segmentation</title>
+    <updated>2025-10-27T17:05:59Z</updated>
+    <link href="https://arxiv.org/abs/2510.23525v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2510.23525v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Annotating real-world LiDAR point clouds for use in intelligent autonomous systems is costly. To overcome this limitation, self-training-based Unsupervised Domain Adaptation (UDA) has been widely used to improve point cloud semantic segmentation by leveraging synthetic point cloud data. However, we argue that existing methods do not effectively utilize unlabeled data, as they either rely on predefined or fixed confidence thresholds, resulting in suboptimal performance. In this paper, we propose a Dynamic Pseudo-Label Filtering (DPLF) scheme to enhance real data utilization in point cloud UDA semantic segmentation. Additionally, we design a simple and efficient Prior-Guided Data Augmentation Pipeline (PG-DAP) to mitigate domain shift between synthetic and real-world point clouds. Finally, we utilize data mixing consistency loss to push the model to learn context-free representations. We implement and thoroughly evaluate our approach through extensive comparisons with state-of-the-art methods. Experiments on two challenging synthetic-to-real point cloud semantic segmentation tasks demonstrate that our approach achieves superior performance. Ablation studies confirm the effectiveness of the DPLF and PG-DAP modules. We release the code of our method in this paper.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-10-27T17:05:59Z</published>
+    <arxiv:comment>This paper has been accepted for publication at the 2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Wanmeng Li</name>
+    </author>
+    <author>
+      <name>Simone Mosco</name>
+    </author>
+    <author>
+      <name>Daniel Fusaro</name>
+    </author>
+    <author>
+      <name>Alberto Pretto</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2508.02046v4</id>
+    <title>NaviMaster: Learning a Unified Policy for GUI and Embodied Navigation Tasks</title>
+    <updated>2026-05-02T12:32:44Z</updated>
+    <link href="https://arxiv.org/abs/2508.02046v4" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2508.02046v4" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recent advances in Graphical User Interface (GUI) and embodied navigation have driven progress, yet these domains have largely evolved in isolation, with disparate datasets and training paradigms. In this paper, we observe that both tasks can be formulated as Markov Decision Processes (MDP), suggesting a foundational principle for their unification. Hence, we present NaviMaster, the first unified agent capable of unifying GUI navigation and embodied navigation within a single framework. Specifically, NaviMaster (i) proposes a visual-target trajectory collection pipeline that generates trajectories for both GUI and embodied tasks using a single formulation. (ii) employs a unified reinforcement learning framework on the mix data to improve generalization. (iii) designs a novel distance-aware reward to ensure efficient learning from the trajectories. Through extensive experiments on out-of-domain benchmarks, NaviMaster is shown to outperform state-of-the-art agents in GUI navigation, spatial affordance prediction, and embodied navigation. Ablation studies further demonstrate the efficacy of our unified training strategy, data mixing strategy, and reward design. Our codes, data, and checkpoints are available at https://iron-boyy.github.io/navimaster-page/.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-08-04T04:28:18Z</published>
+    <arxiv:comment>ACL 2026 Main Camera Ready</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Zhihao Luo</name>
+    </author>
+    <author>
+      <name>Wentao Yan</name>
+    </author>
+    <author>
+      <name>Jingyu Gong</name>
+    </author>
+    <author>
+      <name>Min Wang</name>
+    </author>
+    <author>
+      <name>Zhizhong Zhang</name>
+    </author>
+    <author>
+      <name>Xuhong Wang</name>
+    </author>
+    <author>
+      <name>Yuan Xie</name>
+    </author>
+    <author>
+      <name>Xin Tan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2503.19916v1</id>
+    <title>EventFly: Event Camera Perception from Ground to the Sky</title>
+    <updated>2025-03-25T17:59:59Z</updated>
+    <link href="https://arxiv.org/abs/2503.19916v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2503.19916v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Cross-platform adaptation in event-based dense perception is crucial for deploying event cameras across diverse settings, such as vehicles, drones, and quadrupeds, each with unique motion dynamics, viewpoints, and class distributions. In this work, we introduce EventFly, a framework for robust cross-platform adaptation in event camera perception. Our approach comprises three key components: i) Event Activation Prior (EAP), which identifies high-activation regions in the target domain to minimize prediction entropy, fostering confident, domain-adaptive predictions; ii) EventBlend, a data-mixing strategy that integrates source and target event voxel grids based on EAP-driven similarity and density maps, enhancing feature alignment; and iii) EventMatch, a dual-discriminator technique that aligns features from source, target, and blended domains for better domain-invariant learning. To holistically assess cross-platform adaptation abilities, we introduce EXPo, a large-scale benchmark with diverse samples across vehicle, drone, and quadruped platforms. Extensive experiments validate our effectiveness, demonstrating substantial gains over popular adaptation methods. We hope this work can pave the way for more adaptive, high-performing event perception across diverse and complex environments.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-03-25T17:59:59Z</published>
+    <arxiv:comment>CVPR 2025; 30 pages, 8 figures, 16 tables; Project Page at https://event-fly.github.io/</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Lingdong Kong</name>
+    </author>
+    <author>
+      <name>Dongyue Lu</name>
+    </author>
+    <author>
+      <name>Xiang Xu</name>
+    </author>
+    <author>
+      <name>Lai Xing Ng</name>
+    </author>
+    <author>
+      <name>Wei Tsang Ooi</name>
+    </author>
+    <author>
+      <name>Benoit R. Cottereau</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2501.05472v1</id>
+    <title>The 2nd Place Solution from the 3D Semantic Segmentation Track in the 2024 Waymo Open Dataset Challenge</title>
+    <updated>2025-01-06T10:34:00Z</updated>
+    <link href="https://arxiv.org/abs/2501.05472v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2501.05472v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>3D semantic segmentation is one of the most crucial tasks in driving perception. The ability of a learning-based model to accurately perceive dense 3D surroundings often ensures the safe operation of autonomous vehicles. However, existing LiDAR-based 3D semantic segmentation databases consist of sequentially acquired LiDAR scans that are long-tailed and lack training diversity. In this report, we introduce MixSeg3D, a sophisticated combination of the strong point cloud segmentation model with advanced 3D data mixing strategies. Specifically, our approach integrates the MinkUNet family with LaserMix and PolarMix, two scene-scale data augmentation methods that blend LiDAR point clouds along the ego-scene's inclination and azimuth directions. Through empirical experiments, we demonstrate the superiority of MixSeg3D over the baseline and prior arts. Our team achieved 2nd place in the 3D semantic segmentation track of the 2024 Waymo Open Dataset Challenge.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-01-06T10:34:00Z</published>
+    <arxiv:comment>Technical Report</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Qing Wu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2109.11644v1</id>
+    <title>A Learned Stereo Depth System for Robotic Manipulation in Homes</title>
+    <updated>2021-09-23T20:53:55Z</updated>
+    <link href="https://arxiv.org/abs/2109.11644v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2109.11644v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We present a passive stereo depth system that produces dense and accurate point clouds optimized for human environments, including dark, textureless, thin, reflective and specular surfaces and objects, at 2560x2048 resolution, with 384 disparities, in 30 ms. The system consists of an algorithm combining learned stereo matching with engineered filtering, a training and data-mixing methodology, and a sensor hardware design. Our architecture is 15x faster than approaches that perform similarly on the Middlebury and Flying Things Stereo Benchmarks. To effectively supervise the training of this model, we combine real data labelled using off-the-shelf depth sensors, as well as a number of different rendered, simulated labeled datasets. We demonstrate the efficacy of our system by presenting a large number of qualitative results in the form of depth maps and point-clouds, experiments validating the metric accuracy of our system and comparisons to other sensors on challenging objects and scenes. We also show the competitiveness of our algorithm compared to state-of-the-art learned models using the Middlebury and FlyingThings datasets.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2021-09-23T20:53:55Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Krishna Shankar</name>
+    </author>
+    <author>
+      <name>Mark Tjersland</name>
+    </author>
+    <author>
+      <name>Jeremy Ma</name>
+    </author>
+    <author>
+      <name>Kevin Stone</name>
+    </author>
+    <author>
+      <name>Max Bajracharya</name>
+    </author>
+  </entry>
+</feed>

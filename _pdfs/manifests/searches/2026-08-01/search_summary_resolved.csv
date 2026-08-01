@@ -1,0 +1,29 @@
+source,query,reported_total,retrieved,within_year_range,error,initial_error,resolution
+DBLP,robot data curation,3,3,3,,,initial_succeeded
+DBLP,robot demonstration selection,5,5,3,,,initial_succeeded
+DBLP,robot data quality,38,38,35,,,initial_succeeded
+DBLP,robot data filtering,15,15,6,,,initial_succeeded
+DBLP,robot data mixing,3,3,3,,,initial_succeeded
+DBLP,robot trajectory annotation segmentation,0,0,0,,,initial_succeeded
+DBLP,robot instruction relabeling,0,0,0,,RuntimeError: curl: (28) Operation timed out after 45000 milliseconds with 0 bytes received,retry_succeeded
+DBLP,robot demonstration augmentation,3,3,3,,RuntimeError: curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received,retry_succeeded
+DBLP,robot synthetic demonstration generation,0,0,0,,RuntimeError: curl: (28) Operation timed out after 45000 milliseconds with 0 out of 0 bytes received,retry_succeeded
+DBLP,robot world model data generation,0,0,0,,,initial_succeeded
+DBLP,robot self improvement data,0,0,0,,,initial_succeeded
+DBLP,robot online post training,0,0,0,,,initial_succeeded
+DBLP,robot autonomous data collection,13,13,9,,RuntimeError: curl: (28) Operation timed out after 45001 milliseconds with 0 bytes received,retry_succeeded
+DBLP,cross embodiment action alignment,0,0,0,,RuntimeError: curl: (28) Operation timed out after 45000 milliseconds with 0 bytes received,retry_succeeded
+DBLP,vision language action data engine,2,2,2,,,initial_succeeded
+DBLP,embodied data preparation,0,0,0,,,initial_succeeded
+arXiv,"cat:cs.RO AND all:""data curation""",37,37,37,,,initial_succeeded
+arXiv,"cat:cs.RO AND all:""demonstration selection""",2,2,2,,,initial_succeeded
+arXiv,"cat:cs.RO AND all:""data quality""",81,81,81,,"ParseError: XML or text declaration not at start of entity: line 1594, column 946",retry_succeeded
+arXiv,"cat:cs.RO AND all:""data filtering""",12,12,12,,"ParseError: not well-formed (invalid token): line 217, column 10",retry_succeeded
+arXiv,"cat:cs.RO AND all:""data mixing""",8,8,8,,,initial_succeeded
+arXiv,"cat:cs.RO AND (all:""automatic annotation"" OR all:relabeling OR all:segmentation)",3146,300,300,,"ParseError: XML or text declaration not at start of entity: line 8190, column 575",retry_succeeded
+arXiv,"cat:cs.RO AND (all:""data augmentation"" OR all:""synthetic demonstrations"")",396,300,300,,,initial_succeeded
+arXiv,"cat:cs.RO AND (all:""world model"" AND all:""data generation"")",25,25,25,,,initial_succeeded
+arXiv,"cat:cs.RO AND (all:""self-improvement"" OR all:""online post-training"")",68,68,68,,,initial_succeeded
+arXiv,"cat:cs.RO AND all:""autonomous data collection""",16,16,15,,,initial_succeeded
+arXiv,"cat:cs.RO AND (all:""cross-embodiment"" OR all:""action alignment"")",283,283,283,,,initial_succeeded
+arXiv,"cat:cs.RO AND all:""data engine""",40,40,40,,,initial_succeeded

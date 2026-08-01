@@ -1,0 +1,1551 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/2rlI0vUFX2kadigmDr2scaHapPE</id>
+  <title>arXiv Query: search_query=cat:cs.RO AND (all:"world model" AND all:"data generation")&amp;id_list=&amp;start=0&amp;max_results=300</title>
+  <updated>2026-08-01T17:01:17Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:cs.RO+AND+(all:%22world+model%22+AND+all:%22data+generation%22)&amp;start=0&amp;max_results=300&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>300</opensearch:itemsPerPage>
+  <opensearch:totalResults>25</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18960v2</id>
+    <title>Mem-World: Memory-Augmented Action-Conditioned World Models for Persistent Robot Manipulation</title>
+    <updated>2026-06-18T07:33:11Z</updated>
+    <link href="https://arxiv.org/abs/2606.18960v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18960v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Action-conditioned world models have emerged as a promising paradigm for robot learning, offering a scalable alternative to costly real-world experimentation by generating action-consistent video rollouts. However, persistent world modeling remains challenging in manipulation: frequent end-effector occlusions and rapid wrist-camera motion make the current observation insufficient for predicting future views, causing models to forget or hallucinate scene details seen in earlier frames. Existing memory retrieval strategies often fail to identify informative history in dynamic manipulation scenarios. To address this limitation, we propose Mem-World, a memory-augmented multi-view action-conditioned world model. At its core, we present W-VMem, a 4D wrist-view-centered surfel-indexed memory that anchors historical observations to temporally evolving surface elements. By explicitly modeling when and where scene elements are observed, W-VMem enables geometry-aware retrieval of relevant history frames conditioned on future actions. During generation, relevant history frames are selected via surfel-based rendering and scoring, providing informative and non-redundant context for prediction. Extensive experiments show that Mem-World generates persistent rollouts in complex manipulation scenarios, enables more reliable policy evaluation than Ctrl-World, improving the Pearson correlation with real-world performance by 14.5\%, and supports effective policy improvement through synthetic data generation, increasing success rates from 58\% to 72\% on long-horizon tasks.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-17T11:42:00Z</published>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Zirui Zheng</name>
+    </author>
+    <author>
+      <name>Jiaqian Yu</name>
+    </author>
+    <author>
+      <name>Xiongfeng Peng</name>
+    </author>
+    <author>
+      <name>jun shi</name>
+    </author>
+    <author>
+      <name>Mingyi Li</name>
+    </author>
+    <author>
+      <name>Chao Zhang</name>
+    </author>
+    <author>
+      <name>Weiming Li</name>
+    </author>
+    <author>
+      <name>Dong Wang</name>
+    </author>
+    <author>
+      <name>Huchuan Lu</name>
+    </author>
+    <author>
+      <name>Xu Jia</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.02577v1</id>
+    <title>RoboDream: Compositional World Models for Scalable Robot Data Synthesis</title>
+    <updated>2026-06-01T17:59:38Z</updated>
+    <link href="https://arxiv.org/abs/2606.02577v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.02577v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Scaling robot learning requires large-scale, diverse demonstrations, yet real-world data collection via teleoperation remains prohibitively expensive and time-consuming. While video diffusion models offer a promising avenue for data scaling, existing generative approaches are often limited to superficial visual augmentation, or suffer from embodiment hallucinations that yield physically infeasible motions. We present a generalizable embodiment-centric world model that achieves scalable data generation by synthesizing photorealistic demonstrations with novel objects, in novel scenes, and from novel viewpoints. Our approach anchors generation to rendered robot motion while conditioning on explicit scene and object priors, effectively decoupling trajectory execution from environment synthesis. This formulation has the potential to unlock two powerful data scaling capabilities: (1) retrieval and rebirth, which repurposes existing trajectories into entirely new contexts without new motion data; and (2) prop-free teleoperation, where operators manipulate empty air and the model hallucinates the target objects and scene afterwards, eliminating reset time. We demonstrate with real-world experiments that our generated data consistently improves downstream policy performance and significantly reduces real-world data requirements across diverse manipulation tasks.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-01T17:59:38Z</published>
+    <arxiv:comment>Project page: https://junjieye.com/RoboDream/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Junjie Ye</name>
+    </author>
+    <author>
+      <name>Rong Xue</name>
+    </author>
+    <author>
+      <name>Basile Van Hoorick</name>
+    </author>
+    <author>
+      <name>Runhao Li</name>
+    </author>
+    <author>
+      <name>Harshitha Rajaprakash</name>
+    </author>
+    <author>
+      <name>Pavel Tokmakov</name>
+    </author>
+    <author>
+      <name>Muhammad Zubair Irshad</name>
+    </author>
+    <author>
+      <name>Vitor Guizilini</name>
+    </author>
+    <author>
+      <name>Yue Wang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.02027v1</id>
+    <title>World-Task Factorization for Robot Learning</title>
+    <updated>2026-06-01T10:16:07Z</updated>
+    <link href="https://arxiv.org/abs/2606.02027v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.02027v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Robot learning must produce policies that generalize to new combinations of constraints, teammates, and environments. To achieve this, we must structurally factor the policy, which is a choice that dictates what generalizes, what requires retraining, and what remains entangled. Existing methods span a wide spectrum, from expecting structure to emerge from data scaling, to hand-designing it via hierarchies, skill libraries or learned specializations. In this paper, we study what we argue is the most fundamental factorization in robotics: separating the world from the task. We investigate the conditions under which this factorization is principled. World factors are properties of the embodied system and the environment; they exist independently of intent. Task factors are defined by the task's logic over what the world admits. We formalize this asymmetry through Bayesian model evidence: it aligns with the data-generating process, maintains high likelihood through an analytical world model, and reduces the Occam razor's penalty on task parameters. We instantiate this factorization by pairing AICON, a differentiable graph of recursive estimators and interconnections that is compositional, operates without task-specific data, and propagates cost gradients to actuators, with a compact, learned policy that modulates gradient paths. Gradients serve as the interface between the two factors: they carry world structure through the graph and task structure through costs, enabling low-dimensional learning while preserving structural generalization. We test the world/task factorization across three problems that encompass heterogeneous robots, environments, task logic and sensorimotor modalities. Our framework outperforms end-to-end baselines and analytical heuristics in all settings, generalizes zero-shot to out-of-distribution configurations, and transfers to real hardware without retraining.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-01T10:16:07Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Eduardo Sebastián</name>
+    </author>
+    <author>
+      <name>Adrian Pfisterer</name>
+    </author>
+    <author>
+      <name>Vito Mengers</name>
+    </author>
+    <author>
+      <name>Oliver Brock</name>
+    </author>
+    <author>
+      <name>Amanda Prorok</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2605.19600v1</id>
+    <title>FlyMirage: A Fully Automated Generation Pipeline for Diverse and Scalable UAV Flight Data via Generative World Model</title>
+    <updated>2026-05-19T09:41:04Z</updated>
+    <link href="https://arxiv.org/abs/2605.19600v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.19600v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In the field of Vision-Language Navigation (VLN), aerial datasets remain limited in their ability to combine scale, diversity, and realism, often relying on either costly real-world scenes or visually limited simulations. To address these challenges, we introduce FlyMirage, a highly scalable and fully automated data generation pipeline for aerial VLN. Our approach leverages large language models (LLM) as an environment designer to promote scene diversity, paired with a generative world model that instantiates these designs into high-fidelity 3D Gaussian Splatting (3DGS) scenes. To substantially reduce human labor and ensure the feasibility of flight data, FlyMirage automates scene exploration and semantic information acquisition, and further integrates a dynamically feasible planner for uncrewed aerial vehicle (UAV) trajectory generation. Utilizing this toolchain, we generate a large-scale, diverse, and photorealistic aerial VLN dataset, with dynamically feasible flying trajectories, designed to support the development of next-generation embodied navigation models.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-05-19T09:41:04Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Jinhan Li</name>
+    </author>
+    <author>
+      <name>Xijie Huang</name>
+    </author>
+    <author>
+      <name>Zhaoqi Wang</name>
+    </author>
+    <author>
+      <name>Yijin Wang</name>
+    </author>
+    <author>
+      <name>Weiqi Ge</name>
+    </author>
+    <author>
+      <name>Qiyi He</name>
+    </author>
+    <author>
+      <name>Mo Zhu</name>
+    </author>
+    <author>
+      <name>Fei Gao</name>
+    </author>
+    <author>
+      <name>Yuze Wu</name>
+    </author>
+    <author>
+      <name>Xin Zhou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2605.00080v1</id>
+    <title>World Model for Robot Learning: A Comprehensive Survey</title>
+    <updated>2026-04-30T14:35:31Z</updated>
+    <link href="https://arxiv.org/abs/2605.00080v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.00080v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>World models, which are predictive representations of how environments evolve under actions, have become a central component of robot learning. They support policy learning, planning, simulation, evaluation, data generation, and have advanced rapidly with the rise of foundation models and large-scale video generation. However, the literature remains fragmented across architectures, functional roles, and embodied application domains. To address this gap, we present a comprehensive review of world models from a robot-learning perspective. We examine how world models are coupled with robot policies, how they serve as learned simulators for reinforcement learning and evaluation, and how robotic video world models have progressed from imagination-based generation to controllable, structured, and foundation-scale formulations. We further connect these ideas to navigation and autonomous driving, and summarize representative datasets, benchmarks, and evaluation protocols. Overall, this survey systematically reviews the rapidly growing literature on world models for robot learning, clarifies key paradigms and applications, and highlights major challenges and future directions for predictive modeling in embodied agents. To facilitate continued access to newly emerging works, benchmarks, and resources, we will maintain and regularly update the accompanying GitHub repository alongside this survey.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-30T14:35:31Z</published>
+    <arxiv:comment>43 pages, 6 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Bohan Hou</name>
+    </author>
+    <author>
+      <name>Gen Li</name>
+    </author>
+    <author>
+      <name>Jindou Jia</name>
+    </author>
+    <author>
+      <name>Tuo An</name>
+    </author>
+    <author>
+      <name>Xinying Guo</name>
+    </author>
+    <author>
+      <name>Sicong Leng</name>
+    </author>
+    <author>
+      <name>Haoran Geng</name>
+    </author>
+    <author>
+      <name>Yanjie Ze</name>
+    </author>
+    <author>
+      <name>Tatsuya Harada</name>
+    </author>
+    <author>
+      <name>Philip Torr</name>
+    </author>
+    <author>
+      <name>Oier Mees</name>
+    </author>
+    <author>
+      <name>Marc Pollefeys</name>
+    </author>
+    <author>
+      <name>Zhuang Liu</name>
+    </author>
+    <author>
+      <name>Jiajun Wu</name>
+    </author>
+    <author>
+      <name>Pieter Abbeel</name>
+    </author>
+    <author>
+      <name>Jitendra Malik</name>
+    </author>
+    <author>
+      <name>Yilun Du</name>
+    </author>
+    <author>
+      <name>Jianfei Yang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2604.21741v2</id>
+    <title>Hi-WM: Human-in-the-World-Model for Scalable Robot Post-Training</title>
+    <updated>2026-05-05T16:01:35Z</updated>
+    <link href="https://arxiv.org/abs/2604.21741v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2604.21741v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Post-training is essential for turning pretrained generalist robot policies into reliable task-specific controllers, but existing human-in-the-loop pipelines remain tied to physical execution: each correction requires robot time, scene setup, resets, and operator supervision in the real world. Meanwhile, action-conditioned world models have been studied mainly for imagination, synthetic data generation, and policy evaluation. We propose \textbf{Human-in-the-World-Model (Hi-WM)}, a post-training framework that uses a learned world model as a reusable corrective substrate for failure-targeted policy improvement. A policy is first rolled out in closed loop inside the world model; when the rollout becomes incorrect or failure-prone, a human intervenes directly in the model to provide short corrective actions. Hi-WM caches intermediate states and supports rollback and branching, allowing a single failure state to be reused for multiple corrective continuations and yielding dense supervision around behaviors that the base policy handles poorly. The resulting corrective trajectories are then added back to the training set for post-training. We evaluate Hi-WM on three real-world manipulation tasks spanning both rigid and deformable object interaction, and on two policy backbones. Hi-WM improves real-world success by 37.9 points on average over the base policy and by 19.0 points over a world-model closed-loop baseline, while world-model evaluation correlates strongly with real-world performance (r = 0.953). These results suggest that world models can serve not only as generators or evaluators, but also as effective corrective substrates for scalable robot post-training.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-23T14:42:54Z</published>
+    <arxiv:comment>Project Page: https://hi-wm.github.io/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yaxuan Li</name>
+    </author>
+    <author>
+      <name>Zhongyi Zhou</name>
+    </author>
+    <author>
+      <name>Yefei Chen</name>
+    </author>
+    <author>
+      <name>Yanjiang Guo</name>
+    </author>
+    <author>
+      <name>Jiaming Liu</name>
+    </author>
+    <author>
+      <name>Shanghang Zhang</name>
+    </author>
+    <author>
+      <name>Jianyu Chen</name>
+    </author>
+    <author>
+      <name>Yichen Zhu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2604.21017v3</id>
+    <title>Open-H-Embodiment: A Large-Scale Dataset for Enabling Foundation Models in Medical Robotics</title>
+    <updated>2026-06-04T17:26:29Z</updated>
+    <link href="https://arxiv.org/abs/2604.21017v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2604.21017v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autonomous medical robots hold promise to improve patient outcomes, reduce provider workload, democratize access to care, and enable superhuman precision. However, autonomous medical robotics has been limited by a fundamental data problem: existing medical robotic datasets are small, single-embodiment, and rarely shared openly, restricting the development of foundation models that the field needs to advance. We introduce Open-H-Embodiment, the largest open dataset of medical robotic video with synchronized kinematics to date, spanning more than 50 institutions and multiple robotic platforms including the CMR Versius, Intuitive Surgical's da Vinci, da Vinci Research Kit (dVRK), Rob Surgical BiTrack, Virtual Incision's MIRA, Moon Surgical Maestro, and a variety of custom systems, spanning surgical manipulation, robotic ultrasound, and endoscopy procedures. We demonstrate the research enabled by this dataset through two foundation models. GR00T-H is the first open foundation vision-language-action model for medical robotics, which is the only evaluated model to achieve full end-to-end task completion on a structured suturing benchmark (25% of trials vs. 0% for all others) and achieves 64% average success across a 29-step ex vivo suturing sequence. We also train Cosmos-H-Surgical-Simulator, the first action-conditioned world model to enable multi-embodiment surgical simulation from a single checkpoint, spanning nine robotic platforms and supporting in silico policy evaluation and synthetic data generation for the medical domain. These results suggest that open, large-scale medical robot data collection can serve as critical infrastructure for the research community, enabling advances in robot learning, world modeling, and beyond.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-22T19:05:17Z</published>
+    <arxiv:comment>Project website: https://open-h.github.io/open-h-embodiment/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Open-H-Embodiment Consortium</name>
+    </author>
+    <author>
+      <name> :</name>
+    </author>
+    <author>
+      <name>Nigel Nelson</name>
+    </author>
+    <author>
+      <name>Juo-Tung Chen</name>
+    </author>
+    <author>
+      <name>Jesse Haworth</name>
+    </author>
+    <author>
+      <name>Xinhao Chen</name>
+    </author>
+    <author>
+      <name>Lukas Zbinden</name>
+    </author>
+    <author>
+      <name>Dianye Huang</name>
+    </author>
+    <author>
+      <name>Alaa Eldin Abdelaal</name>
+    </author>
+    <author>
+      <name>Alberto Arezzo</name>
+    </author>
+    <author>
+      <name>Ayberk Acar</name>
+    </author>
+    <author>
+      <name>Farshid Alambeigi</name>
+    </author>
+    <author>
+      <name>Carlo Alberto Ammirati</name>
+    </author>
+    <author>
+      <name>Yunke Ao</name>
+    </author>
+    <author>
+      <name>Pablo David Aranda Rodriguez</name>
+    </author>
+    <author>
+      <name>Soofiyan Atar</name>
+    </author>
+    <author>
+      <name>Mattia Ballo</name>
+    </author>
+    <author>
+      <name>Noah Barnes</name>
+    </author>
+    <author>
+      <name>Federica Barontini</name>
+    </author>
+    <author>
+      <name>Filip Binkiewicz</name>
+    </author>
+    <author>
+      <name>Peter Black</name>
+    </author>
+    <author>
+      <name>Sebastian Bodenstedt</name>
+    </author>
+    <author>
+      <name>Leonardo Borgioli</name>
+    </author>
+    <author>
+      <name>Nikola Budjak</name>
+    </author>
+    <author>
+      <name>Benjamin Calmé</name>
+    </author>
+    <author>
+      <name>Fabio Carrillo</name>
+    </author>
+    <author>
+      <name>Nicola Cavalcanti</name>
+    </author>
+    <author>
+      <name>Changwei Chen</name>
+    </author>
+    <author>
+      <name>Haoxin Chen</name>
+    </author>
+    <author>
+      <name>Sihang Chen</name>
+    </author>
+    <author>
+      <name>Qihan Chen</name>
+    </author>
+    <author>
+      <name>Zhongyu Chen</name>
+    </author>
+    <author>
+      <name>Ziyang Chen</name>
+    </author>
+    <author>
+      <name>Shing Shin Cheng</name>
+    </author>
+    <author>
+      <name>Meiqing Cheng</name>
+    </author>
+    <author>
+      <name>Min Cheng</name>
+    </author>
+    <author>
+      <name>Zih-Yun Sarah Chiu</name>
+    </author>
+    <author>
+      <name>Xiangyu Chu</name>
+    </author>
+    <author>
+      <name>Camilo Correa-Gallego</name>
+    </author>
+    <author>
+      <name>Giulio Dagnino</name>
+    </author>
+    <author>
+      <name>Anton Deguet</name>
+    </author>
+    <author>
+      <name>Jacob Delgado</name>
+    </author>
+    <author>
+      <name>Jonathan C. DeLong</name>
+    </author>
+    <author>
+      <name>Kaizhong Deng</name>
+    </author>
+    <author>
+      <name>Alexander Dimitrakakis</name>
+    </author>
+    <author>
+      <name>Qingpeng Ding</name>
+    </author>
+    <author>
+      <name>Hao Ding</name>
+    </author>
+    <author>
+      <name>Giovanni Distefano</name>
+    </author>
+    <author>
+      <name>Daniel Donoho</name>
+    </author>
+    <author>
+      <name>Anqing Duan</name>
+    </author>
+    <author>
+      <name>Marco Esposito</name>
+    </author>
+    <author>
+      <name>Shane Farritor</name>
+    </author>
+    <author>
+      <name>Jad Fayad</name>
+    </author>
+    <author>
+      <name>Zahi Fayad</name>
+    </author>
+    <author>
+      <name>Mario Ferradosa</name>
+    </author>
+    <author>
+      <name>Filippo Filicori</name>
+    </author>
+    <author>
+      <name>Chelsea Finn</name>
+    </author>
+    <author>
+      <name>Philipp Fürnstahl</name>
+    </author>
+    <author>
+      <name>Jiawei Ge</name>
+    </author>
+    <author>
+      <name>Stamatia Giannarou</name>
+    </author>
+    <author>
+      <name>Xavier Giralt Ludevid</name>
+    </author>
+    <author>
+      <name>Frederic Giraud</name>
+    </author>
+    <author>
+      <name>Aditya Amit Godbole</name>
+    </author>
+    <author>
+      <name>Ken Goldberg</name>
+    </author>
+    <author>
+      <name>Antony Goldenberg</name>
+    </author>
+    <author>
+      <name>Diego Granero Marana</name>
+    </author>
+    <author>
+      <name>Xiaoqing Guo</name>
+    </author>
+    <author>
+      <name>Tamás Haidegger</name>
+    </author>
+    <author>
+      <name>Evan Hailey</name>
+    </author>
+    <author>
+      <name>Pascal Hansen</name>
+    </author>
+    <author>
+      <name>Ziyi Hao</name>
+    </author>
+    <author>
+      <name>Kush Hari</name>
+    </author>
+    <author>
+      <name>Kengo Hayashi</name>
+    </author>
+    <author>
+      <name>Jonathon Hawkins</name>
+    </author>
+    <author>
+      <name>Shelby Haworth</name>
+    </author>
+    <author>
+      <name>Ortrun Hellig</name>
+    </author>
+    <author>
+      <name>S. Duke Herrell</name>
+    </author>
+    <author>
+      <name>Zhouyang Hong</name>
+    </author>
+    <author>
+      <name>Andrew Howe</name>
+    </author>
+    <author>
+      <name>Junlei Hu</name>
+    </author>
+    <author>
+      <name>Zhaoyang Jacopo Hu</name>
+    </author>
+    <author>
+      <name>Ria Jain</name>
+    </author>
+    <author>
+      <name>Mohammad Rafiee Javazm</name>
+    </author>
+    <author>
+      <name>Howard Ji</name>
+    </author>
+    <author>
+      <name>Rui Ji</name>
+    </author>
+    <author>
+      <name>Jianmin Ji</name>
+    </author>
+    <author>
+      <name>Zhongliang Jiang</name>
+    </author>
+    <author>
+      <name>Dominic Jones</name>
+    </author>
+    <author>
+      <name>Jeffrey Jopling</name>
+    </author>
+    <author>
+      <name>Britton Jordan</name>
+    </author>
+    <author>
+      <name>Ran Ju</name>
+    </author>
+    <author>
+      <name>Michael Kam</name>
+    </author>
+    <author>
+      <name>Luoyao Kang</name>
+    </author>
+    <author>
+      <name>Fausto Kang</name>
+    </author>
+    <author>
+      <name>Siddhartha Kapuria</name>
+    </author>
+    <author>
+      <name>Peter Kazanzides</name>
+    </author>
+    <author>
+      <name>Sonika Kiehler</name>
+    </author>
+    <author>
+      <name>Ethan Kilmer</name>
+    </author>
+    <author>
+      <name>Ji Woong Kim</name>
+    </author>
+    <author>
+      <name>Przemysław Korzeniowski</name>
+    </author>
+    <author>
+      <name>Chandra Kuchi</name>
+    </author>
+    <author>
+      <name>Nithesh Kumar</name>
+    </author>
+    <author>
+      <name>Alan Kuntz</name>
+    </author>
+    <author>
+      <name>Federico Lavagno</name>
+    </author>
+    <author>
+      <name>Yu Chung Lee</name>
+    </author>
+    <author>
+      <name>Hao-Chih Lee</name>
+    </author>
+    <author>
+      <name>Hang Li</name>
+    </author>
+    <author>
+      <name>Zhen Li</name>
+    </author>
+    <author>
+      <name>Xiao Liang</name>
+    </author>
+    <author>
+      <name>Xinxin Lin</name>
+    </author>
+    <author>
+      <name>Jinsong Lin</name>
+    </author>
+    <author>
+      <name>Chang Liu</name>
+    </author>
+    <author>
+      <name>Fei Liu</name>
+    </author>
+    <author>
+      <name>Pei Liu</name>
+    </author>
+    <author>
+      <name>Yun-hui Liu</name>
+    </author>
+    <author>
+      <name>Wanli Liuchen</name>
+    </author>
+    <author>
+      <name>Eszter Lukács</name>
+    </author>
+    <author>
+      <name>Sareena Mann</name>
+    </author>
+    <author>
+      <name>Miles Mannas</name>
+    </author>
+    <author>
+      <name>Brett Marinelli</name>
+    </author>
+    <author>
+      <name>Sabina Martyniak</name>
+    </author>
+    <author>
+      <name>Francesco Marzola</name>
+    </author>
+    <author>
+      <name>Lorenzo Mazza</name>
+    </author>
+    <author>
+      <name>Xueyan Mei</name>
+    </author>
+    <author>
+      <name>Maria Clara Morais</name>
+    </author>
+    <author>
+      <name>Luigi Muratore</name>
+    </author>
+    <author>
+      <name>Chetan Reddy Narayanaswamy</name>
+    </author>
+    <author>
+      <name>Michał Naskręt</name>
+    </author>
+    <author>
+      <name>David Navarro-Alarcon</name>
+    </author>
+    <author>
+      <name>Cyrus Neary</name>
+    </author>
+    <author>
+      <name>Chi Kit Ng</name>
+    </author>
+    <author>
+      <name>Christopher Nguan</name>
+    </author>
+    <author>
+      <name>David Noonan</name>
+    </author>
+    <author>
+      <name>Ki Hwan Oh</name>
+    </author>
+    <author>
+      <name>Tom Christian Olesch</name>
+    </author>
+    <author>
+      <name>Allison M. Okamura</name>
+    </author>
+    <author>
+      <name>Justin Opfermann</name>
+    </author>
+    <author>
+      <name>Matteo Pescio</name>
+    </author>
+    <author>
+      <name>Doan Xuan Viet Pham</name>
+    </author>
+    <author>
+      <name>Tito Porras</name>
+    </author>
+    <author>
+      <name>Hongliang Ren</name>
+    </author>
+    <author>
+      <name>Ariel Rodriguez Jimenez</name>
+    </author>
+    <author>
+      <name>Ferdinando Rodriguez y Baena</name>
+    </author>
+    <author>
+      <name>Septimiu E. Salcudean</name>
+    </author>
+    <author>
+      <name>Asmitha Sathya</name>
+    </author>
+    <author>
+      <name>Preethi Satish</name>
+    </author>
+    <author>
+      <name>Lalithkumar Seenivasan</name>
+    </author>
+    <author>
+      <name>Jiaqi Shao</name>
+    </author>
+    <author>
+      <name>Yiqing Shen</name>
+    </author>
+    <author>
+      <name>Yu Sheng</name>
+    </author>
+    <author>
+      <name>Lucy XiaoYang Shi</name>
+    </author>
+    <author>
+      <name>Zoe Soulé</name>
+    </author>
+    <author>
+      <name>Stefanie Speidel</name>
+    </author>
+    <author>
+      <name>Mingwu Su</name>
+    </author>
+    <author>
+      <name>Jianhao Su</name>
+    </author>
+    <author>
+      <name>Idris Sunmola</name>
+    </author>
+    <author>
+      <name>Kristóf Takács</name>
+    </author>
+    <author>
+      <name>Yunxi Tang</name>
+    </author>
+    <author>
+      <name>Patrick Thornycroft</name>
+    </author>
+    <author>
+      <name>Yu Tian</name>
+    </author>
+    <author>
+      <name>Jordan Thompson</name>
+    </author>
+    <author>
+      <name>Mehmet K. Turkcan</name>
+    </author>
+    <author>
+      <name>Mathias Unberath</name>
+    </author>
+    <author>
+      <name>Pietro Valdastri</name>
+    </author>
+    <author>
+      <name>Carlos Vives</name>
+    </author>
+    <author>
+      <name>Quan Vuong</name>
+    </author>
+    <author>
+      <name>Martin Wagner</name>
+    </author>
+    <author>
+      <name>Farong Wang</name>
+    </author>
+    <author>
+      <name>Wei Wang</name>
+    </author>
+    <author>
+      <name>Lidian Wang</name>
+    </author>
+    <author>
+      <name>Chung-Pang Wang</name>
+    </author>
+    <author>
+      <name>Guankun Wang</name>
+    </author>
+    <author>
+      <name>Junyi Wang</name>
+    </author>
+    <author>
+      <name>Erqi Wang</name>
+    </author>
+    <author>
+      <name>Ziyi Wang</name>
+    </author>
+    <author>
+      <name>Tanner Watts</name>
+    </author>
+    <author>
+      <name>Wolfgang Wein</name>
+    </author>
+    <author>
+      <name>Yimeng Wu</name>
+    </author>
+    <author>
+      <name>Zijian Wu</name>
+    </author>
+    <author>
+      <name>Hongjun Wu</name>
+    </author>
+    <author>
+      <name>Luohong Wu</name>
+    </author>
+    <author>
+      <name>Jie Ying Wu</name>
+    </author>
+    <author>
+      <name>Junlin Wu</name>
+    </author>
+    <author>
+      <name>Victoria Wu</name>
+    </author>
+    <author>
+      <name>Kaixuan Wu</name>
+    </author>
+    <author>
+      <name>Mateusz Wójcikowski</name>
+    </author>
+    <author>
+      <name>Yunye Xiao</name>
+    </author>
+    <author>
+      <name>Nan Xiao</name>
+    </author>
+    <author>
+      <name>Wenxuan Xie</name>
+    </author>
+    <author>
+      <name>Hao Yang</name>
+    </author>
+    <author>
+      <name>Tianqi Yang</name>
+    </author>
+    <author>
+      <name>Yinuo Yang</name>
+    </author>
+    <author>
+      <name>Menglong Ye</name>
+    </author>
+    <author>
+      <name>Ryan S. Yeung</name>
+    </author>
+    <author>
+      <name>Nural Yilmaz</name>
+    </author>
+    <author>
+      <name>Chim Ho Yin</name>
+    </author>
+    <author>
+      <name>Michael Yip</name>
+    </author>
+    <author>
+      <name>Rayan Younis</name>
+    </author>
+    <author>
+      <name>Chenhao Yu</name>
+    </author>
+    <author>
+      <name>Sayem Nazmuz Zaman</name>
+    </author>
+    <author>
+      <name>Milos Zefran</name>
+    </author>
+    <author>
+      <name>Han Zhang</name>
+    </author>
+    <author>
+      <name>Yuelin Zhang</name>
+    </author>
+    <author>
+      <name>Yidong Zhang</name>
+    </author>
+    <author>
+      <name>Yanyong Zhang</name>
+    </author>
+    <author>
+      <name>Xuyang Zhang</name>
+    </author>
+    <author>
+      <name>Yameng Zhang</name>
+    </author>
+    <author>
+      <name>Joyce Zhang</name>
+    </author>
+    <author>
+      <name>Ning Zhong</name>
+    </author>
+    <author>
+      <name>Peng Zhou</name>
+    </author>
+    <author>
+      <name>Haoying Zhou</name>
+    </author>
+    <author>
+      <name>Xiuli Zuo</name>
+    </author>
+    <author>
+      <name>Nassir Navab</name>
+    </author>
+    <author>
+      <name>Mahdi Azizian</name>
+    </author>
+    <author>
+      <name>Sean D. Huver</name>
+    </author>
+    <author>
+      <name>Axel Krieger</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2604.20627v1</id>
+    <title>Occupancy Reward Shaping: Improving Credit Assignment for Offline Goal-Conditioned Reinforcement Learning</title>
+    <updated>2026-04-22T14:41:56Z</updated>
+    <link href="https://arxiv.org/abs/2604.20627v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2604.20627v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The temporal lag between actions and their long-term consequences makes credit assignment a challenge when learning goal-directed behaviors from data. Generative world models capture the distribution of future states an agent may visit, indicating that they have captured temporal information. How can that temporal information be extracted to perform credit assignment? In this paper, we formalize how the temporal information stored in world models encodes the underlying geometry of the world. Leveraging optimal transport, we extract this geometry from a learned model of the occupancy measure into a reward function that captures goal-reaching information. Our resulting method, Occupancy Reward Shaping, largely mitigates the problem of credit assignment in sparse reward settings. ORS provably does not alter the optimal policy, yet empirically improves performance by 2.2x across 13 diverse long-horizon locomotion and manipulation tasks. Moreover, we demonstrate the effectiveness of ORS in the real world for controlling nuclear fusion on 3 Tokamak control tasks.
+  Code: https://github.com/aravindvenu7/occupancy_reward_shaping; Website: https://aravindvenu7.github.io/website/ors/</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-22T14:41:56Z</published>
+    <arxiv:comment>ICLR 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Aravind Venugopal</name>
+    </author>
+    <author>
+      <name>Jiayu Chen</name>
+    </author>
+    <author>
+      <name>Xudong Wu</name>
+    </author>
+    <author>
+      <name>Chongyi Zheng</name>
+    </author>
+    <author>
+      <name>Benjamin Eysenbach</name>
+    </author>
+    <author>
+      <name>Jeff Schneider</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2604.11386v1</id>
+    <title>ComSim: Building Scalable Real-World Robot Data Generation via Compositional Simulation</title>
+    <updated>2026-04-13T12:25:45Z</updated>
+    <link href="https://arxiv.org/abs/2604.11386v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2604.11386v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recent advancements in foundational models, such as large language models and world models, have greatly enhanced the capabilities of robotics, enabling robots to autonomously perform complex tasks. However, acquiring large-scale, high-quality training data for robotics remains a challenge, as it often requires substantial manual effort and is limited in its coverage of diverse real-world environments. To address this, we propose a novel hybrid approach called Compositional Simulation, which combines classical simulation and neural simulation to generate accurate action-video pairs while maintaining real-world consistency. Our approach utilizes a closed-loop real-sim-real data augmentation pipeline, leveraging a small amount of real-world data to generate diverse, large-scale training datasets that cover a broader spectrum of real-world scenarios. We train a neural simulator to transform classical simulation videos into real-world representations, improving the accuracy of policy models trained in real-world environments. Through extensive experiments, we demonstrate that our method significantly reduces the sim2real domain gap, resulting in higher success rates in real-world policy model training. Our approach offers a scalable solution for generating robust training data and bridging the gap between simulated and real-world robotics.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-13T12:25:45Z</published>
+    <arxiv:comment>14 pages, 8 figures, 4 tables; supplementary material included; Project page: https://faceong.github.io/ComSim/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yiran Qin</name>
+    </author>
+    <author>
+      <name>Jiahua Ma</name>
+    </author>
+    <author>
+      <name>Li Kang</name>
+    </author>
+    <author>
+      <name>Wenzhan Li</name>
+    </author>
+    <author>
+      <name>Yihang Jiao</name>
+    </author>
+    <author>
+      <name>Xin Wen</name>
+    </author>
+    <author>
+      <name>Xiufeng Song</name>
+    </author>
+    <author>
+      <name>Heng Zhou</name>
+    </author>
+    <author>
+      <name>Jiwen Yu</name>
+    </author>
+    <author>
+      <name>Zhenfei Yin</name>
+    </author>
+    <author>
+      <name>Xihui Liu</name>
+    </author>
+    <author>
+      <name>Philip Torr</name>
+    </author>
+    <author>
+      <name>Yilun Du</name>
+    </author>
+    <author>
+      <name>Ruimao Zhang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2604.08958v3</id>
+    <title>WOMBET: World Model-Based Experience Transfer for Robust and Sample-efficient Reinforcement Learning</title>
+    <updated>2026-06-11T05:02:53Z</updated>
+    <link href="https://arxiv.org/abs/2604.08958v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2604.08958v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Reinforcement learning (RL) in robotics is often limited by the cost and risk of data collection, motivating experience transfer from a source task to a target task. Offline-to-online RL leverages prior data but typically assumes a given fixed dataset and does not address how to generate reliable data for transfer. We propose World Model-Based Experience Transfer (WOMBET), a framework that jointly generates and utilizes prior data. WOMBET learns a world model in the source task and generates offline data via uncertainty-penalized planning, followed by filtering trajectories with high return and low epistemic uncertainty. It then performs online fine-tuning in the target task using adaptive sampling between offline and online data, enabling a stable transition from prior-driven initialization to task-specific adaptation. We show that the uncertainty-penalized objective provides a lower bound on the true return and derive a finite-sample error decomposition capturing distribution mismatch and approximation error. Empirically, WOMBET improves sample efficiency and final performance over strong baselines on continuous control benchmarks, demonstrating the benefit of jointly optimizing data generation and transfer.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-10T04:57:54Z</published>
+    <arxiv:comment>13 pages, 6 figures, 8th Annual Learning for Dynamics &amp; Control Conference (L4DC)</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Mintae Kim</name>
+    </author>
+    <author>
+      <name>Koushil Sreenath</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2603.08546v1</id>
+    <title>Interactive World Simulator for Robot Policy Training and Evaluation</title>
+    <updated>2026-03-09T16:13:32Z</updated>
+    <link href="https://arxiv.org/abs/2603.08546v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2603.08546v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Action-conditioned video prediction models (often referred to as world models) have shown strong potential for robotics applications, but existing approaches are often slow and struggle to capture physically consistent interactions over long horizons, limiting their usefulness for scalable robot policy training and evaluation. We present Interactive World Simulator, a framework for building interactive world models from a moderate-sized robot interaction dataset. Our approach leverages consistency models for both image decoding and latent-space dynamics prediction, enabling fast and stable simulation of physical interactions. In our experiments, the learned world models produce interaction-consistent pixel-level predictions and support stable long-horizon interactions for more than 10 minutes at 15 FPS on a single RTX 4090 GPU. Our framework enables scalable demonstration collection solely within the world models to train state-of-the-art imitation policies. Through extensive real-world evaluation across diverse tasks involving rigid objects, deformable objects, object piles, and their interactions, we find that policies trained on world-model-generated data perform comparably to those trained on the same amount of real-world data. Additionally, we evaluate policies both within the world models and in the real world across diverse tasks, and observe a strong correlation between simulated and real-world performance. Together, these results establish the Interactive World Simulator as a stable and physically consistent surrogate for scalable robotic data generation and faithful, reproducible policy evaluation.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-03-09T16:13:32Z</published>
+    <arxiv:comment>Project Page: https://yixuanwang.me/interactive_world_sim</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yixuan Wang</name>
+    </author>
+    <author>
+      <name>Rhythm Syed</name>
+    </author>
+    <author>
+      <name>Fangyu Wu</name>
+    </author>
+    <author>
+      <name>Mengchao Zhang</name>
+    </author>
+    <author>
+      <name>Aykut Onol</name>
+    </author>
+    <author>
+      <name>Jose Barreiros</name>
+    </author>
+    <author>
+      <name>Hooshang Nayyeri</name>
+    </author>
+    <author>
+      <name>Tony Dear</name>
+    </author>
+    <author>
+      <name>Huan Zhang</name>
+    </author>
+    <author>
+      <name>Yunzhu Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2601.07823v1</id>
+    <title>Video Generation Models in Robotics -- Applications, Research Challenges, Future Directions</title>
+    <updated>2026-01-12T18:57:34Z</updated>
+    <link href="https://arxiv.org/abs/2601.07823v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2601.07823v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Video generation models have emerged as high-fidelity models of the physical world, capable of synthesizing high-quality videos capturing fine-grained interactions between agents and their environments conditioned on multi-modal user inputs. Their impressive capabilities address many of the long-standing challenges faced by physics-based simulators, driving broad adoption in many problem domains, e.g., robotics. For example, video models enable photorealistic, physically consistent deformable-body simulation without making prohibitive simplifying assumptions, which is a major bottleneck in physics-based simulation. Moreover, video models can serve as foundation world models that capture the dynamics of the world in a fine-grained and expressive way. They thus overcome the limited expressiveness of language-only abstractions in describing intricate physical interactions. In this survey, we provide a review of video models and their applications as embodied world models in robotics, encompassing cost-effective data generation and action prediction in imitation learning, dynamics and rewards modeling in reinforcement learning, visual planning, and policy evaluation. Further, we highlight important challenges hindering the trustworthy integration of video models in robotics, which include poor instruction following, hallucinations such as violations of physics, and unsafe content generation, in addition to fundamental limitations such as significant data curation, training, and inference costs. We present potential future directions to address these open research challenges to motivate research and ultimately facilitate broader applications, especially in safety-critical settings.</summary>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-01-12T18:57:34Z</published>
+    <arxiv:primary_category term="eess.SY"/>
+    <author>
+      <name>Zhiting Mei</name>
+    </author>
+    <author>
+      <name>Tenny Yin</name>
+    </author>
+    <author>
+      <name>Ola Shorinwa</name>
+    </author>
+    <author>
+      <name>Apurva Badithela</name>
+    </author>
+    <author>
+      <name>Zhonghe Zheng</name>
+    </author>
+    <author>
+      <name>Joseph Bruno</name>
+    </author>
+    <author>
+      <name>Madison Bland</name>
+    </author>
+    <author>
+      <name>Lihan Zha</name>
+    </author>
+    <author>
+      <name>Asher Hancock</name>
+    </author>
+    <author>
+      <name>Jaime Fernández Fisac</name>
+    </author>
+    <author>
+      <name>Philip Dames</name>
+    </author>
+    <author>
+      <name>Anirudha Majumdar</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2601.01528v2</id>
+    <title>DrivingGen: A Comprehensive Benchmark for Generative Video World Models in Autonomous Driving</title>
+    <updated>2026-03-07T19:13:10Z</updated>
+    <link href="https://arxiv.org/abs/2601.01528v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2601.01528v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Video generation models, as one form of world models, have emerged as one of the most exciting frontiers in AI, promising agents the ability to imagine the future by modeling the temporal evolution of complex scenes. In autonomous driving, this vision gives rise to driving world models: generative simulators that imagine ego and agent futures, enabling scalable simulation, safe testing of corner cases, and rich synthetic data generation. Yet, despite fast-growing research activity, the field lacks a rigorous benchmark to measure progress and guide priorities. Existing evaluations remain limited: generic video metrics overlook safety-critical imaging factors; trajectory plausibility is rarely quantified; temporal and agent-level consistency is neglected; and controllability with respect to ego conditioning is ignored. Moreover, current datasets fail to cover the diversity of conditions required for real-world deployment. To address these gaps, we present DrivingGen, the first comprehensive benchmark for generative driving world models. DrivingGen combines a diverse evaluation dataset curated from both driving datasets and internet-scale video sources, spanning varied weather, time of day, geographic regions, and complex maneuvers, with a suite of new metrics that jointly assess visual realism, trajectory plausibility, temporal coherence, and controllability. Benchmarking 14 state-of-the-art models reveals clear trade-offs: general models look better but break physics, while driving-specific ones capture motion realistically but lag in visual quality. DrivingGen offers a unified evaluation framework to foster reliable, controllable, and deployable driving world models, enabling scalable simulation, planning, and data-driven decision-making.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-01-04T13:36:21Z</published>
+    <arxiv:comment>ICLR 2026 Poster; Project Website: https://drivinggen-bench.github.io/</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Yang Zhou</name>
+    </author>
+    <author>
+      <name>Hao Shao</name>
+    </author>
+    <author>
+      <name>Letian Wang</name>
+    </author>
+    <author>
+      <name>Zhuofan Zong</name>
+    </author>
+    <author>
+      <name>Hongsheng Li</name>
+    </author>
+    <author>
+      <name>Steven L. Waslander</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2512.18396v2</id>
+    <title>AOMGen: Photoreal, Physics-Consistent Demonstration Generation for Articulated Object Manipulation</title>
+    <updated>2026-03-13T03:00:08Z</updated>
+    <link href="https://arxiv.org/abs/2512.18396v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2512.18396v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recent advances in Vision-Language-Action (VLA) and world-model methods have improved generalization in tasks such as robotic manipulation and object interaction. However, Successful execution of such tasks depends on large, costly collections of real demonstrations, especially for fine-grained manipulation of articulated objects. To address this, we present AOMGen, a scalable data generation framework for articulated manipulation which is instantiated from a single real scan, demonstration and a library of readily available digital assets, yielding photoreal training data with verified physical states. The framework synthesizes synchronized multi-view RGB temporally aligned with action commands and state annotations for joints and contacts, and systematically varies camera viewpoints, object styles, and object poses to expand a single execution into a diverse corpus. Experimental results demonstrate that fine-tuning VLA policies on AOMGen data increases the success rate from 0% to 88.7%, and the policies are tested on unseen objects and layouts.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-12-20T15:21:25Z</published>
+    <arxiv:comment>Accepted by CVPR Findings2026</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yulu Wu</name>
+    </author>
+    <author>
+      <name>Jiujun Cheng</name>
+    </author>
+    <author>
+      <name>Haowen Wang</name>
+    </author>
+    <author>
+      <name>Dengyang Suo</name>
+    </author>
+    <author>
+      <name>Pei Ren</name>
+    </author>
+    <author>
+      <name>Qichao Mao</name>
+    </author>
+    <author>
+      <name>Shangce Gao</name>
+    </author>
+    <author>
+      <name>Yakun Huang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2512.03538v1</id>
+    <title>AdaPower: Specializing World Foundation Models for Predictive Manipulation</title>
+    <updated>2025-12-03T07:59:00Z</updated>
+    <link href="https://arxiv.org/abs/2512.03538v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2512.03538v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>World Foundation Models (WFMs) offer remarkable visual dynamics simulation capabilities, yet their application to precise robotic control remains limited by the gap between generative realism and control-oriented precision. While existing approaches use WFMs as synthetic data generators, they suffer from high computational costs and underutilization of pre-trained VLA policies. We introduce \textbf{AdaPower} (\textbf{Ada}pt and Em\textbf{power}), a lightweight adaptation framework that transforms general-purpose WFMs into specialist world models through two novel components: Temporal-Spatial Test-Time Training (TS-TTT) for inference-time adaptation and Memory Persistence (MP) for long-horizon consistency. Integrated within a Model Predictive Control framework, our adapted world model empowers pre-trained VLAs, achieving over 41\% improvement in task success rates on LIBERO benchmarks without policy retraining, while preserving computational efficiency and generalist capabilities.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-12-03T07:59:00Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yuhang Huang</name>
+    </author>
+    <author>
+      <name>Shilong Zou</name>
+    </author>
+    <author>
+      <name>Jiazhao Zhang</name>
+    </author>
+    <author>
+      <name>Xinwang Liu</name>
+    </author>
+    <author>
+      <name>Ruizhen Hu</name>
+    </author>
+    <author>
+      <name>Kai Xu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2506.06199v1</id>
+    <title>3DFlowAction: Learning Cross-Embodiment Manipulation from 3D Flow World Model</title>
+    <updated>2025-06-06T16:00:31Z</updated>
+    <link href="https://arxiv.org/abs/2506.06199v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2506.06199v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Manipulation has long been a challenging task for robots, while humans can effortlessly perform complex interactions with objects, such as hanging a cup on the mug rack. A key reason is the lack of a large and uniform dataset for teaching robots manipulation skills. Current robot datasets often record robot action in different action spaces within a simple scene. This hinders the robot to learn a unified and robust action representation for different robots within diverse scenes. Observing how humans understand a manipulation task, we find that understanding how the objects should move in the 3D space is a critical clue for guiding actions. This clue is embodiment-agnostic and suitable for both humans and different robots. Motivated by this, we aim to learn a 3D flow world model from both human and robot manipulation data. This model predicts the future movement of the interacting objects in 3D space, guiding action planning for manipulation. Specifically, we synthesize a large-scale 3D optical flow dataset, named ManiFlow-110k, through a moving object auto-detect pipeline. A video diffusion-based world model then learns manipulation physics from these data, generating 3D optical flow trajectories conditioned on language instructions. With the generated 3D object optical flow, we propose a flow-guided rendering mechanism, which renders the predicted final state and leverages GPT-4o to assess whether the predicted flow aligns with the task description. This equips the robot with a closed-loop planning ability. Finally, we consider the predicted 3D optical flow as constraints for an optimization policy to determine a chunk of robot actions for manipulation. Extensive experiments demonstrate strong generalization across diverse robotic manipulation tasks and reliable cross-embodiment adaptation without hardware-specific training.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-06-06T16:00:31Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Hongyan Zhi</name>
+    </author>
+    <author>
+      <name>Peihao Chen</name>
+    </author>
+    <author>
+      <name>Siyuan Zhou</name>
+    </author>
+    <author>
+      <name>Yubo Dong</name>
+    </author>
+    <author>
+      <name>Quanxi Wu</name>
+    </author>
+    <author>
+      <name>Lei Han</name>
+    </author>
+    <author>
+      <name>Mingkui Tan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2506.01600v1</id>
+    <title>WoMAP: World Models For Embodied Open-Vocabulary Object Localization</title>
+    <updated>2025-06-02T12:35:14Z</updated>
+    <link href="https://arxiv.org/abs/2506.01600v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2506.01600v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Language-instructed active object localization is a critical challenge for robots, requiring efficient exploration of partially observable environments. However, state-of-the-art approaches either struggle to generalize beyond demonstration datasets (e.g., imitation learning methods) or fail to generate physically grounded actions (e.g., VLMs). To address these limitations, we introduce WoMAP (World Models for Active Perception): a recipe for training open-vocabulary object localization policies that: (i) uses a Gaussian Splatting-based real-to-sim-to-real pipeline for scalable data generation without the need for expert demonstrations, (ii) distills dense rewards signals from open-vocabulary object detectors, and (iii) leverages a latent world model for dynamics and rewards prediction to ground high-level action proposals at inference time. Rigorous simulation and hardware experiments demonstrate WoMAP's superior performance in a broad range of zero-shot object localization tasks, with more than 9x and 2x higher success rates compared to VLM and diffusion policy baselines, respectively. Further, we show that WoMAP achieves strong generalization and sim-to-real transfer on a TidyBot.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-06-02T12:35:14Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Tenny Yin</name>
+    </author>
+    <author>
+      <name>Zhiting Mei</name>
+    </author>
+    <author>
+      <name>Tao Sun</name>
+    </author>
+    <author>
+      <name>Lihan Zha</name>
+    </author>
+    <author>
+      <name>Emily Zhou</name>
+    </author>
+    <author>
+      <name>Jeremy Bao</name>
+    </author>
+    <author>
+      <name>Miyu Yamane</name>
+    </author>
+    <author>
+      <name>Ola Shorinwa</name>
+    </author>
+    <author>
+      <name>Anirudha Majumdar</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2505.12705v2</id>
+    <title>DreamGen: Unlocking Generalization in Robot Learning through Video World Models</title>
+    <updated>2025-06-17T22:33:35Z</updated>
+    <link href="https://arxiv.org/abs/2505.12705v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2505.12705v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We introduce DreamGen, a simple yet highly effective 4-stage pipeline for training robot policies that generalize across behaviors and environments through neural trajectories - synthetic robot data generated from video world models. DreamGen leverages state-of-the-art image-to-video generative models, adapting them to the target robot embodiment to produce photorealistic synthetic videos of familiar or novel tasks in diverse environments. Since these models generate only videos, we recover pseudo-action sequences using either a latent action model or an inverse-dynamics model (IDM). Despite its simplicity, DreamGen unlocks strong behavior and environment generalization: a humanoid robot can perform 22 new behaviors in both seen and unseen environments, while requiring teleoperation data from only a single pick-and-place task in one environment. To evaluate the pipeline systematically, we introduce DreamGen Bench, a video generation benchmark that shows a strong correlation between benchmark performance and downstream policy success. Our work establishes a promising new axis for scaling robot learning well beyond manual data collection. Code available at https://github.com/NVIDIA/GR00T-Dreams.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-05-19T04:55:39Z</published>
+    <arxiv:comment>See website for videos: https://research.nvidia.com/labs/gear/dreamgen</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Joel Jang</name>
+    </author>
+    <author>
+      <name>Seonghyeon Ye</name>
+    </author>
+    <author>
+      <name>Zongyu Lin</name>
+    </author>
+    <author>
+      <name>Jiannan Xiang</name>
+    </author>
+    <author>
+      <name>Johan Bjorck</name>
+    </author>
+    <author>
+      <name>Yu Fang</name>
+    </author>
+    <author>
+      <name>Fengyuan Hu</name>
+    </author>
+    <author>
+      <name>Spencer Huang</name>
+    </author>
+    <author>
+      <name>Kaushil Kundalia</name>
+    </author>
+    <author>
+      <name>Yen-Chen Lin</name>
+    </author>
+    <author>
+      <name>Loic Magne</name>
+    </author>
+    <author>
+      <name>Ajay Mandlekar</name>
+    </author>
+    <author>
+      <name>Avnish Narayan</name>
+    </author>
+    <author>
+      <name>You Liang Tan</name>
+    </author>
+    <author>
+      <name>Guanzhi Wang</name>
+    </author>
+    <author>
+      <name>Jing Wang</name>
+    </author>
+    <author>
+      <name>Qi Wang</name>
+    </author>
+    <author>
+      <name>Yinzhen Xu</name>
+    </author>
+    <author>
+      <name>Xiaohui Zeng</name>
+    </author>
+    <author>
+      <name>Kaiyuan Zheng</name>
+    </author>
+    <author>
+      <name>Ruijie Zheng</name>
+    </author>
+    <author>
+      <name>Ming-Yu Liu</name>
+    </author>
+    <author>
+      <name>Luke Zettlemoyer</name>
+    </author>
+    <author>
+      <name>Dieter Fox</name>
+    </author>
+    <author>
+      <name>Jan Kautz</name>
+    </author>
+    <author>
+      <name>Scott Reed</name>
+    </author>
+    <author>
+      <name>Yuke Zhu</name>
+    </author>
+    <author>
+      <name>Linxi Fan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2503.15629v1</id>
+    <title>Neural Lyapunov Function Approximation with Self-Supervised Reinforcement Learning</title>
+    <updated>2025-03-19T18:29:25Z</updated>
+    <link href="https://arxiv.org/abs/2503.15629v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2503.15629v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Control Lyapunov functions are traditionally used to design a controller which ensures convergence to a desired state, yet deriving these functions for nonlinear systems remains a complex challenge. This paper presents a novel, sample-efficient method for neural approximation of nonlinear Lyapunov functions, leveraging self-supervised Reinforcement Learning (RL) to enhance training data generation, particularly for inaccurately represented regions of the state space. The proposed approach employs a data-driven World Model to train Lyapunov functions from off-policy trajectories. The method is validated on both standard and goal-conditioned robotic tasks, demonstrating faster convergence and higher approximation accuracy compared to the state-of-the-art neural Lyapunov approximation baseline. The code is available at: https://github.com/CAV-Research-Lab/SACLA.git</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-03-19T18:29:25Z</published>
+    <arxiv:comment>Accepted at IEEE International Conference on Robotics and Automation (ICRA)</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Luc McCutcheon</name>
+    </author>
+    <author>
+      <name>Bahman Gharesifard</name>
+    </author>
+    <author>
+      <name>Saber Fallah</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2410.02742v2</id>
+    <title>Grounding Large Language Models In Embodied Environment With Imperfect World Models</title>
+    <updated>2024-11-11T20:33:03Z</updated>
+    <link href="https://arxiv.org/abs/2410.02742v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2410.02742v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Despite a widespread success in various applications, large language models (LLMs) often stumble when tackling basic physical reasoning or executing robotics tasks, due to a lack of direct experience with the physical nuances of the real world. To address these issues, we propose a Grounding Large language model with Imperfect world MOdel (GLIMO), which utilizes proxy world models such as simulators to collect and synthesize trining data. GLIMO incorporates an LLM agent-based data generator to automatically create high-quality and diverse instruction datasets. The generator includes an iterative self-refining module for temporally consistent experience sampling, a diverse set of question-answering instruction seeds, and a retrieval-augmented generation module for reflecting on prior experiences. Comprehensive experiments show that our approach improve the performance of strong open-source LLMs like LLaMA-3 with a performance boost of 2.04 $\times$, 1.54 $\times$, and 1.82 $\times$ across three different benchmarks, respectively. The performance is able to compete with or surpass their larger counterparts such as GPT-4.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-10-03T17:55:09Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Haolan Liu</name>
+    </author>
+    <author>
+      <name>Jishen Zhao</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2409.18097v1</id>
+    <title>A Sim-to-Real Vision-based Lane Keeping System for a 1:10-scale Autonomous Vehicle</title>
+    <updated>2024-09-26T17:41:04Z</updated>
+    <link href="https://arxiv.org/abs/2409.18097v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2409.18097v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In recent years, several competitions have highlighted the need to investigate vision-based solutions to address scenarios with functional insufficiencies in perception, world modeling and localization. This article presents the Vision-based Lane Keeping System (VbLKS) developed by the DEI-Unipd Team within the context of the Bosch Future Mobility Challenge 2022. The main contribution lies in a Simulation-to-Reality (Sim2Real) GPS-denied VbLKS for a 1:10-scale autonomous vehicle. In this VbLKS, the input to a tailored Pure Pursuit (PP) based control strategy, namely the Lookahead Heading Error (LHE), is estimated at a constant lookahead distance employing a Convolutional Neural Network (CNN). A training strategy for a compact CNN is proposed, emphasizing data generation and augmentation on simulated camera images from a 3D Gazebo simulator, and enabling real-time operation on low-level hardware. A tailored PP-based lateral controller equipped with a derivative action and a PP-based velocity reference generation are implemented. Tuning ranges are established through a systematic time-delay stability analysis. Validation in a representative controlled laboratory setting is provided.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-09-26T17:41:04Z</published>
+    <arxiv:comment>16 pages, 23 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Antonio Gallina</name>
+    </author>
+    <author>
+      <name>Matteo Grandin</name>
+    </author>
+    <author>
+      <name>Angelo Cenedese</name>
+    </author>
+    <author>
+      <name>Mattia Bruschetta</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2311.05938v1</id>
+    <title>Efficient Learning of Fast Inverse Kinematics with Collision Avoidance</title>
+    <updated>2023-11-10T08:52:40Z</updated>
+    <link href="https://arxiv.org/abs/2311.05938v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2311.05938v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Fast inverse kinematics (IK) is a central component in robotic motion planning. For complex robots, IK methods are often based on root search and non-linear optimization algorithms. These algorithms can be massively sped up using a neural network to predict a good initial guess, which can then be refined in a few numerical iterations. Besides previous work on learning-based IK, we present a learning approach for the fundamentally more complex problem of IK with collision avoidance. We do this in diverse and previously unseen environments. From a detailed analysis of the IK learning problem, we derive a network and unsupervised learning architecture that removes the need for a sample data generation step. Using the trained network's prediction as an initial guess for a two-stage Jacobian-based solver allows for fast and accurate computation of the collision-free IK. For the humanoid robot, Agile Justin (19 DoF), the collision-free IK is solved in less than 10 milliseconds (on a single CPU core) and with an accuracy of 10^-4 m and 10^-3 rad based on a high-resolution world model generated from the robot's integrated 3D sensor. Our method massively outperforms a random multi-start baseline in a benchmark with the 19 DoF humanoid and challenging 3D environments. It requires ten times less training time than a supervised training method while achieving comparable results.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-11-10T08:52:40Z</published>
+    <arxiv:comment>Presented at the 2023 IEEE-RAS International Conference on Humanoid Robots</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <arxiv:journal_ref>2023 IEEE-RAS International Conference on Humanoid Robots (Humanoids)</arxiv:journal_ref>
+    <author>
+      <name>Johannes Tenhumberg</name>
+    </author>
+    <author>
+      <name>Arman Mielke</name>
+    </author>
+    <author>
+      <name>Berthold Bäuml</name>
+    </author>
+    <arxiv:doi>10.1109/Humanoids57100.2023.10375143</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/Humanoids57100.2023.10375143" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2310.17178v2</id>
+    <title>Relational Object-Centric Actor-Critic</title>
+    <updated>2025-03-20T12:30:17Z</updated>
+    <link href="https://arxiv.org/abs/2310.17178v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2310.17178v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The advances in unsupervised object-centric representation learning have significantly improved its application to downstream tasks. Recent works highlight that disentangled object representations can aid policy learning in image-based, object-centric reinforcement learning tasks. This paper proposes a novel object-centric reinforcement learning algorithm that integrates actor-critic and model-based approaches by incorporating an object-centric world model within the critic. The world model captures the environment's data-generating process by predicting the next state and reward given the current state-action pair, where actions are interventions in the environment. In model-based reinforcement learning, world model learning can be interpreted as a causal induction problem, where the agent must learn the causal relationships underlying the environment's dynamics. We evaluate our method in a simulated 3D robotic environment and a 2D environment with compositional structure. As baselines, we compare against object-centric, model-free actor-critic algorithms and a state-of-the-art monolithic model-based algorithm. While the baselines show comparable performance in easier tasks, our approach outperforms them in more challenging scenarios with a large number of objects or more complex dynamics.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-10-26T06:05:12Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Leonid Ugadiarov</name>
+    </author>
+    <author>
+      <name>Vitaliy Vorobyov</name>
+    </author>
+    <author>
+      <name>Aleksandr I. Panov</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2303.10930v1</id>
+    <title>Semantic 3D scene segmentation for robotic assembly process execution</title>
+    <updated>2023-03-20T08:04:52Z</updated>
+    <link href="https://arxiv.org/abs/2303.10930v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2303.10930v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Adapting robot programmes to changes in the environment is a well-known industry problem, and it is the reason why many tedious tasks are not automated in small and medium-sized enterprises (SMEs). A semantic world model of a robot's previously unknown environment created from point clouds is one way for these companies to automate assembly tasks that are typically performed by humans. The semantic segmentation of point clouds for robot manipulators or cobots in industrial environments has received little attention due to a lack of suitable datasets. This paper describes a pipeline for creating synthetic point clouds for specific use cases in order to train a model for point cloud semantic segmentation. We show that models trained with our data achieve high per-class accuracy (&gt; 90%) for semantic point cloud segmentation on unseen real-world data. Our approach is applicable not only to the 3D camera used in training data generation but also to other depth cameras based on different technologies. The application tested in this work is a industry-related peg-in-the-hole process. With our approach the necessity of user assistance during a robot's commissioning can be reduced to a minimum.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-03-20T08:04:52Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Andreas Wiedholz</name>
+    </author>
+    <author>
+      <name>Stefanie Wucherer</name>
+    </author>
+    <author>
+      <name>Simon Dietrich</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2011.09004v1</id>
+    <title>Explaining Conditions for Reinforcement Learning Behaviors from Real and Imagined Data</title>
+    <updated>2020-11-17T23:40:47Z</updated>
+    <link href="https://arxiv.org/abs/2011.09004v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2011.09004v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The deployment of reinforcement learning (RL) in the real world comes with challenges in calibrating user trust and expectations. As a step toward developing RL systems that are able to communicate their competencies, we present a method of generating human-interpretable abstract behavior models that identify the experiential conditions leading to different task execution strategies and outcomes. Our approach consists of extracting experiential features from state representations, abstracting strategy descriptors from trajectories, and training an interpretable decision tree that identifies the conditions most predictive of different RL behaviors. We demonstrate our method on trajectory data generated from interactions with the environment and on imagined trajectory data that comes from a trained probabilistic world model in a model-based RL setting.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2020-11-17T23:40:47Z</published>
+    <arxiv:comment>Accepted to the Workshop on Challenges of Real-World RL at NeurIPS 2020</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Aastha Acharya</name>
+    </author>
+    <author>
+      <name>Rebecca Russell</name>
+    </author>
+    <author>
+      <name>Nisar R. Ahmed</name>
+    </author>
+  </entry>
+</feed>

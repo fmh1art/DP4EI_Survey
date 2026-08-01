@@ -1,0 +1,35 @@
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  node distance=7mm and 5mm,
+  stage/.style={draw, rounded corners=2pt, align=center, minimum height=10mm,
+    text width=2.65cm, inner sep=3pt, fill=blue!6},
+  signal/.style={draw, rounded corners=2pt, align=center, minimum height=8mm,
+    text width=2.65cm, inner sep=3pt, fill=orange!10},
+  arr/.style={-{Latex[length=2mm]}, thick, draw=black!70},
+  feedback/.style={-{Latex[length=2mm]}, thick, dashed, draw=purple!75}
+]
+\node[stage] (raw) {\textbf{Raw sources}\\robot, human video, simulation, generated, deployment};
+\node[stage, right=of raw] (ops) {\textbf{Operations}\\validate, align, segment, label, filter, weight, synthesize};
+\node[stage, right=of ops] (dist) {\textbf{Trainable distribution}\\sample, role, weight, provenance, version};
+\node[stage, right=of dist] (learner) {\textbf{Learner}\\pretrain, adapt, post-train, sample online};
+\node[stage, right=of learner] (deploy) {\textbf{Execution evidence}\\rollout utility, recovery, safety, shift};
+
+\draw[arr] (raw) -- (ops);
+\draw[arr] (ops) -- (dist);
+\draw[arr] (dist) -- (learner);
+\draw[arr] (learner) -- (deploy);
+
+\node[signal, below=of ops] (guide) {\textbf{Decision signals}\\rules, humans, foundation models, information, influence};
+\node[signal, below=of dist] (verify) {\textbf{Evidence ladder}\\intrinsic $\rightarrow$ proxy $\rightarrow$ trained policy $\rightarrow$ deployment};
+\draw[arr] (guide) -- (ops);
+\draw[arr] (verify) -- (dist);
+\draw[feedback] (deploy.south) |- ($(verify.south)+(0,-5mm)$) -| (guide.south);
+\draw[feedback] (deploy.north) to[out=115,in=65,looseness=1.35]
+  node[above,align=center,font=\small] {failure mining, active acquisition,\\mixture and verifier recalibration} (raw.north);
+\end{tikzpicture}
+\caption{Data preparation as a feedback-controlled transformation from raw
+interactions to a target-conditional training distribution.  Solid arrows form
+the data path; dashed arrows change future preparation decisions.}
+\label{fig:lifecycle}
+\end{figure*}

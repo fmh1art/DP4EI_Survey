@@ -1,0 +1,1674 @@
+{
+  "result": {
+    "query": "robot* data* quality*",
+    "status": {
+      "@code": "200",
+      "text": "OK"
+    },
+    "time": {
+      "@unit": "msecs",
+      "text": "26.03"
+    },
+    "completions": {
+      "@total": "1",
+      "@computed": "1",
+      "@sent": "1",
+      "c": {
+        "@sc": "38",
+        "@dc": "38",
+        "@oc": "38",
+        "@id": "70782108",
+        "text": "quality"
+      }
+    },
+    "hits": {
+      "@total": "38",
+      "@computed": "38",
+      "@sent": "38",
+      "@first": "0",
+      "hit": [
+        {
+          "@score": "5",
+          "@id": "901866",
+          "info": {
+            "authors": {
+              "author": {
+                "@pid": "331/2424",
+                "text": "Johann Huber"
+              }
+            },
+            "title": "Learning to Grasp in Robotics with Quality-Diversity Generated Data. (Apprentissage de la saisie d&apos;objets en robotique via des données générées par qualité-diversité).",
+            "year": "2024",
+            "type": "Books and Theses",
+            "access": "closed",
+            "key": "phd/hal/Huber24",
+            "ee": "https://tel.archives-ouvertes.fr/tel-04992607",
+            "url": "https://dblp.org/rec/phd/hal/Huber24"
+          },
+          "url": "URL#901866"
+        },
+        {
+          "@score": "4",
+          "@id": "122800",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "189/6623",
+                  "text": "Maram Sakr"
+                },
+                {
+                  "@pid": "225/4509",
+                  "text": "Juyan Zhang"
+                },
+                {
+                  "@pid": "88/3169",
+                  "text": "H. F. Machiel Van der Loos"
+                },
+                {
+                  "@pid": "07/3042",
+                  "text": "Dana Kulic"
+                },
+                {
+                  "@pid": "06/1277",
+                  "text": "Elizabeth A. Croft"
+                }
+              ]
+            },
+            "title": "Consistency Matters: Defining Demonstration Data Quality Metrics in Robot Learning from Demonstration.",
+            "venue": "ACM Trans. Hum. Robot Interact.",
+            "volume": "15",
+            "number": "2",
+            "pages": "34:1-34:31",
+            "year": "2026",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/thri/SakrZLKC26",
+            "doi": "10.1145/3773904",
+            "ee": "https://doi.org/10.1145/3773904",
+            "url": "https://dblp.org/rec/journals/thri/SakrZLKC26"
+          },
+          "url": "URL#122800"
+        },
+        {
+          "@score": "4",
+          "@id": "977297",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "146/7628",
+                  "text": "Shakra Mehak"
+                },
+                {
+                  "@pid": "412/8082",
+                  "text": "Inês F. Ramos"
+                },
+                {
+                  "@pid": "268/5831",
+                  "text": "Keerthi Sagar"
+                },
+                {
+                  "@pid": "369/5012",
+                  "text": "Aswin K. Ramasubramanian"
+                },
+                {
+                  "@pid": "84/6254",
+                  "text": "John D. Kelleher"
+                },
+                {
+                  "@pid": "350/2926",
+                  "text": "Michael Guilfoyle"
+                },
+                {
+                  "@pid": "62/2977",
+                  "text": "Gabriele Gianini"
+                },
+                {
+                  "@pid": "d/EDamiani",
+                  "text": "Ernesto Damiani"
+                },
+                {
+                  "@pid": "66/7190",
+                  "text": "Maria Chiara Leva"
+                }
+              ]
+            },
+            "title": "A roadmap for improving data quality through standards for collaborative intelligence in human-robot applications.",
+            "venue": "Frontiers Robotics AI",
+            "volume": "11",
+            "year": "2024",
+            "type": "Journal Articles",
+            "access": "open",
+            "key": "journals/firai/MehakRSRKGGDL24",
+            "doi": "10.3389/FROBT.2024.1434351",
+            "ee": "https://doi.org/10.3389/frobt.2024.1434351",
+            "url": "https://dblp.org/rec/journals/firai/MehakRSRKGGDL24"
+          },
+          "url": "URL#977297"
+        },
+        {
+          "@score": "4",
+          "@id": "1058782",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "284/8928",
+                  "text": "Yuanzhi Liu"
+                },
+                {
+                  "@pid": "214/5638",
+                  "text": "Yujia Fu"
+                },
+                {
+                  "@pid": "302/7872",
+                  "text": "Minghui Qin"
+                },
+                {
+                  "@pid": "84/3456",
+                  "text": "Yufeng Xu"
+                },
+                {
+                  "@pid": "350/0252",
+                  "text": "Baoxin Xu"
+                },
+                {
+                  "@pid": "221/9560",
+                  "text": "Fengdong Chen"
+                },
+                {
+                  "@pid": "56/273",
+                  "text": "Bart Goossens"
+                },
+                {
+                  "@pid": "238/1989",
+                  "text": "Poly Z. H. Sun"
+                },
+                {
+                  "@pid": "52/8937",
+                  "text": "Hongwei Yu"
+                },
+                {
+                  "@pid": "67/1749-3",
+                  "text": "Chun Liu 0003"
+                },
+                {
+                  "@pid": "64/5725-5",
+                  "text": "Long Chen 0005"
+                },
+                {
+                  "@pid": "17/6159",
+                  "text": "Wei Tao"
+                },
+                {
+                  "@pid": "39/6153-19",
+                  "text": "Hui Zhao 0019"
+                }
+              ]
+            },
+            "title": "BotanicGarden: A High-Quality Dataset for Robot Navigation in Unstructured Natural Environments.",
+            "venue": "IEEE Robotics Autom. Lett.",
+            "volume": "9",
+            "number": "3",
+            "pages": "2798-2805",
+            "year": "2024",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/ral/LiuFQXXCGSY0CT024",
+            "doi": "10.1109/LRA.2024.3359548",
+            "ee": "https://doi.org/10.1109/LRA.2024.3359548",
+            "url": "https://dblp.org/rec/journals/ral/LiuFQXXCGSY0CT024"
+          },
+          "url": "URL#1058782"
+        },
+        {
+          "@score": "4",
+          "@id": "2649309",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "295/7183",
+                  "text": "Mateo Leco"
+                },
+                {
+                  "@pid": "27/1039",
+                  "text": "Visakan Kadirkamanathan"
+                }
+              ]
+            },
+            "title": "A perturbation signal based data-driven Gaussian process regression model for in-process part quality prediction in robotic countersinking operations.",
+            "venue": "Robotics Comput. Integr. Manuf.",
+            "volume": "71",
+            "pages": "102105",
+            "year": "2021",
+            "type": "Journal Articles",
+            "access": "open",
+            "key": "journals/rcim/LecoK21",
+            "doi": "10.1016/J.RCIM.2020.102105",
+            "ee": "https://doi.org/10.1016/j.rcim.2020.102105",
+            "url": "https://dblp.org/rec/journals/rcim/LecoK21"
+          },
+          "url": "URL#2649309"
+        },
+        {
+          "@score": "4",
+          "@id": "6550157",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "79/1187-1",
+                  "text": "Paul Newman 0001"
+                },
+                {
+                  "@pid": "75/3524",
+                  "text": "Peter Corke"
+                }
+              ]
+            },
+            "title": "Editorial: Data Papers - Peer Reviewed Publication of High Quality Data Sets.",
+            "venue": "Int. J. Robotics Res.",
+            "volume": "28",
+            "number": "5",
+            "pages": "587",
+            "year": "2009",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/ijrr/NewmanC09",
+            "doi": "10.1177/0278364909104283",
+            "ee": "https://doi.org/10.1177/0278364909104283",
+            "url": "https://dblp.org/rec/journals/ijrr/NewmanC09"
+          },
+          "url": "URL#6550157"
+        },
+        {
+          "@score": "3",
+          "@id": "62160",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "345/3552",
+                  "text": "Esra Guclu"
+                },
+                {
+                  "@pid": "124/7109",
+                  "text": "Michael Halstead"
+                },
+                {
+                  "@pid": "66/2758",
+                  "text": "Simon Denman"
+                },
+                {
+                  "@pid": "92/3022",
+                  "text": "Chris McCool"
+                }
+              ]
+            },
+            "title": "Weakly labelled spatial-temporal sweet pepper data: Enabling higher quality detection, segmentation, and tracking.",
+            "venue": "Int. J. Robotics Res.",
+            "volume": "45",
+            "number": "7",
+            "pages": "983-1004",
+            "year": "2026",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/ijrr/GucluHDM26",
+            "doi": "10.1177/02783649251379093",
+            "ee": "https://doi.org/10.1177/02783649251379093",
+            "url": "https://dblp.org/rec/journals/ijrr/GucluHDM26"
+          },
+          "url": "URL#62160"
+        },
+        {
+          "@score": "3",
+          "@id": "102766",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "179/6178",
+                  "text": "Jiewu Leng"
+                },
+                {
+                  "@pid": "333/6852",
+                  "text": "Xiaofeng Zhu"
+                },
+                {
+                  "@pid": "422/1003",
+                  "text": "Jiahe Li 0016"
+                },
+                {
+                  "@pid": "354/5938",
+                  "text": "Zean Liu"
+                },
+                {
+                  "@pid": "223/2804",
+                  "text": "Yuanfa Dong"
+                },
+                {
+                  "@pid": "195/2939",
+                  "text": "Xueliang Zhou"
+                },
+                {
+                  "@pid": "242/7044",
+                  "text": "Changhui Liu"
+                },
+                {
+                  "@pid": "165/9510",
+                  "text": "Shuai Zheng"
+                },
+                {
+                  "@pid": "94/3019-37",
+                  "text": "Chao Zhang 0037"
+                },
+                {
+                  "@pid": "61/3234-31",
+                  "text": "Qiang Liu 0031"
+                },
+                {
+                  "@pid": "24/1518-5",
+                  "text": "Xin Chen 0005"
+                }
+              ]
+            },
+            "title": "SyntheFormer: A multivariate variable-length time series data-based parallel Transformer model for explainable quality predicting and anomaly tracing.",
+            "venue": "Robotics Comput. Integr. Manuf.",
+            "volume": "101",
+            "pages": "103304",
+            "year": "2026",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/rcim/LengZLLDZLZZLC26",
+            "doi": "10.1016/J.RCIM.2026.103304",
+            "ee": "https://doi.org/10.1016/j.rcim.2026.103304",
+            "url": "https://dblp.org/rec/journals/rcim/LengZLLDZLZZLC26"
+          },
+          "url": "URL#102766"
+        },
+        {
+          "@score": "3",
+          "@id": "234538",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "345/8323",
+                  "text": "Haeone Lee"
+                },
+                {
+                  "@pid": "376/8512",
+                  "text": "Taywon Min"
+                },
+                {
+                  "@pid": "29/1204",
+                  "text": "Junsu Kim"
+                },
+                {
+                  "@pid": "409/8086",
+                  "text": "Sinjae Kang"
+                },
+                {
+                  "@pid": "211/7883",
+                  "text": "Fangchen Liu"
+                },
+                {
+                  "@pid": "168/8304",
+                  "text": "Lerrel Pinto"
+                },
+                {
+                  "@pid": "183/6849",
+                  "text": "Kimin Lee"
+                }
+              ]
+            },
+            "title": "Quality over Quantity: Demonstration Curation via Influence Functions for Data-Centric Robot Learning.",
+            "venue": "CoRR",
+            "volume": "abs/2603.09056",
+            "year": "2026",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2603-09056",
+            "doi": "10.48550/ARXIV.2603.09056",
+            "ee": "https://doi.org/10.48550/arXiv.2603.09056",
+            "url": "https://dblp.org/rec/journals/corr/abs-2603-09056"
+          },
+          "url": "URL#234538"
+        },
+        {
+          "@score": "3",
+          "@id": "404793",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "273/3464",
+                  "text": "Aria C. H. Yang"
+                },
+                {
+                  "@pid": "423/3660",
+                  "text": "Eun Yeong Choe"
+                },
+                {
+                  "@pid": "21/3626",
+                  "text": "Fan Zhang"
+                }
+              ]
+            },
+            "title": "Pathways linking mobile service robots and quality of life of people with dementia: a literature review.",
+            "venue": "Ind. Manag. Data Syst.",
+            "volume": "125",
+            "number": "8",
+            "pages": "2536-2563",
+            "year": "2025",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/imds/YangCZ25",
+            "doi": "10.1108/IMDS-05-2024-0464",
+            "ee": "https://doi.org/10.1108/imds-05-2024-0464",
+            "url": "https://dblp.org/rec/journals/imds/YangCZ25"
+          },
+          "url": "URL#404793"
+        },
+        {
+          "@score": "3",
+          "@id": "471691",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "26/3166",
+                  "text": "You Zhang"
+                },
+                {
+                  "@pid": "47/9452",
+                  "text": "Congbo Li"
+                },
+                {
+                  "@pid": "43/6803-1",
+                  "text": "Ying Tang 0001"
+                },
+                {
+                  "@pid": "119/6992",
+                  "text": "Huajun Cao"
+                },
+                {
+                  "@pid": "246/1476",
+                  "text": "Guibao Tao"
+                }
+              ]
+            },
+            "title": "Data-driven modeling and integrated optimization of machining quality and energy consumption for internal gear power honing process.",
+            "venue": "Robotics Comput. Integr. Manuf.",
+            "volume": "93",
+            "pages": "102943",
+            "year": "2025",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/rcim/ZhangLTCT25",
+            "doi": "10.1016/J.RCIM.2024.102943",
+            "ee": "https://doi.org/10.1016/j.rcim.2024.102943",
+            "url": "https://dblp.org/rec/journals/rcim/ZhangLTCT25"
+          },
+          "url": "URL#471691"
+        },
+        {
+          "@score": "3",
+          "@id": "687272",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "387/0244",
+                  "text": "Jianing Jin"
+                },
+                {
+                  "@pid": "308/5424",
+                  "text": "Jiangyong Ying"
+                },
+                {
+                  "@pid": "205/7136",
+                  "text": "Huiyu Duan"
+                },
+                {
+                  "@pid": "27/3367",
+                  "text": "Liu Yang"
+                },
+                {
+                  "@pid": "73/11354",
+                  "text": "Sijing Wu"
+                },
+                {
+                  "@pid": "90/2765",
+                  "text": "Yunhao Li"
+                },
+                {
+                  "@pid": "260/2271",
+                  "text": "Yushuo Zheng"
+                },
+                {
+                  "@pid": "139/6983",
+                  "text": "Xiongkuo Min"
+                },
+                {
+                  "@pid": "19/3230",
+                  "text": "Guangtao Zhai"
+                }
+              ]
+            },
+            "title": "RGC-VQA: An Exploration Database for Robotic-Generated Video Quality Assessment.",
+            "venue": "ACM Multimedia",
+            "pages": "13413-13420",
+            "year": "2025",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/mm/JinYDYWLZMZ25",
+            "doi": "10.1145/3746027.3758304",
+            "ee": "https://doi.org/10.1145/3746027.3758304",
+            "url": "https://dblp.org/rec/conf/mm/JinYDYWLZMZ25"
+          },
+          "url": "URL#687272"
+        },
+        {
+          "@score": "3",
+          "@id": "737312",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "283/3421",
+                  "text": "Pablo Valle Entrena"
+                },
+                {
+                  "@pid": "303/1001",
+                  "text": "Chengjie Lu"
+                },
+                {
+                  "@pid": "25/5352-1",
+                  "text": "Shaukat Ali 0001"
+                },
+                {
+                  "@pid": "78/8234",
+                  "text": "Aitor Arrieta"
+                }
+              ]
+            },
+            "title": "Results of Evaluating Uncertainty and Quality of Visual Language Action-enabled Robots.",
+            "venue": "Zenodo",
+            "publisher": "Zenodo",
+            "year": "2025",
+            "type": "Data and Artifacts",
+            "access": "open",
+            "key": "data/11/EntrenaLAA25",
+            "doi": "10.5281/ZENODO.16315133",
+            "ee": "https://doi.org/10.5281/zenodo.16315133",
+            "url": "https://dblp.org/rec/data/11/EntrenaLAA25"
+          },
+          "url": "URL#737312"
+        },
+        {
+          "@score": "3",
+          "@id": "816433",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "387/0244",
+                  "text": "Jianing Jin"
+                },
+                {
+                  "@pid": "308/5424",
+                  "text": "Jiangyong Ying"
+                },
+                {
+                  "@pid": "205/7136",
+                  "text": "Huiyu Duan"
+                },
+                {
+                  "@pid": "27/3367",
+                  "text": "Liu Yang"
+                },
+                {
+                  "@pid": "73/11354",
+                  "text": "Sijing Wu"
+                },
+                {
+                  "@pid": "90/2765",
+                  "text": "Yunhao Li"
+                },
+                {
+                  "@pid": "260/2271",
+                  "text": "Yushuo Zheng"
+                },
+                {
+                  "@pid": "139/6983",
+                  "text": "Xiongkuo Min"
+                },
+                {
+                  "@pid": "19/3230",
+                  "text": "Guangtao Zhai"
+                }
+              ]
+            },
+            "title": "RGC-VQA: An Exploration Database for Robotic-Generated Video Quality Assessment.",
+            "venue": "CoRR",
+            "volume": "abs/2506.23852",
+            "year": "2025",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2506-23852",
+            "doi": "10.48550/ARXIV.2506.23852",
+            "ee": "https://doi.org/10.48550/arXiv.2506.23852",
+            "url": "https://dblp.org/rec/journals/corr/abs-2506-23852"
+          },
+          "url": "URL#816433"
+        },
+        {
+          "@score": "3",
+          "@id": "864594",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "393/4202",
+                  "text": "Hrishikesh Sathyanarayan"
+                },
+                {
+                  "@pid": "327/8035",
+                  "text": "Victor Vantilborgh"
+                },
+                {
+                  "@pid": "38/85",
+                  "text": "Ian Abraham"
+                }
+              ]
+            },
+            "title": "Quality Over Quantity: Curating Contact-Based Robot Datasets Improves Learning.",
+            "venue": "CoRR",
+            "volume": "abs/2510.18137",
+            "year": "2025",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2510-18137",
+            "doi": "10.48550/ARXIV.2510.18137",
+            "ee": "https://doi.org/10.48550/arXiv.2510.18137",
+            "url": "https://dblp.org/rec/journals/corr/abs-2510-18137"
+          },
+          "url": "URL#864594"
+        },
+        {
+          "@score": "3",
+          "@id": "881551",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "397/6360",
+                  "text": "Yanbo Mao"
+                },
+                {
+                  "@pid": "83/8692",
+                  "text": "Jianlong Fu"
+                },
+                {
+                  "@pid": "292/4560",
+                  "text": "Ruoxuan Zhang"
+                },
+                {
+                  "@pid": "222/5630",
+                  "text": "Hongxia Xie"
+                },
+                {
+                  "@pid": "227/5814",
+                  "text": "Meibao Yao"
+                }
+              ]
+            },
+            "title": "Beyond Success: Refining Elegant Robot Manipulation from Mixed-Quality Data via Just-in-Time Intervention.",
+            "venue": "CoRR",
+            "volume": "abs/2511.22555",
+            "year": "2025",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2511-22555",
+            "doi": "10.48550/ARXIV.2511.22555",
+            "ee": "https://doi.org/10.48550/arXiv.2511.22555",
+            "url": "https://dblp.org/rec/journals/corr/abs-2511-22555"
+          },
+          "url": "URL#881551"
+        },
+        {
+          "@score": "3",
+          "@id": "929604",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "403/8768",
+                  "text": "Roshan Panditharathna"
+                },
+                {
+                  "@pid": "51/3710-492",
+                  "text": "Yang Liu 0492"
+                },
+                {
+                  "@pid": "403/8285",
+                  "text": "Fabio Vinicius de Macedo Bergamo"
+                },
+                {
+                  "@pid": "403/8572",
+                  "text": "Dominic Appiah"
+                },
+                {
+                  "@pid": "132/8586",
+                  "text": "Peter R. J. Trim"
+                },
+                {
+                  "@pid": "132/8611",
+                  "text": "Yang-Im Lee"
+                }
+              ]
+            },
+            "title": "How Cyber Security Enhances Trust and Commitment to Customer Retention: The Mediating Role of Robotic Service Quality.",
+            "venue": "Big Data Cogn. Comput.",
+            "volume": "8",
+            "number": "11",
+            "pages": "165",
+            "year": "2024",
+            "type": "Journal Articles",
+            "access": "open",
+            "key": "journals/bdcc/PanditharathnaLBATL24",
+            "doi": "10.3390/BDCC8110165",
+            "ee": "https://doi.org/10.3390/bdcc8110165",
+            "url": "https://dblp.org/rec/journals/bdcc/PanditharathnaLBATL24"
+          },
+          "url": "URL#929604"
+        },
+        {
+          "@score": "3",
+          "@id": "977129",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "13/2805",
+                  "text": "Xuefeng Wang"
+                },
+                {
+                  "@pid": "133/3341",
+                  "text": "Yang Mi"
+                },
+                {
+                  "@pid": "91/4353",
+                  "text": "Xiang Zhang"
+                }
+              ]
+            },
+            "title": "3D human pose data augmentation using Generative Adversarial Networks for robotic-assisted movement quality assessment.",
+            "venue": "Frontiers Neurorobotics",
+            "volume": "18",
+            "year": "2024",
+            "type": "Journal Articles",
+            "access": "open",
+            "key": "journals/finr/WangMZ24",
+            "doi": "10.3389/FNBOT.2024.1371385",
+            "ee": "https://doi.org/10.3389/fnbot.2024.1371385",
+            "url": "https://dblp.org/rec/journals/finr/WangMZ24"
+          },
+          "url": "URL#977129"
+        },
+        {
+          "@score": "3",
+          "@id": "1004373",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "140/7497",
+                  "text": "Omer Melih Gul"
+                },
+                {
+                  "@pid": "43/1223",
+                  "text": "Aydan Muserref Erkmen"
+                },
+                {
+                  "@pid": "33/3823",
+                  "text": "Burak Kantarci"
+                }
+              ]
+            },
+            "title": "NTN-Aided Quality and Energy-Aware Data Collection in Time-Critical Robotic Wireless Sensor Networks.",
+            "venue": "IEEE Internet Things Mag.",
+            "volume": "7",
+            "number": "3",
+            "pages": "114-120",
+            "year": "2024",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/iotm/GulEK24",
+            "doi": "10.1109/IOTM.001.2300200",
+            "ee": "https://doi.org/10.1109/IOTM.001.2300200",
+            "url": "https://dblp.org/rec/journals/iotm/GulEK24"
+          },
+          "url": "URL#1004373"
+        },
+        {
+          "@score": "3",
+          "@id": "1005097",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "284/2212",
+                  "text": "Guangbing Zhou"
+                },
+                {
+                  "@pid": "393/7507",
+                  "text": "Letian Quan"
+                },
+                {
+                  "@pid": "244/2561",
+                  "text": "Kaixuan Huang"
+                },
+                {
+                  "@pid": "89/4558",
+                  "text": "Shunqing Zhang"
+                },
+                {
+                  "@pid": "59/5269",
+                  "text": "Shugong Xu"
+                }
+              ]
+            },
+            "title": "Optimize data association of point cloud to improve the quality of mapping and positioning.",
+            "venue": "Ind. Robot",
+            "volume": "51",
+            "number": "6",
+            "pages": "936-946",
+            "year": "2024",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/irob/ZhouQHZX24",
+            "doi": "10.1108/IR-12-2023-0341",
+            "ee": "https://doi.org/10.1108/IR-12-2023-0341",
+            "url": "https://dblp.org/rec/journals/irob/ZhouQHZX24"
+          },
+          "url": "URL#1005097"
+        },
+        {
+          "@score": "3",
+          "@id": "1059072",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "291/2769",
+                  "text": "Jules Sanchez"
+                },
+                {
+                  "@pid": "354/6432",
+                  "text": "Louis Soum-Fontez"
+                },
+                {
+                  "@pid": "98/11045",
+                  "text": "Jean-Emmanuel Deschaud"
+                },
+                {
+                  "@pid": "39/6810",
+                  "text": "François Goulette"
+                }
+              ]
+            },
+            "title": "ParisLuco3D: A High-Quality Target Dataset for Domain Generalization of LiDAR Perception.",
+            "venue": "IEEE Robotics Autom. Lett.",
+            "volume": "9",
+            "number": "6",
+            "pages": "5496-5503",
+            "year": "2024",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/ral/SanchezSDG24",
+            "doi": "10.1109/LRA.2024.3393209",
+            "ee": "https://doi.org/10.1109/LRA.2024.3393209",
+            "url": "https://dblp.org/rec/journals/ral/SanchezSDG24"
+          },
+          "url": "URL#1059072"
+        },
+        {
+          "@score": "3",
+          "@id": "1090730",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "74/205-1",
+                  "text": "Shiwei Cheng 0001"
+                },
+                {
+                  "@pid": "55/10148",
+                  "text": "Jialing Wang"
+                },
+                {
+                  "@pid": "342/3181",
+                  "text": "Jieming Tian"
+                },
+                {
+                  "@pid": "215/6704",
+                  "text": "Anjie Zhu"
+                },
+                {
+                  "@pid": "24/4995",
+                  "text": "Jing Fan"
+                }
+              ]
+            },
+            "title": "Using Humanoid Robots to Obtain High-Quality Motor Imagery Electroencephalogram Data for Better Brain-Computer Interaction.",
+            "venue": "IEEE Trans. Cogn. Dev. Syst.",
+            "volume": "16",
+            "number": "2",
+            "pages": "706-719",
+            "year": "2024",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/tamd/ChengWTZF24",
+            "doi": "10.1109/TCDS.2023.3289845",
+            "ee": "https://doi.org/10.1109/TCDS.2023.3289845",
+            "url": "https://dblp.org/rec/journals/tamd/ChengWTZF24"
+          },
+          "url": "URL#1090730"
+        },
+        {
+          "@score": "3",
+          "@id": "1227632",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "171/3311-1",
+                  "text": "Weichen Xu 0001"
+                },
+                {
+                  "@pid": "10/7783-6",
+                  "text": "Xinxin Xu 0006"
+                },
+                {
+                  "@pid": "300/9624",
+                  "text": "Tianhao Fu"
+                },
+                {
+                  "@pid": "50/2102-2",
+                  "text": "Jian Cao 0002"
+                },
+                {
+                  "@pid": "59/8279",
+                  "text": "Xiaoyang Xu"
+                },
+                {
+                  "@pid": "382/2250",
+                  "text": "Yuetian Huang"
+                },
+                {
+                  "@pid": "141/4313",
+                  "text": "Xixin Cao"
+                },
+                {
+                  "@pid": "52/5264-2",
+                  "text": "Xing Zhang 0002"
+                }
+              ]
+            },
+            "title": "SweepMM: A High-Quality Multimodal Dataset for Sweeping Robots in Home Scenarios for Vision-Language Model.",
+            "venue": "ICASSP",
+            "pages": "5105-5109",
+            "year": "2024",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/icassp/XuXFCXHCZ24",
+            "doi": "10.1109/ICASSP48485.2024.10447940",
+            "ee": "https://doi.org/10.1109/ICASSP48485.2024.10447940",
+            "url": "https://dblp.org/rec/conf/icassp/XuXFCXHCZ24"
+          },
+          "url": "URL#1227632"
+        },
+        {
+          "@score": "3",
+          "@id": "1355299",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "397/7051",
+                  "text": "Roberta Di Bari"
+                },
+                {
+                  "@pid": "306/2919",
+                  "text": "Anja Patricia Regina Lauer"
+                },
+                {
+                  "@pid": "397/8002",
+                  "text": "Christoph Schlopschnat"
+                },
+                {
+                  "@pid": "397/8477",
+                  "text": "Simon Treml"
+                },
+                {
+                  "@pid": "397/6805",
+                  "text": "Nils Opgenorth"
+                },
+                {
+                  "@pid": "384/0827",
+                  "text": "Lior Skoury"
+                },
+                {
+                  "@pid": "379/1614",
+                  "text": "Tim Stark"
+                },
+                {
+                  "@pid": "379/2224",
+                  "text": "Simon Bechert"
+                },
+                {
+                  "@pid": "397/6705",
+                  "text": "Monika Göbel"
+                },
+                {
+                  "@pid": "318/5204",
+                  "text": "Hans Jakob Wagner"
+                },
+                {
+                  "@pid": "155/6521",
+                  "text": "Dylan Wood"
+                },
+                {
+                  "@pid": "222/9806",
+                  "text": "Philip Leistner"
+                },
+                {
+                  "@pid": "143/3336",
+                  "text": "Jan Knippers"
+                },
+                {
+                  "@pid": "08/5382",
+                  "text": "Achim Menges"
+                },
+                {
+                  "@pid": "05/3388",
+                  "text": "Oliver Sawodny"
+                },
+                {
+                  "@pid": "164/6704",
+                  "text": "Thomas Wortmann"
+                }
+              ]
+            },
+            "title": "Computational design and robotic fabrication for high environmental quality timber constructions: the livMatS Biomimetic Shell case study.",
+            "venue": "DaRUS",
+            "publisher": "DaRUS",
+            "year": "2024",
+            "type": "Data and Artifacts",
+            "access": "open",
+            "key": "data/11/BariLSTOSSBGWWLKMSW24",
+            "doi": "10.18419/DARUS-4434&amp;VERSION=1.0",
+            "ee": "https://darus.uni-stuttgart.de/dataset.xhtml?persistentId=doi:10.18419/DARUS-4434&amp;version=1.0",
+            "url": "https://dblp.org/rec/data/11/BariLSTOSSBGWWLKMSW24"
+          },
+          "url": "URL#1355299"
+        },
+        {
+          "@score": "3",
+          "@id": "1480217",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "189/6623",
+                  "text": "Maram Sakr"
+                },
+                {
+                  "@pid": "88/3169",
+                  "text": "H. F. Machiel Van der Loos"
+                },
+                {
+                  "@pid": "07/3042",
+                  "text": "Dana Kulic"
+                },
+                {
+                  "@pid": "06/1277",
+                  "text": "Elizabeth A. Croft"
+                }
+              ]
+            },
+            "title": "Consistency Matters: Defining Demonstration Data Quality Metrics in Robot Learning from Demonstration.",
+            "venue": "CoRR",
+            "volume": "abs/2412.14309",
+            "year": "2024",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2412-14309",
+            "doi": "10.48550/ARXIV.2412.14309",
+            "ee": "https://doi.org/10.48550/arXiv.2412.14309",
+            "url": "https://dblp.org/rec/journals/corr/abs-2412-14309"
+          },
+          "url": "URL#1480217"
+        },
+        {
+          "@score": "3",
+          "@id": "1765778",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "358/8191",
+                  "text": "Albert Dalmases"
+                },
+                {
+                  "@pid": "335/1891",
+                  "text": "Oriol Ruiz-Celada"
+                },
+                {
+                  "@pid": "06/1587",
+                  "text": "Jan Rosell"
+                },
+                {
+                  "@pid": "191/7871",
+                  "text": "Isiah Zaplana"
+                }
+              ]
+            },
+            "title": "Automated Depth Dataset Generation with Integrated Quality Metrics for Robotic Manipulation.",
+            "venue": "ETFA",
+            "pages": "1-4",
+            "year": "2023",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/etfa/DalmasesRRZ23",
+            "doi": "10.1109/ETFA54631.2023.10275481",
+            "ee": "https://doi.org/10.1109/ETFA54631.2023.10275481",
+            "url": "https://dblp.org/rec/conf/etfa/DalmasesRRZ23"
+          },
+          "url": "URL#1765778"
+        },
+        {
+          "@score": "3",
+          "@id": "1960909",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "284/8928",
+                  "text": "Yuanzhi Liu"
+                },
+                {
+                  "@pid": "214/5638",
+                  "text": "Yujia Fu"
+                },
+                {
+                  "@pid": "302/7872",
+                  "text": "Minghui Qin"
+                },
+                {
+                  "@pid": "84/3456",
+                  "text": "Yufeng Xu"
+                },
+                {
+                  "@pid": "350/0252",
+                  "text": "Baoxin Xu"
+                },
+                {
+                  "@pid": "221/9560",
+                  "text": "Fengdong Chen"
+                },
+                {
+                  "@pid": "56/273",
+                  "text": "Bart Goossens"
+                },
+                {
+                  "@pid": "52/8937",
+                  "text": "Hongwei Yu"
+                },
+                {
+                  "@pid": "67/1749-3",
+                  "text": "Chun Liu 0003"
+                },
+                {
+                  "@pid": "64/5725-5",
+                  "text": "Long Chen 0005"
+                },
+                {
+                  "@pid": "17/6159",
+                  "text": "Wei Tao"
+                },
+                {
+                  "@pid": "39/6153-19",
+                  "text": "Hui Zhao 0019"
+                }
+              ]
+            },
+            "title": "BotanicGarden: A high-quality and large-scale robot navigation dataset in challenging natural environments.",
+            "venue": "CoRR",
+            "volume": "abs/2306.14137",
+            "year": "2023",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2306-14137",
+            "doi": "10.48550/ARXIV.2306.14137",
+            "ee": "https://doi.org/10.48550/arXiv.2306.14137",
+            "url": "https://dblp.org/rec/journals/corr/abs-2306-14137"
+          },
+          "url": "URL#1960909"
+        },
+        {
+          "@score": "3",
+          "@id": "2113128",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "140/7497",
+                  "text": "Omer Melih Gul"
+                },
+                {
+                  "@pid": "43/1223",
+                  "text": "Aydan M. Erkmen"
+                },
+                {
+                  "@pid": "33/3823",
+                  "text": "Burak Kantarci"
+                }
+              ]
+            },
+            "title": "UAV-Driven Sustainable and Quality-Aware Data Collection in Robotic Wireless Sensor Networks.",
+            "venue": "IEEE Internet Things J.",
+            "volume": "9",
+            "number": "24",
+            "pages": "25150-25164",
+            "year": "2022",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/iotj/GulEK22",
+            "doi": "10.1109/JIOT.2022.3195677",
+            "ee": "https://doi.org/10.1109/JIOT.2022.3195677",
+            "url": "https://dblp.org/rec/journals/iotj/GulEK22"
+          },
+          "url": "URL#2113128"
+        },
+        {
+          "@score": "3",
+          "@id": "2422005",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "211/1422",
+                  "text": "Daniel Tozadore"
+                },
+                {
+                  "@pid": "163/7308",
+                  "text": "Chenyang Wang"
+                },
+                {
+                  "@pid": "123/5705",
+                  "text": "Barbara Bruno"
+                },
+                {
+                  "@pid": "03/4041",
+                  "text": "Pierre Dillenbourg"
+                }
+              ]
+            },
+            "title": "Handwriting and posture quality measures of children while interacting with a social robot in handwriting activities.",
+            "venue": "Zenodo",
+            "publisher": "Zenodo",
+            "year": "2022",
+            "type": "Data and Artifacts",
+            "access": "open",
+            "key": "data/11/TozadoreWBD22",
+            "doi": "10.5281/ZENODO.10629060",
+            "ee": "https://doi.org/10.5281/zenodo.10629060",
+            "url": "https://dblp.org/rec/data/11/TozadoreWBD22"
+          },
+          "url": "URL#2422005"
+        },
+        {
+          "@score": "3",
+          "@id": "2546105",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "66/1228",
+                  "text": "Dimitrios Loukatos"
+                },
+                {
+                  "@pid": "252/3715",
+                  "text": "Charalampos Templalexis"
+                },
+                {
+                  "@pid": "252/3597",
+                  "text": "Diamanto Lentzou"
+                },
+                {
+                  "@pid": "307/6288",
+                  "text": "Georgios Xanthopoulos"
+                },
+                {
+                  "@pid": "121/5000",
+                  "text": "Konstantinos G. Arvanitis"
+                }
+              ]
+            },
+            "title": "Enhancing a flexible robotic spraying platform for distant plant inspection via high-quality thermal imagery data.",
+            "venue": "Comput. Electron. Agric.",
+            "volume": "190",
+            "pages": "106462",
+            "year": "2021",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/cea/LoukatosTLXA21",
+            "doi": "10.1016/J.COMPAG.2021.106462",
+            "ee": "https://doi.org/10.1016/j.compag.2021.106462",
+            "url": "https://dblp.org/rec/journals/cea/LoukatosTLXA21"
+          },
+          "url": "URL#2546105"
+        },
+        {
+          "@score": "3",
+          "@id": "2664436",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "315/0822-2",
+                  "text": "Christoph Scholl 0002"
+                },
+                {
+                  "@pid": "165/1659",
+                  "text": "Andreas Tobola"
+                },
+                {
+                  "@pid": "297/7289",
+                  "text": "Klaus Ludwig"
+                },
+                {
+                  "@pid": "198/1401",
+                  "text": "Dario Zanca"
+                },
+                {
+                  "@pid": "69/5675",
+                  "text": "Bjoern M. Eskofier"
+                }
+              ]
+            },
+            "title": "A Smart Capacitive Sensor Skin with Embedded Data Quality Indication for Enhanced Safety in Human-Robot Interaction.",
+            "venue": "Sensors",
+            "volume": "21",
+            "number": "21",
+            "pages": "7210",
+            "year": "2021",
+            "type": "Journal Articles",
+            "access": "open",
+            "key": "journals/sensors/SchollTLZE21",
+            "doi": "10.3390/S21217210",
+            "ee": "https://doi.org/10.3390/s21217210",
+            "url": "https://dblp.org/rec/journals/sensors/SchollTLZE21"
+          },
+          "url": "URL#2664436"
+        },
+        {
+          "@score": "3",
+          "@id": "3119674",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "179/1924",
+                  "text": "Sigfredo Fuentes"
+                },
+                {
+                  "@pid": "223/3350",
+                  "text": "Claudia Gonzalez Viejo"
+                },
+                {
+                  "@pid": "143/8882",
+                  "text": "Brendan Cullen"
+                },
+                {
+                  "@pid": "248/1866",
+                  "text": "Eden Jane Tongson"
+                },
+                {
+                  "@pid": "267/6324",
+                  "text": "Surinder S. Chauhan"
+                },
+                {
+                  "@pid": "224/3674",
+                  "text": "Frank R. Dunshea"
+                }
+              ]
+            },
+            "title": "Artificial Intelligence Applied to a Robotic Dairy Farm to Model Milk Productivity and Quality based on Cow Data and Daily Environmental Parameters.",
+            "venue": "Sensors",
+            "volume": "20",
+            "number": "10",
+            "pages": "2975",
+            "year": "2020",
+            "type": "Journal Articles",
+            "access": "open",
+            "key": "journals/sensors/FuentesVCTCD20",
+            "doi": "10.3390/S20102975",
+            "ee": "https://doi.org/10.3390/s20102975",
+            "url": "https://dblp.org/rec/journals/sensors/FuentesVCTCD20"
+          },
+          "url": "URL#3119674"
+        },
+        {
+          "@score": "3",
+          "@id": "3597997",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "252/3058",
+                  "text": "Federica Gerina"
+                },
+                {
+                  "@pid": "33/5687",
+                  "text": "Barbara Pes"
+                },
+                {
+                  "@pid": "r/DiegoReforgiatoRecupero",
+                  "text": "Diego Reforgiato Recupero"
+                },
+                {
+                  "@pid": "78/412",
+                  "text": "Daniele Riboni"
+                }
+              ]
+            },
+            "title": "Toward Supporting Food Journaling Using Air Quality Data Mining and a Social Robot.",
+            "venue": "AmI",
+            "pages": "318-323",
+            "year": "2019",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/ami/GerinaPRR19",
+            "doi": "10.1007/978-3-030-34255-5_22",
+            "ee": "https://doi.org/10.1007/978-3-030-34255-5_22",
+            "url": "https://dblp.org/rec/conf/ami/GerinaPRR19"
+          },
+          "url": "URL#3597997"
+        },
+        {
+          "@score": "3",
+          "@id": "3885861",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "39/3321",
+                  "text": "Shirley Coleman"
+                },
+                {
+                  "@pid": "00/7568",
+                  "text": "Ron S. Kenett"
+                }
+              ]
+            },
+            "title": "The information quality framework for evaluating data science programs.",
+            "venue": "Encycl. Semantic Comput. Robotic Intell.",
+            "volume": "2",
+            "number": "2",
+            "pages": "1730001:1-1730001:14",
+            "year": "2018",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/escri/ColemanK18",
+            "doi": "10.1142/S2529737617300017",
+            "ee": "https://doi.org/10.1142/S2529737617300017",
+            "url": "https://dblp.org/rec/journals/escri/ColemanK18"
+          },
+          "url": "URL#3885861"
+        },
+        {
+          "@score": "3",
+          "@id": "3906743",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "211/7108",
+                  "text": "Xavier Roynard"
+                },
+                {
+                  "@pid": "98/11045",
+                  "text": "Jean-Emmanuel Deschaud"
+                },
+                {
+                  "@pid": "39/6810",
+                  "text": "François Goulette"
+                }
+              ]
+            },
+            "title": "Paris-Lille-3D: A large and high-quality ground-truth urban point cloud dataset for automatic segmentation and classification.",
+            "venue": "Int. J. Robotics Res.",
+            "volume": "37",
+            "number": "6",
+            "pages": "545-557",
+            "year": "2018",
+            "type": "Journal Articles",
+            "access": "closed",
+            "key": "journals/ijrr/RoynardDG18",
+            "doi": "10.1177/0278364918767506",
+            "ee": "https://doi.org/10.1177/0278364918767506",
+            "url": "https://dblp.org/rec/journals/ijrr/RoynardDG18"
+          },
+          "url": "URL#3906743"
+        },
+        {
+          "@score": "3",
+          "@id": "4101325",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "21/1657",
+                  "text": "Andrew West"
+                },
+                {
+                  "@pid": "80/9675",
+                  "text": "Simon Watson 0001"
+                },
+                {
+                  "@pid": "71/225",
+                  "text": "Barry Lennox"
+                }
+              ]
+            },
+            "title": "Pose Estimation for Mobile Robots to Maximise Data Quality of Fixed-Focus Laser Diagnostics in Hazardous Environments.",
+            "venue": "IROS",
+            "pages": "3599-3604",
+            "year": "2018",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/iros/WestWL18",
+            "doi": "10.1109/IROS.2018.8593367",
+            "ee": "https://doi.org/10.1109/IROS.2018.8593367",
+            "url": "https://dblp.org/rec/conf/iros/WestWL18"
+          },
+          "url": "URL#4101325"
+        },
+        {
+          "@score": "3",
+          "@id": "4232534",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "26/7031",
+                  "text": "Rui Fukui"
+                },
+                {
+                  "@pid": "173/6328",
+                  "text": "Takayoshi Niho"
+                },
+                {
+                  "@pid": "25/2305",
+                  "text": "Masayuki Nakao"
+                },
+                {
+                  "@pid": "173/6269",
+                  "text": "Masaaki Uetake"
+                }
+              ]
+            },
+            "title": "Imitation-based control of automated ore excavator: improvement of autonomous excavation database quality using clustering and association analysis processes.",
+            "venue": "Adv. Robotics",
+            "volume": "31",
+            "number": "11",
+            "pages": "595-606",
+            "year": "2017",
+            "type": "Journal Articles",
+            "access": "open",
+            "key": "journals/ar/FukuiNNU17",
+            "doi": "10.1080/01691864.2017.1297735",
+            "ee": "https://doi.org/10.1080/01691864.2017.1297735",
+            "url": "https://dblp.org/rec/journals/ar/FukuiNNU17"
+          },
+          "url": "URL#4232534"
+        },
+        {
+          "@score": "3",
+          "@id": "4430794",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "177/8633",
+                  "text": "Roxana Agrigoroaie"
+                },
+                {
+                  "@pid": "75/5156",
+                  "text": "Adriana Tapus"
+                }
+              ]
+            },
+            "title": "Contactless Physiological Data Analysis for User Quality of Life Improving by Using a Humanoid Social Robot.",
+            "venue": "ICIAP",
+            "pages": "696-706",
+            "year": "2017",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/iciap/AgrigoroaieT17",
+            "doi": "10.1007/978-3-319-68548-9_63",
+            "ee": "https://doi.org/10.1007/978-3-319-68548-9_63",
+            "url": "https://dblp.org/rec/conf/iciap/AgrigoroaieT17"
+          },
+          "url": "URL#4430794"
+        }
+      ]
+    }
+  }
+}

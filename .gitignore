@@ -1,0 +1,22 @@
+# LaTeX build products
+build/
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+# Editor and operating-system metadata
+.DS_Store
+*~
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Interrupted resumable paper downloads
+*.part

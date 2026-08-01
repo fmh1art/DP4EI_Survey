@@ -1,0 +1,2726 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/al/IvuRktOsx+5y6oNQHKU1J6U8</id>
+  <title>arXiv Query: search_query=cat:cs.RO AND (all:"self-improvement" OR all:"online post-training")&amp;id_list=&amp;start=0&amp;max_results=300</title>
+  <updated>2026-08-01T17:01:27Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:cs.RO+AND+(all:%22self-improvement%22+OR+all:%22online+post-training%22)&amp;start=0&amp;max_results=300&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>300</opensearch:itemsPerPage>
+  <opensearch:totalResults>68</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2607.26809v1</id>
+    <title>Practice Makes Policies: Bootstrapping and Consolidating Robotic Capabilities from Zero Human Demonstrations</title>
+    <updated>2026-07-29T11:51:41Z</updated>
+    <link href="https://arxiv.org/abs/2607.26809v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.26809v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>General-purpose robotic manipulation requires robots to perform diverse tasks in open-world environments while improving their skills over time. Despite recent progress in robotic manipulation, existing systems still primarily acquire manipulation skills in a static manner, where capabilities are learned for specific tasks or settings rather than adaptively evolving through physical interaction. Resembling how repeated practice enables humans to develop muscle memory, advanced manipulation proficiency requires an autonomous capability evolution mechanism that allows robots to progressively transform interaction experiences into increasingly effective manipulation abilities. To this end, we propose HERO, a self-improving hierarchical embodied agent that enables autonomous capability evolution from zero human demonstrations. HERO organizes heuristic reasoning, exemplar reuse, and reflexive execution into a unified orchestration framework, allowing robots to autonomously bootstrap manipulation experience, rapidly accumulate reusable behaviors through experience transfer, and progressively consolidate recurring interactions into efficient closed-loop visuomotor policies. By tightly coupling autonomous data collection with task execution, HERO continuously expands and dynamically schedules manipulation capabilities according to different stages of experience accumulation and execution requirements. Extensive experiments demonstrate that HERO substantially reduces human intervention during robotic data collection while achieving robust manipulation across diverse tasks, providing a promising path toward self-improving robotic systems.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-29T11:51:41Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Jialiang Li</name>
+    </author>
+    <author>
+      <name>Yuhan Wang</name>
+    </author>
+    <author>
+      <name>Haojun Li</name>
+    </author>
+    <author>
+      <name>Gaojing Zhang</name>
+    </author>
+    <author>
+      <name>Yangtian Ye</name>
+    </author>
+    <author>
+      <name>Qipeng Liu</name>
+    </author>
+    <author>
+      <name>Haotian Liang</name>
+    </author>
+    <author>
+      <name>Wenzhao Lian</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.11689v1</id>
+    <title>From World Action Models to Embodied Brains: A Roadmap for Open-World Physical Intelligence</title>
+    <updated>2026-07-13T15:22:56Z</updated>
+    <link href="https://arxiv.org/abs/2607.11689v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.11689v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Artificial general intelligence ultimately requires agents that can reason and act in the physical world. Action models, vision-language-action policies, and world models have advanced this goal, while World Action Models (WAMs) are particularly promising because they connect candidate interventions with predicted consequences. However, progress remains fragmented: models use incompatible action spaces and prediction targets, datasets and tasks follow different conventions, and runtime systems expose limited interfaces for reuse and evaluation. We review the evolution toward WAMs and organize these limitations into three coupled gaps: model roles and representations, objectives and standardization, and system composition. Building on this analysis, we propose a co-evolution roadmap for physical intelligence centered on the \emph{embodied brain}, a long-term model target for integrating multimodal context, comparing candidate interventions, and issuing state-transition or capability requests rather than direct actuator commands. WAMs provide promising prototypes for its predictive functions, while a physical harness grounds model outputs through tools, controllers, verification, and trace logging. Shared contracts align heterogeneous models, data, tasks, and embodiments, and closed-loop post-training converts verified interaction into reusable experience. Together, these components define a modular physical-intelligence stack for adaptive and self-improving embodied agents.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-13T15:22:56Z</published>
+    <arxiv:comment>Ongoing work</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yuanzhi Liang</name>
+    </author>
+    <author>
+      <name>Xufeng Zhan</name>
+    </author>
+    <author>
+      <name>Haibin Huang</name>
+    </author>
+    <author>
+      <name>Chi Zhang</name>
+    </author>
+    <author>
+      <name>Xuelong Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04426v1</id>
+    <title>ACE-Brain-0.5: A Unified Embodied Foundational Model for Physical Agentic AI</title>
+    <updated>2026-07-05T17:43:06Z</updated>
+    <link href="https://arxiv.org/abs/2607.04426v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04426v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Embodied AI is moving from isolated perception or action modules toward physical agents that understand, plan under goals, act through robot bodies, monitor progress, and improve from experience. Existing systems address this loop only in parts: end-to-end policies generate actions but often lack spatial reasoning, planning, and execution assessment, while robot-agent systems orchestrate tools or specialists but do not learn a shared representation. This fragmentation limits general Physical Agentic AI. We present ACE-Brain-0.5, a unified embodied foundation model that organizes robot intelligence into five coupled functions: spatial perception, decision making, embodied interaction, self-monitoring, and self-improvement. Built on ACE-Brain-0, which established spatial intelligence as a shared scaffold across robot platforms, ACE-Brain-0.5 extends an understanding-centric model into a closed-loop foundation model. A single 8B backbone instantiates the first four functions: grounding objects and affordances, reasoning over 3D and egocentric spatial relations, decomposing instructions into subgoals, generating navigation and manipulation actions, and estimating progress for verification and recovery. To unify these capabilities without cross-task interference, we introduce SSR+, which extends Scaffold-Specialize-Reconcile with a Reactivate stage after task-vector merging. The fifth function, self-improvement, is realized by a companion framework that updates external execution state, including task schemas, spatial memory, and failure-recovery cases, from rollouts. Across fifteen benchmarks, ACE-Brain-0.5 improves over ACE-Brain-0 on 14 of 18 spatial perception and grounding benchmarks, achieves competitive navigation and manipulation performance, and provides strong progress estimation in ID and OOD settings. Together, these results mark an early step toward general Physical Agentic AI.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-05T17:43:06Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>ACE-Brain Team</name>
+    </author>
+    <author>
+      <name> :</name>
+    </author>
+    <author>
+      <name>Ziyang Gong</name>
+    </author>
+    <author>
+      <name>Haoming Gu</name>
+    </author>
+    <author>
+      <name>Zehang Luo</name>
+    </author>
+    <author>
+      <name>Tianyi Zhang</name>
+    </author>
+    <author>
+      <name>Tao Tao</name>
+    </author>
+    <author>
+      <name>Yixiao Chi</name>
+    </author>
+    <author>
+      <name>Zhe Liu</name>
+    </author>
+    <author>
+      <name>Lingsi Zhu</name>
+    </author>
+    <author>
+      <name>Jingyuan Liu</name>
+    </author>
+    <author>
+      <name>Anke Tang</name>
+    </author>
+    <author>
+      <name>Songze Li</name>
+    </author>
+    <author>
+      <name>Yilun Kong</name>
+    </author>
+    <author>
+      <name>Ningjing Liu</name>
+    </author>
+    <author>
+      <name>Tianyu Zhu</name>
+    </author>
+    <author>
+      <name>Yunpeng Qing</name>
+    </author>
+    <author>
+      <name>Shuang Luo</name>
+    </author>
+    <author>
+      <name>Xiang Liu</name>
+    </author>
+    <author>
+      <name>Shi Fu</name>
+    </author>
+    <author>
+      <name>Dawei Nie</name>
+    </author>
+    <author>
+      <name>Sixiang Liu</name>
+    </author>
+    <author>
+      <name>Zhexi Wen</name>
+    </author>
+    <author>
+      <name>Feng Pan</name>
+    </author>
+    <author>
+      <name>Xiaofeng Wang</name>
+    </author>
+    <author>
+      <name>Zhi Hou</name>
+    </author>
+    <author>
+      <name>Chunxiao Liu</name>
+    </author>
+    <author>
+      <name>Xue Yang</name>
+    </author>
+    <author>
+      <name>Junchi Yan</name>
+    </author>
+    <author>
+      <name>Hengshuang Zhao</name>
+    </author>
+    <author>
+      <name>Dacheng Tao</name>
+    </author>
+    <author>
+      <name>Xiaogang Wang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.28939v1</id>
+    <title>ReGuide: From Test-Time Guidance to Self-Improving Diffusion Policies</title>
+    <updated>2026-06-27T14:23:21Z</updated>
+    <link href="https://arxiv.org/abs/2606.28939v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.28939v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Behavior-cloned diffusion policies are expressive but remain vulnerable to covariate shift: small deviations from demonstrated states can compound into task failure. Existing methods address this either by expanding the training distribution through expert corrections or synthetic augmentation, or by steering a frozen policy at test time with guidance from a learned model. The former can be expensive or assumption-dependent, while the latter discards the corrected trajectories after execution. We introduce ReGuide, a self-improving framework that treats guided rollouts as reusable on-policy recovery data. ReGuide first uses Phase-Conditioned Guidance (PCG) to generate corrective rollouts: it constructs phase-specific latent targets, applies guidance only in the drifted-but-recoverable regime, and guides through the estimated clean action to match the dynamics model's training distribution. Successful guided rollouts are then absorbed back into the policy through ReGuide-FT, which fine-tunes the current checkpoint, or ReGuide-FS, which retrains from scratch on the augmented dataset; the two can also be composed and iterated. On Robomimic Can, Square, Transport, and Tool Hang, ReGuide improves base-policy success by $1.3$--$7.7\times$, outperforms LPB in the test-time-only setting, and matched-data ablations show that the gains come from guided recovery data rather than additional rollouts alone.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-27T14:23:21Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Tzu-Hsiang Lin</name>
+    </author>
+    <author>
+      <name>Srinivas Shakkottai</name>
+    </author>
+    <author>
+      <name>Dileep Kalathil</name>
+    </author>
+    <author>
+      <name>P. R. Kumar</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.21406v1</id>
+    <title>Robot Self-Improvement via Human-Video Dynamics Models</title>
+    <updated>2026-06-19T13:17:27Z</updated>
+    <link href="https://arxiv.org/abs/2606.21406v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.21406v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A central question in robot learning is how to acquire skills from the kinds of data that humans learn from: passive observation, embodied practice, and the experience of failure. Human videos provide the first of these in abundance, and prior work has shown they can initialize useful policies. Far less clear is whether they can support the second and third: whether priors extracted from human videos can ground a robot's own attempts well enough to evaluate them, correct them, and improve from them. In this work, we show that human videos can be used to learn embodiment-agnostic action, dynamics, and value representations that transfer across robot embodiments, providing the predictive foundation required for robots to autonomously improve from their own rollouts and failures. We introduce Dynamics-Guided Action Correction (DGAC), a training-free approach that leverages these adapted models to repair failed states: each failure becomes a query for which the learned models propose and rank corrective actions, turning failures into supervision for the next policy update. Across seven real-world manipulation tasks spanning both a mobile manipulator and a static manipulator arm, our approach improves success rates from 40% to 81% across multiple policy backbones, demonstrating cross-embodiment robot self-improvement from human-video priors. These results show that human priors and robot failures can be combined to enable scalable autonomous policy improvement. Project page: https://ethz-mrl.github.io/robot-self-improvement-website/.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-19T13:17:27Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Hanzhi Chen</name>
+    </author>
+    <author>
+      <name>Anran Zhang</name>
+    </author>
+    <author>
+      <name>Simon Schaefer</name>
+    </author>
+    <author>
+      <name>Kejia Chen</name>
+    </author>
+    <author>
+      <name>Shi Chen</name>
+    </author>
+    <author>
+      <name>Daniel Cremers</name>
+    </author>
+    <author>
+      <name>Oier Mees</name>
+    </author>
+    <author>
+      <name>Stefan Leutenegger</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.19186v2</id>
+    <title>Learning to Annotate Delayed and False AEB Events: A Practical System for Extreme Class Imbalance and Asymmetric Label Noise</title>
+    <updated>2026-06-18T01:51:31Z</updated>
+    <link href="https://arxiv.org/abs/2606.19186v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.19186v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autonomous Emergency Braking (AEB) optimization relies on accurately annotated real-world trigger events, particularly rare but critical delayed and false AEB triggers that expose system deficiencies. However, these minority samples comprise less than 5% of thousands of daily triggers, making manual annotation prohibitively expensive at scale. We present the first automated AEB annotation framework to address this problem. During development, we identified two fundamental challenges that severely impair delayed/false trigger annotation accuracy: (1) Extreme class imbalance where delayed/false triggers are overwhelmed by true triggers; (2) Asymmetric label noise where mislabeled majority samples (true triggers) suppress minority samples (delayed/false triggers) learning. To overcome these challenges, we propose two key innovations: (1) Specific data augmentation that synthesizes realistic samples by manipulating focal target attributes, transplanting ego-vehicle dynamics, and masking non-focal agents; (2) noise suppression using stable hardness estimation and probe-guided adaptive threshold to clean mislabeled true trigger samples. Crucially, we deploy our model as a practical annotation system with full-stack architecture, efficiently identifying critical delayed/false triggers from thousands of daily AEB events. Production results demonstrate 80% improvement in recall of delayed/false triggers and 50% reduction in manual workload. Beyond immediate gains, the system enables continuous self-improvement through accumulated high-quality annotations, establishing a necessary data foundation for on-vehicle AEB system optimization</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-17T15:27:15Z</published>
+    <arxiv:comment>8 pages, 5 figures, accepted by IEEE International Conference on Robotics and Automation (ICRA)</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <arxiv:journal_ref>2026 IEEE International Conference on Robotics and Automation (ICRA)</arxiv:journal_ref>
+    <author>
+      <name>Mengxiang Hao</name>
+    </author>
+    <author>
+      <name>Xin Jiang</name>
+    </author>
+    <author>
+      <name>Xinghao Huang</name>
+    </author>
+    <author>
+      <name>Wenliang Su</name>
+    </author>
+    <author>
+      <name>Zhiteng Wang</name>
+    </author>
+    <author>
+      <name>Junjie Rao</name>
+    </author>
+    <author>
+      <name>Xiaotian Yang</name>
+    </author>
+    <author>
+      <name>Wei Liao</name>
+    </author>
+    <author>
+      <name>Chengyu Han</name>
+    </author>
+    <author>
+      <name>Gen Liang</name>
+    </author>
+    <author>
+      <name>Yulun Song</name>
+    </author>
+    <author>
+      <name>Zhitao Xu</name>
+    </author>
+    <author>
+      <name>Xianpeng Lang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18953v1</id>
+    <title>Object-Centric Residual RL for Zero-Shot Sim-to-Real VLA Enhancement</title>
+    <updated>2026-06-17T11:36:54Z</updated>
+    <link href="https://arxiv.org/abs/2606.18953v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18953v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Vision-Language-Action (VLA) models can generalize across diverse manipulation tasks, but their imitation-learning-based policies remain brittle in precise physical interactions due to compounding execution errors; Can a reinforcement learning policy trained purely in simulation improve the robustness of real-world VLAs zero-shot? Residual RL, which learns a corrective policy on top of a frozen VLA, offers a natural framework, but existing approaches face a fundamental sim-to-real dilemma: privileged-state methods require lossy distillation for deployment; image-based methods suffer from the visual domain gap; and real-world RL is costly and unsafe. We propose an object-centric residual RL framework that refines VLA actions using object poses, enabling a compact observation space that transfers consistently between simulation and reality. To align the two domains, we additionally replay the same teleoperation demonstrations in simulation to train a sim counterpart of the real-world VLA. The residual RL policy is trained only in simulation with pose noise injection and dropout, and transfers zero-shot to the real robot. Across five manipulation tasks on a real Franka Research 3 (FR3) robot, our method improves the success rate from 42% to 76% zero-shot, and the improved rollouts can be further reused to retrain the base VLA for self-improvement without additional teleoperation. Project page: https://www.microsoft.com/en-us/research/articles/object-centric-residual-rl/</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-17T11:36:54Z</published>
+    <arxiv:comment>8 pages, 7 figures, 2 tables; 8-page appendix</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Kinam Kim</name>
+    </author>
+    <author>
+      <name>Namiko Saito</name>
+    </author>
+    <author>
+      <name>Heecheol Kim</name>
+    </author>
+    <author>
+      <name>Katsushi Ikeuchi</name>
+    </author>
+    <author>
+      <name>Jaegul Choo</name>
+    </author>
+    <author>
+      <name>Yasuyuki Matsushita</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18247v1</id>
+    <title>Visual Verification Enables Inference-time Steering and Autonomous Policy Improvement</title>
+    <updated>2026-06-16T17:59:04Z</updated>
+    <link href="https://arxiv.org/abs/2606.18247v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18247v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Robots deployed in the real world should learn from their experience and improve over time. This requires a mechanism of practicing and learning from feedback. In this paper, we propose VERITAS, a generator-verifier framework for generalist robot policies for inference-time policy steering and self-improvement. We use a pre-trained generalist robot policy as a ``generator'' and pair it with a gradient-free ``visual verifier'' that evaluates actions at inference time. This framework enables inference-time steering that improves policy performance without additional training. We demonstrate that inference-time verification consistently outperforms vanilla generalists without training on additional demonstration data. Additionally, we demonstrate that the verified rollouts provide effective supervision for offline policy improvement: policies fine-tuned on verified self-generated trajectories achieve consistent performance gains. Notably, we find that post-training with verified rollouts achieves comparable efficiency to expert demonstrations, while requiring no human interventions. Our results highlight inference-time verification as a practical and scalable mechanism for improving robotic policies during deployment.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T17:59:04Z</published>
+    <arxiv:comment>Website: https://veritas-improvement.github.io</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Mingtong Zhang</name>
+    </author>
+    <author>
+      <name>Dhruv Shah</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.14084v1</id>
+    <title>Self-Improving VLA Policies: Selected Diffusion Noise for Spurious-Robust Action Smoothing</title>
+    <updated>2026-06-12T03:59:47Z</updated>
+    <link href="https://arxiv.org/abs/2606.14084v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.14084v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Diffusion-based Vision-Language-Action (VLA) policies enable strong generalization in robotic manipulation, but remain sensitive to spurious visual correlations and noisy action generation, leading to brittle behavior under perturbations. We introduce Selected Diffusion Noise (SDN), a simple, training-free test-time method that improves both robustness and success rate by leveraging the diffusion noise space as a controllable degree of freedom. SDN dynamically samples noise vectors that are maximally separated from a reference set to mitigate reliance on spurious cues, while selecting candidates that yield more coherent action trajectories. This dual objective encourages stable behavior even under object-masked observations and reduces action jitter without modifying model parameters. We evaluate SDN on two simulation benchmarks (Google Robot, Widow-X) and two real-world robotic datasets across multiple VLA policies, including pi_0, Groot-N1.5, and Groot-N1.6. SDN consistently improves success rates by +8% in simulation and +10% in real-world settings, while producing smoother and more stable actions. Our results highlight that diffusion noise selection can serve as an effective and general mechanism for enhancing VLA policies at test time.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-12T03:59:47Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Duc Minh Nguyen</name>
+    </author>
+    <author>
+      <name>Bao-Ngoc Dao</name>
+    </author>
+    <author>
+      <name>Tung M. Luu</name>
+    </author>
+    <author>
+      <name>Binh Gia Nguyen</name>
+    </author>
+    <author>
+      <name>Vinh Tong</name>
+    </author>
+    <author>
+      <name>Anji Liu</name>
+    </author>
+    <author>
+      <name>Vu N. Duong</name>
+    </author>
+    <author>
+      <name>Dung D. Le</name>
+    </author>
+    <author>
+      <name>Daniel Sonntag</name>
+    </author>
+    <author>
+      <name>Trung Le</name>
+    </author>
+    <author>
+      <name>Ngan Le</name>
+    </author>
+    <author>
+      <name>Jan Peter</name>
+    </author>
+    <author>
+      <name>An Thai Le</name>
+    </author>
+    <author>
+      <name>Minh Nhat Vu</name>
+    </author>
+    <author>
+      <name>Mathias Niepert</name>
+    </author>
+    <author>
+      <name>Khoa D. Doan</name>
+    </author>
+    <author>
+      <name>Duy M. H. Nguyen</name>
+    </author>
+    <author>
+      <name>Vien Anh Ngo</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.10305v1</id>
+    <title>SARM2: Multi-Task Stage Aware Reward Modeling for Self Improving Robotic Manipulation</title>
+    <updated>2026-06-09T01:46:23Z</updated>
+    <link href="https://arxiv.org/abs/2606.10305v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.10305v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Fine-tuning vision-language-action (VLA) policies for long-horizon manipulation still relies heavily on behavior cloning, which requires costly high-quality demonstrations and keeps policies near the demonstration distribution. Reward models can reduce this dependence by reweighting demonstrations and providing dense supervision for on-robot reinforcement learning (RL), but they must be dense, accurate, and general. Existing methods fall short: task-specific stage-aware models are accurate but require per-task annotations, while general vision-language-model (VLM) reward models are broadly applicable but too coarse for fine-grained long-horizon progress. We introduce RM, a multi-task stage-aware reward model that combines an action-primitive-based stage estimator with a multi-gate Mixture-of-Experts (MMoE) value head to produce dense per-step rewards across manipulation tasks. Building on RM, we further propose SPIRAL (Self-Policy Improvement via Reward-Aligned Learning), an on-policy reward-guided framework that improves VLA policies from cheap autonomous rollouts. On a 10-task benchmark, RM reduces value-estimation MSE by 80% over the strongest baselines; when used in SPIRAL, it improves task success from around 50% to near-perfect performance on Folding Shorts (58% to 100%) and Cleaning Whiteboard (50% to 90%), showing that high-quality dense rewards are key to a stable robot data flywheel. Project website: https://qianzhong-chen.github.io/sarm2.github.io/.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-09T01:46:23Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Qianzhong Chen</name>
+    </author>
+    <author>
+      <name>Hau Zheng</name>
+    </author>
+    <author>
+      <name>Justin Yu</name>
+    </author>
+    <author>
+      <name>Suning Huang</name>
+    </author>
+    <author>
+      <name>Jiankai Sun</name>
+    </author>
+    <author>
+      <name>Ken Goldberg</name>
+    </author>
+    <author>
+      <name>Chuan Wen</name>
+    </author>
+    <author>
+      <name>Pieter Abbeel</name>
+    </author>
+    <author>
+      <name>Yide Shentu</name>
+    </author>
+    <author>
+      <name>Philipp Wu</name>
+    </author>
+    <author>
+      <name>Mac Schwager</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.03963v3</id>
+    <title>AgenticRL: Self-Refining Agentic Reinforcement Learning for Vision-Conditioned UAV Navigation</title>
+    <updated>2026-06-09T15:09:32Z</updated>
+    <link href="https://arxiv.org/abs/2606.03963v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.03963v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Deep reinforcement learning has shown strong potential for enabling autonomous robots to learn complex navigational tasks. However, its practical use still depends heavily on human designed reward functions and repeated manual fine tuning, which is time consuming and does not guarantee high success in the desired task. This paper presents AgenticRL, agent guided reinforcement learning framework that increases autonomy in reward design, policy refinement, and real world deployment for unmanned aerial vehicles (UAV) navigation tasks. AgenticRL uses a multimodal generative pre-trained transformer (GPT) agent to interpret task information and visual scene observations, generate task specific reward functions, train policies using Proximal Policy Optimization (PPO) algorithm, and then act as a critic by evaluating the trained policy through diagnosis packets to generate feedback. Based on this feedback, the agent identifies failure modes and refines the reward function in a closed loop self improvement process. To further leverage the multimodal GPT agent during inference, AgenticRL uses real world images and natural language task information to automatically identify the active scenario and select the appropriate trained policy for execution. The framework is evaluated on multiple navigational tasks, including gate traversal, obstacle avoidance, wall barrier crossing with landing, trajectory following, and motion behavior learning. Experimental results show that the closed loop refinement process improves policy behavior compared with initial rewards by 71%. We also demonstrate sim-to-real transfer of the proposed framework, achieving a real world success rate of 91% and a sim-to-real accuracy of 94%.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-02T17:50:15Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Roohan Ahmed Khan</name>
+    </author>
+    <author>
+      <name>Yasheerah Yaqoot</name>
+    </author>
+    <author>
+      <name>Amir Atef Habel</name>
+    </author>
+    <author>
+      <name>Muhammad Ahsan Mustafa</name>
+    </author>
+    <author>
+      <name>Dzmitry Tsetserukou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2605.18407v1</id>
+    <title>Qumus: Realization of An Embodied AI Quantum Material Experimentalist</title>
+    <updated>2026-05-18T13:47:31Z</updated>
+    <link href="https://arxiv.org/abs/2605.18407v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.18407v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>While modern Large Language Models (LLMs) and agentic artificial intelligence (AI) have demonstrated transformative capabilities in digital domains, the realization of embodied AI capable of real-world scientific discovery remains a difficult frontier. The advancements are hindered by the inherent complexity of integrating high-level reasoning, multimodal information processing and real-time physical execution. Here we introduce Qumus, the first AI quantum materials experimentalist. Physically embodied within a robotic mini-laboratory, Qumus is an intelligent, multimodal, and multi-agent system designed for the creation and nano-processing of atomically thin two-dimensional (2D) materials and stacked van der Waals (vdW) structures. Qumus autonomously navigates the full scientific cycle, from hypothesis generation and protocol planning to multi-step experimental execution, result analysis and reporting, acting as an experimentalist. Markedly, the system has achieved, for the first time, the AI-creation of graphene, as well as the first AI-fabrication of complex nanodevices including atomically thin field-effect transistors via vdW stacking. Qumus excels at these tasks by demonstrating autonomous error correction and closed-loop experimentation. Our results establish a generalizable framework for self-improving embodied AI systems that learn directly from the quantum world, opening a pathway toward accelerated discovery in quantum materials, electronics and beyond.</summary>
+    <category term="cond-mat.mes-hall" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cond-mat.mtrl-sci" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-05-18T13:47:31Z</published>
+    <arxiv:comment>29 Pages in total. Supplementary Demo Videos are available at https://qumus.ai</arxiv:comment>
+    <arxiv:primary_category term="cond-mat.mes-hall"/>
+    <author>
+      <name>Lihan Shi</name>
+    </author>
+    <author>
+      <name>Zhaoyi Joy Zheng</name>
+    </author>
+    <author>
+      <name>Xinzhe Juan</name>
+    </author>
+    <author>
+      <name>Yimin Wang</name>
+    </author>
+    <author>
+      <name>Ming Yin</name>
+    </author>
+    <author>
+      <name>Mayank Sengupta</name>
+    </author>
+    <author>
+      <name>Kristina Wolinski</name>
+    </author>
+    <author>
+      <name>Yanyu Jia</name>
+    </author>
+    <author>
+      <name>Jingzhi Shi</name>
+    </author>
+    <author>
+      <name>Derek Saucedo</name>
+    </author>
+    <author>
+      <name>Neill Saggi</name>
+    </author>
+    <author>
+      <name>Haosen Guan</name>
+    </author>
+    <author>
+      <name>Kenji Watanabe</name>
+    </author>
+    <author>
+      <name>Takashi Taniguchi</name>
+    </author>
+    <author>
+      <name>Ali Yazdani</name>
+    </author>
+    <author>
+      <name>Mengdi Wang</name>
+    </author>
+    <author>
+      <name>Sanfeng Wu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2604.11734v3</id>
+    <title>SCORP: Scene-Consistent Multi-agent Diffusion Planning with Stable Online Reinforcement Post-Training for Cooperative Driving</title>
+    <updated>2026-05-11T16:12:05Z</updated>
+    <link href="https://arxiv.org/abs/2604.11734v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2604.11734v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Cooperative driving is a safety- and efficiency-critical task that requires the coordination of diverse, interaction-realistic multi-agent trajectories. Although existing diffusion-based methods can capture multimodal behaviors from demonstrations, they often exhibit weak scene consistency and poor alignment with closed-loop cooperative objectives. This makes post-training necessary for further improvement, yet achieving stable online post-training in reactive multi-agent environments remains challenging. In this paper, we propose SCORP, a scene-consistent multi-agent diffusion planner with stable online reinforcement learning (RL) post-training for cooperative driving. For pre-training, we develop a scene-conditioned multi-agent denoising architecture that couples inter-agent self-attention with a dual-path conditioning mechanism: cross-attention provides direct scene-information injection, while AdaLN-Zero enables additional flexible and stable conditional modulation, thereby improving the scene consistency and road adherence of joint trajectories. For post-training, we formulate a two-layer Markov decision process (MDP) that explicitly integrates the reverse denoising chain with policy-environment interaction. We further co-design dense, well-shaped planning rewards and variance-gated group-relative policy optimization (VG-GRPO) to mitigate advantage collapse and gradient instability during closed-loop training. Extensive experiments show that SCORP outperforms strong open-source baselines on WOMD, with 10.47%-28.26% and 1.70%-7.22% improvements in core safety and efficiency metrics, respectively. Moreover, compared with alternative post-training methods, SCORP delivers significant and consistent gains in both driving safety and traffic efficiency, highlighting stable and sustained advances in closed-loop cooperative driving.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-13T17:13:46Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Haojie Bai</name>
+    </author>
+    <author>
+      <name>Aimin Li</name>
+    </author>
+    <author>
+      <name>Ruoyu Yao</name>
+    </author>
+    <author>
+      <name>Xiongwei Zhao</name>
+    </author>
+    <author>
+      <name>Tingting Zhang</name>
+    </author>
+    <author>
+      <name>Xing Zhang</name>
+    </author>
+    <author>
+      <name>Lin Gao</name>
+    </author>
+    <author>
+      <name>and Jun Ma</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2604.01985v2</id>
+    <title>World Action Verifier: Self-Improving World Models via Forward-Inverse Asymmetry</title>
+    <updated>2026-05-29T16:27:50Z</updated>
+    <link href="https://arxiv.org/abs/2604.01985v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2604.01985v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>General-purpose world models promise scalable policy evaluation, optimization, and planning, yet achieving the required level of robustness remains challenging. Unlike policy learning which primarily focuses on optimal actions, a world model needs to be reliable over a vast space of suboptimal actions, which are often underrepresented in action-labeled robot interactions. To address this challenge, we propose World Action Verifier (WAV), a framework that enables world models to identify their own prediction errors and self-improve. The key idea is to decompose action-conditioned state prediction into two independently verifiable factors: state plausibility and action reachability. We show that verifying these factors is significantly more tractable than direct forward prediction due to two underlying asymmetries: the broader availability of action-free data and the lower dimensionality of action-relevant features. Leveraging these asymmetries, we augment a world model with (i) a diverse subgoal generator obtained from video corpora and (ii) a sparse inverse model that infers actions from a subset of state features. By enforcing cycle consistency among proposed subgoals, inferred actions, and forward rollouts, WAV provides an effective verification mechanism in under-explored regimes, where existing methods often fail. Across nine tasks spanning MiniGrid, RoboMimic, and ManiSkill, our method achieves 2x higher sample efficiency while improving downstream policy performance by over 22%.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-02T12:48:36Z</published>
+    <arxiv:comment>Project Website: https://world-action-verifier.github.io</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Yuejiang Liu</name>
+    </author>
+    <author>
+      <name>Fan Feng</name>
+    </author>
+    <author>
+      <name>Lingjing Kong</name>
+    </author>
+    <author>
+      <name>Weifeng Lu</name>
+    </author>
+    <author>
+      <name>Jinzhou Tang</name>
+    </author>
+    <author>
+      <name>Kun Zhang</name>
+    </author>
+    <author>
+      <name>Kevin Murphy</name>
+    </author>
+    <author>
+      <name>Chelsea Finn</name>
+    </author>
+    <author>
+      <name>Yilun Du</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2603.17927v2</id>
+    <title>RoboForge: Physically Optimized Text-guided Whole-Body Locomotion for Humanoids</title>
+    <updated>2026-03-19T08:42:09Z</updated>
+    <link href="https://arxiv.org/abs/2603.17927v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2603.17927v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>While generative models have become effective at producing human-like motions from text, transferring these motions to humanoid robots for physical execution remains challenging. Existing pipelines are often limited by retargeting, where kinematic quality is undermined by physical infeasibility, contact-transition errors, and the high cost of real-world dynamical data. We present a unified latent-driven framework that bridges natural language and whole-body humanoid locomotion through a retarget-free, physics-optimized pipeline. Rather than treating generation and control as separate stages, our key insight is to couple them bidirectionally under physical constraints.We introduce a Physical Plausibility Optimization (PP-Opt) module as the coupling interface. In the forward direction, PP-Opt refines a teacher-student distillation policy with a plausibility-centric reward to suppress artifacts such as floating, skating, and penetration. In the backward direction, it converts reward-optimized simulation rollouts into high-quality explicit motion data, which is used to fine-tune the motion generator toward a more physically plausible latent distribution. This bidirectional design forms a self-improving cycle: the generator learns a physically grounded latent space, while the controller learns to execute latent-conditioned behaviors with dynamical integrity.Extensive experiments on the Unitree G1 humanoid show that our bidirectional optimization improves tracking accuracy and success rates. Across IsaacLab and MuJoCo, the implicit latent-driven pipeline consistently outperforms conventional explicit retargeting baselines in both precision and stability. By coupling diffusion-based motion generation with physical plausibility optimization, our framework provides a practical path toward deployable text-guided humanoid intelligence.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-03-18T17:02:56Z</published>
+    <arxiv:comment>10 pages, 5 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Xichen Yuan</name>
+    </author>
+    <author>
+      <name>Zhe Li</name>
+    </author>
+    <author>
+      <name>Bofan Lyu</name>
+    </author>
+    <author>
+      <name>Kuangji Zuo</name>
+    </author>
+    <author>
+      <name>Yanshuo Lu</name>
+    </author>
+    <author>
+      <name>Gen Li</name>
+    </author>
+    <author>
+      <name>Jianfei Yang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2603.11653v3</id>
+    <title>Simple Recipe Works: Vision-Language-Action Models are Natural Continual Learners with Reinforcement Learning</title>
+    <updated>2026-07-11T00:24:04Z</updated>
+    <link href="https://arxiv.org/abs/2603.11653v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2603.11653v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Continual Reinforcement Learning (CRL) for Vision-Language-Action (VLA) models is a promising direction toward self-improving embodied agents that can adapt in openended, evolving environments. However, conventional wisdom from continual learning suggests that naive Sequential Fine-Tuning (Seq. FT) leads to catastrophic forgetting, necessitating complex CRL strategies. In this work, we take a step back and conduct a systematic study of CRL for large pretrained VLAs across diverse lifelong RL benchmarks. We find that, contrary to established belief, simple Seq. FT with low-rank adaptation (LoRA) is remarkably strong: it achieves high plasticity, exhibits little to no forgetting, and retains strong zero-shot generalization, frequently outperforming more sophisticated CRL methods. Through detailed analysis, we show that this robustness arises from a synergy between the large pretrained model, parameter-efficient adaptation, and on-policy RL. Together, these components reshape the stability-plasticity trade-off, making continual adaptation both stable and scalable. Our results position Sequential Fine-Tuning as a powerful method for continual RL with VLAs and provide new insights into lifelong learning in the large model era. Code is available at https://github.com/UT-Austin-RobIn/continual-vla-rl</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-03-12T08:22:39Z</published>
+    <arxiv:comment>Accepted at RLC 2026; Best paper award at ICRA26 RL4IL Workshop</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Jiaheng Hu</name>
+    </author>
+    <author>
+      <name>Jay Shim</name>
+    </author>
+    <author>
+      <name>Chen Tang</name>
+    </author>
+    <author>
+      <name>Yoonchang Sung</name>
+    </author>
+    <author>
+      <name>Bo Liu</name>
+    </author>
+    <author>
+      <name>Peter Stone</name>
+    </author>
+    <author>
+      <name>Roberto Martin-Martin</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2602.21633v1</id>
+    <title>Self-Correcting VLA: Online Action Refinement via Sparse World Imagination</title>
+    <updated>2026-02-25T06:58:06Z</updated>
+    <link href="https://arxiv.org/abs/2602.21633v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2602.21633v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Standard vision-language-action (VLA) models rely on fitting statistical data priors, limiting their robust understanding of underlying physical dynamics. Reinforcement learning enhances physical grounding through exploration yet typically relies on external reward signals that remain isolated from the agent's internal states. World action models have emerged as a promising paradigm that integrates imagination and control to enable predictive planning. However, they rely on implicit context modeling, lacking explicit mechanisms for self-improvement. To solve these problems, we propose Self-Correcting VLA (SC-VLA), which achieve self-improvement by intrinsically guiding action refinement through sparse imagination. We first design sparse world imagination by integrating auxiliary predictive heads to forecast current task progress and future trajectory trends, thereby constraining the policy to encode short-term physical evolution. Then we introduce the online action refinement module to reshape progress-dependent dense rewards, adjusting trajectory orientation based on the predicted sparse future states. Evaluations on challenging robot manipulation tasks from simulation benchmarks and real-world settings demonstrate that SC-VLA achieve state-of-the-art performance, yielding the highest task throughput with 16% fewer steps and a 9% higher success rate than the best-performing baselines, alongside a 14% gain in real-world experiments. Code is available at https://github.com/Kisaragi0/SC-VLA.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-02-25T06:58:06Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Chenyv Liu</name>
+    </author>
+    <author>
+      <name>Wentao Tan</name>
+    </author>
+    <author>
+      <name>Lei Zhu</name>
+    </author>
+    <author>
+      <name>Fengling Li</name>
+    </author>
+    <author>
+      <name>Jingjing Li</name>
+    </author>
+    <author>
+      <name>Guoli Yang</name>
+    </author>
+    <author>
+      <name>Heng Tao Shen</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2602.12065v1</id>
+    <title>Affordance-Graphed Task Worlds: Self-Evolving Task Generation for Scalable Embodied Learning</title>
+    <updated>2026-02-12T15:23:45Z</updated>
+    <link href="https://arxiv.org/abs/2602.12065v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2602.12065v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Training robotic policies directly in the real world is expensive and unscalable. Although generative simulation enables large-scale data synthesis, current approaches often fail to generate logically coherent long-horizon tasks and struggle with dynamic physical uncertainties due to open-loop execution. To address these challenges, we propose Affordance-Graphed Task Worlds (AGT-World), a unified framework that autonomously constructs interactive simulated environments and corresponding robot task policies based on real-world observations. Unlike methods relying on random proposals or static replication, AGT-World formalizes the task space as a structured graph, enabling the precise, hierarchical decomposition of complex goals into theoretically grounded atomic primitives. Furthermore, we introduce a Self-Evolution mechanism with hybrid feedback to autonomously refine policies, combining Vision-Language Model reasoning and geometric verification. Extensive experiments demonstrate that our method significantly outperforms in success rates and generalization, achieving a self-improving cycle of proposal, execution, and correction for scalable robot learning.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-02-12T15:23:45Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Xiang Liu</name>
+    </author>
+    <author>
+      <name>Sen Cui</name>
+    </author>
+    <author>
+      <name>Guocai Yao</name>
+    </author>
+    <author>
+      <name>Zhong Cao</name>
+    </author>
+    <author>
+      <name>Jingheng Ma</name>
+    </author>
+    <author>
+      <name>Min Zhang</name>
+    </author>
+    <author>
+      <name>Changshui Zhang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2602.11075v2</id>
+    <title>RISE: Self-Improving Robot Policy with Compositional World Model</title>
+    <updated>2026-04-28T08:51:16Z</updated>
+    <link href="https://arxiv.org/abs/2602.11075v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2602.11075v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Despite the sustained scaling on model capacity and data acquisition, Vision-Language-Action (VLA) models remain brittle in contact-rich and dynamic manipulation tasks, where minor execution deviations can compound into failures. While reinforcement learning (RL) offers a principled path to robustness, on-policy RL in the physical world is constrained by safety risk, hardware cost, and environment reset. To bridge this gap, we present RISE, a scalable framework of robotic reinforcement learning via imagination. At its core is a Compositional World Model that (i) predicts multi-view future via a controllable dynamics model, and (ii) evaluates imagined outcomes with a progress value model, producing informative advantages for the policy improvement. Such compositional design allows state and value to be tailored by best-suited yet distinct architectures and objectives. These components are integrated into a closed-loop self-improving pipeline that continuously generates imaginary rollouts, estimates advantages, and updates the policy in imaginary space without costly physical interaction. Across three challenging real-world tasks, RISE yields significant improvement over prior art, with more than +35% absolute performance increase in dynamic brick sorting, +45% for backpack packing, and +35% for box closing, respectively.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-02-11T17:43:36Z</published>
+    <arxiv:comment>RSS 2026. Project page: https://opendrivelab.com/RISE/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Jiazhi Yang</name>
+    </author>
+    <author>
+      <name>Kunyang Lin</name>
+    </author>
+    <author>
+      <name>Jinwei Li</name>
+    </author>
+    <author>
+      <name>Wencong Zhang</name>
+    </author>
+    <author>
+      <name>Tianwei Lin</name>
+    </author>
+    <author>
+      <name>Longyan Wu</name>
+    </author>
+    <author>
+      <name>Zhizhong Su</name>
+    </author>
+    <author>
+      <name>Hao Zhao</name>
+    </author>
+    <author>
+      <name>Ya-Qin Zhang</name>
+    </author>
+    <author>
+      <name>Li Chen</name>
+    </author>
+    <author>
+      <name>Ping Luo</name>
+    </author>
+    <author>
+      <name>Xiangyu Yue</name>
+    </author>
+    <author>
+      <name>Hongyang Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2601.06748v3</id>
+    <title>On-the-Fly VLA Adaptation via Test-Time Reinforcement Learning</title>
+    <updated>2026-04-07T03:39:20Z</updated>
+    <link href="https://arxiv.org/abs/2601.06748v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2601.06748v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Vision-Language-Action models have recently emerged as a powerful paradigm for general-purpose robot learning, enabling agents to map visual observations and natural-language instructions into executable robotic actions. Though popular, they are primarily trained via supervised fine-tuning or training-time reinforcement learning, requiring explicit fine-tuning phases, human interventions, or controlled data collection. Consequently, existing methods remain unsuitable for challenging simulated- or physical-world deployments, where robots must respond autonomously and flexibly to evolving environments. To address this limitation, we introduce a Test-Time Reinforcement Learning for VLAs (TT-VLA), a framework that enables on-the-fly policy adaptation during inference. TT-VLA formulates a dense reward mechanism that leverages step-by-step task-progress signals to refine action policies during test time while preserving the SFT/RL-trained priors, making it an effective supplement to current VLA models. Empirical results show that our approach enhances overall adaptability, stability, and task success in dynamic, previously unseen scenarios under simulated and real-world settings. We believe TT-VLA offers a principled step toward self-improving, deployment-ready VLAs.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-01-11T01:51:30Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Changyu Liu</name>
+    </author>
+    <author>
+      <name>Yiyang Liu</name>
+    </author>
+    <author>
+      <name>Taowen Wang</name>
+    </author>
+    <author>
+      <name>Qiao Zhuang</name>
+    </author>
+    <author>
+      <name>James Chenhao Liang</name>
+    </author>
+    <author>
+      <name>Wenhao Yang</name>
+    </author>
+    <author>
+      <name>Renjing Xu</name>
+    </author>
+    <author>
+      <name>Qifan Wang</name>
+    </author>
+    <author>
+      <name>Dongfang Liu</name>
+    </author>
+    <author>
+      <name>Cheng Han</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2601.03044v1</id>
+    <title>SOP: A Scalable Online Post-Training System for Vision-Language-Action Models</title>
+    <updated>2026-01-06T14:25:11Z</updated>
+    <link href="https://arxiv.org/abs/2601.03044v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2601.03044v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Vision-language-action (VLA) models achieve strong generalization through large-scale pre-training, but real-world deployment requires expert-level task proficiency in addition to broad generality. Existing post-training approaches for VLA models are typically offline, single-robot, or task-specific, limiting effective on-policy adaptation and scalable learning from real-world interaction. We introduce a Scalable Online Post-training (SOP) system that enables online, distributed, multi-task post-training of generalist VLA models directly in the physical world. SOP tightly couples execution and learning through a closed-loop architecture in which a fleet of robots continuously streams on-policy experience and human intervention signals to a centralized cloud learner, and asynchronously receives updated policies. This design supports prompt on-policy correction, scales experience collection through parallel deployment, and preserves generality during adaptation. SOP is agnostic to the choice of post-training algorithm; we instantiate it with both interactive imitation learning (HG-DAgger) and reinforcement learning (RECAP). Across a range of real-world manipulation tasks including cloth folding, box assembly, and grocery restocking, we show that SOP substantially improves the performance of large pretrained VLA models while maintaining a single shared policy across tasks. Effective post-training can be achieved within hours of real-world interaction, and performance scales near-linearly with the number of robots in the fleet. These results suggest that tightly coupling online learning with fleet-scale deployment is instrumental to enabling efficient, reliable, and scalable post-training of generalist robot policies in the physical world.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-01-06T14:25:11Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Mingjie Pan</name>
+    </author>
+    <author>
+      <name>Siyuan Feng</name>
+    </author>
+    <author>
+      <name>Qinglin Zhang</name>
+    </author>
+    <author>
+      <name>Xinchen Li</name>
+    </author>
+    <author>
+      <name>Jianheng Song</name>
+    </author>
+    <author>
+      <name>Chendi Qu</name>
+    </author>
+    <author>
+      <name>Yi Wang</name>
+    </author>
+    <author>
+      <name>Chuankang Li</name>
+    </author>
+    <author>
+      <name>Ziyu Xiong</name>
+    </author>
+    <author>
+      <name>Zhi Chen</name>
+    </author>
+    <author>
+      <name>Yi Liu</name>
+    </author>
+    <author>
+      <name>Jianlan Luo</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2512.23703v1</id>
+    <title>Robo-Dopamine: General Process Reward Modeling for High-Precision Robotic Manipulation</title>
+    <updated>2025-12-29T18:57:44Z</updated>
+    <link href="https://arxiv.org/abs/2512.23703v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2512.23703v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The primary obstacle for applying reinforcement learning (RL) to real-world robotics is the design of effective reward functions. While recently learning-based Process Reward Models (PRMs) are a promising direction, they are often hindered by two fundamental limitations: their reward models lack step-aware understanding and rely on single-view perception, leading to unreliable assessments of fine-grained manipulation progress; and their reward shaping procedures are theoretically unsound, often inducing a semantic trap that misguides policy optimization. To address these, we introduce Dopamine-Reward, a novel reward modeling method for learning a general-purpose, step-aware process reward model from multi-view inputs. At its core is our General Reward Model (GRM), trained on a vast 3,400+ hour dataset, which leverages Step-wise Reward Discretization for structural understanding and Multi-Perspective Reward Fusion to overcome perceptual limitations. Building upon Dopamine-Reward, we propose Dopamine-RL, a robust policy learning framework that employs a theoretically-sound Policy-Invariant Reward Shaping method, which enables the agent to leverage dense rewards for efficient self-improvement without altering the optimal policy, thereby fundamentally avoiding the semantic trap. Extensive experiments across diverse simulated and real-world tasks validate our approach. GRM achieves state-of-the-art accuracy in reward assessment, and Dopamine-RL built on GRM significantly improves policy learning efficiency. For instance, after GRM is adapted to a new task in a one-shot manner from a single expert trajectory, the resulting reward model enables Dopamine-RL to improve the policy from near-zero to 95% success with only 150 online rollouts (approximately 1 hour of real robot interaction), while retaining strong generalization across tasks. Project website: https://robo-dopamine.github.io</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-12-29T18:57:44Z</published>
+    <arxiv:comment>27 pages, 11 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Huajie Tan</name>
+    </author>
+    <author>
+      <name>Sixiang Chen</name>
+    </author>
+    <author>
+      <name>Yijie Xu</name>
+    </author>
+    <author>
+      <name>Zixiao Wang</name>
+    </author>
+    <author>
+      <name>Yuheng Ji</name>
+    </author>
+    <author>
+      <name>Cheng Chi</name>
+    </author>
+    <author>
+      <name>Yaoxu Lyu</name>
+    </author>
+    <author>
+      <name>Zhongxia Zhao</name>
+    </author>
+    <author>
+      <name>Xiansheng Chen</name>
+    </author>
+    <author>
+      <name>Peterson Co</name>
+    </author>
+    <author>
+      <name>Shaoxuan Xie</name>
+    </author>
+    <author>
+      <name>Guocai Yao</name>
+    </author>
+    <author>
+      <name>Pengwei Wang</name>
+    </author>
+    <author>
+      <name>Zhongyuan Wang</name>
+    </author>
+    <author>
+      <name>Shanghang Zhang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2512.14666v1</id>
+    <title>EVOLVE-VLA: Test-Time Training from Environment Feedback for Vision-Language-Action Models</title>
+    <updated>2025-12-16T18:26:38Z</updated>
+    <link href="https://arxiv.org/abs/2512.14666v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2512.14666v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Achieving truly adaptive embodied intelligence requires agents that learn not just by imitating static demonstrations, but by continuously improving through environmental interaction, which is akin to how humans master skills through practice. Vision-Language-Action (VLA) models have advanced robotic manipulation by leveraging large language models, yet remain fundamentally limited by Supervised Finetuning (SFT): requiring hundreds of demonstrations per task, rigidly memorizing trajectories, and failing to adapt when deployment conditions deviate from training. We introduce EVOLVE-VLA, a test-time training framework enabling VLAs to continuously adapt through environment interaction with minimal or zero task-specific demonstrations. The key technical challenge is replacing oracle reward signals (unavailable at test time) with autonomous feedback. We address this through a learned progress estimator providing dense feedback, and critically, we design our framework to ``tame'' this inherently noisy signal via two mechanisms: (1) an accumulative progress estimation mechanism smoothing noisy point-wise estimates, and (2) a progressive horizon extension strategy enabling gradual policy evolution. EVOLVE-VLA achieves substantial gains: +8.6\% on long-horizon tasks, +22.0\% in 1-shot learning, and enables cross-task generalization -- achieving 20.8\% success on unseen tasks without task-specific demonstrations training (vs. 0\% for pure SFT). Qualitative analysis reveals emergent capabilities absent in demonstrations, including error recovery and novel strategies. This work represents a critical step toward VLAs that truly learn and adapt, moving beyond static imitation toward continuous self-improvements.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-12-16T18:26:38Z</published>
+    <arxiv:comment>15 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Zechen Bai</name>
+    </author>
+    <author>
+      <name>Chen Gao</name>
+    </author>
+    <author>
+      <name>Mike Zheng Shou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2512.10891v5</id>
+    <title>Iterative Compositional Data Generation for Robot Control</title>
+    <updated>2026-05-18T20:28:47Z</updated>
+    <link href="https://arxiv.org/abs/2512.10891v5" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2512.10891v5" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Collecting robotic manipulation data is expensive, making it impractical to acquire demonstrations for the combinatorially large space of tasks that arise in multi-object, multi-robot, and multi-environment settings. While recent generative models can synthesize useful data for individual tasks, they do not exploit the compositional structure of robotic domains and struggle to generalize to unseen task combinations. We propose a semantic compositional diffusion transformer that factorizes transitions into robot-, object-, obstacle-, and objective-specific components and learns their interactions through attention. Once trained on a limited subset of tasks, we show that our model can zero-shot generate high-quality transitions from which we can learn control policies for unseen task combinations. Then, we introduce an iterative self-improvement procedure in which synthetic data is validated via offline reinforcement learning and incorporated into subsequent training rounds. Our approach substantially improves zero-shot performance over monolithic and hard-coded compositional baselines, ultimately solving nearly all held-out tasks and demonstrating the emergence of meaningful compositional structure in the learned representations.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-12-11T18:20:49Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Anh-Quan Pham</name>
+    </author>
+    <author>
+      <name>Marcel Hussing</name>
+    </author>
+    <author>
+      <name>Shubhankar P. Patankar</name>
+    </author>
+    <author>
+      <name>Dani S. Bassett</name>
+    </author>
+    <author>
+      <name>Jorge Mendez-Mendez</name>
+    </author>
+    <author>
+      <name>Eric Eaton</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2512.04797v1</id>
+    <title>SIMA 2: A Generalist Embodied Agent for Virtual Worlds</title>
+    <updated>2025-12-04T13:46:11Z</updated>
+    <link href="https://arxiv.org/abs/2512.04797v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2512.04797v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We introduce SIMA 2, a generalist embodied agent that understands and acts in a wide variety of 3D virtual worlds. Built upon a Gemini foundation model, SIMA 2 represents a significant step toward active, goal-directed interaction within an embodied environment. Unlike prior work (e.g., SIMA 1) limited to simple language commands, SIMA 2 acts as an interactive partner, capable of reasoning about high-level goals, conversing with the user, and handling complex instructions given through language and images. Across a diverse portfolio of games, SIMA 2 substantially closes the gap with human performance and demonstrates robust generalization to previously unseen environments, all while retaining the base model's core reasoning capabilities. Furthermore, we demonstrate a capacity for open-ended self-improvement: by leveraging Gemini to generate tasks and provide rewards, SIMA 2 can autonomously learn new skills from scratch in a new environment. This work validates a path toward creating versatile and continuously learning agents for both virtual and, eventually, physical worlds.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-12-04T13:46:11Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name> SIMA team</name>
+    </author>
+    <author>
+      <name>Adrian Bolton</name>
+    </author>
+    <author>
+      <name>Alexander Lerchner</name>
+    </author>
+    <author>
+      <name>Alexandra Cordell</name>
+    </author>
+    <author>
+      <name>Alexandre Moufarek</name>
+    </author>
+    <author>
+      <name>Andrew Bolt</name>
+    </author>
+    <author>
+      <name>Andrew Lampinen</name>
+    </author>
+    <author>
+      <name>Anna Mitenkova</name>
+    </author>
+    <author>
+      <name>Arne Olav Hallingstad</name>
+    </author>
+    <author>
+      <name>Bojan Vujatovic</name>
+    </author>
+    <author>
+      <name>Bonnie Li</name>
+    </author>
+    <author>
+      <name>Cong Lu</name>
+    </author>
+    <author>
+      <name>Daan Wierstra</name>
+    </author>
+    <author>
+      <name>Daniel P. Sawyer</name>
+    </author>
+    <author>
+      <name>Daniel Slater</name>
+    </author>
+    <author>
+      <name>David Reichert</name>
+    </author>
+    <author>
+      <name>Davide Vercelli</name>
+    </author>
+    <author>
+      <name>Demis Hassabis</name>
+    </author>
+    <author>
+      <name>Drew A. Hudson</name>
+    </author>
+    <author>
+      <name>Duncan Williams</name>
+    </author>
+    <author>
+      <name>Ed Hirst</name>
+    </author>
+    <author>
+      <name>Fabio Pardo</name>
+    </author>
+    <author>
+      <name>Felix Hill</name>
+    </author>
+    <author>
+      <name>Frederic Besse</name>
+    </author>
+    <author>
+      <name>Hannah Openshaw</name>
+    </author>
+    <author>
+      <name>Harris Chan</name>
+    </author>
+    <author>
+      <name>Hubert Soyer</name>
+    </author>
+    <author>
+      <name>Jane X. Wang</name>
+    </author>
+    <author>
+      <name>Jeff Clune</name>
+    </author>
+    <author>
+      <name>John Agapiou</name>
+    </author>
+    <author>
+      <name>John Reid</name>
+    </author>
+    <author>
+      <name>Joseph Marino</name>
+    </author>
+    <author>
+      <name>Junkyung Kim</name>
+    </author>
+    <author>
+      <name>Karol Gregor</name>
+    </author>
+    <author>
+      <name>Kaustubh Sridhar</name>
+    </author>
+    <author>
+      <name>Kay McKinney</name>
+    </author>
+    <author>
+      <name>Laura Kampis</name>
+    </author>
+    <author>
+      <name>Lei M. Zhang</name>
+    </author>
+    <author>
+      <name>Loic Matthey</name>
+    </author>
+    <author>
+      <name>Luyu Wang</name>
+    </author>
+    <author>
+      <name>Maria Abi Raad</name>
+    </author>
+    <author>
+      <name>Maria Loks-Thompson</name>
+    </author>
+    <author>
+      <name>Martin Engelcke</name>
+    </author>
+    <author>
+      <name>Matija Kecman</name>
+    </author>
+    <author>
+      <name>Matthew Jackson</name>
+    </author>
+    <author>
+      <name>Maxime Gazeau</name>
+    </author>
+    <author>
+      <name>Ollie Purkiss</name>
+    </author>
+    <author>
+      <name>Oscar Knagg</name>
+    </author>
+    <author>
+      <name>Peter Stys</name>
+    </author>
+    <author>
+      <name>Piermaria Mendolicchio</name>
+    </author>
+    <author>
+      <name>Raia Hadsell</name>
+    </author>
+    <author>
+      <name>Rosemary Ke</name>
+    </author>
+    <author>
+      <name>Ryan Faulkner</name>
+    </author>
+    <author>
+      <name>Sarah Chakera</name>
+    </author>
+    <author>
+      <name>Satinder Singh Baveja</name>
+    </author>
+    <author>
+      <name>Shane Legg</name>
+    </author>
+    <author>
+      <name>Sheleem Kashem</name>
+    </author>
+    <author>
+      <name>Tayfun Terzi</name>
+    </author>
+    <author>
+      <name>Thomas Keck</name>
+    </author>
+    <author>
+      <name>Tim Harley</name>
+    </author>
+    <author>
+      <name>Tim Scholtes</name>
+    </author>
+    <author>
+      <name>Tyson Roberts</name>
+    </author>
+    <author>
+      <name>Volodymyr Mnih</name>
+    </author>
+    <author>
+      <name>Yulan Liu</name>
+    </author>
+    <author>
+      <name>Zhengdong Wang</name>
+    </author>
+    <author>
+      <name>Zoubin Ghahramani</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2512.03891v1</id>
+    <title>Digital Twin-based Control Co-Design of Full Vehicle Active Suspensions via Deep Reinforcement Learning</title>
+    <updated>2025-12-03T15:41:35Z</updated>
+    <link href="https://arxiv.org/abs/2512.03891v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2512.03891v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Active suspension systems are critical for enhancing vehicle comfort, safety, and stability, yet their performance is often limited by fixed hardware designs and control strategies that cannot adapt to uncertain and dynamic operating conditions. Recent advances in digital twins (DTs) and deep reinforcement learning (DRL) offer new opportunities for real-time, data-driven optimization across a vehicle's lifecycle. However, integrating these technologies into a unified framework remains an open challenge. This work presents a DT-based control co-design (CCD) framework for full-vehicle active suspensions using multi-generation design concepts. By integrating automatic differentiation into DRL, we jointly optimize physical suspension components and control policies under varying driver behaviors and environmental uncertainties. DRL also addresses the challenge of partial observability, where only limited states can be sensed and fed back to the controller, by learning optimal control actions directly from available sensor information. The framework incorporates model updating with quantile learning to capture data uncertainty, enabling real-time decision-making and adaptive learning from digital-physical interactions. The approach demonstrates personalized optimization of suspension systems under two distinct driving settings (mild and aggressive). Results show that the optimized systems achieve smoother trajectories and reduce control efforts by approximately 43% and 52% for mild and aggressive, respectively, while maintaining ride comfort and stability. Contributions include: developing a DT-enabled CCD framework integrating DRL and uncertainty-aware model updating for full-vehicle active suspensions, introducing a multi-generation design strategy for self-improving systems, and demonstrating personalized optimization of active suspension systems for distinct driver types.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-12-03T15:41:35Z</published>
+    <arxiv:comment>28 pages, 17 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Ying-Kuan Tsai</name>
+    </author>
+    <author>
+      <name>Yi-Ping Chen</name>
+    </author>
+    <author>
+      <name>Vispi Karkaria</name>
+    </author>
+    <author>
+      <name>Wei Chen</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2511.14759v2</id>
+    <title>$π^{*}_{0.6}$: a VLA That Learns From Experience</title>
+    <updated>2025-11-19T04:34:49Z</updated>
+    <link href="https://arxiv.org/abs/2511.14759v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2511.14759v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We study how vision-language-action (VLA) models can improve through real-world deployments via reinforcement learning (RL). We present a general-purpose method, RL with Experience and Corrections via Advantage-conditioned Policies (RECAP), that provides for RL training of VLAs via advantage conditioning. Our method incorporates heterogeneous data into the self-improvement process, including demonstrations, data from on-policy collection, and expert teleoperated interventions provided during autonomous execution. RECAP starts by pre-training a generalist VLA with offline RL, which we call $π^{*}_{0.6}$, that can then be specialized to attain high performance on downstream tasks through on-robot data collection. We show that the $π^{*}_{0.6}$ model trained with the full RECAP method can fold laundry in real homes, reliably assemble boxes, and make espresso drinks using a professional espresso machine. On some of the hardest tasks, RECAP more than doubles task throughput and roughly halves the task failure rate.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-11-18T18:58:55Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Physical Intelligence</name>
+    </author>
+    <author>
+      <name>Ali Amin</name>
+    </author>
+    <author>
+      <name>Raichelle Aniceto</name>
+    </author>
+    <author>
+      <name>Ashwin Balakrishna</name>
+    </author>
+    <author>
+      <name>Kevin Black</name>
+    </author>
+    <author>
+      <name>Ken Conley</name>
+    </author>
+    <author>
+      <name>Grace Connors</name>
+    </author>
+    <author>
+      <name>James Darpinian</name>
+    </author>
+    <author>
+      <name>Karan Dhabalia</name>
+    </author>
+    <author>
+      <name>Jared DiCarlo</name>
+    </author>
+    <author>
+      <name>Danny Driess</name>
+    </author>
+    <author>
+      <name>Michael Equi</name>
+    </author>
+    <author>
+      <name>Adnan Esmail</name>
+    </author>
+    <author>
+      <name>Yunhao Fang</name>
+    </author>
+    <author>
+      <name>Chelsea Finn</name>
+    </author>
+    <author>
+      <name>Catherine Glossop</name>
+    </author>
+    <author>
+      <name>Thomas Godden</name>
+    </author>
+    <author>
+      <name>Ivan Goryachev</name>
+    </author>
+    <author>
+      <name>Lachy Groom</name>
+    </author>
+    <author>
+      <name>Hunter Hancock</name>
+    </author>
+    <author>
+      <name>Karol Hausman</name>
+    </author>
+    <author>
+      <name>Gashon Hussein</name>
+    </author>
+    <author>
+      <name>Brian Ichter</name>
+    </author>
+    <author>
+      <name>Szymon Jakubczak</name>
+    </author>
+    <author>
+      <name>Rowan Jen</name>
+    </author>
+    <author>
+      <name>Tim Jones</name>
+    </author>
+    <author>
+      <name>Ben Katz</name>
+    </author>
+    <author>
+      <name>Liyiming Ke</name>
+    </author>
+    <author>
+      <name>Chandra Kuchi</name>
+    </author>
+    <author>
+      <name>Marinda Lamb</name>
+    </author>
+    <author>
+      <name>Devin LeBlanc</name>
+    </author>
+    <author>
+      <name>Sergey Levine</name>
+    </author>
+    <author>
+      <name>Adrian Li-Bell</name>
+    </author>
+    <author>
+      <name>Yao Lu</name>
+    </author>
+    <author>
+      <name>Vishnu Mano</name>
+    </author>
+    <author>
+      <name>Mohith Mothukuri</name>
+    </author>
+    <author>
+      <name>Suraj Nair</name>
+    </author>
+    <author>
+      <name>Karl Pertsch</name>
+    </author>
+    <author>
+      <name>Allen Z. Ren</name>
+    </author>
+    <author>
+      <name>Charvi Sharma</name>
+    </author>
+    <author>
+      <name>Lucy Xiaoyang Shi</name>
+    </author>
+    <author>
+      <name>Laura Smith</name>
+    </author>
+    <author>
+      <name>Jost Tobias Springenberg</name>
+    </author>
+    <author>
+      <name>Kyle Stachowicz</name>
+    </author>
+    <author>
+      <name>Will Stoeckle</name>
+    </author>
+    <author>
+      <name>Alex Swerdlow</name>
+    </author>
+    <author>
+      <name>James Tanner</name>
+    </author>
+    <author>
+      <name>Marcel Torne</name>
+    </author>
+    <author>
+      <name>Quan Vuong</name>
+    </author>
+    <author>
+      <name>Anna Walling</name>
+    </author>
+    <author>
+      <name>Haohuan Wang</name>
+    </author>
+    <author>
+      <name>Blake Williams</name>
+    </author>
+    <author>
+      <name>Sukwon Yoo</name>
+    </author>
+    <author>
+      <name>Lili Yu</name>
+    </author>
+    <author>
+      <name>Ury Zhilinsky</name>
+    </author>
+    <author>
+      <name>Zhiyuan Zhou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2511.09515v1</id>
+    <title>WMPO: World Model-based Policy Optimization for Vision-Language-Action Models</title>
+    <updated>2025-11-12T17:54:09Z</updated>
+    <link href="https://arxiv.org/abs/2511.09515v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2511.09515v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Vision-Language-Action (VLA) models have shown strong potential for general-purpose robotic manipulation, but their reliance on expert demonstrations limits their ability to learn from failures and perform self-corrections. Reinforcement learning (RL) addresses these through self-improving interactions with the physical environment, but suffers from high sample complexity on real robots. We introduce World-Model-based Policy Optimization (WMPO), a principled framework for on-policy VLA RL without interacting with the real environment. In contrast to widely used latent world models, WMPO focuses on pixel-based predictions that align the "imagined" trajectories with the VLA features pretrained with web-scale images. Crucially, WMPO enables the policy to perform on-policy GRPO that provides stronger performance than the often-used off-policy methods. Extensive experiments in both simulation and real-robot settings demonstrate that WMPO (i) substantially improves sample efficiency, (ii) achieves stronger overall performance, (iii) exhibits emergent behaviors such as self-correction, and (iv) demonstrates robust generalization and lifelong learning capabilities.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-11-12T17:54:09Z</published>
+    <arxiv:comment>project website: https://wm-po.github.io</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Fangqi Zhu</name>
+    </author>
+    <author>
+      <name>Zhengyang Yan</name>
+    </author>
+    <author>
+      <name>Zicong Hong</name>
+    </author>
+    <author>
+      <name>Quanxin Shou</name>
+    </author>
+    <author>
+      <name>Xiao Ma</name>
+    </author>
+    <author>
+      <name>Song Guo</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2511.02239v2</id>
+    <title>LACY: A Vision-Language Model-based Language-Action Cycle for Self-Improving Robotic Manipulation</title>
+    <updated>2026-05-21T21:13:30Z</updated>
+    <link href="https://arxiv.org/abs/2511.02239v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2511.02239v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Learning generalizable policies for robotic manipulation increasingly relies on large-scale models that map language instructions to actions (L2A). However, this one-way paradigm often produces policies that execute tasks without deeper contextual understanding, limiting their ability to generalize or explain their behavior. We argue that the complementary skill of mapping actions back to language (A2L) is essential for developing more holistic grounding. An agent capable of both acting and explaining its actions can form richer internal representations and unlock new paradigms for self-supervised learning. We introduce LACY (Language-Action Cycle), a unified framework that learns such bidirectional mappings within a single vision-language model. LACY is jointly trained on three synergistic tasks: generating parameterized actions from language (L2A), explaining observed actions in language (A2L), and verifying semantic consistency between two language descriptions (L2C). This enables a self-improving cycle that autonomously generates and filters new training data through an active augmentation strategy targeting low-confidence cases, thereby improving the model without additional human labels. Experiments on pick-and-place tasks in both simulation and the real world show that LACY improves task success rates by 56.46% on average and yields more robust language-action grounding for robotic manipulation. Project page: https://vla2026.github.io/LACY/</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-11-04T04:02:51Z</published>
+    <arxiv:comment>Accepted to ICRA 2026. Project page: https://vla2026.github.io/LACY/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Youngjin Hong</name>
+    </author>
+    <author>
+      <name>Houjian Yu</name>
+    </author>
+    <author>
+      <name>Mingen Li</name>
+    </author>
+    <author>
+      <name>Changhyun Choi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2511.00091v1</id>
+    <title>Self-Improving Vision-Language-Action Models with Data Generation via Residual RL</title>
+    <updated>2025-10-30T06:24:04Z</updated>
+    <link href="https://arxiv.org/abs/2511.00091v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2511.00091v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Supervised fine-tuning (SFT) has become the de facto post-training strategy for large vision-language-action (VLA) models, but its reliance on costly human demonstrations limits scalability and generalization. We propose Probe, Learn, Distill (PLD), a three-stage plug-and-play framework that improves VLAs through residual reinforcement learning (RL) and distribution-aware data collection. In Stage 1, we train lightweight residual actors to probe failure regions of the VLA generalist. In Stage 2, we use a hybrid rollout scheme that aligns collected trajectories with the generalist's deployment distribution while capturing recovery behaviors. In Stage 3, we distill the curated trajectories back into the generalist with standard SFT. PLD achieves near-saturated 99% task success on LIBERO, over 50% gains in SimplerEnv, and 100% success on real-world Franka and YAM arm manipulation tasks. Ablations show that residual probing and distribution-aware replay are key to collecting deployment-aligned data that improves both seen and unseen tasks, offering a scalable path toward self-improving VLA models.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-10-30T06:24:04Z</published>
+    <arxiv:comment>26 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Wenli Xiao</name>
+    </author>
+    <author>
+      <name>Haotian Lin</name>
+    </author>
+    <author>
+      <name>Andy Peng</name>
+    </author>
+    <author>
+      <name>Haoru Xue</name>
+    </author>
+    <author>
+      <name>Tairan He</name>
+    </author>
+    <author>
+      <name>Yuqi Xie</name>
+    </author>
+    <author>
+      <name>Fengyuan Hu</name>
+    </author>
+    <author>
+      <name>Jimmy Wu</name>
+    </author>
+    <author>
+      <name>Zhengyi Luo</name>
+    </author>
+    <author>
+      <name>Linxi "Jim" Fan</name>
+    </author>
+    <author>
+      <name>Guanya Shi</name>
+    </author>
+    <author>
+      <name>Yuke Zhu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2510.22568v1</id>
+    <title>SPIRAL: Self-Play Incremental Racing Algorithm for Learning in Multi-Drone Competitions</title>
+    <updated>2025-10-26T07:59:44Z</updated>
+    <link href="https://arxiv.org/abs/2510.22568v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2510.22568v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This paper introduces SPIRAL (Self-Play Incremental Racing Algorithm for Learning), a novel approach for training autonomous drones in multi-agent racing competitions. SPIRAL distinctively employs a self-play mechanism to incrementally cultivate complex racing behaviors within a challenging, dynamic environment. Through this self-play core, drones continuously compete against increasingly proficient versions of themselves, naturally escalating the difficulty of competitive interactions. This progressive learning journey guides agents from mastering fundamental flight control to executing sophisticated cooperative multi-drone racing strategies. Our method is designed for versatility, allowing integration with any state-of-the-art Deep Reinforcement Learning (DRL) algorithms within its self-play framework. Simulations demonstrate the significant advantages of SPIRAL and benchmark the performance of various DRL algorithms operating within it. Consequently, we contribute a versatile, scalable, and self-improving learning framework to the field of autonomous drone racing. SPIRAL's capacity to autonomously generate appropriate and escalating challenges through its self-play dynamic offers a promising direction for developing robust and adaptive racing strategies in multi-agent environments. This research opens new avenues for enhancing the performance and reliability of autonomous racing drones in increasingly complex and competitive scenarios.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-10-26T07:59:44Z</published>
+    <arxiv:comment>\c{opyright} 2025 IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, in any current or future media, including reprinting/republishing this material for advertising or promotional purposes, creating new collective works, for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Onur Akgün</name>
+    </author>
+    <arxiv:doi>10.1109/ASYU67174.2025.11208263</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/ASYU67174.2025.11208263" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2510.17150v2</id>
+    <title>OmniVIC: A Self-Improving Variable Impedance Controller with Vision-Language In-Context Learning for Safe Robotic Manipulation</title>
+    <updated>2025-10-22T04:50:59Z</updated>
+    <link href="https://arxiv.org/abs/2510.17150v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2510.17150v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We present OmniVIC, a universal variable impedance controller (VIC) enhanced by a vision language model (VLM), which improves safety and adaptation in any contact-rich robotic manipulation task to enhance safe physical interaction. Traditional VIC have shown advantages when the robot physically interacts with the environment, but lack generalization in unseen, complex, and unstructured safe interactions in universal task scenarios involving contact or uncertainty. To this end, the proposed OmniVIC interprets task context derived reasoning from images and natural language and generates adaptive impedance parameters for a VIC controller. Specifically, the core of OmniVIC is a self-improving Retrieval-Augmented Generation(RAG) and in-context learning (ICL), where RAG retrieves relevant prior experiences from a structured memory bank to inform the controller about similar past tasks, and ICL leverages these retrieved examples and the prompt of current task to query the VLM for generating context-aware and adaptive impedance parameters for the current manipulation scenario. Therefore, a self-improved RAG and ICL guarantee OmniVIC works in universal task scenarios. The impedance parameter regulation is further informed by real-time force/torque feedback to ensure interaction forces remain within safe thresholds. We demonstrate that our method outperforms baselines on a suite of complex contact-rich tasks, both in simulation and on real-world robotic tasks, with improved success rates and reduced force violations. OmniVIC takes a step towards bridging high-level semantic reasoning and low-level compliant control, enabling safer and more generalizable manipulation. Overall, the average success rate increases from 27% (baseline) to 61.4% (OmniVIC).</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-10-20T04:54:22Z</published>
+    <arxiv:comment>Code, video and RAG dataset are available at \url{https://sites.google.com/view/omni-vic}</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Heng Zhang</name>
+    </author>
+    <author>
+      <name>Wei-Hsing Huang</name>
+    </author>
+    <author>
+      <name>Gokhan Solak</name>
+    </author>
+    <author>
+      <name>Arash Ajoudani</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2510.12710v3</id>
+    <title>Reflection-Based Task Adaptation for Self-Improving VLA</title>
+    <updated>2026-04-09T08:55:45Z</updated>
+    <link href="https://arxiv.org/abs/2510.12710v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2510.12710v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Pre-trained Vision-Language-Action (VLA) models represent a major leap towards general-purpose robots, yet efficiently adapting them to novel, specific tasks in-situ remains a significant hurdle. While reinforcement learning (RL) is a promising avenue for such adaptation, the process often suffers from low efficiency, hindering rapid task mastery. We introduce Reflective Self-Adaptation, a framework for rapid, autonomous task adaptation without human intervention. Our framework establishes a self-improving loop where the agent learns from its own experience to enhance both strategy and execution.
+  The core of our framework is a dual-pathway architecture that addresses the full adaptation lifecycle. First, a Failure-Driven Reflective RL pathway enables rapid learning by using the VLM's causal reasoning to automatically synthesize a targeted, dense reward function from failure analysis. This provides a focused learning signal that significantly accelerates policy exploration. However, optimizing such proxy rewards introduces a potential risk of "reward hacking," where the agent masters the reward function but fails the actual task. To counteract this, our second pathway, Success-Driven Quality-Guided SFT, grounds the policy in holistic success. It identifies and selectively imitates high-quality successful trajectories, ensuring the agent remains aligned with the ultimate task goal. This pathway is strengthened by a conditional curriculum mechanism to aid initial exploration.
+  We conduct experiments in challenging manipulation tasks. The results demonstrate that our framework achieves faster convergence and higher final success rates compared to representative baselines. Our work presents a robust solution for creating self-improving agents that can efficiently and reliably adapt to new environments.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-10-14T16:44:39Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Baicheng Li</name>
+    </author>
+    <author>
+      <name>Dong Wu</name>
+    </author>
+    <author>
+      <name>Zike Yan</name>
+    </author>
+    <author>
+      <name>Xinchen Liu</name>
+    </author>
+    <author>
+      <name>Lusong Li</name>
+    </author>
+    <author>
+      <name>Zecui Zeng</name>
+    </author>
+    <author>
+      <name>Hongbin Zha</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2509.23829v1</id>
+    <title>DexFlyWheel: A Scalable and Self-improving Data Generation Framework for Dexterous Manipulation</title>
+    <updated>2025-09-28T12:07:02Z</updated>
+    <link href="https://arxiv.org/abs/2509.23829v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2509.23829v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Dexterous manipulation is critical for advancing robot capabilities in real-world applications, yet diverse and high-quality datasets remain scarce. Existing data collection methods either rely on human teleoperation or require significant human engineering, or generate data with limited diversity, which restricts their scalability and generalization. In this paper, we introduce DexFlyWheel, a scalable data generation framework that employs a self-improving cycle to continuously enrich data diversity. Starting from efficient seed demonstrations warmup, DexFlyWheel expands the dataset through iterative cycles. Each cycle follows a closed-loop pipeline that integrates Imitation Learning (IL), residual Reinforcement Learning (RL), rollout trajectory collection, and data augmentation. Specifically, IL extracts human-like behaviors from demonstrations, and residual RL enhances policy generalization. The learned policy is then used to generate trajectories in simulation, which are further augmented across diverse environments and spatial configurations before being fed back into the next cycle. Over successive iterations, a self-improving data flywheel effect emerges, producing datasets that cover diverse scenarios and thereby scaling policy performance. Experimental results demonstrate that DexFlyWheel generates over 2,000 diverse demonstrations across four challenging tasks. Policies trained on our dataset achieve an average success rate of 81.9\% on the challenge test sets and successfully transfer to the real world through digital twin, achieving a 78.3\% success rate on dual-arm lift tasks.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-09-28T12:07:02Z</published>
+    <arxiv:comment>NeurIPS 2025, Spotlight</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Kefei Zhu</name>
+    </author>
+    <author>
+      <name>Fengshuo Bai</name>
+    </author>
+    <author>
+      <name>YuanHao Xiang</name>
+    </author>
+    <author>
+      <name>Yishuai Cai</name>
+    </author>
+    <author>
+      <name>Xinglin Chen</name>
+    </author>
+    <author>
+      <name>Ruochong Li</name>
+    </author>
+    <author>
+      <name>Xingtao Wang</name>
+    </author>
+    <author>
+      <name>Hao Dong</name>
+    </author>
+    <author>
+      <name>Yaodong Yang</name>
+    </author>
+    <author>
+      <name>Xiaopeng Fan</name>
+    </author>
+    <author>
+      <name>Yuanpei Chen</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2509.19292v1</id>
+    <title>SOE: Sample-Efficient Robot Policy Self-Improvement via On-Manifold Exploration</title>
+    <updated>2025-09-23T17:54:47Z</updated>
+    <link href="https://arxiv.org/abs/2509.19292v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2509.19292v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Intelligent agents progress by continually refining their capabilities through actively exploring environments. Yet robot policies often lack sufficient exploration capability due to action mode collapse. Existing methods that encourage exploration typically rely on random perturbations, which are unsafe and induce unstable, erratic behaviors, thereby limiting their effectiveness. We propose Self-Improvement via On-Manifold Exploration (SOE), a framework that enhances policy exploration and improvement in robotic manipulation. SOE learns a compact latent representation of task-relevant factors and constrains exploration to the manifold of valid actions, ensuring safety, diversity, and effectiveness. It can be seamlessly integrated with arbitrary policy models as a plug-in module, augmenting exploration without degrading the base policy performance. Moreover, the structured latent space enables human-guided exploration, further improving efficiency and controllability. Extensive experiments in both simulation and real-world tasks demonstrate that SOE consistently outperforms prior methods, achieving higher task success rates, smoother and safer exploration, and superior sample efficiency. These results establish on-manifold exploration as a principled approach to sample-efficient policy self-improvement. Project website: https://ericjin2002.github.io/SOE</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-09-23T17:54:47Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yang Jin</name>
+    </author>
+    <author>
+      <name>Jun Lv</name>
+    </author>
+    <author>
+      <name>Han Xue</name>
+    </author>
+    <author>
+      <name>Wendi Chen</name>
+    </author>
+    <author>
+      <name>Chuan Wen</name>
+    </author>
+    <author>
+      <name>Cewu Lu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2509.15155v1</id>
+    <title>Self-Improving Embodied Foundation Models</title>
+    <updated>2025-09-18T17:00:08Z</updated>
+    <link href="https://arxiv.org/abs/2509.15155v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2509.15155v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Foundation models trained on web-scale data have revolutionized robotics, but their application to low-level control remains largely limited to behavioral cloning. Drawing inspiration from the success of the reinforcement learning stage in fine-tuning large language models, we propose a two-stage post-training approach for robotics. The first stage, Supervised Fine-Tuning (SFT), fine-tunes pretrained foundation models using both: a) behavioral cloning, and b) steps-to-go prediction objectives. In the second stage, Self-Improvement, steps-to-go prediction enables the extraction of a well-shaped reward function and a robust success detector, enabling a fleet of robots to autonomously practice downstream tasks with minimal human supervision. Through extensive experiments on real-world and simulated robot embodiments, our novel post-training recipe unveils significant results on Embodied Foundation Models. First, we demonstrate that the combination of SFT and Self-Improvement is significantly more sample-efficient than scaling imitation data collection for supervised learning, and that it leads to policies with significantly higher success rates. Further ablations highlight that the combination of web-scale pretraining and Self-Improvement is the key to this sample-efficiency. Next, we demonstrate that our proposed combination uniquely unlocks a capability that current methods cannot achieve: autonomously practicing and acquiring novel skills that generalize far beyond the behaviors observed in the imitation learning datasets used during training. These findings highlight the transformative potential of combining pretrained foundation models with online Self-Improvement to enable autonomous skill acquisition in robotics. Our project website can be found at https://self-improving-efms.github.io .</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-09-18T17:00:08Z</published>
+    <arxiv:comment>Appearing in the Conference on Neural Information Processing Systems (NeurIPS 2025)</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Seyed Kamyar Seyed Ghasemipour</name>
+    </author>
+    <author>
+      <name>Ayzaan Wahid</name>
+    </author>
+    <author>
+      <name>Jonathan Tompson</name>
+    </author>
+    <author>
+      <name>Pannag Sanketi</name>
+    </author>
+    <author>
+      <name>Igor Mordatch</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2508.03018v2</id>
+    <title>Beyond Policy Optimization: A Data Curation Flywheel for Sparse-Reward Long-Horizon Planning</title>
+    <updated>2026-05-16T08:56:03Z</updated>
+    <link href="https://arxiv.org/abs/2508.03018v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2508.03018v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large Language Reasoning Models have demonstrated remarkable success on static tasks, yet their application to multi-round agentic planning in interactive environments faces two fundamental challenges. First, the intractable credit assignment problem renders conventional reinforcement learning ineffective in sparse-reward settings. Second, the computational overhead of verbose, step-by-step reasoning histories is prohibitive. To address these challenges, we propose BPO, a three-stage framework (bootstrapping, extrapolation, and refinement) that establishes a self-improving data flywheel to develop robust reasoning models for long-horizon, sparse-reward environments. Our framework first bootstraps efficient reasoning using the proposed planning quaternions with long-short chain-of-thought fusion. It then extrapolates to out-of-distribution tasks through complexity-stratified curriculum learning. Finally, the model iteratively refines itself by learning exclusively on experiences selected via reward-gated rejection sampling. Experiments on ALFWorld, ScienceWorld, and WebShop demonstrate that our approach achieves state-of-the-art with significant token efficiency, providing a new recipe for reasoning models in agentic planning.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-08-05T02:56:58Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Yutong Wang</name>
+    </author>
+    <author>
+      <name>Pengliang Ji</name>
+    </author>
+    <author>
+      <name>Kaixin Li</name>
+    </author>
+    <author>
+      <name>Baolong Bi</name>
+    </author>
+    <author>
+      <name>Tao Feng</name>
+    </author>
+    <author>
+      <name>Guillaume Sartoretti</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2507.18661v3</id>
+    <title>Eyes Will Shut: A Vision-Based Next GPS Location Prediction Model by Reinforcement Learning from Visual Map Feed Back</title>
+    <updated>2025-08-04T15:39:40Z</updated>
+    <link href="https://arxiv.org/abs/2507.18661v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2507.18661v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Next Location Prediction is a fundamental task in the study of human mobility, with wide-ranging applications in transportation planning, urban governance, and epidemic forecasting. In practice, when humans attempt to predict the next location in a trajectory, they often visualize the trajectory on a map and reason based on road connectivity and movement trends. However, the vast majority of existing next-location prediction models do not reason over maps \textbf{in the way that humans do}. Fortunately, the recent development of Vision-Language Models (VLMs) has demonstrated strong capabilities in visual perception and even visual reasoning. This opens up a new possibility: by rendering both the road network and trajectory onto an image and leveraging the reasoning abilities of VLMs, we can enable models to perform trajectory inference in a human-like manner. To explore this idea, we first propose a method called Vision-Guided Location Search (VGLS), which evaluates whether a general-purpose VLM is capable of trajectory-based reasoning without modifying any of its internal parameters. Based on insights from the VGLS results, we further propose our main approach: VLMLocPredictor, which is composed of two stages: In the first stage, we design two Supervised Fine-Tuning (SFT) tasks that help the VLM understand road network and trajectory structures and acquire basic reasoning ability on such visual inputs. In the second stage, we introduce Reinforcement Learning from Visual Map Feedback, enabling the model to self-improve its next-location prediction ability through interaction with the environment. Experiments conducted on datasets from four different cities show that our method achieves state-of-the-art (SOTA) performance and exhibits superior cross-city generalization compared to other LLM-based approaches.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-07-23T16:58:44Z</published>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Ruixing Zhang</name>
+    </author>
+    <author>
+      <name>Yang Zhang</name>
+    </author>
+    <author>
+      <name>Tongyu Zhu</name>
+    </author>
+    <author>
+      <name>Leilei Sun</name>
+    </author>
+    <author>
+      <name>Weifeng Lv</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2507.11662v3</id>
+    <title>Let's Think in Two Steps: Mitigating Agreement Bias in MLLMs with Self-Grounded Verification</title>
+    <updated>2026-03-08T00:45:24Z</updated>
+    <link href="https://arxiv.org/abs/2507.11662v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2507.11662v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Verifiers--functions assigning rewards to agent behavior--have been key to AI progress in math, code, and games. However, extending gains to domains without clear-cut success criteria remains a challenge: while humans can recognize desired outcomes, translating this intuition into scalable rules is nontrivial. Multimodal LLMs (MLLMs) offer a promising solution, given their world knowledge, human-preference alignment, and reasoning capabilities. We evaluate MLLM verifiers across web navigation, computer use, and robotics, spanning 13+ models, 28+ designs, and thousands of trajectories from diverse agents. We identify a critical limitation: a strong tendency for MLLMs to over-validate agent behavior--a phenomenon we term agreement bias. This bias is pervasive, resilient to test-time scaling, and can harm applications relying on MLLM judgments/rewards (e.g., self-improvement, steering, online supervision). We discuss several considerations for evaluating and designing MLLM verifiers, and introduce SGV, a lightweight method that better leverages their capabilities by modulating (un)conditional generation. First, an MLLM is elicited to generate broad priors about desired behavior, independent of the data under evaluation. Then, conditioned on self-generated priors, it reasons over and evaluates a candidate trajectory. Our methods yield more human-aligned verifiers, improving failure detection by 25pp and accuracy by 14pp. In self-improvement and online supervision, they boost task completion of a GUI specialist in OSWorld, a diffusion policy in robomimic, and a ReAct agent in VisualWebArena--surpassing the previous state of the art by 20pp. As a byproduct, we release an update of VisualWebArena featuring strong agent baselines, more human-aligned oracles, container parallelism with high fidelity and proper resets, &gt;10x speedups, and VWA-Lite, a 1/3 subset with comparable evaluation fidelity.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-07-15T18:50:29Z</published>
+    <arxiv:comment>ICLR 2026. Code, models, and data publicly available at https://mshalimay.github.io/agreement-bias-sgv/</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Moises Andrade</name>
+    </author>
+    <author>
+      <name>Joonhyuk Cha</name>
+    </author>
+    <author>
+      <name>Brandon Ho</name>
+    </author>
+    <author>
+      <name>Vriksha Srihari</name>
+    </author>
+    <author>
+      <name>Karmesh Yadav</name>
+    </author>
+    <author>
+      <name>Zsolt Kira</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2507.08224v2</id>
+    <title>Making VLMs More Robot-Friendly: Self-Critical Distillation of Low-Level Procedural Reasoning</title>
+    <updated>2025-07-20T05:22:14Z</updated>
+    <link href="https://arxiv.org/abs/2507.08224v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2507.08224v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language models (LLMs) have shown promise in robotic procedural planning, yet their human-centric reasoning often omits the low-level, grounded details needed for robotic execution. Vision-language models (VLMs) offer a path toward more perceptually grounded plans, but current methods either rely on expensive, large-scale models or are constrained to narrow simulation settings. We introduce SelfReVision, a lightweight and scalable self-improvement framework for vision-language procedural planning. SelfReVision enables small VLMs to iteratively critique, revise, and verify their own plans-without external supervision or teacher models-drawing inspiration from chain-of-thought prompting and self-instruct paradigms. Through this self-distillation loop, models generate higher-quality, execution-ready plans that can be used both at inference and for continued fine-tuning. Using models varying from 3B to 72B, our results show that SelfReVision not only boosts performance over weak base VLMs but also outperforms models 100X the size, yielding improved control in downstream embodied tasks.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-07-11T00:17:08Z</published>
+    <arxiv:comment>Code Available: https://github.com/chan0park/SelfReVision</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Chan Young Park</name>
+    </author>
+    <author>
+      <name>Jillian Fisher</name>
+    </author>
+    <author>
+      <name>Marius Memmel</name>
+    </author>
+    <author>
+      <name>Dipika Khullar</name>
+    </author>
+    <author>
+      <name>Seoho Yun</name>
+    </author>
+    <author>
+      <name>Abhishek Gupta</name>
+    </author>
+    <author>
+      <name>Yejin Choi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2506.06658v3</id>
+    <title>Self-Improving Loops for Visual Robotic Planning</title>
+    <updated>2026-03-11T01:24:50Z</updated>
+    <link href="https://arxiv.org/abs/2506.06658v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2506.06658v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Video generative models trained on expert demonstrations have been utilized as performant text-conditioned visual planners for solving robotic tasks. However, generalization to unseen tasks remains a challenge. Whereas improved generalization may be facilitated by leveraging learned prior knowledge from additional pre-collected offline data sources, such as web-scale video datasets, in the era of experience we aim to design agents that can continuously improve in an online manner from self-collected behaviors. In this work we thus propose the Self-Improving Loops for Visual Robotic Planning (SILVR), where an in-domain video model iteratively updates itself on self-produced trajectories, and steadily improves its performance for a specified task of interest. We apply SILVR to a diverse suite of MetaWorld tasks, as well as two manipulation tasks on a real robot arm, and find that performance improvements continuously emerge over multiple iterations for novel tasks unseen during initial in-domain video model training. We demonstrate that SILVR is robust in the absence of human-provided ground-truth reward functions or expert-quality demonstrations, and is preferable to alternate approaches that utilize online experience in terms of performance and sample efficiency.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-06-07T04:34:37Z</published>
+    <arxiv:comment>ICLR 2026. Project Page: https://diffusion-supervision.github.io/silvr/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Calvin Luo</name>
+    </author>
+    <author>
+      <name>Zilai Zeng</name>
+    </author>
+    <author>
+      <name>Mingxi Jia</name>
+    </author>
+    <author>
+      <name>Yilun Du</name>
+    </author>
+    <author>
+      <name>Chen Sun</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2505.19850v2</id>
+    <title>DISCOVER: Automated Curricula for Sparse-Reward Reinforcement Learning</title>
+    <updated>2025-10-20T12:58:20Z</updated>
+    <link href="https://arxiv.org/abs/2505.19850v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2505.19850v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Sparse-reward reinforcement learning (RL) can model a wide range of highly complex tasks. Solving sparse-reward tasks is RL's core premise, requiring efficient exploration coupled with long-horizon credit assignment, and overcoming these challenges is key for building self-improving agents with superhuman ability. Prior work commonly explores with the objective of solving many sparse-reward tasks, making exploration of individual high-dimensional, long-horizon tasks intractable. We argue that solving such challenging tasks requires solving simpler tasks that are relevant to the target task, i.e., whose achieval will teach the agent skills required for solving the target task. We demonstrate that this sense of direction, necessary for effective exploration, can be extracted from existing RL algorithms, without leveraging any prior information. To this end, we propose a method for directed sparse-reward goal-conditioned very long-horizon RL (DISCOVER), which selects exploratory goals in the direction of the target task. We connect DISCOVER to principled exploration in bandits, formally bounding the time until the target task becomes achievable in terms of the agent's initial distance to the target, but independent of the volume of the space of all tasks. We then perform a thorough evaluation in high-dimensional environments. We find that the directed goal selection of DISCOVER solves exploration problems that are beyond the reach of prior state-of-the-art exploration methods in RL.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-05-26T11:35:07Z</published>
+    <arxiv:comment>NeurIPS 2025</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Leander Diaz-Bone</name>
+    </author>
+    <author>
+      <name>Marco Bagatella</name>
+    </author>
+    <author>
+      <name>Jonas Hübotter</name>
+    </author>
+    <author>
+      <name>Andreas Krause</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2505.08078v1</id>
+    <title>What Matters for Batch Online Reinforcement Learning in Robotics?</title>
+    <updated>2025-05-12T21:24:22Z</updated>
+    <link href="https://arxiv.org/abs/2505.08078v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2505.08078v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The ability to learn from large batches of autonomously collected data for policy improvement -- a paradigm we refer to as batch online reinforcement learning -- holds the promise of enabling truly scalable robot learning by significantly reducing the need for human effort of data collection while getting benefits from self-improvement. Yet, despite the promise of this paradigm, it remains challenging to achieve due to algorithms not being able to learn effectively from the autonomous data. For example, prior works have applied imitation learning and filtered imitation learning methods to the batch online RL problem, but these algorithms often fail to efficiently improve from the autonomously collected data or converge quickly to a suboptimal point. This raises the question of what matters for effective batch online RL in robotics. Motivated by this question, we perform a systematic empirical study of three axes -- (i) algorithm class, (ii) policy extraction methods, and (iii) policy expressivity -- and analyze how these axes affect performance and scaling with the amount of autonomous data. Through our analysis, we make several observations. First, we observe that the use of Q-functions to guide batch online RL significantly improves performance over imitation-based methods. Building on this, we show that an implicit method of policy extraction -- via choosing the best action in the distribution of the policy -- is necessary over traditional policy extraction methods from offline RL. Next, we show that an expressive policy class is preferred over less expressive policy classes. Based on this analysis, we propose a general recipe for effective batch online RL. We then show a simple addition to the recipe of using temporally-correlated noise to obtain more diversity results in further performance gains. Our recipe obtains significantly better performance and scaling compared to prior methods.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-05-12T21:24:22Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Perry Dong</name>
+    </author>
+    <author>
+      <name>Suvir Mirchandani</name>
+    </author>
+    <author>
+      <name>Dorsa Sadigh</name>
+    </author>
+    <author>
+      <name>Chelsea Finn</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2505.01396v1</id>
+    <title>SIME: Enhancing Policy Self-Improvement with Modal-level Exploration</title>
+    <updated>2025-05-02T17:13:03Z</updated>
+    <link href="https://arxiv.org/abs/2505.01396v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2505.01396v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Self-improvement requires robotic systems to initially learn from human-provided data and then gradually enhance their capabilities through interaction with the environment. This is similar to how humans improve their skills through continuous practice. However, achieving effective self-improvement is challenging, primarily because robots tend to repeat their existing abilities during interactions, often failing to generate new, valuable data for learning. In this paper, we identify the key to successful self-improvement: modal-level exploration and data selection. By incorporating a modal-level exploration mechanism during policy execution, the robot can produce more diverse and multi-modal interactions. At the same time, we select the most valuable trials and high-quality segments from these interactions for learning. We successfully demonstrate effective robot self-improvement on both simulation benchmarks and real-world experiments. The capability for self-improvement will enable us to develop more robust and high-success-rate robotic control strategies at a lower cost. Our code and experiment scripts are available at https://ericjin2002.github.io/SIME/</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-05-02T17:13:03Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yang Jin</name>
+    </author>
+    <author>
+      <name>Jun Lv</name>
+    </author>
+    <author>
+      <name>Wenye Yu</name>
+    </author>
+    <author>
+      <name>Hongjie Fang</name>
+    </author>
+    <author>
+      <name>Yong-Lu Li</name>
+    </author>
+    <author>
+      <name>Cewu Lu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2504.20459v1</id>
+    <title>SAS-Prompt: Large Language Models as Numerical Optimizers for Robot Self-Improvement</title>
+    <updated>2025-04-29T06:39:20Z</updated>
+    <link href="https://arxiv.org/abs/2504.20459v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2504.20459v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We demonstrate the ability of large language models (LLMs) to perform iterative self-improvement of robot policies. An important insight of this paper is that LLMs have a built-in ability to perform (stochastic) numerical optimization and that this property can be leveraged for explainable robot policy search. Based on this insight, we introduce the SAS Prompt (Summarize, Analyze, Synthesize) -- a single prompt that enables iterative learning and adaptation of robot behavior by combining the LLM's ability to retrieve, reason and optimize over previous robot traces in order to synthesize new, unseen behavior. Our approach can be regarded as an early example of a new family of explainable policy search methods that are entirely implemented within an LLM. We evaluate our approach both in simulation and on a real-robot table tennis task. Project website: sites.google.com/asu.edu/sas-llm/</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-04-29T06:39:20Z</published>
+    <arxiv:comment>ICRA 2025</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Heni Ben Amor</name>
+    </author>
+    <author>
+      <name>Laura Graesser</name>
+    </author>
+    <author>
+      <name>Atil Iscen</name>
+    </author>
+    <author>
+      <name>David D'Ambrosio</name>
+    </author>
+    <author>
+      <name>Saminda Abeyruwan</name>
+    </author>
+    <author>
+      <name>Alex Bewley</name>
+    </author>
+    <author>
+      <name>Yifan Zhou</name>
+    </author>
+    <author>
+      <name>Kamalesh Kalirathinam</name>
+    </author>
+    <author>
+      <name>Swaroop Mishra</name>
+    </author>
+    <author>
+      <name>Pannag Sanketi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2504.04191v2</id>
+    <title>GROVE: A Generalized Reward for Learning Open-Vocabulary Physical Skill</title>
+    <updated>2025-09-12T09:55:20Z</updated>
+    <link href="https://arxiv.org/abs/2504.04191v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2504.04191v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Learning open-vocabulary physical skills for simulated agents presents a significant challenge in artificial intelligence. Current reinforcement learning approaches face critical limitations: manually designed rewards lack scalability across diverse tasks, while demonstration-based methods struggle to generalize beyond their training distribution. We introduce GROVE, a generalized reward framework that enables open-vocabulary physical skill learning without manual engineering or task-specific demonstrations. Our key insight is that Large Language Models(LLMs) and Vision Language Models(VLMs) provide complementary guidance -- LLMs generate precise physical constraints capturing task requirements, while VLMs evaluate motion semantics and naturalness. Through an iterative design process, VLM-based feedback continuously refines LLM-generated constraints, creating a self-improving reward system. To bridge the domain gap between simulation and natural images, we develop Pose2CLIP, a lightweight mapper that efficiently projects agent poses directly into semantic feature space without computationally expensive rendering. Extensive experiments across diverse embodiments and learning paradigms demonstrate GROVE's effectiveness, achieving 22.2% higher motion naturalness and 25.7% better task completion scores while training 8.4x faster than previous methods. These results establish a new foundation for scalable physical skill acquisition in simulated environments.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-04-05T14:44:47Z</published>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Jieming Cui</name>
+    </author>
+    <author>
+      <name>Tengyu Liu</name>
+    </author>
+    <author>
+      <name>Ziyu Meng</name>
+    </author>
+    <author>
+      <name>Jiale Yu</name>
+    </author>
+    <author>
+      <name>Ran Song</name>
+    </author>
+    <author>
+      <name>Wei Zhang</name>
+    </author>
+    <author>
+      <name>Yixin Zhu</name>
+    </author>
+    <author>
+      <name>Siyuan Huang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2503.00761v1</id>
+    <title>TRACE: A Self-Improving Framework for Robot Behavior Forecasting with Vision-Language Models</title>
+    <updated>2025-03-02T06:58:02Z</updated>
+    <link href="https://arxiv.org/abs/2503.00761v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2503.00761v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Predicting the near-term behavior of a reactive agent is crucial in many robotic scenarios, yet remains challenging when observations of that agent are sparse or intermittent. Vision-Language Models (VLMs) offer a promising avenue by integrating textual domain knowledge with visual cues, but their one-shot predictions often miss important edge cases and unusual maneuvers. Our key insight is that iterative, counterfactual exploration--where a dedicated module probes each proposed behavior hypothesis, explicitly represented as a plausible trajectory, for overlooked possibilities--can significantly enhance VLM-based behavioral forecasting. We present TRACE (Tree-of-thought Reasoning And Counterfactual Exploration), an inference framework that couples tree-of-thought generation with domain-aware feedback to refine behavior hypotheses over multiple rounds. Concretely, a VLM first proposes candidate trajectories for the agent; a counterfactual critic then suggests edge-case variations consistent with partial observations, prompting the VLM to expand or adjust its hypotheses in the next iteration. This creates a self-improving cycle where the VLM progressively internalizes edge cases from previous rounds, systematically uncovering not only typical behaviors but also rare or borderline maneuvers, ultimately yielding more robust trajectory predictions from minimal sensor data. We validate TRACE on both ground-vehicle simulations and real-world marine autonomous surface vehicles. Experimental results show that our method consistently outperforms standard VLM-driven and purely model-based baselines, capturing a broader range of feasible agent behaviors despite sparse sensing. Evaluation videos and code are available at trace-robotics.github.io.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-03-02T06:58:02Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Gokul Puthumanaillam</name>
+    </author>
+    <author>
+      <name>Paulo Padrao</name>
+    </author>
+    <author>
+      <name>Jose Fuentes</name>
+    </author>
+    <author>
+      <name>Pranay Thangeda</name>
+    </author>
+    <author>
+      <name>William E. Schafer</name>
+    </author>
+    <author>
+      <name>Jae Hyuk Song</name>
+    </author>
+    <author>
+      <name>Karan Jagdale</name>
+    </author>
+    <author>
+      <name>Leonardo Bobadilla</name>
+    </author>
+    <author>
+      <name>Melkior Ornik</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2411.05005v1</id>
+    <title>Diff-2-in-1: Bridging Generation and Dense Perception with Diffusion Models</title>
+    <updated>2024-11-07T18:59:53Z</updated>
+    <link href="https://arxiv.org/abs/2411.05005v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2411.05005v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Beyond high-fidelity image synthesis, diffusion models have recently exhibited promising results in dense visual perception tasks. However, most existing work treats diffusion models as a standalone component for perception tasks, employing them either solely for off-the-shelf data augmentation or as mere feature extractors. In contrast to these isolated and thus sub-optimal efforts, we introduce a unified, versatile, diffusion-based framework, Diff-2-in-1, that can simultaneously handle both multi-modal data generation and dense visual perception, through a unique exploitation of the diffusion-denoising process. Within this framework, we further enhance discriminative visual perception via multi-modal generation, by utilizing the denoising network to create multi-modal data that mirror the distribution of the original training set. Importantly, Diff-2-in-1 optimizes the utilization of the created diverse and faithful data by leveraging a novel self-improving learning mechanism. Comprehensive experimental evaluations validate the effectiveness of our framework, showcasing consistent performance improvements across various discriminative backbones and high-quality multi-modal data generation characterized by both realism and usefulness.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-11-07T18:59:53Z</published>
+    <arxiv:comment>26 pages, 14 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <arxiv:journal_ref>ICLR 2025</arxiv:journal_ref>
+    <author>
+      <name>Shuhong Zheng</name>
+    </author>
+    <author>
+      <name>Zhipeng Bao</name>
+    </author>
+    <author>
+      <name>Ruoyu Zhao</name>
+    </author>
+    <author>
+      <name>Martial Hebert</name>
+    </author>
+    <author>
+      <name>Yu-Xiong Wang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2410.18969v1</id>
+    <title>Self-Improving Autonomous Underwater Manipulation</title>
+    <updated>2024-10-24T17:59:14Z</updated>
+    <link href="https://arxiv.org/abs/2410.18969v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2410.18969v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Underwater robotic manipulation faces significant challenges due to complex fluid dynamics and unstructured environments, causing most manipulation systems to rely heavily on human teleoperation. In this paper, we introduce AquaBot, a fully autonomous manipulation system that combines behavior cloning from human demonstrations with self-learning optimization to improve beyond human teleoperation performance. With extensive real-world experiments, we demonstrate AquaBot's versatility across diverse manipulation tasks, including object grasping, trash sorting, and rescue retrieval. Our real-world experiments show that AquaBot's self-optimized policy outperforms a human operator by 41% in speed. AquaBot represents a promising step towards autonomous and self-improving underwater manipulation systems. We open-source both hardware and software implementation details.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-10-24T17:59:14Z</published>
+    <arxiv:comment>Project Page: https://aquabot.cs.columbia.edu/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Ruoshi Liu</name>
+    </author>
+    <author>
+      <name>Huy Ha</name>
+    </author>
+    <author>
+      <name>Mengxue Hou</name>
+    </author>
+    <author>
+      <name>Shuran Song</name>
+    </author>
+    <author>
+      <name>Carl Vondrick</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2410.06473v3</id>
+    <title>GRAPPA: Generalizing and Adapting Robot Policies via Online Agentic Guidance</title>
+    <updated>2025-04-08T16:32:04Z</updated>
+    <link href="https://arxiv.org/abs/2410.06473v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2410.06473v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Robot learning approaches such as behavior cloning and reinforcement learning have shown great promise in synthesizing robot skills from human demonstrations in specific environments. However, these approaches often require task-specific demonstrations or designing complex simulation environments, which limits the development of generalizable and robust policies for unseen real-world settings. Recent advances in the use of foundation models for robotics (e.g., LLMs, VLMs) have shown great potential in enabling systems to understand the semantics in the world from large-scale internet data. However, it remains an open challenge to use this knowledge to enable robotic systems to understand the underlying dynamics of the world, to generalize policies across different tasks, and to adapt policies to new environments. To alleviate these limitations, we propose an agentic framework for robot self-guidance and self-improvement, which consists of a set of role-specialized conversational agents, such as a high-level advisor, a grounding agent, a monitoring agent, and a robotic agent. Our framework iteratively grounds a base robot policy to relevant objects in the environment and uses visuomotor cues to shift the action distribution of the policy to more desirable states, online, while remaining agnostic to the subjective configuration of a given robot hardware platform. We demonstrate that our approach can effectively guide manipulation policies to achieve significantly higher success rates, both in simulation and in real-world experiments, without the need for additional human demonstrations or extensive exploration. Code and videos available at: https://agenticrobots.github.io</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-10-09T02:00:37Z</published>
+    <arxiv:comment>21 pages, 12 figures, 4 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Arthur Bucker</name>
+    </author>
+    <author>
+      <name>Pablo Ortega-Kral</name>
+    </author>
+    <author>
+      <name>Jonathan Francis</name>
+    </author>
+    <author>
+      <name>Jean Oh</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2409.16862v1</id>
+    <title>Behavior evolution-inspired approach to walking gait reinforcement training for quadruped robots</title>
+    <updated>2024-09-25T12:20:45Z</updated>
+    <link href="https://arxiv.org/abs/2409.16862v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2409.16862v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Reinforcement learning method is extremely competitive in gait generation techniques for quadrupedal robot, which is mainly due to the fact that stochastic exploration in reinforcement training is beneficial to achieve an autonomous gait. Nevertheless, although incremental reinforcement learning is employed to improve training success and movement smoothness by relying on the continuity inherent during limb movements, challenges remain in adapting gait policy to diverse terrain and external disturbance. Inspired by the association between reinforcement learning and the evolution of animal motion behavior, a self-improvement mechanism for reference gait is introduced in this paper to enable incremental learning of action and self-improvement of reference action together to imitate the evolution of animal motion behavior. Further, a new framework for reinforcement training of quadruped gait is proposed. In this framework, genetic algorithm is specifically adopted to perform global probabilistic search for the initial value of the arbitrary foot trajectory to update the reference trajectory with better fitness. Subsequently, the improved reference gait is used for incremental reinforcement learning of gait. The above process is repeatedly and alternatively executed to finally train the gait policy. The analysis considering terrain, model dimensions, and locomotion condition is presented in detail based on simulation, and the results show that the framework is significantly more adaptive to terrain compared to regular incremental reinforcement learning.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-09-25T12:20:45Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yu Wang</name>
+    </author>
+    <author>
+      <name>Wenchuan Jia</name>
+    </author>
+    <author>
+      <name>Yi Sun</name>
+    </author>
+    <author>
+      <name>Dong He</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2409.06450v1</id>
+    <title>Multimodal Large Language Model Driven Scenario Testing for Autonomous Vehicles</title>
+    <updated>2024-09-10T12:12:09Z</updated>
+    <link href="https://arxiv.org/abs/2409.06450v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2409.06450v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The generation of corner cases has become increasingly crucial for efficiently testing autonomous vehicles prior to road deployment. However, existing methods struggle to accommodate diverse testing requirements and often lack the ability to generalize to unseen situations, thereby reducing the convenience and usability of the generated scenarios. A method that facilitates easily controllable scenario generation for efficient autonomous vehicles (AV) testing with realistic and challenging situations is greatly needed. To address this, we proposed OmniTester: a multimodal Large Language Model (LLM) based framework that fully leverages the extensive world knowledge and reasoning capabilities of LLMs. OmniTester is designed to generate realistic and diverse scenarios within a simulation environment, offering a robust solution for testing and evaluating AVs. In addition to prompt engineering, we employ tools from Simulation of Urban Mobility to simplify the complexity of codes generated by LLMs. Furthermore, we incorporate Retrieval-Augmented Generation and a self-improvement mechanism to enhance the LLM's understanding of scenarios, thereby increasing its ability to produce more realistic scenes. In the experiments, we demonstrated the controllability and realism of our approaches in generating three types of challenging and complex scenarios. Additionally, we showcased its effectiveness in reconstructing new scenarios described in crash report, driven by the generalization capability of LLMs.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.ET" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-09-10T12:12:09Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Qiujing Lu</name>
+    </author>
+    <author>
+      <name>Xuanhan Wang</name>
+    </author>
+    <author>
+      <name>Yiwei Jiang</name>
+    </author>
+    <author>
+      <name>Guangming Zhao</name>
+    </author>
+    <author>
+      <name>Mingyue Ma</name>
+    </author>
+    <author>
+      <name>Shuo Feng</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2404.09001v1</id>
+    <title>Smart Help: Strategic Opponent Modeling for Proactive and Adaptive Robot Assistance in Households</title>
+    <updated>2024-04-13T13:03:59Z</updated>
+    <link href="https://arxiv.org/abs/2404.09001v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2404.09001v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Despite the significant demand for assistive technology among vulnerable groups (e.g., the elderly, children, and the disabled) in daily tasks, research into advanced AI-driven assistive solutions that genuinely accommodate their diverse needs remains sparse. Traditional human-machine interaction tasks often require machines to simply help without nuanced consideration of human abilities and feelings, such as their opportunity for practice and learning, sense of self-improvement, and self-esteem. Addressing this gap, we define a pivotal and novel challenge Smart Help, which aims to provide proactive yet adaptive support to human agents with diverse disabilities and dynamic goals in various tasks and environments. To establish this challenge, we leverage AI2-THOR to build a new interactive 3D realistic household environment for the Smart Help task. We introduce an innovative opponent modeling module that provides a nuanced understanding of the main agent's capabilities and goals, in order to optimize the assisting agent's helping policy. Rigorous experiments validate the efficacy of our model components and show the superiority of our holistic approach against established baselines. Our findings illustrate the potential of AI-imbued assistive robots in improving the well-being of vulnerable groups.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-04-13T13:03:59Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Zhihao Cao</name>
+    </author>
+    <author>
+      <name>Zidong Wang</name>
+    </author>
+    <author>
+      <name>Siwen Xie</name>
+    </author>
+    <author>
+      <name>Anji Liu</name>
+    </author>
+    <author>
+      <name>Lifeng Fan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2403.13090v1</id>
+    <title>Digital Twin-Driven Reinforcement Learning for Obstacle Avoidance in Robot Manipulators: A Self-Improving Online Training Framework</title>
+    <updated>2024-03-19T18:38:50Z</updated>
+    <link href="https://arxiv.org/abs/2403.13090v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2403.13090v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The evolution and growing automation of collaborative robots introduce more complexity and unpredictability to systems, highlighting the crucial need for robot's adaptability and flexibility to address the increasing complexities of their environment. In typical industrial production scenarios, robots are often required to be re-programmed when facing a more demanding task or even a few changes in workspace conditions. To increase productivity, efficiency and reduce human effort in the design process, this paper explores the potential of using digital twin combined with Reinforcement Learning (RL) to enable robots to generate self-improving collision-free trajectories in real time. The digital twin, acting as a virtual counterpart of the physical system, serves as a 'forward run' for monitoring, controlling, and optimizing the physical system in a safe and cost-effective manner. The physical system sends data to synchronize the digital system through the video feeds from cameras, which allows the virtual robot to update its observation and policy based on real scenarios. The bidirectional communication between digital and physical systems provides a promising platform for hardware-in-the-loop RL training through trial and error until the robot successfully adapts to its new environment. The proposed online training framework is demonstrated on the Unfactory Xarm5 collaborative robot, where the robot end-effector aims to reach the target position while avoiding obstacles. The experiment suggest that proposed framework is capable of performing policy online training, and that there remains significant room for improvement.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-03-19T18:38:50Z</published>
+    <arxiv:comment>7 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yuzhu Sun</name>
+    </author>
+    <author>
+      <name>Mien Van</name>
+    </author>
+    <author>
+      <name>Stephen McIlvanna</name>
+    </author>
+    <author>
+      <name>Nguyen Minh Nhat</name>
+    </author>
+    <author>
+      <name>Kabirat Olayemi</name>
+    </author>
+    <author>
+      <name>Jack Close</name>
+    </author>
+    <author>
+      <name>Seán McLoone</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2403.00991v2</id>
+    <title>SELFI: Autonomous Self-Improvement with Reinforcement Learning for Social Navigation</title>
+    <updated>2024-10-05T00:12:28Z</updated>
+    <link href="https://arxiv.org/abs/2403.00991v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2403.00991v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autonomous self-improving robots that interact and improve with experience are key to the real-world deployment of robotic systems. In this paper, we propose an online learning method, SELFI, that leverages online robot experience to rapidly fine-tune pre-trained control policies efficiently. SELFI applies online model-free reinforcement learning on top of offline model-based learning to bring out the best parts of both learning paradigms. Specifically, SELFI stabilizes the online learning process by incorporating the same model-based learning objective from offline pre-training into the Q-values learned with online model-free reinforcement learning. We evaluate SELFI in multiple real-world environments and report improvements in terms of collision avoidance, as well as more socially compliant behavior, measured by a human user study. SELFI enables us to quickly learn useful robotic behaviors with less human interventions such as pre-emptive behavior for the pedestrians, collision avoidance for small and transparent objects, and avoiding travel on uneven floor surfaces. We provide supplementary videos to demonstrate the performance of our fine-tuned policy on our project page.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-03-01T21:27:03Z</published>
+    <arxiv:comment>20pages, 12 figures, 2 tables, Conference on Robot Learning 2024</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Noriaki Hirose</name>
+    </author>
+    <author>
+      <name>Dhruv Shah</name>
+    </author>
+    <author>
+      <name>Kyle Stachowicz</name>
+    </author>
+    <author>
+      <name>Ajay Sridhar</name>
+    </author>
+    <author>
+      <name>Sergey Levine</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2311.02007v1</id>
+    <title>Towards Unsupervised Object Detection From LiDAR Point Clouds</title>
+    <updated>2023-11-03T16:12:01Z</updated>
+    <link href="https://arxiv.org/abs/2311.02007v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2311.02007v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this paper, we study the problem of unsupervised object detection from 3D point clouds in self-driving scenes. We present a simple yet effective method that exploits (i) point clustering in near-range areas where the point clouds are dense, (ii) temporal consistency to filter out noisy unsupervised detections, (iii) translation equivariance of CNNs to extend the auto-labels to long range, and (iv) self-supervision for improving on its own. Our approach, OYSTER (Object Discovery via Spatio-Temporal Refinement), does not impose constraints on data collection (such as repeated traversals of the same location), is able to detect objects in a zero-shot manner without supervised finetuning (even in sparse, distant regions), and continues to self-improve given more rounds of iterative self-training. To better measure model performance in self-driving scenarios, we propose a new planning-centric perception metric based on distance-to-collision. We demonstrate that our unsupervised object detector significantly outperforms unsupervised baselines on PandaSet and Argoverse 2 Sensor dataset, showing promise that self-supervision combined with object priors can enable object discovery in the wild. For more information, visit the project website: https://waabi.ai/research/oyster</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-11-03T16:12:01Z</published>
+    <arxiv:comment>CVPR 2023</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Lunjun Zhang</name>
+    </author>
+    <author>
+      <name>Anqi Joyce Yang</name>
+    </author>
+    <author>
+      <name>Yuwen Xiong</name>
+    </author>
+    <author>
+      <name>Sergio Casas</name>
+    </author>
+    <author>
+      <name>Bin Yang</name>
+    </author>
+    <author>
+      <name>Mengye Ren</name>
+    </author>
+    <author>
+      <name>Raquel Urtasun</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2310.15145v1</id>
+    <title>Robot Fine-Tuning Made Easy: Pre-Training Rewards and Policies for Autonomous Real-World Reinforcement Learning</title>
+    <updated>2023-10-23T17:50:08Z</updated>
+    <link href="https://arxiv.org/abs/2310.15145v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2310.15145v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The pre-train and fine-tune paradigm in machine learning has had dramatic success in a wide range of domains because the use of existing data or pre-trained models on the internet enables quick and easy learning of new tasks. We aim to enable this paradigm in robotic reinforcement learning, allowing a robot to learn a new task with little human effort by leveraging data and models from the Internet. However, reinforcement learning often requires significant human effort in the form of manual reward specification or environment resets, even if the policy is pre-trained. We introduce RoboFuME, a reset-free fine-tuning system that pre-trains a multi-task manipulation policy from diverse datasets of prior experiences and self-improves online to learn a target task with minimal human intervention. Our insights are to utilize calibrated offline reinforcement learning techniques to ensure efficient online fine-tuning of a pre-trained policy in the presence of distribution shifts and leverage pre-trained vision language models (VLMs) to build a robust reward classifier for autonomously providing reward signals during the online fine-tuning process. In a diverse set of five real robot manipulation tasks, we show that our method can incorporate data from an existing robot dataset collected at a different institution and improve on a target task within as little as 3 hours of autonomous real-world experience. We also demonstrate in simulation experiments that our method outperforms prior works that use different RL algorithms or different approaches for predicting rewards. Project website: https://robofume.github.io</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-10-23T17:50:08Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Jingyun Yang</name>
+    </author>
+    <author>
+      <name>Max Sobol Mark</name>
+    </author>
+    <author>
+      <name>Brandon Vu</name>
+    </author>
+    <author>
+      <name>Archit Sharma</name>
+    </author>
+    <author>
+      <name>Jeannette Bohg</name>
+    </author>
+    <author>
+      <name>Chelsea Finn</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2306.11706v2</id>
+    <title>RoboCat: A Self-Improving Generalist Agent for Robotic Manipulation</title>
+    <updated>2023-12-22T13:55:42Z</updated>
+    <link href="https://arxiv.org/abs/2306.11706v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2306.11706v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The ability to leverage heterogeneous robotic experience from different robots and tasks to quickly master novel skills and embodiments has the potential to transform robot learning. Inspired by recent advances in foundation models for vision and language, we propose a multi-embodiment, multi-task generalist agent for robotic manipulation. This agent, named RoboCat, is a visual goal-conditioned decision transformer capable of consuming action-labelled visual experience. This data spans a large repertoire of motor control skills from simulated and real robotic arms with varying sets of observations and actions. With RoboCat, we demonstrate the ability to generalise to new tasks and robots, both zero-shot as well as through adaptation using only 100-1000 examples for the target task. We also show how a trained model itself can be used to generate data for subsequent training iterations, thus providing a basic building block for an autonomous improvement loop. We investigate the agent's capabilities, with large-scale evaluations both in simulation and on three different real robot embodiments. We find that as we grow and diversify its training data, RoboCat not only shows signs of cross-task transfer, but also becomes more efficient at adapting to new tasks.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-06-20T17:35:20Z</published>
+    <arxiv:comment>Transactions on Machine Learning Research (12/2023)</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Konstantinos Bousmalis</name>
+    </author>
+    <author>
+      <name>Giulia Vezzani</name>
+    </author>
+    <author>
+      <name>Dushyant Rao</name>
+    </author>
+    <author>
+      <name>Coline Devin</name>
+    </author>
+    <author>
+      <name>Alex X. Lee</name>
+    </author>
+    <author>
+      <name>Maria Bauza</name>
+    </author>
+    <author>
+      <name>Todor Davchev</name>
+    </author>
+    <author>
+      <name>Yuxiang Zhou</name>
+    </author>
+    <author>
+      <name>Agrim Gupta</name>
+    </author>
+    <author>
+      <name>Akhil Raju</name>
+    </author>
+    <author>
+      <name>Antoine Laurens</name>
+    </author>
+    <author>
+      <name>Claudio Fantacci</name>
+    </author>
+    <author>
+      <name>Valentin Dalibard</name>
+    </author>
+    <author>
+      <name>Martina Zambelli</name>
+    </author>
+    <author>
+      <name>Murilo Martins</name>
+    </author>
+    <author>
+      <name>Rugile Pevceviciute</name>
+    </author>
+    <author>
+      <name>Michiel Blokzijl</name>
+    </author>
+    <author>
+      <name>Misha Denil</name>
+    </author>
+    <author>
+      <name>Nathan Batchelor</name>
+    </author>
+    <author>
+      <name>Thomas Lampe</name>
+    </author>
+    <author>
+      <name>Emilio Parisotto</name>
+    </author>
+    <author>
+      <name>Konrad Żołna</name>
+    </author>
+    <author>
+      <name>Scott Reed</name>
+    </author>
+    <author>
+      <name>Sergio Gómez Colmenarejo</name>
+    </author>
+    <author>
+      <name>Jon Scholz</name>
+    </author>
+    <author>
+      <name>Abbas Abdolmaleki</name>
+    </author>
+    <author>
+      <name>Oliver Groth</name>
+    </author>
+    <author>
+      <name>Jean-Baptiste Regli</name>
+    </author>
+    <author>
+      <name>Oleg Sushkov</name>
+    </author>
+    <author>
+      <name>Tom Rothörl</name>
+    </author>
+    <author>
+      <name>José Enrique Chen</name>
+    </author>
+    <author>
+      <name>Yusuf Aytar</name>
+    </author>
+    <author>
+      <name>Dave Barker</name>
+    </author>
+    <author>
+      <name>Joy Ortiz</name>
+    </author>
+    <author>
+      <name>Martin Riedmiller</name>
+    </author>
+    <author>
+      <name>Jost Tobias Springenberg</name>
+    </author>
+    <author>
+      <name>Raia Hadsell</name>
+    </author>
+    <author>
+      <name>Francesco Nori</name>
+    </author>
+    <author>
+      <name>Nicolas Heess</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2303.01488v1</id>
+    <title>Self-Improving Robots: End-to-End Autonomous Visuomotor Reinforcement Learning</title>
+    <updated>2023-03-02T18:51:38Z</updated>
+    <link href="https://arxiv.org/abs/2303.01488v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2303.01488v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In imitation and reinforcement learning, the cost of human supervision limits the amount of data that robots can be trained on. An aspirational goal is to construct self-improving robots: robots that can learn and improve on their own, from autonomous interaction with minimal human supervision or oversight. Such robots could collect and train on much larger datasets, and thus learn more robust and performant policies. While reinforcement learning offers a framework for such autonomous learning via trial-and-error, practical realizations end up requiring extensive human supervision for reward function design and repeated resetting of the environment between episodes of interactions. In this work, we propose MEDAL++, a novel design for self-improving robotic systems: given a small set of expert demonstrations at the start, the robot autonomously practices the task by learning to both do and undo the task, simultaneously inferring the reward function from the demonstrations. The policy and reward function are learned end-to-end from high-dimensional visual inputs, bypassing the need for explicit state estimation or task-specific pre-training for visual encoders used in prior work. We first evaluate our proposed algorithm on a simulated non-episodic benchmark EARL, finding that MEDAL++ is both more data efficient and gets up to 30% better final performance compared to state-of-the-art vision-based methods. Our real-robot experiments show that MEDAL++ can be applied to manipulation problems in larger environments than those considered in prior work, and autonomous self-improvement can improve the success rate by 30-70% over behavior cloning on just the expert data. Code, training and evaluation videos along with a brief overview is available at: https://architsharma97.github.io/self-improving-robots/</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-03-02T18:51:38Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Archit Sharma</name>
+    </author>
+    <author>
+      <name>Ahmed M. Ahmed</name>
+    </author>
+    <author>
+      <name>Rehaan Ahmad</name>
+    </author>
+    <author>
+      <name>Chelsea Finn</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2301.09749v2</id>
+    <title>A Data-Efficient Visual-Audio Representation with Intuitive Fine-tuning for Voice-Controlled Robots</title>
+    <updated>2023-10-16T22:22:58Z</updated>
+    <link href="https://arxiv.org/abs/2301.09749v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2301.09749v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A command-following robot that serves people in everyday life must continually improve itself in deployment domains with minimal help from its end users, instead of engineers. Previous methods are either difficult to continuously improve after the deployment or require a large number of new labels during fine-tuning. Motivated by (self-)supervised contrastive learning, we propose a novel representation that generates an intrinsic reward function for command-following robot tasks by associating images with sound commands. After the robot is deployed in a new domain, the representation can be updated intuitively and data-efficiently by non-experts without any hand-crafted reward functions. We demonstrate our approach on various sound types and robotic tasks, including navigation and manipulation with raw sensor inputs. In simulated and real-world experiments, we show that our system can continually self-improve in previously unseen scenarios given fewer new labeled data, while still achieving better performance over previous methods.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-01-23T22:40:18Z</published>
+    <arxiv:comment>Published at Conference on Robot Learning (CoRL), 2023</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Peixin Chang</name>
+    </author>
+    <author>
+      <name>Shuijing Liu</name>
+    </author>
+    <author>
+      <name>Tianchen Ji</name>
+    </author>
+    <author>
+      <name>Neeloy Chakraborty</name>
+    </author>
+    <author>
+      <name>Kaiwen Hong</name>
+    </author>
+    <author>
+      <name>Katherine Driggs-Campbell</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2210.16575v3</id>
+    <title>Self-Improving Safety Performance of Reinforcement Learning Based Driving with Black-Box Verification Algorithms</title>
+    <updated>2023-07-09T16:42:37Z</updated>
+    <link href="https://arxiv.org/abs/2210.16575v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2210.16575v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this work, we propose a self-improving artificial intelligence system to enhance the safety performance of reinforcement learning (RL)-based autonomous driving (AD) agents using black-box verification methods. RL algorithms have become popular in AD applications in recent years. However, the performance of existing RL algorithms heavily depends on the diversity of training scenarios. A lack of safety-critical scenarios during the training phase could result in poor generalization performance in real-world driving applications. We propose a novel framework in which the weaknesses of the training set are explored through black-box verification methods. After discovering AD failure scenarios, the RL agent's training is re-initiated via transfer learning to improve the performance of previously unsafe scenarios. Simulation results demonstrate that our approach efficiently discovers safety failures of action decisions in RL-based adaptive cruise control (ACC) applications and significantly reduces the number of vehicle collisions through iterative applications of our method. The source code is publicly available at https://github.com/data-and-decision-lab/self-improving-RL.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2022-10-29T11:34:17Z</published>
+    <arxiv:comment>7 pages, 7 figures, 2 tables, published in IEEE International Conference on Robotics and Automation (ICRA), June 2, 2023, London, UK</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <arxiv:journal_ref>IEEE International Conference on Robotics and Automation (ICRA), 2023, pp. 5631-5637</arxiv:journal_ref>
+    <author>
+      <name>Resul Dagdanov</name>
+    </author>
+    <author>
+      <name>Halil Durmus</name>
+    </author>
+    <author>
+      <name>Nazim Kemal Ure</name>
+    </author>
+    <arxiv:doi>10.1109/ICRA48891.2023.10160883</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/ICRA48891.2023.10160883" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2210.10659v1</id>
+    <title>Review of the state of the art in autonomous artificial intelligence</title>
+    <updated>2022-10-17T09:31:51Z</updated>
+    <link href="https://arxiv.org/abs/2210.10659v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2210.10659v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This article presents a new design for autonomous artificial intelligence (AI), based on the state-of-the-art algorithms, and describes a new autonomous AI system called AutoAI. The methodology is used to assemble the design founded on self-improved algorithms that use new and emerging sources of data (NEFD). The objective of the article is to conceptualise the design of a novel AutoAI algorithm. The conceptual approach is used to advance into building new and improved algorithms. The article integrates and consolidates the findings from existing literature and advances the AutoAI design into (1) using new and emerging sources of data for teaching and training AI algorithms and (2) enabling AI algorithms to use automated tools for training new and improved algorithms. This approach is going beyond the state-of-the-art in AI algorithms and suggests a design that enables autonomous algorithms to self-optimise and self-adapt, and on a higher level, be capable to self-procreate.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2022-10-17T09:31:51Z</published>
+    <arxiv:comment>AI Ethics (2022)</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Petar Radanliev</name>
+    </author>
+    <author>
+      <name>David De Roure</name>
+    </author>
+    <arxiv:doi>10.1007/s43681-022-00176-2</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1007/s43681-022-00176-2" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2107.08325v1</id>
+    <title>Vision-Based Autonomous Car Racing Using Deep Imitative Reinforcement Learning</title>
+    <updated>2021-07-18T00:00:48Z</updated>
+    <link href="https://arxiv.org/abs/2107.08325v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2107.08325v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autonomous car racing is a challenging task in the robotic control area. Traditional modular methods require accurate mapping, localization and planning, which makes them computationally inefficient and sensitive to environmental changes. Recently, deep-learning-based end-to-end systems have shown promising results for autonomous driving/racing. However, they are commonly implemented by supervised imitation learning (IL), which suffers from the distribution mismatch problem, or by reinforcement learning (RL), which requires a huge amount of risky interaction data. In this work, we present a general deep imitative reinforcement learning approach (DIRL), which successfully achieves agile autonomous racing using visual inputs. The driving knowledge is acquired from both IL and model-based RL, where the agent can learn from human teachers as well as perform self-improvement by safely interacting with an offline world model. We validate our algorithm both in a high-fidelity driving simulation and on a real-world 1/20-scale RC-car with limited onboard computation. The evaluation results demonstrate that our method outperforms previous IL and RL methods in terms of sample efficiency and task performance. Demonstration videos are available at https://caipeide.github.io/autorace-dirl/</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2021-07-18T00:00:48Z</published>
+    <arxiv:comment>8 pages, 8 figures. IEEE Robotics and Automation Letters (RA-L) &amp; IROS 2021</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Peide Cai</name>
+    </author>
+    <author>
+      <name>Hengli Wang</name>
+    </author>
+    <author>
+      <name>Huaiyang Huang</name>
+    </author>
+    <author>
+      <name>Yuxuan Liu</name>
+    </author>
+    <author>
+      <name>Ming Liu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2105.01595v2</id>
+    <title>Self-Improving Semantic Perception for Indoor Localisation</title>
+    <updated>2021-09-15T14:02:54Z</updated>
+    <link href="https://arxiv.org/abs/2105.01595v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2105.01595v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We propose a novel robotic system that can improve its perception during deployment. Contrary to the established approach of learning semantics from large datasets and deploying fixed models, we propose a framework in which semantic models are continuously updated on the robot to adapt to the deployment environments. By combining continual learning with self-supervision, our robotic system learns online during deployment without external supervision. We conduct real-world experiments with robots localising in 3D floorplans. Our experiments show how the robot's semantic perception improves during deployment and how this translates into improved localisation, even across drastically different environments. We further study the risk of catastrophic forgetting that such a continuous learning setting poses. We find memory replay an effective measure to reduce forgetting and show how the robotic system can improve even when switching between different environments. On average, our system improves by 60% in segmentation and 10% in localisation accuracy compared to deployment of a fixed model, and it maintains this improvement while adapting to further environments.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2021-05-04T16:06:12Z</published>
+    <arxiv:comment>A summary video can be accessed at https://youtu.be/awsynhkkFpk</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <arxiv:journal_ref>CoRL 2021 https://openreview.net/forum?id=X2KJq-S11BC</arxiv:journal_ref>
+    <author>
+      <name>Hermann Blum</name>
+    </author>
+    <author>
+      <name>Francesco Milano</name>
+    </author>
+    <author>
+      <name>René Zurbrügg</name>
+    </author>
+    <author>
+      <name>Roland Siegward</name>
+    </author>
+    <author>
+      <name>Cesar Cadena</name>
+    </author>
+    <author>
+      <name>Abel Gawel</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2104.09705v3</id>
+    <title>Neural Tree Expansion for Multi-Robot Planning in Non-Cooperative Environments</title>
+    <updated>2021-07-09T14:40:23Z</updated>
+    <link href="https://arxiv.org/abs/2104.09705v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2104.09705v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We present a self-improving, Neural Tree Expansion (NTE) method for multi-robot online planning in non-cooperative environments, where each robot attempts to maximize its cumulative reward while interacting with other self-interested robots. Our algorithm adapts the centralized, perfect information, discrete-action space method from AlphaZero to a decentralized, partial information, continuous action space setting for multi-robot applications. Our method has three interacting components: (i) a centralized, perfect-information "expert" Monte Carlo Tree Search (MCTS) with large computation resources that provides expert demonstrations, (ii) a decentralized, partial-information "learner" MCTS with small computation resources that runs in real-time and provides self-play examples, and (iii) policy &amp; value neural networks that are trained with the expert demonstrations and bias both the expert and the learner tree growth. Our numerical experiments demonstrate Neural Tree Expansion's computational advantage by finding better solutions than a MCTS with 20 times more resources. The resulting policies are dynamically sophisticated, demonstrate coordination between robots, and play the Reach-Target-Avoid differential game significantly better than the state-of-the-art control-theoretic baseline for multi-robot, double-integrator systems. Our hardware experiments on an aerial swarm demonstrate the computational advantage of Neural Tree Expansion, enabling online planning at 20Hz with effective policies in complex scenarios.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2021-04-20T01:14:00Z</published>
+    <arxiv:comment>Accepted at IEEE RA-L, see DOI below</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Benjamin Riviere</name>
+    </author>
+    <author>
+      <name>Wolfgang Hoenig</name>
+    </author>
+    <author>
+      <name>Matthew Anderson</name>
+    </author>
+    <author>
+      <name>Soon-Jo Chung</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2007.14486v4</id>
+    <title>A Lifelong Learning Approach to Mobile Robot Navigation</title>
+    <updated>2021-01-24T23:17:19Z</updated>
+    <link href="https://arxiv.org/abs/2007.14486v4" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2007.14486v4" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This paper presents a self-improving lifelong learning framework for a mobile robot navigating in different environments. Classical static navigation methods require environment-specific in-situ system adjustment, e.g. from human experts, or may repeat their mistakes regardless of how many times they have navigated in the same environment. Having the potential to improve with experience, learning-based navigation is highly dependent on access to training resources, e.g. sufficient memory and fast computation, and is prone to forgetting previously learned capability, especially when facing different environments. In this work, we propose Lifelong Learning for Navigation (LLfN) which (1) improves a mobile robot's navigation behavior purely based on its own experience, and (2) retains the robot's capability to navigate in previous environments after learning in new ones. LLfN is implemented and tested entirely onboard a physical robot with a limited memory and computation budget.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2020-07-28T21:08:07Z</published>
+    <arxiv:comment>Accepted by IEEE Robotics and Automation Letters (RA-L)</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Bo Liu</name>
+    </author>
+    <author>
+      <name>Xuesu Xiao</name>
+    </author>
+    <author>
+      <name>Peter Stone</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1905.10796v1</id>
+    <title>Online Deep Learning for Improved Trajectory Tracking of Unmanned Aerial Vehicles Using Expert Knowledge</title>
+    <updated>2019-05-26T12:36:26Z</updated>
+    <link href="https://arxiv.org/abs/1905.10796v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1905.10796v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This work presents an online learning-based control method for improved trajectory tracking of unmanned aerial vehicles using both deep learning and expert knowledge. The proposed method does not require the exact model of the system to be controlled, and it is robust against variations in system dynamics as well as operational uncertainties. The learning is divided into two phases: offline (pre-)training and online (post-)training. In the former, a conventional controller performs a set of trajectories and, based on the input-output dataset, the deep neural network (DNN)-based controller is trained. In the latter, the trained DNN, which mimics the conventional controller, controls the system. Unlike the existing papers in the literature, the network is still being trained for different sets of trajectories which are not used in the training phase of DNN. Thanks to the rule-base, which contains the expert knowledge, the proposed framework learns the system dynamics and operational uncertainties in real-time. The experimental results show that the proposed online learning-based approach gives better trajectory tracking performance when compared to the only offline trained network.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2019-05-26T12:36:26Z</published>
+    <arxiv:comment>corrected version accepted for ICRA 2019</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Andriy Sarabakha</name>
+    </author>
+    <author>
+      <name>Erdal Kayacan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1905.06274v1</id>
+    <title>Reinforcement Learning for Robotics and Control with Active Uncertainty Reduction</title>
+    <updated>2019-05-15T16:21:05Z</updated>
+    <link href="https://arxiv.org/abs/1905.06274v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1905.06274v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Model-free reinforcement learning based methods such as Proximal Policy Optimization, or Q-learning typically require thousands of interactions with the environment to approximate the optimum controller which may not always be feasible in robotics due to safety and time consumption. Model-based methods such as PILCO or BlackDrops, while data-efficient, provide solutions with limited robustness and complexity. To address this tradeoff, we introduce active uncertainty reduction-based virtual environments, which are formed through limited trials conducted in the original environment. We provide an efficient method for uncertainty management, which is used as a metric for self-improvement by identification of the points with maximum expected improvement through adaptive sampling. Capturing the uncertainty also allows for better mimicking of the reward responses of the original system. Our approach enables the use of complex policy structures and reward functions through a unique combination of model-based and model-free methods, while still retaining the data efficiency. We demonstrate the validity of our method on several classic reinforcement learning problems in OpenAI gym. We prove that our approach offers a better modeling capacity for complex system dynamics as compared to established methods.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2019-05-15T16:21:05Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Narendra Patwardhan</name>
+    </author>
+    <author>
+      <name>Zequn Wang</name>
+    </author>
+  </entry>
+</feed>

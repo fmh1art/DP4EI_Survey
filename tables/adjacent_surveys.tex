@@ -1,0 +1,26 @@
+\begin{table*}[t]
+\centering
+\caption{Positioning relative to adjacent surveys.  A check mark means that the
+topic is an organizing axis rather than an incidental discussion.}
+\label{tab:adjacent-surveys}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{@{}>{\RaggedRight\arraybackslash}p{3.1cm}>{\RaggedRight\arraybackslash}p{2.4cm}*{4}{>{\centering\arraybackslash}p{1.35cm}}>{\RaggedRight\arraybackslash}X@{}}
+\toprule
+Survey & Primary organizing principle & Curation / mixing & Utility evidence & Closed-loop evolution & Reproducible review protocol & Distinguishing scope \\
+\midrule
+Data Pyramid~\cite{ye2026data_2607_24744}
+& Data-source hierarchy & \cmark & \xmark & \xmark & \xmark
+& Maps real-robot, human, simulation, and vision--language sources and their scale--alignment trade-off. \\
+VLA datasets, benchmarks, and data engines~\cite{wang2026vision_2604_23001}
+& Resources and infrastructure & \cmark & \xmark & \cmark & \xmark
+& Catalogs manipulation datasets, benchmarks, video-to-data systems, hardware engines, and generative engines. \\
+Robot learning from human videos~\cite{ma2026robot_2604_27621}
+& Transfer path & \xmark & \xmark & \xmark & \xmark
+& Organizes task-, observation-, and action-oriented transfer from human video. \\
+\textbf{This survey}
+& Preparation decision and feedback & \cmark & \cmark & \cmark & \cmark
+& Studies how raw records become target-conditional trainable distributions, including evidence strength and cost. \\
+\bottomrule
+\end{tabularx}
+\end{table*}

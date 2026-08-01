@@ -19,14 +19,31 @@
 \usepackage{bm}
 \usepackage{url}
 \usepackage{makecell}
-\usepackage{wasysym}
-\usepackage{marvosym}
 \usepackage{enumitem}
-\usepackage{utfsym}
 \usepackage{pifont}
+% Legacy sample tables use only U+2713/U+2717 from utfsym.  This lightweight
+% replacement avoids utfsym's pdfLaTeX-only Unicode declarations under XeTeX.
+\newcommand{\usym}[1]{\ifnum#1=2713\relax\ding{51}\else\ding{55}\fi}
 \usepackage{tikz}
+\usetikzlibrary{arrows.meta,backgrounds,calc,fit,positioning,shapes.geometric}
 \usepackage{colortbl}
 \usepackage{framed}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{longtable}
+
+% Survey-specific semantic shorthands.  The older template commands below are
+% deliberately retained as examples for future papers using this repository.
+\newcommand{\dataprep}{\textsc{DataPrep}\xspace}
+\newcommand{\evodataprep}{\textsc{EvoDataPrep}\xspace}
+\newcommand{\qualityvec}{\bm{q}}
+\newcommand{\utility}{\mathcal{U}}
+\newcommand{\rawdata}{\mathcal{D}_{\mathrm{raw}}}
+\newcommand{\traindata}{\mathcal{D}_{\mathrm{train}}}
+\newcommand{\pipeline}{\mathcal{P}}
+\newcommand{\evidenceone}{\textsc{E1}}
+\newcommand{\evidencetwo}{\textsc{E2}}
+\newcommand{\evidencethree}{\textsc{E3}}
 
 % \usepackage{algorithm}
 % \usepackage{algorithmic}

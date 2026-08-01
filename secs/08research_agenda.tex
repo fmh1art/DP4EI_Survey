@@ -1,0 +1,166 @@
+%!TEX root = ../main.tex
+\section{Open Challenges and Research Agenda}
+\label{sec:agenda}
+
+The taxonomy identifies gaps that are algorithmically concrete, not generic calls
+for ``more data'' or ``better generalization.''  We frame each challenge as an
+estimand or system property and state how progress could be falsified.
+
+\subsection{Calibrating Proxies to Policy Utility}
+
+Most preparation runs cannot afford retraining a policy for every candidate
+decision.  The central estimation problem is to predict
+$V(e\mid c,\mathcal{D})$ from cheap features while preserving ranking under
+changes in learner, budget, and target distribution.  Current proxies---smoothness,
+information, progress, influence, or foundation-model judgments---capture
+different projections and can disagree with downstream outcomes.
+
+A promising design is a hierarchical calibrator that combines technical and
+semantic features with a small, actively selected set of retraining or rollout
+observations.  It should output uncertainty and decompose value into correctness,
+coverage, transfer, and risk rather than one opaque score.  Evaluation should
+measure rank calibration and regret of the resulting data decision across held-out
+learners and tasks, not only correlation on the calibration set.  An estimator is
+useful if it achieves near-oracle fixed-budget policy utility with substantially
+fewer retraining/robot queries and degrades gracefully under target shift.
+
+\subsection{Estimating Interaction and Marginal Value Below the Episode}
+
+Individual scores miss complementarity.  A grasp segment may be useless without
+its approach; two sources can conflict despite each being useful alone; a rare
+failure becomes valuable only when paired with a recovery.  Exact Shapley or
+leave-one-out retraining is infeasible at VLA scale, while pointwise influence
+approximations can ignore non-convex training and sequence dependence.
+
+Research should model value over hierarchical groups and interactions:
+transition $\rightarrow$ primitive $\rightarrow$ episode $\rightarrow$ task
+$\rightarrow$ source.  Sparse group influence, low-rank datamodels, gradient
+sketches, and counterfactual curriculum experiments are candidate tools.  A
+benchmark can plant known complementary and conflicting groups and evaluate
+whether selection preserves the combination under equal compute.  This directly
+tests whether an algorithm has learned data structure rather than a visible
+quality artifact.
+
+\subsection{Learnable Cross-Embodiment Action Semantics}
+
+The field lacks a standard that expresses what an action \emph{does} across
+morphologies and controllers.  Fixed action vectors and masks solve serialization,
+not consequence alignment.  A stronger representation would condition on a
+kinematic graph, end-effector and controller specification, reference frame,
+latency, and uncertainty, and map actions through a shared transition-level
+latent.
+
+The representation should be tested by cycle consistency and physical outcome:
+map a source action to a target embodiment, execute or simulate it, and predict
+the same object-centric state change within tolerance.  Held-out morphology and
+controller families are essential.  A mapping that improves cross-robot policy
+loss but violates target limits or contact should fail the benchmark.  Data formats
+should preserve original actions and reversible transformations so a learned
+standard can replace an earlier one without recollection.
+
+\subsection{Verification of Invisible Physical Errors}
+
+Generative models are optimized for observable likelihood or preference and can
+produce errors invisible in pixels: inconsistent depth across views, contact
+without force closure, an unreachable wrist pose, or an action label that does not
+cause the shown transition.  The research problem is to estimate the probability
+that a generated unit is usable for a stated training role.
+
+Progress requires adversarial test suites with paired plausible/invalid examples
+at each validation layer, including subtle contact and controller errors.
+Verifiers should be evaluated on calibration under new generators and assets,
+not just accuracy on their own generator.  Generator--verifier dependence must be
+reported.  Selective promotion, in which uncertain samples are routed to
+simulation or real replay, can be measured by verified yield, downstream utility,
+and cost.  This turns ``synthetic data quality'' into a testable cascade-design
+problem.
+
+\subsection{A Schema for Failure, Recovery, and Safety}
+
+Current datasets use inconsistent episode-level success fields and often omit
+takeover, retry, near miss, or failure cause.  A shared schema should record:
+outcome definition and confidence; first deviation or failure interval;
+precondition violated; human/automatic intervention; retry linkage; valid prefix;
+recovery strategy and result; safety severity; and whether actions remain valid
+targets.  It must allow multiple causes and uncertain temporal boundaries.
+
+The schema's value can be evaluated by holding raw trajectories fixed and testing
+whether structured routing improves recovery and worst-case safety over success-only,
+all-data, and binary failure baselines.  Inter-annotator/model agreement and
+cross-dataset mapping are necessary but not sufficient; the decisive outcome is
+whether a policy learns to identify and exit failure regions without imitating
+unsafe actions.
+
+\subsection{Stable, Safe Data Self-Evolution}
+
+A self-evolving engine is a feedback controller with delayed, biased, and costly
+observations.  Open questions include: How rapidly may mixture weights change?
+Which anchor distribution prevents forgetting?  How can verifier drift be
+detected without a fresh oracle?  When should the system collect, generate,
+relabel, or stop?  How can safety constraints be enforced while acquiring
+information?
+
+Evaluation should run multi-round closed-loop benchmarks, not one post-training
+iteration.  Metrics include cumulative robot cost, area under the utility curve,
+worst-group retention, calibration drift, error amplification, safety events, and
+rollback frequency.  Stress tests should seed a biased verifier or generator and
+measure whether the loop detects and corrects the bias.  A method that obtains a
+short-term average gain while collapsing rare capabilities is unstable, even if
+its final aggregate success is high.
+
+\subsection{Cost--Benefit and Environmental Accounting}
+
+Preparation papers rarely include full costs, making an expensive selector appear
+data-efficient.  We need standardized accounts for human review, model inference,
+subset-training runs, simulation, storage/decode, network movement, target-robot
+hours, interventions, and discarded collection.  Benefits should be expressed as
+utility reached at a total cost and as amortization across downstream models.
+
+This supports principled cascades.  For example, a deterministic gate may remove
+known corruption, a small model may route obvious semantic cases, and influence
+or rollout evidence may be purchased only for uncertain high-value groups.  The
+optimal cascade is context-dependent; benchmark tracks should therefore impose
+several resource profiles rather than one hidden budget.
+
+\subsection{Bias, Consent, Licensing, and Auditability}
+
+Human and community data introduce privacy, consent, worker, and geographic
+representation questions; web video introduces licensing and identity risk;
+foundation-model filters can systematically reject unfamiliar homes, tools, or
+bodies; autonomous collection can record bystanders or unsafe attempts.  These
+are preparation decisions because filters, retention policies, provenance, and
+access control determine what enters training.
+
+Datasheets should expose source license and consent, sensitive fields, demographic
+or environment proxies where lawful, filter rejection rates by subgroup, and
+known blind spots.  Provenance must survive synthesis: a generated derivative
+should retain source and model lineage.  Utility optimization should include
+worst-group and safety constraints so rare environments are not removed merely
+because they are harder for a pretrained judge.
+
+\subsection{EvoDataPrep: A Unifying System Hypothesis}
+
+We propose \evodataprep as a research framework, not a claim of a completed
+system.  It comprises nine modules: (1) immutable raw store and lineage graph;
+(2) typed operator library; (3) hierarchical data units; (4) multidimensional
+quality estimators; (5) learner-conditional utility model; (6) role and mixture
+router; (7) generator/augmenter; (8) layered independent verifiers; and (9) an
+active controller that allocates collection, simulation, labeling, and training
+budget.
+
+Given a context and budget, the controller selects a pipeline and routing policy
+from composable operators, observes fixed-budget learner and rollout outcomes,
+updates its utility model, and promotes a version only if it improves a
+multi-objective safety-constrained criterion.  Every decision is reversible
+because the raw data and transformation graph remain immutable.  A practical
+first study can restrict the search space to segmentation, three curation signals,
+mixture weights, and a synthetic-data gate on an open VLA learner.  It should use
+multiple contamination and target shifts, compare Bayesian optimization or
+bandit allocation with hand pipelines, and measure utility regret plus total cost.
+
+The stronger long-term hypothesis is that data preparation can be learned as a
+policy while remaining auditable.  It is falsified if learned pipelines fail to
+transfer beyond their calibration learner, consume more total resources than
+fixed baselines, or amplify errors across rounds.  Stating these failure criteria
+is important: ``automation'' alone is not an academic contribution unless it
+improves the correctness--coverage--cost frontier under controlled evidence.

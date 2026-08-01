@@ -1,0 +1,113 @@
+%!TEX root = ../main.tex
+\section{Scope and Review Methodology}
+\label{sec:method}
+
+We conduct a systematic \emph{scoping} review rather than a statistical
+meta-analysis.  The field lacks a shared intervention, learner, dataset, and
+outcome protocol; aggregating success-rate differences across papers would
+therefore produce a precise-looking but invalid estimate.  Our goal is instead to
+map the design space, code comparable method properties, evaluate the strength of
+each type of evidence, and derive hypotheses that can be tested under future
+common protocols.
+
+\subsection{Research Questions and Eligibility}
+
+The review is governed by four research questions: (RQ1) Which decisions turn raw
+embodied records into training examples or sampling distributions? (RQ2) Which
+signals guide those decisions, at what granularity, and with what assumptions?
+(RQ3) How is data value validated, and when are reported outcomes comparable?
+(RQ4) How does training or deployment experience alter the next data iteration?
+
+A work is eligible when it describes at least one identifiable operation on
+embodied data, source design that changes downstream compatibility or coverage,
+or an empirical analysis of data composition.  Eligible evidence includes
+peer-reviewed conference/journal papers, arXiv papers, dataset and benchmark
+papers, and technical reports with sufficient methodological detail.  Official
+project or repository documentation is used only for formats, released artifacts,
+or implementation facts.  A work is excluded from the core synthesis when it
+only consumes an existing dataset, changes only the policy architecture, treats a
+generic simulator without a data transformation, concerns navigation/driving
+without a transferable preparation mechanism, or lacks enough primary material
+to determine its operation and evidence.
+
+\subsection{Discovery and Screening}
+
+The search covers January 2018 through August 1, 2026.  We combine: (i) DBLP and
+arXiv queries over conjunctions of robot/embodied/VLA with \emph{data curation},
+\emph{demonstration selection}, \emph{quality}, \emph{filtering}, \emph{mixture},
+\emph{relabeling}, \emph{segmentation}, \emph{augmentation}, \emph{synthetic
+demonstration}, \emph{data engine}, \emph{self-improvement}, and
+\emph{cross-embodiment}; (ii) backward and forward citation tracing from central
+papers; and (iii) checks of major datasets, benchmarks, labs, industrial model
+reports, project pages, and public data documentation.  The exact strings, raw
+database responses, query-level errors, and a rerunnable script are included in
+the artifact (Appendix~\ref{app:protocol}).
+The resolved snapshot contains 1,160 title-deduplicated database records from
+28 queries.  Eight queries that failed transiently in the initial run were
+retried successfully; both the original failures and resolved summaries are
+retained.  This count is a discovery universe rather than an inclusion count.
+
+Title/abstract screening removes clearly out-of-scope uses of ``data curation''
+and ``data engine.''  Full-text screening then requires a recoverable operation,
+signal, or data-composition finding.  Duplicate arXiv and published versions are
+merged as one work; we cite the published version when its metadata and content
+are verifiable, otherwise the arXiv version.  Updated technical reports replace
+earlier versions but version-dependent scale claims are retained with their date.
+Citation chasing is stopped after a pass produces no new eligible mechanism or
+major system.  Newly discovered papers after the cutoff are logged for the next
+update rather than silently added.
+
+\input{figures/tex/review_flow}
+
+The resulting evidence map contains 204 unique works: 56 deep reads (method/data
+sections, relevant experiments, and limitations checked), 114 method-level reads
+(abstract plus directly relevant primary-text sections), and 34 abstract-index
+records.  The 170 deep or method-level works form the technical synthesis.  The
+34 abstract-index records contribute only to horizon scanning and coverage
+diagnostics; no technical claim in this paper relies on them.  This distinction
+prevents a large bibliography from masquerading as equally deep evidence.
+
+\subsection{Structured Coding and Evidence Strength}
+
+Each core work is coded by: problem; source and modality; operation; transformed
+object and granularity; decision signal; optimization objective; human
+involvement; scale and cost; intrinsic and downstream evaluation; generalization
+across tasks, environments, learners, and embodiments; assumptions and failure
+modes; openness; provenance; publication type; and reading depth.  For composite
+systems, we code each material operation separately.  A method that labels,
+filters, and then synthesizes is therefore multi-label rather than forced into an
+``other'' category.  Terminology is normalized only after recording the authors'
+original name: for example, ``selection,'' ``pruning,'' and ``filtering'' are
+mapped to a common operation without assuming identical objectives.
+
+We use an evidence ladder rather than treating sources as interchangeable:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Intrinsic evidence} measures properties of the records, such as
+    missingness, duplication, smoothness, or labeled noise.
+    \item \textbf{Proxy evidence} uses representation distance, information,
+    foundation-model scores, physical checks, influence approximations, or
+    predicted executability.
+    \item \textbf{Downstream evidence} retrains a policy under a controlled budget
+    and measures simulation or real execution.  Cross-task, cross-learner, and
+    cross-embodiment replication strengthens this level.
+\end{enumerate}
+
+Peer-reviewed experiments and reproducible primary papers are treated as stronger
+support than unreviewed preprints for the same claim.  Technical reports are
+valuable for engineering recipes but their internally selected tasks, models, and
+budgets limit causal conclusions.  Project pages establish release facts, not
+performance.  We explicitly label an inference when it combines evidence across
+papers rather than reproducing an author's conclusion.
+
+\subsection{Threats to Validity}
+
+Three limitations remain.  First, industrial preparation pipelines are often
+under-documented; public evidence over-represents methods that can be isolated in
+papers.  Second, terminology is unstable: relevant work can be framed as data
+engines, post-training, imitation learning, world models, or self-improvement.
+Multi-query search and snowballing reduce but cannot eliminate this risk.  Third,
+the newest 2026 works are predominantly preprints and cannot yet provide the same
+evidence strength as mature peer-reviewed results.  We therefore avoid a ranking,
+report negative or non-monotonic outcomes when available, and publish the corpus
+manifest so omissions and coding decisions can be audited.

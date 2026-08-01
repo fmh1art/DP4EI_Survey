@@ -1,0 +1,202 @@
+{
+  "result": {
+    "query": "robot* demonstration* selection*",
+    "status": {
+      "@code": "200",
+      "text": "OK"
+    },
+    "time": {
+      "@unit": "msecs",
+      "text": "15.77"
+    },
+    "completions": {
+      "@total": "1",
+      "@computed": "1",
+      "@sent": "1",
+      "c": {
+        "@sc": "5",
+        "@dc": "5",
+        "@oc": "5",
+        "@id": "70935186",
+        "text": "selection"
+      }
+    },
+    "hits": {
+      "@total": "5",
+      "@computed": "5",
+      "@sent": "5",
+      "@first": "0",
+      "hit": [
+        {
+          "@score": "3",
+          "@id": "648380",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "279/3526",
+                  "text": "Jingjing Chen"
+                },
+                {
+                  "@pid": "228/2445",
+                  "text": "Hongjie Fang"
+                },
+                {
+                  "@pid": "192/1388",
+                  "text": "Haoshu Fang"
+                },
+                {
+                  "@pid": "96/10571",
+                  "text": "Cewu Lu"
+                }
+              ]
+            },
+            "title": "Towards Effective Utilization of Mixed-Quality Demonstrations in Robotic Manipulation via Segment-Level Selection and Optimization.",
+            "venue": "ICRA",
+            "pages": "16884-16891",
+            "year": "2025",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/icra/ChenFFL25",
+            "doi": "10.1109/ICRA55743.2025.11128787",
+            "ee": "https://doi.org/10.1109/ICRA55743.2025.11128787",
+            "url": "https://dblp.org/rec/conf/icra/ChenFFL25"
+          },
+          "url": "URL#648380"
+        },
+        {
+          "@score": "3",
+          "@id": "1449532",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "279/3526",
+                  "text": "Jingjing Chen"
+                },
+                {
+                  "@pid": "228/2445",
+                  "text": "Hongjie Fang"
+                },
+                {
+                  "@pid": "192/1388",
+                  "text": "Haoshu Fang"
+                },
+                {
+                  "@pid": "96/10571",
+                  "text": "Cewu Lu"
+                }
+              ]
+            },
+            "title": "Towards Effective Utilization of Mixed-Quality Demonstrations in Robotic Manipulation via Segment-Level Selection and Optimization.",
+            "venue": "CoRR",
+            "volume": "abs/2409.19917",
+            "year": "2024",
+            "type": "Informal and Other Publications",
+            "access": "open",
+            "key": "journals/corr/abs-2409-19917",
+            "doi": "10.48550/ARXIV.2409.19917",
+            "ee": "https://doi.org/10.48550/arXiv.2409.19917",
+            "url": "https://dblp.org/rec/journals/corr/abs-2409-19917"
+          },
+          "url": "URL#1449532"
+        },
+        {
+          "@score": "3",
+          "@id": "4081335",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "153/7408",
+                  "text": "Kalesha Bullard"
+                },
+                {
+                  "@pid": "27/1140",
+                  "text": "Sonia Chernova"
+                },
+                {
+                  "@pid": "l/AndreaLockerd",
+                  "text": "Andrea Lockerd Thomaz"
+                }
+              ]
+            },
+            "title": "Human-Driven Feature Selection for a Robotic Agent Learning Classification Tasks from Demonstration.",
+            "venue": "ICRA",
+            "pages": "6923-6930",
+            "year": "2018",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/icra/BullardCT18",
+            "doi": "10.1109/ICRA.2018.8461012",
+            "ee": "https://doi.org/10.1109/ICRA.2018.8461012",
+            "url": "https://dblp.org/rec/conf/icra/BullardCT18"
+          },
+          "url": "URL#4081335"
+        },
+        {
+          "@score": "3",
+          "@id": "5057895",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "138/9153",
+                  "text": "Santiago Morante"
+                },
+                {
+                  "@pid": "115/6919",
+                  "text": "Juan G. Victores"
+                },
+                {
+                  "@pid": "84/422",
+                  "text": "Carlos Balaguer"
+                }
+              ]
+            },
+            "title": "Automatic demonstration and feature selection for robot learning.",
+            "venue": "Humanoids",
+            "pages": "428-433",
+            "year": "2015",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/humanoids/MoranteVB15",
+            "doi": "10.1109/HUMANOIDS.2015.7363569",
+            "ee": "https://doi.org/10.1109/HUMANOIDS.2015.7363569",
+            "url": "https://dblp.org/rec/conf/humanoids/MoranteVB15"
+          },
+          "url": "URL#5057895"
+        },
+        {
+          "@score": "3",
+          "@id": "6855306",
+          "info": {
+            "authors": {
+              "author": [
+                {
+                  "@pid": "27/1140",
+                  "text": "Sonia Chernova"
+                },
+                {
+                  "@pid": "v/ManuelaMVeloso",
+                  "text": "Manuela M. Veloso"
+                }
+              ]
+            },
+            "title": "Multi-thresholded approach to demonstration selection for interactive robot learning.",
+            "venue": "HRI",
+            "pages": "225-232",
+            "year": "2008",
+            "type": "Conference and Workshop Papers",
+            "access": "closed",
+            "key": "conf/hri/ChernovaV08",
+            "doi": "10.1145/1349822.1349852",
+            "ee": "https://doi.org/10.1145/1349822.1349852",
+            "url": "https://dblp.org/rec/conf/hri/ChernovaV08"
+          },
+          "url": "URL#6855306"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+\begin{table*}[t]
+\centering
+\caption{The proposed taxonomy separates four questions that are often
+conflated.  A paper may occupy several cells on each axis; classification records
+the actual mechanism, not the method's self-assigned label.}
+\label{tab:taxonomy-axes}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\textwidth}{@{}p{2.7cm}p{3.1cm}X p{4.4cm}@{}}
+\toprule
+Axis & Question & Categories & What the axis reveals \\
+\midrule
+Operation & What changes? & Source/task design; validate/repair; align; segment/relabel; score/filter; weight/route; augment/synthesize; package/version & Methods with different names may implement the same data intervention, while a single engine may compose many interventions. \\
+Decision signal & Why is it changed? & Rules/statistics; human judgment; pretrained model; representation/information; learner loss/influence; simulator/world model; rollout/deployment feedback & Automation level alone is insufficient: signal bias, calibration, and acquisition cost determine failure modes. \\
+Utility evidence & How is value established? & Intrinsic property; proxy or verifier; controlled downstream training; simulated rollout; real-robot deployment; cross-embodiment replication & Separates detecting an intended defect from demonstrating that its removal improves a policy. \\
+Lifecycle & When is it changed? & One-shot offline; pretraining iteration; training-time sampling; post-training correction; continual deployment loop & Distinguishes static datasets from engines that alter future acquisition or routing based on policy behavior. \\
+\bottomrule
+\end{tabularx}
+\end{table*}

@@ -1,0 +1,13 @@
+source,query,reported_total,retrieved,within_year_range,error
+arXiv,"cat:cs.RO AND all:""data curation""",37,37,37,
+arXiv,"cat:cs.RO AND all:""demonstration selection""",0,0,0,RuntimeError: curl: (22) The requested URL returned error: 504
+arXiv,"cat:cs.RO AND all:""data quality""",0,0,0,RuntimeError: curl: (28) Operation timed out after 12001 milliseconds with 0 bytes received
+arXiv,"cat:cs.RO AND all:""data filtering""",0,0,0,RuntimeError: curl: (28) Operation timed out after 12001 milliseconds with 0 out of 0 bytes received
+arXiv,"cat:cs.RO AND all:""data mixing""",0,0,0,RuntimeError: curl: (22) The requested URL returned error: 504
+arXiv,"cat:cs.RO AND (all:""automatic annotation"" OR all:relabeling OR all:segmentation)",3146,50,50,
+arXiv,"cat:cs.RO AND (all:""data augmentation"" OR all:""synthetic demonstrations"")",396,50,50,
+arXiv,"cat:cs.RO AND (all:""world model"" AND all:""data generation"")",25,25,25,
+arXiv,"cat:cs.RO AND (all:""self-improvement"" OR all:""online post-training"")",68,50,50,
+arXiv,"cat:cs.RO AND all:""autonomous data collection""",16,16,15,
+arXiv,"cat:cs.RO AND (all:""cross-embodiment"" OR all:""action alignment"")",283,50,50,
+arXiv,"cat:cs.RO AND all:""data engine""",40,40,40,

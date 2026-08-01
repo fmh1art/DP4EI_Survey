@@ -1,0 +1,596 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/kPwQLy19JDtZlpUdcWodHAX8/PE</id>
+  <title>arXiv Query: search_query=cat:cs.RO AND all:"autonomous data collection"&amp;id_list=&amp;start=0&amp;max_results=300</title>
+  <updated>2026-08-01T17:01:33Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:cs.RO+AND+all:%22autonomous+data+collection%22&amp;start=0&amp;max_results=300&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>300</opensearch:itemsPerPage>
+  <opensearch:totalResults>16</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2607.26809v1</id>
+    <title>Practice Makes Policies: Bootstrapping and Consolidating Robotic Capabilities from Zero Human Demonstrations</title>
+    <updated>2026-07-29T11:51:41Z</updated>
+    <link href="https://arxiv.org/abs/2607.26809v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.26809v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>General-purpose robotic manipulation requires robots to perform diverse tasks in open-world environments while improving their skills over time. Despite recent progress in robotic manipulation, existing systems still primarily acquire manipulation skills in a static manner, where capabilities are learned for specific tasks or settings rather than adaptively evolving through physical interaction. Resembling how repeated practice enables humans to develop muscle memory, advanced manipulation proficiency requires an autonomous capability evolution mechanism that allows robots to progressively transform interaction experiences into increasingly effective manipulation abilities. To this end, we propose HERO, a self-improving hierarchical embodied agent that enables autonomous capability evolution from zero human demonstrations. HERO organizes heuristic reasoning, exemplar reuse, and reflexive execution into a unified orchestration framework, allowing robots to autonomously bootstrap manipulation experience, rapidly accumulate reusable behaviors through experience transfer, and progressively consolidate recurring interactions into efficient closed-loop visuomotor policies. By tightly coupling autonomous data collection with task execution, HERO continuously expands and dynamically schedules manipulation capabilities according to different stages of experience accumulation and execution requirements. Extensive experiments demonstrate that HERO substantially reduces human intervention during robotic data collection while achieving robust manipulation across diverse tasks, providing a promising path toward self-improving robotic systems.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-29T11:51:41Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Jialiang Li</name>
+    </author>
+    <author>
+      <name>Yuhan Wang</name>
+    </author>
+    <author>
+      <name>Haojun Li</name>
+    </author>
+    <author>
+      <name>Gaojing Zhang</name>
+    </author>
+    <author>
+      <name>Yangtian Ye</name>
+    </author>
+    <author>
+      <name>Qipeng Liu</name>
+    </author>
+    <author>
+      <name>Haotian Liang</name>
+    </author>
+    <author>
+      <name>Wenzhao Lian</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.15982v1</id>
+    <title>Data and Learning Where it Matters for Contact-Rich Manipulation</title>
+    <updated>2026-07-17T14:18:20Z</updated>
+    <link href="https://arxiv.org/abs/2607.15982v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.15982v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Learned policies trained end-to-end on large datasets often remain brittle in high-precision tasks and struggle with generalization. We find that these limitations largely stem from a lack of structure and focus in data collection. Our key insight is to leverage dense data collection only for the critical segment of contact-rich tasks and to rely on traditional planning during simple free-space motion. We propose an automated data-collection scheme in combination with offline deep reinforcement learning for the critical segment of the task, eliminating reliance on a teleoperator's skill and on online policy updates. Across four challenging real-world tasks, using only 2 to 2.5 hours of autonomous data collection, we achieve an average success rate of 96%, compared to the strongest baseline at 55%. Notably, performance remains high in out-of-distribution scenarios where end-to-end approaches struggle. Our results pave the way for targeted data collection for contact-rich tasks and for high success rates in precision applications.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-17T14:18:20Z</published>
+    <arxiv:comment>Project webpage: https://anonymous.4open.science/w/data_and_learning_where_it_matters/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Oliver Hausdörfer</name>
+    </author>
+    <author>
+      <name>Linus Schwarz</name>
+    </author>
+    <author>
+      <name>Gabor Marko</name>
+    </author>
+    <author>
+      <name>Christian Dietz</name>
+    </author>
+    <author>
+      <name>Timo Class</name>
+    </author>
+    <author>
+      <name>Luka Hofer</name>
+    </author>
+    <author>
+      <name>Jim Yun-Jin Li</name>
+    </author>
+    <author>
+      <name>Johannes Hechtl</name>
+    </author>
+    <author>
+      <name>Ralf Römer</name>
+    </author>
+    <author>
+      <name>Angela P. Schoellig</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.14047v3</id>
+    <title>Zero2Skill: Bootstrapping Robot Skills through Autonomous Data Collection, Training, and Deployment</title>
+    <updated>2026-07-22T04:19:08Z</updated>
+    <link href="https://arxiv.org/abs/2607.14047v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.14047v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autonomous data collection governs the volume and quality of real-world trajectories for manipulation policy learning. Existing pipelines reduce human effort via self-resetting, VLM verification, or language-guided correction, yet episode-scoped fixes must be reissued whenever the same failure recurs, so oversight cost grows with session length rather than with the number of distinct problems. We present Zero2Skill, a human-robot symbiotic agentic system in which corrections are retained and reused across rounds. The collection loop collects, verifies, and resets autonomously, pausing for a remote operator only when a phase exhausts an explicit retry budget. An LLM parser maps each natural-language utterance to a structured adjustment stored in Corrective Memory, so addressed failure modes typically need not be corrected again under the same conditions. On a real-robot desktop-clearing testbed, Zero2Skill matches teleoperation episode success while reducing human working time to 16%. Language corrections improve verifier-human agreement in all four evaluated settings and raise average single-attempt success from 12.5% to 47.5% (arm-selection: 20.0% to 50.0%). Policies fine-tuned on Zero2Skill data match teleoperation-trained policy success at a fraction of collection human cost.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-15T17:16:24Z</published>
+    <arxiv:comment>WebPage: https://open-gigaai.github.io/Zero2Skill</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Boyuan Wang</name>
+    </author>
+    <author>
+      <name>Zhenyuan Zhang</name>
+    </author>
+    <author>
+      <name>Zhiqin Yang</name>
+    </author>
+    <author>
+      <name>Peijun Gu</name>
+    </author>
+    <author>
+      <name>Shuya Wang</name>
+    </author>
+    <author>
+      <name>Xiaofeng Wang</name>
+    </author>
+    <author>
+      <name>Xianghui Ze</name>
+    </author>
+    <author>
+      <name>Yifan Chang</name>
+    </author>
+    <author>
+      <name>Guosheng Zhao</name>
+    </author>
+    <author>
+      <name>Jiangnan Shao</name>
+    </author>
+    <author>
+      <name>Guan Huang</name>
+    </author>
+    <author>
+      <name>Hengyu Liu</name>
+    </author>
+    <author>
+      <name>Yonggang Zhang</name>
+    </author>
+    <author>
+      <name>Wei Xue</name>
+    </author>
+    <author>
+      <name>Chunyuan Guan</name>
+    </author>
+    <author>
+      <name>Chenglin Pu</name>
+    </author>
+    <author>
+      <name>Yike Guo</name>
+    </author>
+    <author>
+      <name>Xingang Wang</name>
+    </author>
+    <author>
+      <name>Zheng Zhu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2603.11558v3</id>
+    <title>RoboClaw: An Agentic Framework for Scalable Long-Horizon Robotic Tasks</title>
+    <updated>2026-04-01T15:22:08Z</updated>
+    <link href="https://arxiv.org/abs/2603.11558v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2603.11558v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Vision-Language-Action (VLA) systems have shown strong potential for language-driven robotic manipulation. However, scaling them to long-horizon tasks remains challenging. Existing pipelines typically separate data collection, policy learning, and deployment, resulting in heavy reliance on manual environment resets and brittle multi-policy execution. We present RoboClaw, an agentic robotics framework that unifies data collection, policy learning, and task execution under a single VLM-driven controller. At the policy level, RoboClaw introduces Entangled Action Pairs (EAP), which couple forward manipulation behaviors with inverse recovery actions to form self-resetting loops for autonomous data collection. This mechanism enables continuous on-policy data acquisition and iterative policy refinement with minimal human intervention. During deployment, the same agent performs high-level reasoning and dynamically orchestrates learned policy primitives to accomplish long-horizon tasks. By maintaining consistent contextual semantics across collection and execution, RoboClaw reduces mismatch between the two phases and improves multi-policy robustness. Experiments in real-world manipulation tasks demonstrate improved stability and scalability compared to conventional open-loop pipelines, while significantly reducing human effort throughout the robot lifecycle, achieving a 25% improvement in success rate over baseline methods on long-horizon tasks and reducing human time investment by 53.7%.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-03-12T05:22:59Z</published>
+    <arxiv:comment>Code available at: https://github.com/RoboClaw-Robotics/RoboClaw</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Ruiying Li</name>
+    </author>
+    <author>
+      <name>Yunlang Zhou</name>
+    </author>
+    <author>
+      <name>YuYao Zhu</name>
+    </author>
+    <author>
+      <name>Kylin Chen</name>
+    </author>
+    <author>
+      <name>Jingyuan Wang</name>
+    </author>
+    <author>
+      <name>Sukai Wang</name>
+    </author>
+    <author>
+      <name>Kongtao Hu</name>
+    </author>
+    <author>
+      <name>Minhui Yu</name>
+    </author>
+    <author>
+      <name>Bowen Jiang</name>
+    </author>
+    <author>
+      <name>Zhan Su</name>
+    </author>
+    <author>
+      <name>Jiayao Ma</name>
+    </author>
+    <author>
+      <name>Xin He</name>
+    </author>
+    <author>
+      <name>Yongjian Shen</name>
+    </author>
+    <author>
+      <name>Yang Yang</name>
+    </author>
+    <author>
+      <name>Guanghui Ren</name>
+    </author>
+    <author>
+      <name>Maoqing Yao</name>
+    </author>
+    <author>
+      <name>Wenhao Wang</name>
+    </author>
+    <author>
+      <name>Yao Mu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2510.08556v1</id>
+    <title>DexNDM: Closing the Reality Gap for Dexterous In-Hand Rotation via Joint-Wise Neural Dynamics Model</title>
+    <updated>2025-10-09T17:59:11Z</updated>
+    <link href="https://arxiv.org/abs/2510.08556v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2510.08556v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Achieving generalized in-hand object rotation remains a significant challenge in robotics, largely due to the difficulty of transferring policies from simulation to the real world. The complex, contact-rich dynamics of dexterous manipulation create a "reality gap" that has limited prior work to constrained scenarios involving simple geometries, limited object sizes and aspect ratios, constrained wrist poses, or customized hands. We address this sim-to-real challenge with a novel framework that enables a single policy, trained in simulation, to generalize to a wide variety of objects and conditions in the real world. The core of our method is a joint-wise dynamics model that learns to bridge the reality gap by effectively fitting limited amount of real-world collected data and then adapting the sim policy's actions accordingly. The model is highly data-efficient and generalizable across different whole-hand interaction distributions by factorizing dynamics across joints, compressing system-wide influences into low-dimensional variables, and learning each joint's evolution from its own dynamic profile, implicitly capturing these net effects. We pair this with a fully autonomous data collection strategy that gathers diverse, real-world interaction data with minimal human intervention. Our complete pipeline demonstrates unprecedented generality: a single policy successfully rotates challenging objects with complex shapes (e.g., animals), high aspect ratios (up to 5.33), and small sizes, all while handling diverse wrist orientations and rotation axes. Comprehensive real-world evaluations and a teleoperation application for complex tasks validate the effectiveness and robustness of our approach. Website: https://meowuu7.github.io/DexNDM/</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-10-09T17:59:11Z</published>
+    <arxiv:comment>Project Website: https://meowuu7.github.io/DexNDM/ Video: https://youtu.be/tU2Mv8vWftU</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Xueyi Liu</name>
+    </author>
+    <author>
+      <name>He Wang</name>
+    </author>
+    <author>
+      <name>Li Yi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2507.00833v2</id>
+    <title>HumanoidGen: Data Generation for Bimanual Dexterous Manipulation via LLM Reasoning</title>
+    <updated>2025-11-16T19:36:16Z</updated>
+    <link href="https://arxiv.org/abs/2507.00833v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2507.00833v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>For robotic manipulation, existing robotics datasets and simulation benchmarks predominantly cater to robot-arm platforms. However, for humanoid robots equipped with dual arms and dexterous hands, simulation tasks and high-quality demonstrations are notably lacking. Bimanual dexterous manipulation is inherently more complex, as it requires coordinated arm movements and hand operations, making autonomous data collection challenging. This paper presents HumanoidGen, an automated task creation and demonstration collection framework that leverages atomic dexterous operations and LLM reasoning to generate relational constraints. Specifically, we provide spatial annotations for both assets and dexterous hands based on the atomic operations, and perform an LLM planner to generate a chain of actionable spatial constraints for arm movements based on object affordances and scenes. To further improve planning ability, we employ a variant of Monte Carlo tree search to enhance LLM reasoning for long-horizon tasks and insufficient annotation. In experiments, we create a novel benchmark with augmented scenarios to evaluate the quality of the collected data. The results show that the performance of the 2D and 3D diffusion policies can scale with the generated dataset. Project page is https://openhumanoidgen.github.io.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-07-01T15:04:38Z</published>
+    <arxiv:comment>Project Page: https://openhumanoidgen.github.io</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Zhi Jing</name>
+    </author>
+    <author>
+      <name>Siyuan Yang</name>
+    </author>
+    <author>
+      <name>Jicong Ao</name>
+    </author>
+    <author>
+      <name>Ting Xiao</name>
+    </author>
+    <author>
+      <name>Yu-Gang Jiang</name>
+    </author>
+    <author>
+      <name>Chenjia Bai</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2504.14862v1</id>
+    <title>FERMI: Flexible Radio Mapping with a Hybrid Propagation Model and Scalable Autonomous Data Collection</title>
+    <updated>2025-04-21T05:03:19Z</updated>
+    <link href="https://arxiv.org/abs/2504.14862v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2504.14862v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Communication is fundamental for multi-robot collaboration, with accurate radio mapping playing a crucial role in predicting signal strength between robots. However, modeling radio signal propagation in large and occluded environments is challenging due to complex interactions between signals and obstacles. Existing methods face two key limitations: they struggle to predict signal strength for transmitter-receiver pairs not present in the training set, while also requiring extensive manual data collection for modeling, making them impractical for large, obstacle-rich scenarios. To overcome these limitations, we propose FERMI, a flexible radio mapping framework. FERMI combines physics-based modeling of direct signal paths with a neural network to capture environmental interactions with radio signals. This hybrid model learns radio signal propagation more efficiently, requiring only sparse training data. Additionally, FERMI introduces a scalable planning method for autonomous data collection using a multi-robot team. By increasing parallelism in data collection and minimizing robot travel costs between regions, overall data collection efficiency is significantly improved. Experiments in both simulation and real-world scenarios demonstrate that FERMI enables accurate signal prediction and generalizes well to unseen positions in complex environments. It also supports fully autonomous data collection and scales to different team sizes, offering a flexible solution for creating radio maps. Our code is open-sourced at https://github.com/ymLuo1214/Flexible-Radio-Mapping.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-04-21T05:03:19Z</published>
+    <arxiv:comment>Published at RSS 2025</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yiming Luo</name>
+    </author>
+    <author>
+      <name>Yunfei Wang</name>
+    </author>
+    <author>
+      <name>Hongming Chen</name>
+    </author>
+    <author>
+      <name>Chengkai Wu</name>
+    </author>
+    <author>
+      <name>Ximin Lyu</name>
+    </author>
+    <author>
+      <name>Jinni Zhou</name>
+    </author>
+    <author>
+      <name>Jun Ma</name>
+    </author>
+    <author>
+      <name>Fu Zhang</name>
+    </author>
+    <author>
+      <name>Boyu Zhou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2411.01813v1</id>
+    <title>So You Think You Can Scale Up Autonomous Robot Data Collection?</title>
+    <updated>2024-11-04T05:31:35Z</updated>
+    <link href="https://arxiv.org/abs/2411.01813v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2411.01813v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A long-standing goal in robot learning is to develop methods for robots to acquire new skills autonomously. While reinforcement learning (RL) comes with the promise of enabling autonomous data collection, it remains challenging to scale in the real-world partly due to the significant effort required for environment design and instrumentation, including the need for designing reset functions or accurate success detectors. On the other hand, imitation learning (IL) methods require little to no environment design effort, but instead require significant human supervision in the form of collected demonstrations. To address these shortcomings, recent works in autonomous IL start with an initial seed dataset of human demonstrations that an autonomous policy can bootstrap from. While autonomous IL approaches come with the promise of addressing the challenges of autonomous RL as well as pure IL strategies, in this work, we posit that such techniques do not deliver on this promise and are still unable to scale up autonomous data collection in the real world. Through a series of real-world experiments, we demonstrate that these approaches, when scaled up to realistic settings, face much of the same scaling challenges as prior attempts in RL in terms of environment design. Further, we perform a rigorous study of autonomous IL methods across different data scales and 7 simulation and real-world tasks, and demonstrate that while autonomous data collection can modestly improve performance, simply collecting more human data often provides significantly more improvement. Our work suggests a negative result: that scaling up autonomous data collection for learning robot policies for real-world tasks is more challenging and impractical than what is suggested in prior work. We hope these insights about the core challenges of scaling up data collection help inform future efforts in autonomous learning.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-11-04T05:31:35Z</published>
+    <arxiv:comment>21 pages, 25 figures. Conference on Robot Learning (CoRL) 2024</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Suvir Mirchandani</name>
+    </author>
+    <author>
+      <name>Suneel Belkhale</name>
+    </author>
+    <author>
+      <name>Joey Hejna</name>
+    </author>
+    <author>
+      <name>Evelyn Choi</name>
+    </author>
+    <author>
+      <name>Md Sazzad Islam</name>
+    </author>
+    <author>
+      <name>Dorsa Sadigh</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2312.07724v1</id>
+    <title>Restorebot: Towards an Autonomous Robotics Platform for Degraded Rangeland Restoration</title>
+    <updated>2023-12-12T20:40:04Z</updated>
+    <link href="https://arxiv.org/abs/2312.07724v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2312.07724v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Degraded rangelands undergo continual shifts in the appearance and distribution of plant life. The nature of these changes however is subtle: between seasons seedlings sprout up and some flourish while others perish, meanwhile, over multiple seasons they experience fluctuating precipitation volumes and can be grazed by livestock. The nature of these conditioning variables makes it difficult for ecologists to quantify the efficacy of intervention techniques under study. To support these observation and intervention tasks, we develop RestoreBot: a mobile robotic platform designed for gathering data in degraded rangelands for the purpose of data collection and intervention in order to support revegetation. Over the course of multiple deployments, we outline the opportunities and challenges of autonomous data collection for revegetation and the importance of further effort in this area. Specifically, we identify that localization, mapping, data association, and terrain assessment remain open problems for deployment, but that recent advances in computer vision, sensing, and autonomy offer promising prospects for autonomous revegetation.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-12-12T20:40:04Z</published>
+    <arxiv:comment>12 pages, 14 figures, Accepted as a Contributed Paper at the 18th International Symposium on Experimental Robotics (ISER 2023)</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Kristen Such</name>
+    </author>
+    <author>
+      <name>Harel Biggie</name>
+    </author>
+    <author>
+      <name>Christoffer Heckman</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2304.08893v1</id>
+    <title>Autonomous Systems: Autonomous Systems: Indoor Drone Navigation</title>
+    <updated>2023-04-18T10:40:00Z</updated>
+    <link href="https://arxiv.org/abs/2304.08893v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2304.08893v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Drones are a promising technology for autonomous data collection and indoor sensing. In situations when human-controlled UAVs may not be practical or dependable, such as in uncharted or dangerous locations, the usage of autonomous UAVs offers flexibility, cost savings, and reduced risk. The system creates a simulated quadcopter capable of autonomously travelling in an indoor environment using the gazebo simulation tool and the ros navigation system framework known as Navigaation2. While Nav2 has successfully shown the functioning of autonomous navigation in terrestrial robots and vehicles, the same hasn't been accomplished with unmanned aerial vehicles and still has to be done. The goal is to use the slam toolbox for ROS and the Nav2 navigation system framework to construct a simulated drone that can move autonomously in an indoor (gps-less) environment.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-04-18T10:40:00Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Aswin Iyer</name>
+    </author>
+    <author>
+      <name>Santosh Narayan</name>
+    </author>
+    <author>
+      <name>Naren M</name>
+    </author>
+    <author>
+      <name>Manoj kumar Rajagopal</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2302.11550v1</id>
+    <title>Scaling Robot Learning with Semantically Imagined Experience</title>
+    <updated>2023-02-22T18:47:51Z</updated>
+    <link href="https://arxiv.org/abs/2302.11550v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2302.11550v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recent advances in robot learning have shown promise in enabling robots to perform a variety of manipulation tasks and generalize to novel scenarios. One of the key contributing factors to this progress is the scale of robot data used to train the models. To obtain large-scale datasets, prior approaches have relied on either demonstrations requiring high human involvement or engineering-heavy autonomous data collection schemes, both of which are challenging to scale. To mitigate this issue, we propose an alternative route and leverage text-to-image foundation models widely used in computer vision and natural language processing to obtain meaningful data for robot learning without requiring additional robot data. We term our method Robot Learning with Semantically Imagened Experience (ROSIE). Specifically, we make use of the state of the art text-to-image diffusion models and perform aggressive data augmentation on top of our existing robotic manipulation datasets via inpainting various unseen objects for manipulation, backgrounds, and distractors with text guidance. Through extensive real-world experiments, we show that manipulation policies trained on data augmented this way are able to solve completely unseen tasks with new objects and can behave more robustly w.r.t. novel distractors. In addition, we find that we can improve the robustness and generalization of high-level robot learning tasks such as success detection through training with the diffusion-based data augmentation. The project's website and videos can be found at diffusion-rosie.github.io</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-02-22T18:47:51Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Tianhe Yu</name>
+    </author>
+    <author>
+      <name>Ted Xiao</name>
+    </author>
+    <author>
+      <name>Austin Stone</name>
+    </author>
+    <author>
+      <name>Jonathan Tompson</name>
+    </author>
+    <author>
+      <name>Anthony Brohan</name>
+    </author>
+    <author>
+      <name>Su Wang</name>
+    </author>
+    <author>
+      <name>Jaspiar Singh</name>
+    </author>
+    <author>
+      <name>Clayton Tan</name>
+    </author>
+    <author>
+      <name>Dee M</name>
+    </author>
+    <author>
+      <name>Jodilyn Peralta</name>
+    </author>
+    <author>
+      <name>Brian Ichter</name>
+    </author>
+    <author>
+      <name>Karol Hausman</name>
+    </author>
+    <author>
+      <name>Fei Xia</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2212.09902v1</id>
+    <title>Dexterous Manipulation from Images: Autonomous Real-World RL via Substep Guidance</title>
+    <updated>2022-12-19T22:50:40Z</updated>
+    <link href="https://arxiv.org/abs/2212.09902v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2212.09902v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Complex and contact-rich robotic manipulation tasks, particularly those that involve multi-fingered hands and underactuated object manipulation, present a significant challenge to any control method. Methods based on reinforcement learning offer an appealing choice for such settings, as they can enable robots to learn to delicately balance contact forces and dexterously reposition objects without strong modeling assumptions. However, running reinforcement learning on real-world dexterous manipulation systems often requires significant manual engineering. This negates the benefits of autonomous data collection and ease of use that reinforcement learning should in principle provide. In this paper, we describe a system for vision-based dexterous manipulation that provides a "programming-free" approach for users to define new tasks and enable robots with complex multi-fingered hands to learn to perform them through interaction. The core principle underlying our system is that, in a vision-based setting, users should be able to provide high-level intermediate supervision that circumvents challenges in teleoperation or kinesthetic teaching which allow a robot to not only learn a task efficiently but also to autonomously practice. Our system includes a framework for users to define a final task and intermediate sub-tasks with image examples, a reinforcement learning procedure that learns the task autonomously without interventions, and experimental results with a four-finger robotic hand learning multi-stage object manipulation tasks directly in the real world, without simulation, manual modeling, or reward engineering.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2022-12-19T22:50:40Z</published>
+    <arxiv:comment>First two authors contributed equally</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Kelvin Xu</name>
+    </author>
+    <author>
+      <name>Zheyuan Hu</name>
+    </author>
+    <author>
+      <name>Ria Doshi</name>
+    </author>
+    <author>
+      <name>Aaron Rovinsky</name>
+    </author>
+    <author>
+      <name>Vikash Kumar</name>
+    </author>
+    <author>
+      <name>Abhishek Gupta</name>
+    </author>
+    <author>
+      <name>Sergey Levine</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2210.15504v1</id>
+    <title>Perception-aware Tag Placement Planning for Robust Localization of UAVs in Indoor Construction Environments</title>
+    <updated>2022-10-27T14:37:57Z</updated>
+    <link href="https://arxiv.org/abs/2210.15504v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2210.15504v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Tag-based visual-inertial localization is a lightweight method for enabling autonomous data collection missions of low-cost unmanned aerial vehicles (UAVs) in indoor construction environments. However, finding the optimal tag configuration (i.e., number, size, and location) on dynamic construction sites remains challenging. This paper proposes a perception-aware genetic algorithm-based tag placement planner (PGA-TaPP) to determine the optimal tag configuration using 4D-BIM, considering the project progress, safety requirements, and UAV's localizability. The proposed method provides a 4D plan for tag placement by maximizing the localizability in user-specified regions of interest (ROIs) while limiting the installation costs. Localizability is quantified using the Fisher information matrix (FIM) and encapsulated in navigable grids. The experimental results show the effectiveness of our method in finding an optimal 4D tag placement plan for the robust localization of UAVs on under-construction indoor sites.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2022-10-27T14:37:57Z</published>
+    <arxiv:comment>[Final draft] This material may be downloaded for personal use only. Any other use requires prior permission of the American Society of Civil Engineers and the Journal of Computing in Civil Engineering</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Navid Kayhani</name>
+    </author>
+    <author>
+      <name>Angela Schoellig</name>
+    </author>
+    <author>
+      <name>Brenda McCabe</name>
+    </author>
+    <arxiv:doi>10.1061/JCCEE5/CPENG-5068</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1061/JCCEE5/CPENG-5068" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2003.02636v1</id>
+    <title>Scalable Multi-Task Imitation Learning with Autonomous Improvement</title>
+    <updated>2020-02-25T18:56:42Z</updated>
+    <link href="https://arxiv.org/abs/2003.02636v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2003.02636v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>While robot learning has demonstrated promising results for enabling robots to automatically acquire new skills, a critical challenge in deploying learning-based systems is scale: acquiring enough data for the robot to effectively generalize broadly. Imitation learning, in particular, has remained a stable and powerful approach for robot learning, but critically relies on expert operators for data collection. In this work, we target this challenge, aiming to build an imitation learning system that can continuously improve through autonomous data collection, while simultaneously avoiding the explicit use of reinforcement learning, to maintain the stability, simplicity, and scalability of supervised imitation. To accomplish this, we cast the problem of imitation with autonomous improvement into a multi-task setting. We utilize the insight that, in a multi-task setting, a failed attempt at one task might represent a successful attempt at another task. This allows us to leverage the robot's own trials as demonstrations for tasks other than the one that the robot actually attempted. Using an initial dataset of multi-task demonstration data, the robot autonomously collects trials which are only sparsely labeled with a binary indication of whether the trial accomplished any useful task or not. We then embed the trials into a learned latent space of tasks, trained using only the initial demonstration dataset, to draw similarities between various trials, enabling the robot to achieve one-shot generalization to new tasks. In contrast to prior imitation learning approaches, our method can autonomously collect data with sparse supervision for continuous improvement, and in contrast to reinforcement learning algorithms, our method can effectively improve from sparse, task-agnostic reward signals.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2020-02-25T18:56:42Z</published>
+    <arxiv:comment>Accepted to ICRA 2020. Supplementary material at https://sites.google.com/view/scalable-mili</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Avi Singh</name>
+    </author>
+    <author>
+      <name>Eric Jang</name>
+    </author>
+    <author>
+      <name>Alexander Irpan</name>
+    </author>
+    <author>
+      <name>Daniel Kappler</name>
+    </author>
+    <author>
+      <name>Murtaza Dalal</name>
+    </author>
+    <author>
+      <name>Sergey Levine</name>
+    </author>
+    <author>
+      <name>Mohi Khansari</name>
+    </author>
+    <author>
+      <name>Chelsea Finn</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1903.03591v1</id>
+    <title>Learning to Identify Object Instances by Touch: Tactile Recognition via Multimodal Matching</title>
+    <updated>2019-03-08T18:18:16Z</updated>
+    <link href="https://arxiv.org/abs/1903.03591v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1903.03591v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Much of the literature on robotic perception focuses on the visual modality. Vision provides a global observation of a scene, making it broadly useful. However, in the domain of robotic manipulation, vision alone can sometimes prove inadequate: in the presence of occlusions or poor lighting, visual object identification might be difficult. The sense of touch can provide robots with an alternative mechanism for recognizing objects. In this paper, we study the problem of touch-based instance recognition. We propose a novel framing of the problem as multi-modal recognition: the goal of our system is to recognize, given a visual and tactile observation, whether or not these observations correspond to the same object. To our knowledge, our work is the first to address this type of multi-modal instance recognition problem on such a large-scale with our analysis spanning 98 different objects. We employ a robot equipped with two GelSight touch sensors, one on each finger, and a self-supervised, autonomous data collection procedure to collect a dataset of tactile observations and images. Our experimental results show that it is possible to accurately recognize object instances by touch alone, including instances of novel objects that were never seen during training. Our learned model outperforms other methods on this complex task, including that of human volunteers.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2019-03-08T18:18:16Z</published>
+    <arxiv:comment>6 pages; accepted to IEEE International Conference on Robotics and Automation 2019 (ICRA 2019)</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Justin Lin</name>
+    </author>
+    <author>
+      <name>Roberto Calandra</name>
+    </author>
+    <author>
+      <name>Sergey Levine</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1707.01932v3</id>
+    <title>End-to-End Learning of Semantic Grasping</title>
+    <updated>2017-11-09T08:57:52Z</updated>
+    <link href="https://arxiv.org/abs/1707.01932v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1707.01932v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We consider the task of semantic robotic grasping, in which a robot picks up an object of a user-specified class using only monocular images. Inspired by the two-stream hypothesis of visual reasoning, we present a semantic grasping framework that learns object detection, classification, and grasp planning in an end-to-end fashion. A "ventral stream" recognizes object class while a "dorsal stream" simultaneously interprets the geometric relationships necessary to execute successful grasps. We leverage the autonomous data collection capabilities of robots to obtain a large self-supervised dataset for training the dorsal stream, and use semi-supervised label propagation to train the ventral stream with only a modest amount of human supervision. We experimentally show that our approach improves upon grasping systems whose components are not learned end-to-end, including a baseline method that uses bounding box detection. Furthermore, we show that jointly training our model with auxiliary data consisting of non-semantic grasping data, as well as semantically labeled images without grasp actions, has the potential to substantially improve semantic grasping performance.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2017-07-06T18:41:22Z</published>
+    <arxiv:comment>14 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Eric Jang</name>
+    </author>
+    <author>
+      <name>Sudheendra Vijayanarasimhan</name>
+    </author>
+    <author>
+      <name>Peter Pastor</name>
+    </author>
+    <author>
+      <name>Julian Ibarz</name>
+    </author>
+    <author>
+      <name>Sergey Levine</name>
+    </author>
+  </entry>
+</feed>

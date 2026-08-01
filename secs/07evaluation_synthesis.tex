@@ -1,0 +1,176 @@
+%!TEX root = ../main.tex
+\section{Evaluation and Cross-Cutting Synthesis}
+\label{sec:evaluation}
+
+The literature contains many positive within-paper results but few fair
+cross-paper comparisons.  Robots, tasks, data pools, policy families, model
+initializations, training steps, extra pretraining data, and success definitions
+usually differ.  A number reported in one setting establishes that an operation
+can work under that setting; it does not rank the operation against a number from
+another paper.  This section specifies the evidence needed for comparison and
+then synthesizes conclusions that recur despite protocol differences.
+
+\subsection{Three Levels of Outcome}
+
+\textbf{Intrinsic outcomes} describe the prepared data: invalid-file rate,
+label-noise estimate, duplicate rate, smoothness, entropy, coverage, balance, or
+retained fraction.  They are cheap, interpretable diagnostics.  They do not show
+that the measured property is causally useful to a policy.
+
+\textbf{Proxy outcomes} include foundation-model scores, information estimates,
+influence, predicted executability, inverse-kinematics feasibility, simulator
+replay, or a learned success classifier.  They are closer to a target, but their
+calibration set, model bias, and operating point must be reported.  The same proxy
+should not define both the filter and the test of filtering.
+
+\textbf{Downstream outcomes} retrain a policy and measure success, generalization,
+sample efficiency, recovery, and safety.  This is the strongest evidence for
+training utility and the most expensive.  Simulation affords repetitions and
+factor control; real execution tests physical validity but often has few trials.
+The two should be reported separately, with means, uncertainty, and trial counts.
+Evidence is stronger when an effect persists across learners, data budgets,
+embodiments, and held-out task factors.
+
+\input{tables/evaluation_protocol}
+
+\subsection{Controlling the Intervention}
+
+Table~\ref{tab:evaluation-protocol} gives a minimum protocol.  Its central design
+is a factorial comparison among: unprepared full data; a random subset matched to
+the retained volume; the proposed prepared subset; and, where relevant, an oracle
+using ground-truth defect or utility labels.  A volume-matched random control
+separates selection from regularization or fewer updates.  The full-data control
+tests whether information was unnecessarily removed.  The oracle quantifies how
+much headroom is due to the metric versus the underlying intervention.
+
+Compute must be controlled in two complementary regimes.  Under
+\emph{fixed-update} evaluation, every policy receives the same number of gradient
+steps and batch samples, measuring value per training token/transition.  Under
+\emph{fixed-pass} evaluation, each sees the same number of passes through its own
+data, measuring an end-to-end recipe.  Reporting both reveals whether a smaller
+curated set helps because its units are more valuable or because it is revisited
+more often.  Hyperparameter tuning budgets must also match: a method-specific
+threshold tuned on the test tasks is extra supervision.
+
+Data leakage is unusually subtle in embodied settings.  Near-identical scene
+configurations can occur in different episodes; generated variants can cross a
+split; a VLM labeler may have seen benchmark images; and target demonstrations
+used for influence can overlap evaluation objects.  Splits should occur before
+augmentation and at the highest causal grouping available (task instance, object,
+scene, collection session, and operator), with lineage-based duplicate checks.
+
+\subsection{Cost, Openness, and Reproducibility}
+
+``Using 50\% of the data'' is not a cost result if choosing that half required
+training many policies, running target-robot rollouts, or manually labeling every
+episode.  Report preparation cost in human minutes, foundation-model calls,
+accelerator hours, simulator rollouts, real-robot hours, storage/I/O, and safety
+interventions.  Then report total cost to reach a target deployment utility.
+Expensive learner-aware selection can still be worthwhile when amortized across
+many long pretraining runs; a cheap rule can be preferable for a small adaptation
+run.
+
+Reproducibility requires more than releasing final data.  The operator code,
+model/checkpoint used for scoring, prompt and threshold, source version, exclusion
+log, learned weights, random seeds, and lineage should be available.  OpenVLA and
+Octo make policy baselines more accessible
+~\cite{kim2024openvla_2406_09246,team2024octo_2405_12213}, but reproducible
+preparation additionally needs a raw or defect-injected pool on which alternative
+operators can be rerun.  Closed industrial reports can reveal scale and recipes,
+yet claims depending on unavailable data or internal rollouts remain weaker
+evidence for causal comparison.
+
+\subsection{What Transfers from Language and Multimodal Data Engineering}
+
+Language-model pipelines establish useful experimental machinery: explicit
+source provenance, deduplication before splitting, staged rule/model filters,
+learned domain mixtures, ablations over pipeline versions, and fixed-compute
+model-based evaluation.  RefinedWeb and FineWeb document large-scale web
+filtering and deduplication; DoReMi and DSIR optimize mixtures or resampling;
+DataComp fixes a data pool and training procedure so data work can be compared;
+JEST performs joint example selection for multimodal training
+~\cite{penedo2023refinedweb_2306_01116,penedo2024fineweb_2406_17557,xie2023doremi_2305_10429,xie2023data_2302_03169,gadre2023datacomp_2304_14108,evans2024data_2406_17711}.
+
+The transferable contribution is the \emph{evaluation paradigm}, not a specific
+text-quality filter.  Robot records are sequential and cross-modal; actions are
+coordinate- and controller-dependent; neighboring transitions are correlated;
+physical feasibility and recovery cannot be judged from tokens; and real
+rollouts are costly and hazardous.  A robot analogue of DataComp therefore needs
+episode/segment group splits, action semantics, simulator and real tiers, and
+cost/safety accounting.
+
+\subsection{A DataComp-Robot Evaluation Track}
+
+We propose a benchmark with four assets.  First, a versioned raw pool contains
+multiple embodiments and sources, including natural and controlled defects, failed
+and recovery episodes, redundant coverage, and aligned test leakage traps.
+Second, a preparation submission emits training units, weights, roles, lineage,
+and cost logs rather than a single cleaned archive.  Third, fixed lightweight and
+foundation-policy learners are trained at multiple update budgets.  Fourth,
+evaluation separates intrinsic defect detection, held-out simulation, and a
+smaller blinded real-robot audit across in-distribution, compositional, and shifted
+conditions.  A Pareto leaderboard reports deployment utility, worst-group
+performance, preparation/training cost, and safety---not one scalar rank.
+
+The benchmark should include intervention stress tests: contamination level,
+episode length, label noise, action delay, rare recovery frequency, source
+imbalance, and embodiment mismatch.  A method that detects one injected artifact
+but fails under natural mixed defects should not be called a general quality
+metric.  Fixed raw snapshots make results repeatable; periodic hidden refreshes
+measure overfitting and support a living survey.
+
+\subsection{Seven Cross-Paper Principles}
+
+\textbf{P1: quality is target-conditional.}  Formal data-quality analysis,
+mixture learning, datamodels, and influence methods all condition value on a
+learner or target, explicitly or implicitly
+~\cite{belkhale2023data_2306_02437,hejna2024re_2408_14037,dass2025datamil_2505_09603,lee2026quality_2603_09056}.
+A universal score is therefore best interpreted as a prior, later recalibrated by
+target evidence.
+
+\textbf{P2: correctness and coverage form a frontier.}  Strong filtering removes
+harmful labels and also removes rare states.  The mutual-information hard-task
+result, the curation-metric audit, and Re-Mix's abnormal-source failure show why a
+single threshold or learned weight can move to the wrong point on that frontier
+~\cite{hejna2025robot_2502_08623,bedi2026what_2606_10229,hejna2024re_2408_14037}.
+
+\textbf{P3: the actionable unit is moving below the episode.}  Segment recovery,
+progress-based selection, retry value, and transition influence extract useful
+behavior from mixed-quality trajectories
+~\cite{wu2024learning_2401_08957,zhang2025scizor_2505_22626,wu2026sieve_2607_06442,qin2026beyond_2606_24633,lee2026quality_2603_09056}.
+This shift requires uncertainty-aware boundaries and hierarchical lineage.
+
+\textbf{P4: cross-embodiment standardization must align consequences, not shapes.}
+Common schemas enable scale, but spatial frame, control quantity, timing,
+morphology, and controller dynamics determine whether a label means the same
+transition.  Structural masks are necessary interfaces, not complete semantic
+alignment.
+
+\textbf{P5: generation moves the bottleneck to verification.}  Segment
+recomposition and world-model synthesis can rapidly expand nominal data
+~\cite{mandlekar2023mimicgen_2310_17596,li2026xiaomi_2607_11643}.
+The limiting evidence is whether semantics, geometry, kinematics, contact, and
+policy utility survive jointly.
+
+\textbf{P6: failed data is valuable when structured.}  An unlabeled failed action
+sequence is not equivalent to a marked retry, valid prefix, recovery, negative,
+or safety boundary.  Conflicting empirical claims usually arise from these
+different semantics, not from a universal benefit or harm of failure.
+
+\textbf{P7: data and models must be co-versioned.}  In a feedback loop, the model
+chooses data that trains its successor.  Reproducing or rolling back a result
+requires the raw source, preparation policy, verifier, training role, model
+version, and deployment evidence as one causal graph.
+
+\subsection{Paradigm Evolution}
+
+The field's evolution is better understood by its decision signal than by year.
+The first regime uses manual inspection and deterministic technical rules.  The
+second uses pretrained representations and foundation models for semantic labels,
+deduplication, and verification.  The third uses learner loss, datamodels,
+influence, and task progress to estimate conditional training value.  The emerging
+fourth regime uses simulator and real execution to update acquisition, mixtures,
+and generators.  Each regime trades increased relevance for increased cost and
+feedback risk.  The likely stable architecture is therefore a cascade: rules for
+obvious defects, models for scalable semantics, learner-aware estimates for
+borderline allocation, and sparse rollout audits for calibration.

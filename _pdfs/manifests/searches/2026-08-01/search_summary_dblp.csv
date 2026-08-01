@@ -1,0 +1,17 @@
+source,query,reported_total,retrieved,within_year_range,error
+DBLP,robot data curation,0,0,0,RuntimeError: curl: (28) Operation timed out after 12001 milliseconds with 0 bytes received
+DBLP,robot demonstration selection,0,0,0,RuntimeError: curl: (28) Operation timed out after 12001 milliseconds with 0 bytes received
+DBLP,robot data quality,0,0,0,RuntimeError: curl: (28) Operation timed out after 12001 milliseconds with 0 bytes received
+DBLP,robot data filtering,0,0,0,RuntimeError: curl: (28) Operation timed out after 12001 milliseconds with 0 bytes received
+DBLP,robot data mixing,3,3,3,
+DBLP,robot trajectory annotation segmentation,0,0,0,
+DBLP,robot instruction relabeling,0,0,0,
+DBLP,robot demonstration augmentation,3,3,3,
+DBLP,robot synthetic demonstration generation,0,0,0,RuntimeError: curl: (22) The requested URL returned error: 500 Internal Server Error
+DBLP,robot world model data generation,0,0,0,
+DBLP,robot self improvement data,0,0,0,
+DBLP,robot online post training,0,0,0,
+DBLP,robot autonomous data collection,13,13,9,
+DBLP,cross embodiment action alignment,0,0,0,
+DBLP,vision language action data engine,2,2,2,
+DBLP,embodied data preparation,0,0,0,RuntimeError: curl: (28) Operation timed out after 12001 milliseconds with 0 bytes received

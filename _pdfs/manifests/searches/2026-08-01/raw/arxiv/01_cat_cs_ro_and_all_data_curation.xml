@@ -1,0 +1,1222 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/FApKa4QExCLO40QvQ58isNj9k6A</id>
+  <title>arXiv Query: search_query=cat:cs.RO AND all:"data curation"&amp;id_list=&amp;start=0&amp;max_results=300</title>
+  <updated>2026-08-01T16:57:39Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:cs.RO+AND+all:%22data+curation%22&amp;start=0&amp;max_results=300&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>300</opensearch:itemsPerPage>
+  <opensearch:totalResults>37</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2607.20345v1</id>
+    <title>Closing the Lab-to-Store Gap: A Data-Efficient Post-Training and Experience-Driven Learning VLA Framework for Retail Humanoids</title>
+    <updated>2026-07-22T16:30:51Z</updated>
+    <link href="https://arxiv.org/abs/2607.20345v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.20345v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Closing the gap between benchmark performance and reliable real-world operation remains a central challenge for Vision-Language-Action (VLA) humanoid robots, which must handle execution errors, distribution shifts, and environmental variability. This paper presents DEED (Data-Efficient Post-Training and Experience-Driven Learning), a systems-level approach evaluated on a supermarket chip-restocking task using a Unitree G1-Edu humanoid robot and the GR00T N1.6 foundation model. DEED comprises three key components: (1) a data-efficient post-training pipeline with control-frequency alignment, data curation, task-relevant visual highlighting, and reduced VLA dependence; (2) a real-world study of experience-driven refinement, adapted from RECAP via a text-based advantage prefix and a vision-language value function; and (3) a latent-space analysis tool for studying in- and out-of-distribution behavior. Our results suggest that bridging the lab-to-store gap is primarily a systems integration challenge rather than an architectural one: careful data design and targeted post-training can transform a policy that fails under naive fine-tuning into a competent real-world system using only a single GPU.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-22T16:30:51Z</published>
+    <arxiv:comment>8 pages. This work has been submitted to the IEEE for possible publication</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Roger Sala Sisó</name>
+    </author>
+    <author>
+      <name>Tiago Silvério</name>
+    </author>
+    <author>
+      <name>Jakob Sand</name>
+    </author>
+    <author>
+      <name>Tran Nguyen Le</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.00666v1</id>
+    <title>Domain Arithmetic: One-Shot VLA Adaptation under Environmental Shifts</title>
+    <updated>2026-07-01T09:13:40Z</updated>
+    <link href="https://arxiv.org/abs/2607.00666v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.00666v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Vision-Language-Action (VLA) models often fail to perform the same learned tasks under environmental shifts, such as changes in camera pose and shifts to a different but similar robot (e.g., from Panda to UR5e). Adapting these models to the shifted environment (i.e., target domain) often requires training on multiple demonstrations for each task, which are costly to collect. To reduce the burden of data curation and training, we propose an analogy-based method that adapts VLA models under environmental shifts through weight vector arithmetic with domain-specific information addition, named Domain ARiThmetic (DART). Unlike prior approaches, DART requires collecting only a single demonstration, enabling efficient adaptation. To accurately isolate domain-specific information for addition, DART performs subspace alignment between singular components in weight vectors to filter out noisy components. In both simulated and real-world experiments, DART outperforms existing VLA adaptation methods in one-shot scenarios across diverse visual and embodiment shifts. Code is available at https://github.com/snumprlab/dart.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-01T09:13:40Z</published>
+    <arxiv:comment>ECCV 2026. Project page: https://twkang43.github.io/projects/dart</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Taewook Kang</name>
+    </author>
+    <author>
+      <name>Taeheon Kim</name>
+    </author>
+    <author>
+      <name>Donghyun Shin</name>
+    </author>
+    <author>
+      <name>Jonghyun Choi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.29201v1</id>
+    <title>Behavior Uncloning: Distilling Mode Redirection into Policy Weights without Inference-Time Steering</title>
+    <updated>2026-06-28T05:01:27Z</updated>
+    <link href="https://arxiv.org/abs/2606.29201v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.29201v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Behavior-cloned policies often learn multiple behavior modes from demonstration datasets, including modes that are unsafe or otherwise undesired at deployment. For example, a policy trained on diverse handover demonstrations may learn to pass a knife blade-first. Standard remedies such as data curation and inference-time steering either require access to the original demonstrations for full retraining or add substantial inference-time overhead. To address this gap, we propose MoRE(Mode Redirection), which redirects policy rollouts toward desired behavior modes through a short "uncloning" step. Specifically, MoRE distills the redirection signal from a temporary mode classifier into the policy weights to steer behavior. A retain loss balances this edit by preserving desired-mode competence, allowing the standalone policy to suppress unwanted modes with zero inference-time overhead. Across eight simulated and real-world tasks, MoRE improves the average deployment success rate (SR) by 44 percentage points over the original mixed-mode policy. Among all compared adaptation and steering baselines, MoRE achieves the strongest SR and approaches the filtered-data retraining reference, while preserving task competence and inference speed. MoRE also generalizes across robot policy backbones, including Diffusion Policy and the Pi0.5 VLA, diverse task categories, and real-world deployments.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-28T05:01:27Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Hao Wang</name>
+    </author>
+    <author>
+      <name>Jiuzhou Lei</name>
+    </author>
+    <author>
+      <name>Dayou Li</name>
+    </author>
+    <author>
+      <name>Bangya Liu</name>
+    </author>
+    <author>
+      <name>Minghui Zheng</name>
+    </author>
+    <author>
+      <name>Manling Li</name>
+    </author>
+    <author>
+      <name>Ruohan Zhang</name>
+    </author>
+    <author>
+      <name>Zhiwen Fan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.28320v3</id>
+    <title>WARP-RM: A Warp-Augmented Relative Progress Reward Model for Data Curation</title>
+    <updated>2026-07-10T14:49:00Z</updated>
+    <link href="https://arxiv.org/abs/2606.28320v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.28320v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Scaling imitation learning requires large datasets, yet human teleoperation inevitably produces mixed-quality demonstrations containing hesitations and recoveries. Prior frame-level progress reward models supervise on absolute temporal progress proxies that suffer from label noise, or require costly human annotations to define subtask boundaries. We present WARP (Warp-Augmented Relative Progress), a novel fully self-supervised algorithm for learning dense, signed relative progress magnitudes directly from successful demonstrations. WARP generates per-frame progress targets via time-warp augmentations of demonstrations (variable playback speeds and reversals) and we train WARP-RM to predict the normalized elapsed time between input frames. Aggregating these predictions across overlapping windows yields a dense frame-level progress signal. We then introduce WARP-BC, which leverages these scalar reward estimates to upweight high-advantage action chunks during behavior cloning, where chunk-level advantage is obtained by aggregating per-frame rewards. We evaluate our approach on a physical bimanual robot system performing a long-horizon deformable object manipulation task: folding T-shirts from a random crumpled start. To evaluate policy robustness against suboptimal data, we construct training datasets of varying quality using episode length as a proxy for teleoperation sub-optimality. As the dataset is widened to admit more inefficiencies, WARP-BC maintains a 19/20 success rate compared to vanilla BC's collapse to 2/20, improving throughput by up to 18x. Furthermore, we evaluate a bottle-in-bin placement task in the real-world, as well as in a reproducible simulation of the task, where gains in success, speed, and throughput hold under paired significance tests, and we release all simulation code and evaluation artifacts. Project page: https://uynitsuj.github.io/warp-rm/</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-26T17:58:06Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Justin Yu</name>
+    </author>
+    <author>
+      <name>Andrew Goldberg</name>
+    </author>
+    <author>
+      <name>Kavish Kondap</name>
+    </author>
+    <author>
+      <name>Karim El-Refai</name>
+    </author>
+    <author>
+      <name>Ethan Ransing</name>
+    </author>
+    <author>
+      <name>Qianzhong Chen</name>
+    </author>
+    <author>
+      <name>Mac Schwager</name>
+    </author>
+    <author>
+      <name>Fred Shentu</name>
+    </author>
+    <author>
+      <name>Philipp Wu</name>
+    </author>
+    <author>
+      <name>Ken Goldberg</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.27813v1</id>
+    <title>Booster Lab: A Data-Centric Pipeline for Learning Deployable Humanoid Locomotion Policies</title>
+    <updated>2026-06-26T07:55:15Z</updated>
+    <link href="https://arxiv.org/abs/2606.27813v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.27813v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Humanoid robot motion learning requires not only task-oriented control policies but also physically feasible and natural behaviors that can be transferred to real robots. However, robot-feasible motion data are often scarce: raw human demonstrations may be incompatible with the robot morphology, open-source clips vary in quality, and simulation-collected robot trajectories still require feasibility checking. To address these challenges, we propose a data-centric training and deployment pipeline that integrates motion data curation, real-to-sim model adaptation, AMP-based reinforcement learning, and sim-to-real deployment. We validate the framework on the Booster T1 robot and further provide preliminary cross-platform validation on Booster K1.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-26T07:55:15Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Penghui Chen</name>
+    </author>
+    <author>
+      <name>Tinglong Zheng</name>
+    </author>
+    <author>
+      <name>Yufeng Zhang</name>
+    </author>
+    <author>
+      <name>Mingguo Zhao</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.16208v1</id>
+    <title>ATHENA: Accelerated Multi-Task Heterogeneous Influence Functions for Robot Data Curation</title>
+    <updated>2026-06-15T04:33:16Z</updated>
+    <link href="https://arxiv.org/abs/2606.16208v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.16208v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In robot imitation learning, influence functions provide a principled approach to quantify each demonstration's effect on robot task outcomes, yet scaling them to billion-parameter Vision-Language-Action (VLA) models is limited by computational and multitask bottlenecks. To this end, we propose ATHENA, an influence function framework tailored for multitask VLA data curation at a billion-parameter scale. Concretely, it leverages the Kronecker structure of linear-layer gradients to reduce projection cost, and approximates dense Hessian inversion with a rank-r Random Truncated Approximation, achieving about a 313.4x speedup in influence computation. Furthermore, ATHENA formulates global and local interactive influence to balance data curation across 50 jointly trained tasks. Extensive evaluations on RoboTwin 2.0 and real-robot deployment, covering 9.34 and 6.90 hours of demonstrations, respectively, show that ATHENA matches or exceeds full-data joint fine-tuning using only 50% of demonstrations in simulation and 66.7% of data across six real-robot tasks. Overall, ATHENA demonstrates its effectiveness for data curation in billion-parameter multitask VLA fine-tuning.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-15T04:33:16Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Tao Xu</name>
+    </author>
+    <author>
+      <name>Jiaxin Wang</name>
+    </author>
+    <author>
+      <name>Runhao Zhang</name>
+    </author>
+    <author>
+      <name>Jiayi Guan</name>
+    </author>
+    <author>
+      <name>Xianchao Zeng</name>
+    </author>
+    <author>
+      <name>Weixi Song</name>
+    </author>
+    <author>
+      <name>Xinyu Zhou</name>
+    </author>
+    <author>
+      <name>Zhetao Chen</name>
+    </author>
+    <author>
+      <name>Guang Chen</name>
+    </author>
+    <author>
+      <name>Yong-Lu Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.10340v1</id>
+    <title>OMG: Omni-Modal Motion Generation for Generalist Humanoid Control</title>
+    <updated>2026-06-09T02:46:14Z</updated>
+    <link href="https://arxiv.org/abs/2606.10340v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.10340v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Humanoid whole-body control has made significant progress in recent years, yet existing approaches remain limited to few-skill policies with heavy reward engineering, or motion trackers that are difficult to extend to new input modalities. We argue that the key to general-purpose humanoid control is to build a scalable brain, a module capable of reasoning with diverse conditioning modalities, atop a reactive motion tracking cerebellum, mirroring the hierarchical structure of biological motor systems. Two challenges arise in realizing this vision: acquiring a vast amount of high-quality data to achieve general purpose control, and equipping the generator with the capability to condition on compositional, extensible multi-modal inputs. We present OMG, which addresses these challenges with a meticulous data curation, filtering and labeling pipeline, as well as a diffusion-based motion generation backbone that conditions on language, audio, and human reference motions. Extensive experiments validate OMG as an omni-modal whole-body controller exhibiting state-of-the-art performance, model scaling behavior and efficient adaptation to new distributions and modalities, marking a concrete step toward foundation models for humanoid robots.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-09T02:46:14Z</published>
+    <arxiv:comment>Project Page: https://tsinghua-mars-lab.github.io/OMG/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Siqiao Huang</name>
+    </author>
+    <author>
+      <name>Kun-Ying Lee</name>
+    </author>
+    <author>
+      <name>Dongming Qiao</name>
+    </author>
+    <author>
+      <name>Guanqi He</name>
+    </author>
+    <author>
+      <name>Zhenyu Wang</name>
+    </author>
+    <author>
+      <name>Yitang Li</name>
+    </author>
+    <author>
+      <name>Shaoting Zhu</name>
+    </author>
+    <author>
+      <name>Hang Zhao</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2605.06747v1</id>
+    <title>HumanNet: Scaling Human-centric Video Learning to One Million Hours</title>
+    <updated>2026-05-07T15:21:58Z</updated>
+    <link href="https://arxiv.org/abs/2605.06747v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.06747v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Progress in embodied intelligence increasingly depends on scalable data infrastructure. While vision and language have scaled with internet corpora, learning physical interaction remains constrained by the lack of large, diverse, and richly annotated human activity data. We present HumanNet, a one-million-hour human-centric video corpus that captures how humans interact with the physical world at scale. HumanNet spans both first-person and third-person perspectives and covers fine-grained activities, human-object interactions, tool use, and long-horizon behaviors across diverse real-world environments. Beyond raw video, the dataset provides interaction-centric annotations, including captions, motion descriptions, and hand and body-related signals, enabling motion-aware and interaction-aware learning. Beyond scale, HumanNet introduces a systematic data curation paradigm for embodied learning, where human-centric filtering, temporal structuring, viewpoint diversity, and annotation enrichment are treated as first-class design principles. This design transforms unstructured internet video into a scalable substrate for representation learning, activity understanding, motion generation, and human-to-robot transfer. We conduct a first-step validation on the value of this design through controlled vision-language-action ablation: under a fixed set of validation data, continued training from the Qwen VLM model with 1000 hours of egocentric video drawn from HumanNet surpasses the continued training with 100 hours of real-robot data from Magic Cobot, indicating that egocentric human video could be a scalable and cost-effective substitute for robot data. By building this project, we aim to explore the opportunity to scale embodied foundation models using human-centric videos, rather than relying solely on robot-specific data.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-05-07T15:21:58Z</published>
+    <arxiv:comment>Github: https://github.com/DAGroup-PKU/HumanNet Project website: https://dagroup-pku.github.io/HumanNet/</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Yufan Deng</name>
+    </author>
+    <author>
+      <name>Daquan Zhou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2605.01544v1</id>
+    <title>An Efficient Metric for Data Quality Measurement in Imitation Learning</title>
+    <updated>2026-05-02T17:16:50Z</updated>
+    <link href="https://arxiv.org/abs/2605.01544v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.01544v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Imitation learning (IL) has seen remarkable progress, yet field deployment of IL-powered robots remains hindered by the challenge of out-of-distribution (OOD) scenarios. Fine-tuning pre-trained policies with end-user demonstrations collected in deployment environments is a promising strategy to address this challenge. However, end-user demonstrations are frequently of poor quality, characterized by excessive corrective motions, oscillations, and abrupt adjustments that degrade both learned and fine-tuned policy performance. Existing automated approaches for curating demonstration data require policy rollouts in the environment, making them computationally expensive and impractical for real-world deployment. In this paper, we propose a fast, efficient, and fully automated demonstration ranking metric based on the power spectral density (PSD) of demonstration trajectories. The PSD metric requires no policy learning, environment interaction, or expert labeling, making it well-suited for scalable, in-the-field data curation. Lower PSD values correspond to smoother, higher-quality demonstrations, while higher PSD values indicate erratic, artifact-laden trajectories. We evaluate the proposed metric on two benchmark imitation learning datasets comprising expert and lay-user demonstrations, and through a user study with older adults at a retirement facility, where collected demonstrations are used to fine-tune $\pi0.5$ \cite{intelligence2025pi_} for a daily living task. Results demonstrate that PSD-curated data yields policies with higher task success rates and smoother execution trajectories compared to uncurated baselines and two competitive data-ranking methods.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-05-02T17:16:50Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Noushad Sojib</name>
+    </author>
+    <author>
+      <name>Momotaz Begum</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2603.11634v1</id>
+    <title>Diversity You Can Actually Measure: A Fast, Model-Free Diversity Metric for Robotics Datasets</title>
+    <updated>2026-03-12T07:54:43Z</updated>
+    <link href="https://arxiv.org/abs/2603.11634v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2603.11634v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Robotics datasets for imitation learning typically consist of long-horizon trajectories of different lengths over states, actions, and high-dimensional observations (e.g., RGB video), making it non-trivial to quantify diversity in a way that respects the underlying trajectory structure and geometry. We extend Shannon and von Neumann entropy to this setting by defining signature transform-based entropy on the Gram matrix of a signature kernel over demonstrations, yielding entropy and diversity metrics that operate directly on the demonstration dataset. Building on these metrics, we study how dataset diversity affects generalization performance in robot imitation learning and propose a simple, model-free way to curate diverse demonstrations. We introduce FAKTUAL (FAst trajectory Kernel enTropy cUration for imitation Learning), a data curation algorithm that selects a subset of demonstrations maximizing entropy given a subset-size budget. FAKTUAL is fully model-free, requires no access to the imitation policy or rollouts, and adds negligible overhead relative to policy training. We evaluate our approach on image and state-based RoboMimic and MetaWorld benchmarks, as well as four real-world manipulation tasks. Across tasks and architectures, diversity-aware curation with FAKTUAL consistently improves downstream success rates over random selection, while being substantially more computationally efficient compared to recent robot data curation methods. Our results suggest that the entropy of demonstration datasets is a practical tool for understanding and improving dataset diversity in robot imitation learning.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-03-12T07:54:43Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Sreevardhan Sirigiri</name>
+    </author>
+    <author>
+      <name>Nathan Samuel de Lara</name>
+    </author>
+    <author>
+      <name>Christopher Agia</name>
+    </author>
+    <author>
+      <name>Florian Shkurti</name>
+    </author>
+    <author>
+      <name>Fabio Ramos</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2603.09056v1</id>
+    <title>Quality over Quantity: Demonstration Curation via Influence Functions for Data-Centric Robot Learning</title>
+    <updated>2026-03-10T00:59:59Z</updated>
+    <link href="https://arxiv.org/abs/2603.09056v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2603.09056v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Learning from demonstrations has emerged as a promising paradigm for end-to-end robot control, particularly when scaled to diverse and large datasets. However, the quality of demonstration data, often collected through human teleoperation, remains a critical bottleneck for effective data-driven robot learning. Human errors, operational constraints, and teleoperator variability introduce noise and suboptimal behaviors, making data curation essential yet largely manual and heuristic-driven. In this work, we propose Quality over Quantity (QoQ), a grounded and systematic approach to identifying high-quality data by defining data quality as the contribution of each training sample to reducing loss on validation demonstrations. To efficiently estimate this contribution, we leverage influence functions, which quantify the impact of individual training samples on model performance. We further introduce two key techniques to adapt influence functions for robot demonstrations: (i) using maximum influence across validation samples to capture the most relevant state-action pairs, and (ii) aggregating influence scores of state-action pairs within the same trajectory to reduce noise and improve data coverage. Experiments in both simulated and real-world settings show that QoQ consistently improves policy performances over prior data selection methods.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-03-10T00:59:59Z</published>
+    <arxiv:comment>Accepted to ICRA 2026, 8 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Haeone Lee</name>
+    </author>
+    <author>
+      <name>Taywon Min</name>
+    </author>
+    <author>
+      <name>Junsu Kim</name>
+    </author>
+    <author>
+      <name>Sinjae Kang</name>
+    </author>
+    <author>
+      <name>Fangchen Liu</name>
+    </author>
+    <author>
+      <name>Lerrel Pinto</name>
+    </author>
+    <author>
+      <name>Kimin Lee</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2603.07691v1</id>
+    <title>RoboPCA: Pose-centered Affordance Learning from Human Demonstrations for Robot Manipulation</title>
+    <updated>2026-03-08T15:46:04Z</updated>
+    <link href="https://arxiv.org/abs/2603.07691v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2603.07691v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Understanding spatial affordances -- comprising the contact regions of object interaction and the corresponding contact poses -- is essential for robots to effectively manipulate objects and accomplish diverse tasks. However, existing spatial affordance prediction methods mainly focus on locating the contact regions while delegating the pose to independent pose estimation approaches, which can lead to task failures due to inconsistencies between predicted contact regions and candidate poses. In this work, we propose RoboPCA, a pose-centered affordance prediction framework that jointly predicts task-appropriate contact regions and poses conditioned on instructions. To enable scalable data collection for pose-centered affordance learning, we devise Human2Afford, a data curation pipeline that automatically recovers scene-level 3D information and infers pose-centered affordance annotations from human demonstrations. With Human2Afford, scene depth and the interaction object's mask are extracted to provide 3D context and object localization, while pose-centered affordance annotations are obtained by tracking object points within the contact region and analyzing hand-object interaction patterns to establish a mapping from the 3D hand mesh to the robot end-effector orientation. By integrating geometry-appearance cues through an RGB-D encoder and incorporating mask-enhanced features to emphasize task-relevant object regions into the diffusion-based framework, RoboPCA outperforms baseline methods on image datasets, simulation, and real robots, and exhibits strong generalization across tasks and categories.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-03-08T15:46:04Z</published>
+    <arxiv:comment>Accepted to ICRA 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Zhanqi Xiao</name>
+    </author>
+    <author>
+      <name>Ruiping Wang</name>
+    </author>
+    <author>
+      <name>Xilin Chen</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2603.01474v2</id>
+    <title>ROSER: Few-Shot Robotic Sequence Retrieval for Scalable Robot Learning</title>
+    <updated>2026-03-05T04:48:26Z</updated>
+    <link href="https://arxiv.org/abs/2603.01474v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2603.01474v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A critical bottleneck in robot learning is the scarcity of task-labeled, segmented training data, despite the abundance of large-scale robotic datasets recorded as long, continuous interaction logs. Existing datasets contain vast amounts of diverse behaviors, yet remain structurally incompatible with modern learning frameworks that require cleanly segmented, task-specific trajectories. We address this data utilization crisis by formalizing robotic sequence retrieval: the task of extracting reusable, task-centric segments from unlabeled logs using only a few reference examples. We introduce ROSER, a lightweight few-shot retrieval framework that learns task-agnostic metric spaces over temporal windows, enabling accurate retrieval with as few as 3-5 demonstrations, without any task-specific training required. To validate our approach, we establish comprehensive evaluation protocols and benchmark ROSER against classical alignment methods, learned embeddings, and language model baselines across three large-scale datasets (e.g., LIBERO, DROID, and nuScenes). Our experiments demonstrate that ROSER consistently outperforms all prior methods in both accuracy and efficiency, achieving sub-millisecond per-match inference while maintaining superior distributional alignment. By reframing data curation as few-shot retrieval, ROSER provides a practical pathway to unlock underutilized robotic datasets, fundamentally improving data availability for robot learning.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-03-02T05:37:33Z</published>
+    <arxiv:comment>2026 ICLR DATA-FM Workshop</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Zillur Rahman</name>
+    </author>
+    <author>
+      <name>Eddison Pham</name>
+    </author>
+    <author>
+      <name>Alejandro Daniel Noel</name>
+    </author>
+    <author>
+      <name>Cristian Meo</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2602.12062v1</id>
+    <title>HoloBrain-0 Technical Report</title>
+    <updated>2026-02-12T15:21:04Z</updated>
+    <link href="https://arxiv.org/abs/2602.12062v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2602.12062v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this work, we introduce HoloBrain-0, a comprehensive Vision-Language-Action (VLA) framework that bridges the gap between foundation model research and reliable real-world robot deployment. The core of our system is a novel VLA architecture that explicitly incorporates robot embodiment priors, including multi-view camera parameters and kinematic descriptions (URDF), to enhance 3D spatial reasoning and support diverse embodiments. We validate this design through a scalable ``pre-train then post-train" paradigm, achieving state-of-the-art results on simulation benchmarks such as RoboTwin 2.0, LIBERO, and GenieSim, as well as strong results on challenging long-horizon real-world manipulation tasks. Notably, our efficient 0.2B-parameter variant rivals significantly larger baselines, enabling low-latency on-device deployment. To further accelerate research and practical adoption, we fully open-source the entire HoloBrain ecosystem, which includes: (1) powerful pre-trained VLA foundations; (2) post-trained checkpoints for multiple simulation suites and real-world tasks; and (3) RoboOrchard, a full-stack VLA infrastructure for data curation, model training and deployment. Together with standardized data collection protocols, this release provides the community with a complete, reproducible path toward high-performance robotic manipulation.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-02-12T15:21:04Z</published>
+    <arxiv:comment>32 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Xuewu Lin</name>
+    </author>
+    <author>
+      <name>Tianwei Lin</name>
+    </author>
+    <author>
+      <name>Yun Du</name>
+    </author>
+    <author>
+      <name>Hongyu Xie</name>
+    </author>
+    <author>
+      <name>Yiwei Jin</name>
+    </author>
+    <author>
+      <name>Jiawei Li</name>
+    </author>
+    <author>
+      <name>Shijie Wu</name>
+    </author>
+    <author>
+      <name>Qingze Wang</name>
+    </author>
+    <author>
+      <name>Mengdi Li</name>
+    </author>
+    <author>
+      <name>Mengao Zhao</name>
+    </author>
+    <author>
+      <name>Ziang Li</name>
+    </author>
+    <author>
+      <name>Chaodong Huang</name>
+    </author>
+    <author>
+      <name>Hongzhe Bi</name>
+    </author>
+    <author>
+      <name>Lichao Huang</name>
+    </author>
+    <author>
+      <name>Zhizhong Su</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2602.11236v2</id>
+    <title>ABot-M0: VLA Foundation Model for Robotic Manipulation with Action Manifold Learning</title>
+    <updated>2026-04-14T10:01:08Z</updated>
+    <link href="https://arxiv.org/abs/2602.11236v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2602.11236v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Building general-purpose embodied agents across diverse hardware remains a central challenge in robotics, often framed as the ''one-brain, many-forms'' paradigm. Progress is hindered by fragmented data, inconsistent representations, and misaligned training objectives. We present ABot-M0, a framework that builds a systematic data curation pipeline while jointly optimizing model architecture and training strategies, enabling end-to-end transformation of heterogeneous raw data into unified, efficient representations. From six public datasets, we clean, standardize, and balance samples to construct UniACT-dataset, a large-scale dataset with over 6 million trajectories and 9,500 hours of data, covering diverse robot morphologies and task scenarios. Unified pre-training improves knowledge transfer and generalization across platforms and tasks, supporting general-purpose embodied intelligence. To improve action prediction efficiency and stability, we propose the Action Manifold Hypothesis: effective robot actions lie not in the full high-dimensional space but on a low-dimensional, smooth manifold governed by physical laws and task constraints. Based on this, we introduce Action Manifold Learning (AML), which uses a DiT backbone to predict clean, continuous action sequences directly. This shifts learning from denoising to projection onto feasible manifolds, improving decoding speed and policy stability. ABot-M0 supports modular perception via a dual-stream mechanism that integrates VLM semantics with geometric priors and multi-view inputs from plug-and-play 3D modules such as VGGT and Qwen-Image-Edit, enhancing spatial understanding without modifying the backbone and mitigating standard VLM limitations in 3D reasoning. Experiments show components operate independently with additive benefits. We will release all code and pipelines for reproducibility and future research.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-02-11T16:47:01Z</published>
+    <arxiv:comment>Project website: https://amap-cvlab.github.io/ABot-Manipulation/ . Code: https://github.com/amap-cvlab/ABot-Manipulation . 22 pages, 10 figures, 10 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Yandan Yang</name>
+    </author>
+    <author>
+      <name>Shuang Zeng</name>
+    </author>
+    <author>
+      <name>Tong Lin</name>
+    </author>
+    <author>
+      <name>Xinyuan Chang</name>
+    </author>
+    <author>
+      <name>Dekang Qi</name>
+    </author>
+    <author>
+      <name>Junjin Xiao</name>
+    </author>
+    <author>
+      <name>Haoyun Liu</name>
+    </author>
+    <author>
+      <name>Ronghan Chen</name>
+    </author>
+    <author>
+      <name>Yuzhi Chen</name>
+    </author>
+    <author>
+      <name>Dongjie Huo</name>
+    </author>
+    <author>
+      <name>Feng Xiong</name>
+    </author>
+    <author>
+      <name>Xing Wei</name>
+    </author>
+    <author>
+      <name>Zhiheng Ma</name>
+    </author>
+    <author>
+      <name>Mu Xu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2601.17895v1</id>
+    <title>Masked Depth Modeling for Spatial Perception</title>
+    <updated>2026-01-25T16:13:49Z</updated>
+    <link href="https://arxiv.org/abs/2601.17895v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2601.17895v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Spatial visual perception is a fundamental requirement in physical-world applications like autonomous driving and robotic manipulation, driven by the need to interact with 3D environments. Capturing pixel-aligned metric depth using RGB-D cameras would be the most viable way, yet it usually faces obstacles posed by hardware limitations and challenging imaging conditions, especially in the presence of specular or texture-less surfaces. In this work, we argue that the inaccuracies from depth sensors can be viewed as "masked" signals that inherently reflect underlying geometric ambiguities. Building on this motivation, we present LingBot-Depth, a depth completion model which leverages visual context to refine depth maps through masked depth modeling and incorporates an automated data curation pipeline for scalable training. It is encouraging to see that our model outperforms top-tier RGB-D cameras in terms of both depth precision and pixel coverage. Experimental results on a range of downstream tasks further suggest that LingBot-Depth offers an aligned latent representation across RGB and depth modalities. We release the code, checkpoint, and 3M RGB-depth pairs (including 2M real data and 1M simulated data) to the community of spatial perception.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-01-25T16:13:49Z</published>
+    <arxiv:comment>Tech report, 19 pages, 15 figures and 4 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Bin Tan</name>
+    </author>
+    <author>
+      <name>Changjiang Sun</name>
+    </author>
+    <author>
+      <name>Xiage Qin</name>
+    </author>
+    <author>
+      <name>Hanat Adai</name>
+    </author>
+    <author>
+      <name>Zelin Fu</name>
+    </author>
+    <author>
+      <name>Tianxiang Zhou</name>
+    </author>
+    <author>
+      <name>Han Zhang</name>
+    </author>
+    <author>
+      <name>Yinghao Xu</name>
+    </author>
+    <author>
+      <name>Xing Zhu</name>
+    </author>
+    <author>
+      <name>Yujun Shen</name>
+    </author>
+    <author>
+      <name>Nan Xue</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2601.08828v2</id>
+    <title>Motion Attribution for Video Generation</title>
+    <updated>2026-07-03T04:56:49Z</updated>
+    <link href="https://arxiv.org/abs/2601.08828v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2601.08828v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Despite the rapid progress of video generation models, the role of data in influencing motion is poorly understood. We present Motive (MOTIon attribution for Video gEneration), a motion-centric, gradient-based data attribution framework that scales to modern, large, high-quality video datasets and models. We use this to study which fine-tuning clips improve or degrade temporal dynamics. Motive isolates temporal dynamics from static appearance via motion-weighted loss masks, yielding efficient and scalable motion-specific influence computation. On text-to-video models, Motive identifies clips that strongly affect motion and guides data curation that improves temporal consistency and physical plausibility. With Motive-selected high-influence data, our method improves both motion smoothness and dynamic degree on VBench, achieving a 74.1% human preference win rate compared with the pretrained base model. To our knowledge, this is the first framework to attribute motion rather than visual appearance in video generative models and to use it to curate fine-tuning data.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MM" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-01-13T18:59:09Z</published>
+    <arxiv:comment>See the project website at https://research.nvidia.com/labs/sil/projects/MOTIVE/</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Xindi Wu</name>
+    </author>
+    <author>
+      <name>Despoina Paschalidou</name>
+    </author>
+    <author>
+      <name>Jun Gao</name>
+    </author>
+    <author>
+      <name>Antonio Torralba</name>
+    </author>
+    <author>
+      <name>Laura Leal-Taixé</name>
+    </author>
+    <author>
+      <name>Olga Russakovsky</name>
+    </author>
+    <author>
+      <name>Sanja Fidler</name>
+    </author>
+    <author>
+      <name>Jonathan Lorraine</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2601.07823v1</id>
+    <title>Video Generation Models in Robotics -- Applications, Research Challenges, Future Directions</title>
+    <updated>2026-01-12T18:57:34Z</updated>
+    <link href="https://arxiv.org/abs/2601.07823v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2601.07823v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Video generation models have emerged as high-fidelity models of the physical world, capable of synthesizing high-quality videos capturing fine-grained interactions between agents and their environments conditioned on multi-modal user inputs. Their impressive capabilities address many of the long-standing challenges faced by physics-based simulators, driving broad adoption in many problem domains, e.g., robotics. For example, video models enable photorealistic, physically consistent deformable-body simulation without making prohibitive simplifying assumptions, which is a major bottleneck in physics-based simulation. Moreover, video models can serve as foundation world models that capture the dynamics of the world in a fine-grained and expressive way. They thus overcome the limited expressiveness of language-only abstractions in describing intricate physical interactions. In this survey, we provide a review of video models and their applications as embodied world models in robotics, encompassing cost-effective data generation and action prediction in imitation learning, dynamics and rewards modeling in reinforcement learning, visual planning, and policy evaluation. Further, we highlight important challenges hindering the trustworthy integration of video models in robotics, which include poor instruction following, hallucinations such as violations of physics, and unsafe content generation, in addition to fundamental limitations such as significant data curation, training, and inference costs. We present potential future directions to address these open research challenges to motivate research and ultimately facilitate broader applications, especially in safety-critical settings.</summary>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-01-12T18:57:34Z</published>
+    <arxiv:primary_category term="eess.SY"/>
+    <author>
+      <name>Zhiting Mei</name>
+    </author>
+    <author>
+      <name>Tenny Yin</name>
+    </author>
+    <author>
+      <name>Ola Shorinwa</name>
+    </author>
+    <author>
+      <name>Apurva Badithela</name>
+    </author>
+    <author>
+      <name>Zhonghe Zheng</name>
+    </author>
+    <author>
+      <name>Joseph Bruno</name>
+    </author>
+    <author>
+      <name>Madison Bland</name>
+    </author>
+    <author>
+      <name>Lihan Zha</name>
+    </author>
+    <author>
+      <name>Asher Hancock</name>
+    </author>
+    <author>
+      <name>Jaime Fernández Fisac</name>
+    </author>
+    <author>
+      <name>Philip Dames</name>
+    </author>
+    <author>
+      <name>Anirudha Majumdar</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2512.12012v2</id>
+    <title>Semantic-Drive: Democratizing Long-Tail Data Curation via Open-Vocabulary Grounding and Neuro-Symbolic VLM Consensus</title>
+    <updated>2025-12-16T17:15:46Z</updated>
+    <link href="https://arxiv.org/abs/2512.12012v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2512.12012v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The development of robust Autonomous Vehicles (AVs) is bottlenecked by the scarcity of "Long-Tail" training data. While fleets collect petabytes of video logs, identifying rare safety-critical events (e.g., erratic jaywalking, construction diversions) remains a manual, cost-prohibitive process. Existing solutions rely on coarse metadata search, which lacks precision, or cloud-based VLMs, which are privacy-invasive and expensive. We introduce Semantic-Drive, a local-first, neuro-symbolic framework for semantic data mining. Our approach decouples perception into two stages: (1) Symbolic Grounding via a real-time open-vocabulary detector (YOLOE) to anchor attention, and (2) Cognitive Analysis via a Reasoning VLM that performs forensic scene analysis. To mitigate hallucination, we implement a "System 2" inference-time alignment strategy, utilizing a multi-model "Judge-Scout" consensus mechanism. Benchmarked on the nuScenes dataset against the Waymo Open Dataset (WOD-E2E) taxonomy, Semantic-Drive achieves a Recall of 0.966 (vs. 0.475 for CLIP) and reduces Risk Assessment Error by 40% ccompared to the best single scout models. The system runs entirely on consumer hardware (NVIDIA RTX 3090), offering a privacy-preserving alternative to the cloud.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-12-12T20:07:04Z</published>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Antonio Guillen-Perez</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2510.18137v1</id>
+    <title>Quality Over Quantity: Curating Contact-Based Robot Datasets Improves Learning</title>
+    <updated>2025-10-20T22:17:24Z</updated>
+    <link href="https://arxiv.org/abs/2510.18137v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2510.18137v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this paper, we investigate the utility of datasets and whether more data or the 'right' data is advantageous for robot learning. In particular, we are interested on quantifying the utility of contact-based data as contact holds significant information for robot learning. Our approach derives a contact-aware objective function for learning object dynamics and shape from pose and contact data. We show that the contact-aware Fisher-information metric can be used to rank and curate contact-data based on how informative data is for learning. In addition, we find that selecting a reduced dataset based on this ranking improves the learning task while also making learning a deterministic process. Interestingly, our results show that more data is not necessarily advantageous, and rather, less but informative data can accelerate learning, especially depending on the contact interactions. Last, we show how our metric can be used to provide initial guidance on data curation for contact-based robot learning.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-10-20T22:17:24Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Hrishikesh Sathyanarayan</name>
+    </author>
+    <author>
+      <name>Victor Vantilborgh</name>
+    </author>
+    <author>
+      <name>Ian Abraham</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2510.18034v3</id>
+    <title>Can VLMs Unlock Semantic Anomaly Detection? A Framework for Structured Reasoning</title>
+    <updated>2026-05-20T12:36:58Z</updated>
+    <link href="https://arxiv.org/abs/2510.18034v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2510.18034v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autonomous driving systems remain critically vulnerable to the long-tail of rare, out-of-distribution semantic anomalies. While VLMs have emerged as promising tools for perception, their application in anomaly detection remains largely restricted to prompting proprietary models - limiting reliability, reproducibility, and deployment feasibility. To address this gap, we introduce SAVANT (Semantic Anomaly Verification/Analysis Toolkit), a novel model-agnostic reasoning framework that reformulates anomaly detection as a layered semantic consistency verification. By applying SAVANT's two-phase pipeline - structured scene description extraction and multi-modal evaluation - existing VLMs improve their scores in detecting anomalous driving scenarios from input images. Our approach replaces ad hoc prompting with semantic-aware reasoning, transforming VLM-based detection into a principled decomposition across four semantic domains. We show that across a balanced set of real-world driving scenarios, applying SAVANT improves VLM's absolute recall by approximately 18.5% compared to prompting baselines. Moreover, this gain enables reliable large-scale annotation: leveraging the best proprietary model within our framework, we automatically labeled around 10,000 real-world images with high confidence. We use the resulting high-quality dataset to fine-tune a 7B open-source model (Qwen2.5-VL) to perform single-shot anomaly detection, achieving 90.8% recall and 93.8% accuracy - surpassing all models evaluated while enabling local deployment at near-zero cost. By coupling structured semantic reasoning with scalable data curation, we provide a practical solution to data scarcity in semantic anomaly detection for autonomous systems. Supplementary material: https://TUM-AVS.github.io/SAVANT/.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-10-20T19:14:29Z</published>
+    <arxiv:comment>8 pages, 5 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Roberto Brusnicki</name>
+    </author>
+    <author>
+      <name>David Pop</name>
+    </author>
+    <author>
+      <name>Yuan Gao</name>
+    </author>
+    <author>
+      <name>Mattia Piccinini</name>
+    </author>
+    <author>
+      <name>Johannes Betz</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2509.17321v4</id>
+    <title>OpenGVL -- Benchmarking Visual Temporal Progress for Data Curation</title>
+    <updated>2026-02-09T08:29:03Z</updated>
+    <link href="https://arxiv.org/abs/2509.17321v4" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2509.17321v4" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Data scarcity remains one of the most limiting factors in driving progress in robotics. However, the amount of available robotics data in the wild is growing exponentially, creating new opportunities for large-scale data utilization. Reliable temporal task completion prediction could help automatically annotate and curate this data at scale. The Generative Value Learning (GVL) approach was recently proposed, leveraging the knowledge embedded in vision-language models (VLMs) to predict task progress from visual observations. Building upon GVL, we propose OpenGVL, a comprehensive benchmark for estimating task progress across diverse challenging manipulation tasks involving both robotic and human embodiments. We evaluate the capabilities of publicly available open-source foundation models, showing that open-source model families significantly underperform closed-source counterparts, achieving only approximately $70\%$ of their performance on temporal progress prediction tasks. Furthermore, we demonstrate how OpenGVL can serve as a practical tool for automated data curation and filtering, enabling efficient quality assessment of large-scale robotics datasets. We release the benchmark along with the complete codebase at \href{github.com/budzianowski/opengvl}{OpenGVL}.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-09-22T02:52:55Z</published>
+    <arxiv:comment>Workshop on Making Sense of Data in Robotics: Composition, Curation, and Interpretability at Scale at CoRL 2025</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Paweł Budzianowski</name>
+    </author>
+    <author>
+      <name>Emilia Wiśnios</name>
+    </author>
+    <author>
+      <name>Michał Tyrolski</name>
+    </author>
+    <author>
+      <name>Gracjan Góral</name>
+    </author>
+    <author>
+      <name>Igor Kulakov</name>
+    </author>
+    <author>
+      <name>Viktor Petrenko</name>
+    </author>
+    <author>
+      <name>Krzysztof Walas</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2509.15443v2</id>
+    <title>A Scalable Whole-body Motion Transfer via Implicit Kinodynamic Motion Retargeting</title>
+    <updated>2026-06-30T11:39:23Z</updated>
+    <link href="https://arxiv.org/abs/2509.15443v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2509.15443v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Human-to-humanoid imitation learning presents a promising pathway to address the severe data scarcity bottleneck in robotics by utilizing abundant, large-scale human motion collections. However, scaling this paradigm requires addressing two key challenges. First, human motion data acquired from videos, motion capture systems, or generative models often contains spatial noise, jitter, and frame-level flickering, which can be amplified during retargeting and lead to unsafe or physically infeasible robot motions. Second, existing motion retargeting methods typically rely on frame-by-frame numerical optimization, making them too computationally expensive for large-scale dataset synthesis. To overcome these limitations, we introduce Implicit Kinodynamic Motion Retargeting (IKMR), a highly scalable, neural-based data transformation pipeline. IKMR leverages a skeleton-based graph convolutional dual autoencoder to map cross-structural human and humanoid kinematic configurations into a shared topological latent space. To guarantee the physical viability of the generated data, the framework incorporates a physics-informed refinement phase that utilizes simulated physical tracking feedback to learn a robust motion prior. This implicit formulation fundamentally resolves both challenges. By shifting the computational burden from online optimization to offline inference, IKMR achieves an unprecedented data conversion throughput exceeding 5000 frames per second. Furthermore, leveraging the learned motion prior, it functions as an intrinsic data curation mechanism and naturally filters out high-frequency noise and spatial jitters from source data, yielding smooth trajectories that ensure physical hardware safety. Extensive evaluations, including real-world whole-body control deployments on humanoid robot, confirm that IKMR bridges the gap between human motion and robotic data.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-09-18T21:34:02Z</published>
+    <arxiv:comment>RSS 2026 Workshop. Webpage: https://cybercal.github.io/webpage.ikmr</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Xingyu Chen</name>
+    </author>
+    <author>
+      <name>Hanyu Wu</name>
+    </author>
+    <author>
+      <name>Sikai Wu</name>
+    </author>
+    <author>
+      <name>Mingliang Zhou</name>
+    </author>
+    <author>
+      <name>Diyun Xiang</name>
+    </author>
+    <author>
+      <name>Haodong Zhang</name>
+    </author>
+    <author>
+      <name>Yangchen Zhou</name>
+    </author>
+    <author>
+      <name>Yukang Gao</name>
+    </author>
+    <author>
+      <name>Yi Gu</name>
+    </author>
+    <author>
+      <name>Renjing Xu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2508.18397v2</id>
+    <title>Mining the Long Tail: A Comparative Study of Data-Centric Criticality Metrics for Robust Offline Reinforcement Learning in Autonomous Motion Planning</title>
+    <updated>2025-09-16T21:13:18Z</updated>
+    <link href="https://arxiv.org/abs/2508.18397v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2508.18397v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Offline Reinforcement Learning (RL) presents a promising paradigm for training autonomous vehicle (AV) planning policies from large-scale, real-world driving logs. However, the extreme data imbalance in these logs, where mundane scenarios vastly outnumber rare "long-tail" events, leads to brittle and unsafe policies when using standard uniform data sampling. In this work, we address this challenge through a systematic, large-scale comparative study of data curation strategies designed to focus the learning process on information-rich samples. We investigate six distinct criticality weighting schemes which are categorized into three families: heuristic-based, uncertainty-based, and behavior-based. These are evaluated at two temporal scales, the individual timestep and the complete scenario. We train seven goal-conditioned Conservative Q-Learning (CQL) agents with a state-of-the-art, attention-based architecture and evaluate them in the high-fidelity Waymax simulator. Our results demonstrate that all data curation methods significantly outperform the baseline. Notably, data-driven curation using model uncertainty as a signal achieves the most significant safety improvements, reducing the collision rate by nearly three-fold (from 16.0% to 5.5%). Furthermore, we identify a clear trade-off where timestep-level weighting excels at reactive safety while scenario-level weighting improves long-horizon planning. Our work provides a comprehensive framework for data curation in Offline RL and underscores that intelligent, non-uniform sampling is a critical component for building safe and reliable autonomous agents.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-08-25T18:37:29Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Antonio Guillen-Perez</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2508.03018v2</id>
+    <title>Beyond Policy Optimization: A Data Curation Flywheel for Sparse-Reward Long-Horizon Planning</title>
+    <updated>2026-05-16T08:56:03Z</updated>
+    <link href="https://arxiv.org/abs/2508.03018v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2508.03018v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large Language Reasoning Models have demonstrated remarkable success on static tasks, yet their application to multi-round agentic planning in interactive environments faces two fundamental challenges. First, the intractable credit assignment problem renders conventional reinforcement learning ineffective in sparse-reward settings. Second, the computational overhead of verbose, step-by-step reasoning histories is prohibitive. To address these challenges, we propose BPO, a three-stage framework (bootstrapping, extrapolation, and refinement) that establishes a self-improving data flywheel to develop robust reasoning models for long-horizon, sparse-reward environments. Our framework first bootstraps efficient reasoning using the proposed planning quaternions with long-short chain-of-thought fusion. It then extrapolates to out-of-distribution tasks through complexity-stratified curriculum learning. Finally, the model iteratively refines itself by learning exclusively on experiences selected via reward-gated rejection sampling. Experiments on ALFWorld, ScienceWorld, and WebShop demonstrate that our approach achieves state-of-the-art with significant token efficiency, providing a new recipe for reasoning models in agentic planning.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-08-05T02:56:58Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Yutong Wang</name>
+    </author>
+    <author>
+      <name>Pengliang Ji</name>
+    </author>
+    <author>
+      <name>Kaixin Li</name>
+    </author>
+    <author>
+      <name>Baolong Bi</name>
+    </author>
+    <author>
+      <name>Tao Feng</name>
+    </author>
+    <author>
+      <name>Guillaume Sartoretti</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2507.15597v1</id>
+    <title>Being-H0: Vision-Language-Action Pretraining from Large-Scale Human Videos</title>
+    <updated>2025-07-21T13:19:09Z</updated>
+    <link href="https://arxiv.org/abs/2507.15597v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2507.15597v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We introduce Being-H0, a dexterous Vision-Language-Action model (VLA) trained on large-scale human videos. Existing VLAs struggle with complex manipulation tasks requiring high dexterity and generalize poorly to novel scenarios and tasks, primarily due to their reliance on synthetic data with significant sim-to-real gaps or teleoperated demonstrations lacking scale and diversity. To address this data bottleneck, we propose leveraging human hands as a foundation manipulator, capitalizing on the rich dexterity and scalability present in web data. Our approach centers on physical instruction tuning, a novel training paradigm that combines large-scale VLA pretraining from human videos, physical space alignment for 3D reasoning, and post-training adaptation for robotic tasks. Additionally, we introduce a part-level motion tokenization method which achieves millimeter-level reconstruction accuracy to model precise hand trajectories for action learning. To support our proposed paradigm, we further develop a comprehensive data curation pipeline that integrates heterogeneous sources -- including motion capture, VR, and RGB-only videos -- into a large-scale dataset with millions of motion-based instructional instances. We empirically show the excellence of Being-H0 in hand motion generation and instruction following, and it also scales well with model and data sizes. Importantly, we observe the expected gains of Being-H0 in real-world robotic manipulation as physical instruction tuning is applied. More details are available at https://beingbeyond.github.io/Being-H0.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-07-21T13:19:09Z</published>
+    <arxiv:comment>37 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Hao Luo</name>
+    </author>
+    <author>
+      <name>Yicheng Feng</name>
+    </author>
+    <author>
+      <name>Wanpeng Zhang</name>
+    </author>
+    <author>
+      <name>Sipeng Zheng</name>
+    </author>
+    <author>
+      <name>Ye Wang</name>
+    </author>
+    <author>
+      <name>Haoqi Yuan</name>
+    </author>
+    <author>
+      <name>Jiazheng Liu</name>
+    </author>
+    <author>
+      <name>Chaoyi Xu</name>
+    </author>
+    <author>
+      <name>Qin Jin</name>
+    </author>
+    <author>
+      <name>Zongqing Lu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2506.19121v2</id>
+    <title>CUPID: Curating Data your Robot Loves with Influence Functions</title>
+    <updated>2025-09-23T19:35:35Z</updated>
+    <link href="https://arxiv.org/abs/2506.19121v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2506.19121v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In robot imitation learning, policy performance is tightly coupled with the quality and composition of the demonstration data. Yet, developing a precise understanding of how individual demonstrations contribute to downstream outcomes - such as closed-loop task success or failure - remains a persistent challenge. We propose CUPID, a robot data curation method based on a novel influence function-theoretic formulation for imitation learning policies. Given a set of evaluation rollouts, CUPID estimates the influence of each training demonstration on the policy's expected return. This enables ranking and selection of demonstrations according to their impact on the policy's closed-loop performance. We use CUPID to curate data by 1) filtering out training demonstrations that harm policy performance and 2) subselecting newly collected trajectories that will most improve the policy. Extensive simulated and hardware experiments show that our approach consistently identifies which data drives test-time performance. For example, training with less than 33% of curated data can yield state-of-the-art diffusion policies on the simulated RoboMimic benchmark, with similar gains observed in hardware. Furthermore, hardware experiments show that our method can identify robust strategies under distribution shift, isolate spurious correlations, and even enhance the post-training of generalist robot policies. Videos and code are made available at: https://cupid-curation.github.io.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-06-23T20:49:34Z</published>
+    <arxiv:comment>Project page: https://cupid-curation.github.io. 27 pages, 15 figures. Accepted to the Conference on Robot Learning (CoRL) 2025</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Christopher Agia</name>
+    </author>
+    <author>
+      <name>Rohan Sinha</name>
+    </author>
+    <author>
+      <name>Jingyun Yang</name>
+    </author>
+    <author>
+      <name>Rika Antonova</name>
+    </author>
+    <author>
+      <name>Marco Pavone</name>
+    </author>
+    <author>
+      <name>Haruki Nishimura</name>
+    </author>
+    <author>
+      <name>Masha Itkina</name>
+    </author>
+    <author>
+      <name>Jeannette Bohg</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2505.22626v2</id>
+    <title>SCIZOR: A Self-Supervised Approach to Data Curation for Large-Scale Imitation Learning</title>
+    <updated>2025-09-09T06:38:19Z</updated>
+    <link href="https://arxiv.org/abs/2505.22626v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2505.22626v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Imitation learning advances robot capabilities by enabling the acquisition of diverse behaviors from human demonstrations. However, large-scale datasets used for policy training often introduce substantial variability in quality, which can negatively impact performance. As a result, automatically curating datasets by filtering low-quality samples to improve quality becomes essential. Existing robotic curation approaches rely on costly manual annotations and perform curation at a coarse granularity, such as the dataset or trajectory level, failing to account for the quality of individual state-action pairs. To address this, we introduce SCIZOR, a self-supervised data curation framework that filters out low-quality state-action pairs to improve the performance of imitation learning policies. SCIZOR targets two complementary sources of low-quality data: suboptimal data, which hinders learning with undesirable actions, and redundant data, which dilutes training with repetitive patterns. SCIZOR leverages a self-supervised task progress predictor for suboptimal data to remove samples lacking task progression, and a deduplication module operating on joint state-action representation for samples with redundant patterns. Empirically, we show that SCIZOR enables imitation learning policies to achieve higher performance with less data, yielding an average improvement of 15.4% across multiple benchmarks. More information is available at: https://ut-austin-rpl.github.io/SCIZOR/</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-05-28T17:45:05Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yu Zhang</name>
+    </author>
+    <author>
+      <name>Yuqi Xie</name>
+    </author>
+    <author>
+      <name>Huihan Liu</name>
+    </author>
+    <author>
+      <name>Rutav Shah</name>
+    </author>
+    <author>
+      <name>Michael Wan</name>
+    </author>
+    <author>
+      <name>Linxi Fan</name>
+    </author>
+    <author>
+      <name>Yuke Zhu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2505.03174v1</id>
+    <title>Automated Data Curation Using GPS &amp; NLP to Generate Instruction-Action Pairs for Autonomous Vehicle Vision-Language Navigation Datasets</title>
+    <updated>2025-05-06T04:38:41Z</updated>
+    <link href="https://arxiv.org/abs/2505.03174v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2505.03174v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Instruction-Action (IA) data pairs are valuable for training robotic systems, especially autonomous vehicles (AVs), but having humans manually annotate this data is costly and time-inefficient. This paper explores the potential of using mobile application Global Positioning System (GPS) references and Natural Language Processing (NLP) to automatically generate large volumes of IA commands and responses without having a human generate or retroactively tag the data. In our pilot data collection, by driving to various destinations and collecting voice instructions from GPS applications, we demonstrate a means to collect and categorize the diverse sets of instructions, further accompanied by video data to form complete vision-language-action triads. We provide details on our completely automated data collection prototype system, ADVLAT-Engine. We characterize collected GPS voice instructions into eight different classifications, highlighting the breadth of commands and referentialities available for curation from freely available mobile applications. Through research and exploration into the automation of IA data pairs using GPS references, the potential to increase the speed and volume at which high-quality IA datasets are created, while minimizing cost, can pave the way for robust vision-language-action (VLA) models to serve tasks in vision-language navigation (VLN) and human-interactive autonomous systems.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-05-06T04:38:41Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Guillermo Roque</name>
+    </author>
+    <author>
+      <name>Erika Maquiling</name>
+    </author>
+    <author>
+      <name>Jose Giovanni Tapia Lopez</name>
+    </author>
+    <author>
+      <name>Ross Greer</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.08623v3</id>
+    <title>Robot Data Curation with Mutual Information Estimators</title>
+    <updated>2025-04-22T17:40:30Z</updated>
+    <link href="https://arxiv.org/abs/2502.08623v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.08623v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The performance of imitation learning policies often hinges on the datasets with which they are trained. Consequently, investment in data collection for robotics has grown across both industrial and academic labs. However, despite the marked increase in the quantity of demonstrations collected, little work has sought to assess the quality of said data despite mounting evidence of its importance in other areas such as vision and language. In this work, we take a critical step towards addressing the data quality in robotics. Given a dataset of demonstrations, we aim to estimate the relative quality of individual demonstrations in terms of both action diversity and predictability. To do so, we estimate the average contribution of a trajectory towards the mutual information between states and actions in the entire dataset, which captures both the entropy of the marginal action distribution and the state-conditioned action entropy. Though commonly used mutual information estimators require vast amounts of data often beyond the scale available in robotics, we introduce a novel technique based on k-nearest neighbor estimates of mutual information on top of simple VAE embeddings of states and actions. Empirically, we demonstrate that our approach is able to partition demonstration datasets by quality according to human expert scores across a diverse set of benchmarks spanning simulation and real world environments. Moreover, training policies based on data filtered by our method leads to a 5-10% improvement in RoboMimic and better performance on real ALOHA and Franka setups.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-12T18:23:23Z</published>
+    <arxiv:comment>Videos and code at https://jhejna.github.io/demonstration-info. Published at RSS 2025</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Joey Hejna</name>
+    </author>
+    <author>
+      <name>Suvir Mirchandani</name>
+    </author>
+    <author>
+      <name>Ashwin Balakrishna</name>
+    </author>
+    <author>
+      <name>Annie Xie</name>
+    </author>
+    <author>
+      <name>Ayzaan Wahid</name>
+    </author>
+    <author>
+      <name>Jonathan Tompson</name>
+    </author>
+    <author>
+      <name>Pannag Sanketi</name>
+    </author>
+    <author>
+      <name>Dhruv Shah</name>
+    </author>
+    <author>
+      <name>Coline Devin</name>
+    </author>
+    <author>
+      <name>Dorsa Sadigh</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2412.09624v4</id>
+    <title>GenEx: Generating an Explorable World</title>
+    <updated>2025-01-20T16:51:42Z</updated>
+    <link href="https://arxiv.org/abs/2412.09624v4" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2412.09624v4" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Understanding, navigating, and exploring the 3D physical real world has long been a central challenge in the development of artificial intelligence. In this work, we take a step toward this goal by introducing GenEx, a system capable of planning complex embodied world exploration, guided by its generative imagination that forms priors (expectations) about the surrounding environments. GenEx generates an entire 3D-consistent imaginative environment from as little as a single RGB image, bringing it to life through panoramic video streams. Leveraging scalable 3D world data curated from Unreal Engine, our generative model is rounded in the physical world. It captures a continuous 360-degree environment with little effort, offering a boundless landscape for AI agents to explore and interact with. GenEx achieves high-quality world generation, robust loop consistency over long trajectories, and demonstrates strong 3D capabilities such as consistency and active 3D mapping. Powered by generative imagination of the world, GPT-assisted agents are equipped to perform complex embodied tasks, including both goal-agnostic exploration and goal-driven navigation. These agents utilize predictive expectation regarding unseen parts of the physical world to refine their beliefs, simulate different outcomes based on potential decisions, and make more informed choices. In summary, we demonstrate that GenEx provides a transformative platform for advancing embodied AI in imaginative spaces and brings potential for extending these capabilities to real-world exploration.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-12-12T18:59:57Z</published>
+    <arxiv:comment>Website: GenEx.world</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Taiming Lu</name>
+    </author>
+    <author>
+      <name>Tianmin Shu</name>
+    </author>
+    <author>
+      <name>Junfei Xiao</name>
+    </author>
+    <author>
+      <name>Luoxin Ye</name>
+    </author>
+    <author>
+      <name>Jiahao Wang</name>
+    </author>
+    <author>
+      <name>Cheng Peng</name>
+    </author>
+    <author>
+      <name>Chen Wei</name>
+    </author>
+    <author>
+      <name>Daniel Khashabi</name>
+    </author>
+    <author>
+      <name>Rama Chellappa</name>
+    </author>
+    <author>
+      <name>Alan Yuille</name>
+    </author>
+    <author>
+      <name>Jieneng Chen</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2408.14037v1</id>
+    <title>Re-Mix: Optimizing Data Mixtures for Large Scale Imitation Learning</title>
+    <updated>2024-08-26T06:14:25Z</updated>
+    <link href="https://arxiv.org/abs/2408.14037v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2408.14037v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Increasingly large imitation learning datasets are being collected with the goal of training foundation models for robotics. However, despite the fact that data selection has been of utmost importance in vision and natural language processing, little work in robotics has questioned what data such models should actually be trained on. In this work we investigate how to weigh different subsets or ``domains'' of robotics datasets for robot foundation model pre-training. Concrete, we use distributionally robust optimization (DRO) to maximize worst-case performance across all possible downstream domains. Our method, Re-Mix, addresses the wide range of challenges that arise when applying DRO to robotics datasets including variability in action spaces and dynamics across different datasets. Re-Mix employs early stopping, action normalization, and discretization to counteract these issues. Through extensive experimentation on the largest open-source robot manipulation dataset, the Open X-Embodiment dataset, we demonstrate that data curation can have an outsized impact on downstream performance. Specifically, domain weights learned by Re-Mix outperform uniform weights by 38\% on average and outperform human-selected weights by 32\% on datasets used to train existing generalist robot policies, specifically the RT-X models.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-08-26T06:14:25Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Joey Hejna</name>
+    </author>
+    <author>
+      <name>Chethan Bhateja</name>
+    </author>
+    <author>
+      <name>Yichen Jiang</name>
+    </author>
+    <author>
+      <name>Karl Pertsch</name>
+    </author>
+    <author>
+      <name>Dorsa Sadigh</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2406.15349v2</id>
+    <title>NAVSIM: Data-Driven Non-Reactive Autonomous Vehicle Simulation and Benchmarking</title>
+    <updated>2024-10-31T17:58:34Z</updated>
+    <link href="https://arxiv.org/abs/2406.15349v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2406.15349v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Benchmarking vision-based driving policies is challenging. On one hand, open-loop evaluation with real data is easy, but these results do not reflect closed-loop performance. On the other, closed-loop evaluation is possible in simulation, but is hard to scale due to its significant computational demands. Further, the simulators available today exhibit a large domain gap to real data. This has resulted in an inability to draw clear conclusions from the rapidly growing body of research on end-to-end autonomous driving. In this paper, we present NAVSIM, a middle ground between these evaluation paradigms, where we use large datasets in combination with a non-reactive simulator to enable large-scale real-world benchmarking. Specifically, we gather simulation-based metrics, such as progress and time to collision, by unrolling bird's eye view abstractions of the test scenes for a short simulation horizon. Our simulation is non-reactive, i.e., the evaluated policy and environment do not influence each other. As we demonstrate empirically, this decoupling allows open-loop metric computation while being better aligned with closed-loop evaluations than traditional displacement errors. NAVSIM enabled a new competition held at CVPR 2024, where 143 teams submitted 463 entries, resulting in several new insights. On a large set of challenging scenarios, we observe that simple methods with moderate compute requirements such as TransFuser can match recent large-scale end-to-end driving architectures such as UniAD. Our modular framework can potentially be extended with new datasets, data curation strategies, and metrics, and will be continually maintained to host future challenges. Our code is available at https://github.com/autonomousvision/navsim.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-06-21T17:59:02Z</published>
+    <arxiv:comment>NeurIPS 2024 Datasets and Benchmarks</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Daniel Dauner</name>
+    </author>
+    <author>
+      <name>Marcel Hallgarten</name>
+    </author>
+    <author>
+      <name>Tianyu Li</name>
+    </author>
+    <author>
+      <name>Xinshuo Weng</name>
+    </author>
+    <author>
+      <name>Zhiyu Huang</name>
+    </author>
+    <author>
+      <name>Zetong Yang</name>
+    </author>
+    <author>
+      <name>Hongyang Li</name>
+    </author>
+    <author>
+      <name>Igor Gilitschenski</name>
+    </author>
+    <author>
+      <name>Boris Ivanovic</name>
+    </author>
+    <author>
+      <name>Marco Pavone</name>
+    </author>
+    <author>
+      <name>Andreas Geiger</name>
+    </author>
+    <author>
+      <name>Kashyap Chitta</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2405.09049v2</id>
+    <title>Perception Without Vision for Trajectory Prediction: Ego Vehicle Dynamics as Scene Representation for Efficient Active Learning in Autonomous Driving</title>
+    <updated>2024-05-20T10:52:46Z</updated>
+    <link href="https://arxiv.org/abs/2405.09049v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2405.09049v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This study investigates the use of trajectory and dynamic state information for efficient data curation in autonomous driving machine learning tasks. We propose methods for clustering trajectory-states and sampling strategies in an active learning framework, aiming to reduce annotation and data costs while maintaining model performance. Our approach leverages trajectory information to guide data selection, promoting diversity in the training data. We demonstrate the effectiveness of our methods on the trajectory prediction task using the nuScenes dataset, showing consistent performance gains over random sampling across different data pool sizes, and even reaching sub-baseline displacement errors at just 50% of the data cost. Our results suggest that sampling typical data initially helps overcome the ''cold start problem,'' while introducing novelty becomes more beneficial as the training pool size increases. By integrating trajectory-state-informed active learning, we demonstrate that more efficient and robust autonomous driving systems are possible and practical using low-cost data curation strategies.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-05-15T02:54:11Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Ross Greer</name>
+    </author>
+    <author>
+      <name>Mohan Trivedi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2404.12539v3</id>
+    <title>Enabling Stateful Behaviors for Diffusion-based Policy Learning</title>
+    <updated>2024-07-22T20:17:04Z</updated>
+    <link href="https://arxiv.org/abs/2404.12539v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2404.12539v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>While imitation learning provides a simple and effective framework for policy learning, acquiring consistent actions during robot execution remains a challenging task. Existing approaches primarily focus on either modifying the action representation at data curation stage or altering the model itself, both of which do not fully address the scalability of consistent action generation. To overcome this limitation, we introduce the Diff-Control policy, which utilizes a diffusion-based model to learn the action representation from a state-space modeling viewpoint. We demonstrate that we can reduce diffusion-based policies' uncertainty by making it stateful through a Bayesian formulation facilitated by ControlNet, leading to improved robustness and success rates. Our experimental results demonstrate the significance of incorporating action statefulness in policy learning, where Diff-Control shows improved performance across various tasks. Specifically, Diff-Control achieves an average success rate of 72% and 84% on stateful and dynamic tasks, respectively. Project page: https://github.com/ir-lab/Diff-Control</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-04-18T23:12:49Z</published>
+    <arxiv:comment>ICRA 2024 Workshop - Back to the Future: Robot Learning Going Probabilistic</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Xiao Liu</name>
+    </author>
+    <author>
+      <name>Fabian Weigend</name>
+    </author>
+    <author>
+      <name>Yifan Zhou</name>
+    </author>
+    <author>
+      <name>Heni Ben Amor</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2310.11239v2</id>
+    <title>LiDAR-based 4D Occupancy Completion and Forecasting</title>
+    <updated>2024-09-10T13:28:58Z</updated>
+    <link href="https://arxiv.org/abs/2310.11239v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2310.11239v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Scene completion and forecasting are two popular perception problems in research for mobile agents like autonomous vehicles. Existing approaches treat the two problems in isolation, resulting in a separate perception of the two aspects. In this paper, we introduce a novel LiDAR perception task of Occupancy Completion and Forecasting (OCF) in the context of autonomous driving to unify these aspects into a cohesive framework. This task requires new algorithms to address three challenges altogether: (1) sparse-to-dense reconstruction, (2) partial-to-complete hallucination, and (3) 3D-to-4D prediction. To enable supervision and evaluation, we curate a large-scale dataset termed OCFBench from public autonomous driving datasets. We analyze the performance of closely related existing baseline models and our own ones on our dataset. We envision that this research will inspire and call for further investigation in this evolving and crucial area of 4D perception. Our code for data curation and baseline implementation is available at https://github.com/ai4ce/Occ4cast.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-10-17T13:08:24Z</published>
+    <arxiv:comment>IROS 2024</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Xinhao Liu</name>
+    </author>
+    <author>
+      <name>Moonjun Gong</name>
+    </author>
+    <author>
+      <name>Qi Fang</name>
+    </author>
+    <author>
+      <name>Haoyu Xie</name>
+    </author>
+    <author>
+      <name>Yiming Li</name>
+    </author>
+    <author>
+      <name>Hang Zhao</name>
+    </author>
+    <author>
+      <name>Chen Feng</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2306.02437v1</id>
+    <title>Data Quality in Imitation Learning</title>
+    <updated>2023-06-04T18:48:32Z</updated>
+    <link href="https://arxiv.org/abs/2306.02437v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2306.02437v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In supervised learning, the question of data quality and curation has been over-shadowed in recent years by increasingly more powerful and expressive models that can ingest internet-scale data. However, in offline learning for robotics, we simply lack internet scale data, and so high quality datasets are a necessity. This is especially true in imitation learning (IL), a sample efficient paradigm for robot learning using expert demonstrations. Policies learned through IL suffer from state distribution shift at test time due to compounding errors in action prediction, which leads to unseen states that the policy cannot recover from. Instead of designing new algorithms to address distribution shift, an alternative perspective is to develop new ways of assessing and curating datasets. There is growing evidence that the same IL algorithms can have substantially different performance across different datasets. This calls for a formalism for defining metrics of "data quality" that can further be leveraged for data curation. In this work, we take the first step toward formalizing data quality for imitation learning through the lens of distribution shift: a high quality dataset encourages the policy to stay in distribution at test time. We propose two fundamental properties that shape the quality of a dataset: i) action divergence: the mismatch between the expert and learned policy at certain states; and ii) transition diversity: the noise present in the system for a given state and action. We investigate the combined effect of these two key properties in imitation learning theoretically, and we empirically analyze models trained on a variety of different data sources. We show that state diversity is not always beneficial, and we demonstrate how action divergence and transition diversity interact in practice.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-06-04T18:48:32Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Suneel Belkhale</name>
+    </author>
+    <author>
+      <name>Yuchen Cui</name>
+    </author>
+    <author>
+      <name>Dorsa Sadigh</name>
+    </author>
+  </entry>
+</feed>

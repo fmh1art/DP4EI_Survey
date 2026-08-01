@@ -1,0 +1,141 @@
+%!TEX root = ../main.tex
+\section{Problem Formulation and Taxonomy}
+\label{sec:problem}
+
+\subsection{From Records to a Trainable Distribution}
+
+Let a raw episode be
+\begin{equation}
+e=(m,\,o_{1:T},\,s_{1:T},\,a_{1:T},\,\ell,\,y),
+\end{equation}
+where $m$ stores provenance, embodiment, sensor, calibration, operator, and timing
+metadata; $o$, $s$, and $a$ are observations, states, and actions; $\ell$ denotes
+available language or task context; and $y$ contains outcomes or interventions.
+Fields may be missing, weakly synchronized, differently parameterized, or
+incorrect.  Human video may lack $s$ and robot $a$ entirely, while generated data
+may contain all fields but violate geometry or dynamics.
+
+A preparation pipeline is a composition of operators
+\begin{equation}
+\pipeline_{c}=p_K\circ\cdots\circ p_2\circ p_1,
+\qquad
+\pipeline_c(\rawdata)=\traindata,
+\end{equation}
+conditioned on context $c=(f,b,\tau,k,B)$: learner family $f$, target embodiment
+$b$, task/deployment distribution $\tau$, training stage $k$, and resource budget
+$B$.  Operators need not preserve episode boundaries; they may emit segments,
+transitions, counterexamples, paired modalities, or synthetic branches.  Each
+prepared unit should retain
+\begin{equation}
+z_j=(x_j,t_j,w_j,r_j,g_j,v_j),
+\end{equation}
+with input $x_j$, target $t_j$, sampling weight $w_j$, training role $r_j$, lineage
+$g_j$, and version $v_j$.  Roles distinguish, for example, broad pretraining,
+embodiment alignment, task adaptation, recovery, negative/safety supervision, and
+verifier calibration.  Lineage makes every label, coordinate transform, filter,
+and generator traceable to the raw record.
+
+The desired pipeline maximizes deployment utility rather than a standalone
+cleanliness score:
+\begin{equation}
+\begin{aligned}
+\theta_{\pipeline}&=\operatorname{Train}
+(f,\pipeline_c(\rawdata),B_{\mathrm{train}}),\\
+\pipeline^{*}&=\underset{\pipeline\in\Pi}{\arg\max}\;
+\mathbb{E}_{\tau}[\utility(\theta_{\pipeline})]\\[-0.2em]
+&\quad-\lambda C_{\mathrm{prep}}-\mu C_{\mathrm{train}}-\nu R.
+\end{aligned}
+\label{eq:prep-objective}
+\end{equation}
+where $C_{\mathrm{prep}}$ includes human, model, simulator, storage, and robot costs,
+and $R$ covers leakage, safety, bias, and feedback-instability risk.  This
+formulation exposes a common evaluation mistake: keeping the number of epochs
+fixed after filtering changes both the number of optimizer steps and the number
+of times each retained example is observed.  The claimed intervention is then
+confounded with compute and resampling.
+
+\subsection{Quality Is a Conditional Vector}
+
+An episode has no policy-independent scalar ``quality.''  We instead represent
+observable properties as
+\begin{equation}
+\begin{aligned}
+\qualityvec(e)=[&q_{\mathrm{tech}},q_{\mathrm{semantic}},q_{\mathrm{control}},
+q_{\mathrm{physical}},\\
+&q_{\mathrm{coverage}},q_{\mathrm{alignment}},q_{\mathrm{safety}}].
+\end{aligned}
+\end{equation}
+and reserve \emph{value} for its conditional marginal contribution:
+\begin{equation}
+V(e\mid c,\mathcal{D})=
+\mathbb{E}[\utility(\theta_{\mathcal{D}\cup e})-
+\utility(\theta_{\mathcal{D}})].
+\label{eq:conditional-value}
+\end{equation}
+The value depends on the surrounding mixture because an individually valid
+episode can be redundant, restore missing coverage, or conflict with an action
+convention.  It also depends on the learner: RoboMimic's controlled study showed
+strong interactions among demonstration quality, observation, algorithm, and
+training choices~\cite{mandlekar2021what_2108_03298}; formal work identifies
+action divergence and transition diversity as coupled determinants of imitation
+performance~\cite{belkhale2023data_2306_02437}.  Equations~\ref{eq:prep-objective}
+and~\ref{eq:conditional-value} are conceptual---exact marginal retraining is
+usually infeasible---but they define what proxy metrics are trying to estimate.
+
+\input{figures/tex/data_prep_lifecycle}
+
+\subsection{Four Orthogonal Taxonomy Axes}
+
+Table~\ref{tab:taxonomy-axes} summarizes the taxonomy.  Its axes are orthogonal
+questions, not a partition of papers.
+
+\input{tables/taxonomy_axes}
+
+\textbf{Operation.}  We distinguish acquisition/task design, technical
+validation and repair, representation/alignment, segmentation/relabeling,
+scoring/filtering, weighting/routing, augmentation/synthesis, and packaging or
+versioning.  Filtering changes membership; weighting changes sampling
+probability; routing changes the training stage or objective.  Treating all three
+as ``curation'' hides materially different interventions.
+
+\textbf{Decision signal.}  Signals progress from inexpensive rules and human
+labels through pretrained models and representation statistics to learner-aware
+loss, influence, simulator feedback, and real execution.  This is not a simple
+quality hierarchy.  Later signals are more target-relevant but costlier and can
+be noisier; a cheap checksum is the right detector for a corrupted file, while a
+real rollout is excessive.  A mature pipeline cascades signals, reserving costly
+evidence for ambiguous or high-impact decisions.
+
+\textbf{Utility evidence.}  Intrinsic metrics show that an intended property
+changed.  Proxy metrics show agreement with a verifier or estimator.  Controlled
+retraining tests learning utility.  Deployment tests whether utility survives
+physical and distribution shift.  These answer different questions and should
+not be merged into a single score.
+
+\textbf{Lifecycle.}  Offline preparation freezes $\pipeline$ before training.
+Training-time methods update sampling from losses or progress; post-training
+methods mine failures; continual methods change acquisition and verification
+after deployment.  The lifecycle axis separates a static synthetic dataset from
+a data engine that uses policy failures to decide what to generate next, even if
+both call their operation ``augmentation.''
+
+\subsection{Lifecycle Backbone and Secondary Attributes}
+
+For navigation, we arrange operations along eight recurring stages: (1) source
+and task design; (2) ingestion and technical quality control; (3) standardization
+and cross-embodiment alignment; (4) segmentation and semantic enrichment; (5)
+scoring, filtering, weighting, and routing; (6) augmentation and synthesis; (7)
+layered validation; and (8) training/deployment feedback.  The order is not
+strict.  A failed generated trajectory can return to segmentation; deployment
+can revise source design; and the same verifier may act before and after training.
+
+We additionally code the transformed object (video/frame, state/sensor, action,
+language, episode/segment/transition, cross-modal link, or task/source
+distribution) and objective (correctness, diversity, coverage, difficulty,
+executability, physical consistency, generalization, efficiency, stability, or
+safety).  These attributes reveal underexplored combinations.  Current work is
+dense in offline episode filtering guided by representations and in visual
+synthesis checked by semantic similarity.  It is sparse in transition-level
+cross-embodiment value, deployment-calibrated validation of generated contact,
+and cost-aware routing of failures among discard, relabel, recovery training, and
+new acquisition.  The gaps motivate Section~\ref{sec:agenda}.

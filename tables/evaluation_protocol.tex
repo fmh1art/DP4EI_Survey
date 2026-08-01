@@ -1,0 +1,20 @@
+\begin{table*}[t]
+\centering
+\caption{Minimum reporting protocol for a data-preparation intervention.}
+\label{tab:evaluation-protocol}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\textwidth}{@{}p{2.6cm}X X@{}}
+\toprule
+Component & Required control & Failure prevented \\
+\midrule
+Data accounting & Raw and retained episodes, transitions, duration, source distribution, provenance, and leakage audit & A smaller but easier subset being presented as intrinsically superior \\
+Training budget & Same learner, initialization policy, updates, sampling opportunities, augmentations, and tuning allowance & Gains caused by extra optimization rather than preparation \\
+Intrinsic / proxy & Define defect labels, calibration set, uncertainty, confounders, and operating threshold & Treating detector AUROC or verifier score as policy utility \\
+Downstream utility & Multiple seeds; uncertainty intervals; both in-distribution and compositional/shifted tasks & Ranking methods from noisy point estimates \\
+Closed-loop evidence & Simulator and real-robot results reported separately, with interventions and failures & Mixing evidence of different physical validity \\
+Cost and risk & Human time, model calls, training/rollout compute, robot hours, discarded data, and safety events & Claiming data efficiency while externalizing preparation cost \\
+Robustness & Sensitivity to contamination, episode length, policy family, target set, and data budget & Conclusions tied to one defect, learner, or mixture \\
+\bottomrule
+\end{tabularx}
+\end{table*}

@@ -1,0 +1,118 @@
+%!TEX root = ../main.tex
+\section{Introduction}
+\label{sec:introduction}
+
+Robot learning is entering a data-rich but not yet data-coherent regime.
+Open X-Embodiment aggregates heterogeneous datasets into a common interface;
+DROID distributes real-world collection across institutions; UMI moves
+demonstration away from a continuously occupied robot; and recent generalist
+policies train on mixtures spanning embodiments, tasks, and supervision
+types~\cite{collaboration2023open_2310_08864,khazatsky2024droid_2403_12945,chi2024universal_2402_10329,kim2024openvla_2406_09246,team2024octo_2405_12213}.
+This expansion is often summarized by episode counts or hours.  Neither is a
+sufficient statistic.  A million records can contain incompatible coordinate
+frames, control modes, frequencies, language granularity, success criteria,
+operator styles, and physical assumptions.  Even internally valid records can be
+redundant for one learner, harmful to another, or useful only at a particular
+training stage.
+
+The missing object of study is the transformation between a raw interaction and
+the distribution actually sampled by an optimizer.  In this survey, \emph{data
+preparation for embodied intelligence} denotes the methods that design or import
+data sources and subsequently validate, repair, align, segment, annotate, score,
+filter, weight, route, augment, synthesize, verify, package, and iteratively evolve
+their records.  Its output is not merely a cleaned dataset.  It is a versioned
+training distribution conditioned on a target learner, embodiment, task
+distribution, training stage, deployment environment, and budget.
+
+This boundary is deliberately narrower than ``data for embodied AI.''  Our core
+scope is manipulation and generalist vision--language--action (VLA) learning.  We
+include collection when the acquisition design changes compatibility, coverage,
+or feedback signals; human video and simulation when they are transformed into
+robot-learning supervision; and model/system reports when they disclose a data
+operation or recipe.  We do not systematically review robot hardware, policy
+architectures, generic simulators, navigation, autonomous driving, or benchmarks
+that only evaluate a final model.  These topics enter only when they expose a
+general data-preparation mechanism.
+
+\subsection{Why a Separate Survey Is Needed}
+
+Adjacent reviews provide valuable maps, but their primary units differ from ours
+(Table~\ref{tab:adjacent-surveys}).  The Data Pyramid is source-centric; a recent
+VLA survey catalogs datasets, benchmarks, and data engines; and the human-video
+survey organizes transfer mechanisms~\cite{ye2026data_2607_24744,wang2026vision_2604_23001,ma2026robot_2604_27621}.
+They do not center the decision problem common to all sources: \emph{which
+transformation should be applied, using which signal, and what evidence shows
+that it increased training value?}  That decision is becoming a distinct
+technical layer for three reasons.
+
+First, data operations increasingly contain learnable components.  Mixture
+optimization, mutual-information estimators, datamodels, progress estimators, and
+influence functions replace or augment fixed rules
+~\cite{hejna2024re_2408_14037,hejna2025robot_2502_08623,dass2025datamil_2505_09603,zhang2025scizor_2505_22626,xu2026athena_2606_16208}.
+Second, foundation models can label or generate data at scale, shifting the
+bottleneck from production to calibration and verification
+~\cite{blank2024scaling_2410_17772,mandlekar2023mimicgen_2310_17596,li2026xiaomi_2607_11643}.
+Third, self-improving systems turn deployment outcomes into future collection and
+post-training data, so preparation becomes a feedback policy rather than a
+one-shot preprocessing script~\cite{bousmalis2023robocat_2306_11706,ahn2024autort_2401_12963,chen2025curating_2503_03707}.
+
+\input{tables/adjacent_surveys}
+
+\subsection{Central Thesis}
+
+Our central thesis is that embodied data quality is a \emph{conditional,
+multidimensional utility}, not an intrinsic scalar.  Consider a failed trajectory.
+It may be harmful if its action labels are silently treated as expert targets,
+valuable if its successful prefix or recovery is segmented, and essential if it
+is the only observation of a deployment failure.  Conversely, an apparently
+smooth successful trajectory can add little if it duplicates states already
+covered or encodes an action convention incompatible with the target robot.
+Formal analyses of imitation data already show that state diversity, action
+divergence, and transition stochasticity interact rather than admit a universal
+ordering~\cite{belkhale2023data_2306_02437}.  Empirical curation work reinforces
+the point: removing half of a dataset can help in one setting but lose important
+coverage in another~\cite{hejna2025robot_2502_08623,bedi2026what_2606_10229}.
+
+This perspective leads to four orthogonal axes.  The \emph{operation axis} asks
+what changes in the record or distribution.  The \emph{signal axis} asks what
+evidence guides that change.  The \emph{utility-evidence axis} asks whether the
+claim is supported by an intrinsic diagnostic, a proxy, controlled policy
+training, or deployment.  The \emph{lifecycle axis} asks whether a decision is
+static, training-time, post-training, or continually revised.  Source type,
+modality, object/granularity, and objective are recorded as additional attributes,
+not used as mutually exclusive bins.
+
+\subsection{Contributions and Reader's Guide}
+
+This survey makes six visible contributions.
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{A focused problem definition.}  We define preparation as the
+    transformation of raw, heterogeneous interactions into target-conditional,
+    trainable distributions, and separate it from data collection in general and
+    from policy architecture design.
+    \item \textbf{An auditable evidence map.}  We organize 204 papers and system
+    reports, distinguish reading depth and evidence source, publish the search
+    queries and structured manifests, and reserve abstract-only records for
+    horizon scanning.
+    \item \textbf{An explanatory taxonomy.}  Four orthogonal axes---operation,
+    signal, utility evidence, and lifecycle---explain both method equivalence and
+    differences hidden by source-based categories.
+    \item \textbf{Comparable technical analysis.}  We compare methods by their
+    intervention, granularity, assumptions, human/compute cost, target dependence,
+    validation, generalization, reproducibility, and failure modes rather than by
+    incomparable headline numbers.
+    \item \textbf{Cross-paper synthesis.}  We identify recurring principles,
+    reconcile apparent conflicts about filtering, diversity, and failed data, and
+    describe the transition from rules to model-based signals and closed-loop
+    evolution.
+    \item \textbf{A falsifiable research agenda.}  We propose concrete benchmarks
+    and the \evodataprep framework for learning cost-aware preparation policies
+    with calibrated verification, safety constraints, and rollback.
+\end{itemize}
+
+Section~\ref{sec:method} describes the review protocol.  Section~\ref{sec:problem}
+formalizes the problem and taxonomy.  Sections~\ref{sec:acquisition}--
+\ref{sec:evolution} review the technical lifecycle.  Section~\ref{sec:evaluation}
+examines evidence and cross-cutting conclusions, before
+Section~\ref{sec:agenda} develops the research agenda.

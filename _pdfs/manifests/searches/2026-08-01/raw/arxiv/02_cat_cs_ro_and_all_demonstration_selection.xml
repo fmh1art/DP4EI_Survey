@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api//Bw2h3XrjgVK4boIY0+pWEsVt1E</id>
+  <title>arXiv Query: search_query=cat:cs.RO AND all:"demonstration selection"&amp;id_list=&amp;start=0&amp;max_results=300</title>
+  <updated>2026-08-01T16:58:01Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:cs.RO+AND+all:%22demonstration+selection%22&amp;start=0&amp;max_results=300&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>300</opensearch:itemsPerPage>
+  <opensearch:totalResults>2</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2507.09371v2</id>
+    <title>Constrained Style Learning from Imperfect Demonstrations under Task Optimality</title>
+    <updated>2025-09-23T08:40:44Z</updated>
+    <link href="https://arxiv.org/abs/2507.09371v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2507.09371v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Learning from demonstration has proven effective in robotics for acquiring natural behaviors, such as stylistic motions and lifelike agility, particularly when explicitly defining style-oriented reward functions is challenging. Synthesizing stylistic motions for real-world tasks usually requires balancing task performance and imitation quality. Existing methods generally depend on expert demonstrations closely aligned with task objectives. However, practical demonstrations are often incomplete or unrealistic, causing current methods to boost style at the expense of task performance. To address this issue, we propose formulating the problem as a constrained Markov Decision Process (CMDP). Specifically, we optimize a style-imitation objective with constraints to maintain near-optimal task performance. We introduce an adaptively adjustable Lagrangian multiplier to guide the agent to imitate demonstrations selectively, capturing stylistic nuances without compromising task performance. We validate our approach across multiple robotic platforms and tasks, demonstrating both robust task performance and high-fidelity style learning. On ANYmal-D hardware we show a 14.5% drop in mechanical energy and a more agile gait pattern, showcasing real-world benefits.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-07-12T18:35:41Z</published>
+    <arxiv:comment>This paper has been accepted to CoRL 2025</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Kehan Wen</name>
+    </author>
+    <author>
+      <name>Chenhao Li</name>
+    </author>
+    <author>
+      <name>Junzhe He</name>
+    </author>
+    <author>
+      <name>Marco Hutter</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2410.05715v2</id>
+    <title>Demonstration Based Explainable AI for Learning from Demonstration Methods</title>
+    <updated>2024-10-10T04:20:56Z</updated>
+    <link href="https://arxiv.org/abs/2410.05715v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2410.05715v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Learning from Demonstration (LfD) is a powerful type of machine learning that can allow novices to teach and program robots to complete various tasks. However, the learning process for these systems may still be difficult for novices to interpret and understand, making effective teaching challenging. Explainable artificial intelligence (XAI) aims to address this challenge by explaining a system to the user. In this work, we investigate XAI within LfD by implementing an adaptive explanatory feedback system on an inverse reinforcement learning (IRL) algorithm. The feedback is implemented by demonstrating selected learnt trajectories to users. The system adapts to user teaching by categorizing and then selectively sampling trajectories shown to a user, to show a representative sample of both successful and unsuccessful trajectories. The system was evaluated through a user study with 26 participants teaching a robot a navigation task. The results of the user study demonstrated that the proposed explanatory feedback system can improve robot performance, teaching efficiency and user understanding of the robot.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-10-08T06:21:35Z</published>
+    <arxiv:comment>8 Pages, 9 Figures, 2 Tables</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Morris Gu</name>
+    </author>
+    <author>
+      <name>Elizabeth Croft</name>
+    </author>
+    <author>
+      <name>Dana Kulic</name>
+    </author>
+  </entry>
+</feed>

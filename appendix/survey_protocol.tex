@@ -1,0 +1,76 @@
+%!TEX root = ../main.tex
+\section{Reproducible Review Protocol}
+\label{app:protocol}
+
+\subsection{Database Queries}
+
+The archived DBLP discovery strings are the conjunction of a robotics context
+with each of the following phrases:
+\begin{quote}\small
+robot data curation; robot demonstration selection; robot data quality; robot
+data filtering; robot data mixing; robot trajectory annotation segmentation;
+robot instruction relabeling; robot demonstration augmentation; robot synthetic
+demonstration generation; robot world model data generation; robot
+self-improvement data; robot online post-training; robot autonomous data
+collection; cross-embodiment action alignment; vision-language-action data
+engine; embodied data preparation.
+\end{quote}
+
+The arXiv queries restrict to \texttt{cat:cs.RO} and combine it with:
+\begin{quote}\small
+\texttt{"data curation"}; \texttt{"demonstration selection"};
+\texttt{"data quality"}; \texttt{"data filtering"};
+\texttt{"data mixing"}; \texttt{"automatic annotation" OR relabeling OR
+segmentation}; \texttt{"data augmentation" OR "synthetic demonstrations"};
+\texttt{"world model" AND "data generation"};
+\texttt{"self-improvement" OR "online post-training"};
+\texttt{"autonomous data collection"};
+\texttt{"cross-embodiment" OR "action alignment"}; and
+\texttt{"data engine"}.
+\end{quote}
+
+The artifact contains \texttt{scripts/search\_literature.py}, dated raw XML/JSON
+responses, query summaries (including transient endpoint errors rather than
+hiding them), targeted retry files, and both initial and resolved deduplicated
+discovery CSVs.  The resolved run contains 1,160 title-deduplicated candidates;
+all eight initial query failures were recovered, without overwriting the failed
+first-pass log.  Search-engine output is a discovery aid, not an automatic
+inclusion decision.  It is supplemented with backward/forward citations and
+checks of major labs, datasets, benchmarks, model reports, and official data
+documentation.
+
+\subsection{Inclusion, Exclusion, and Version Rules}
+
+\textbf{Include} a primary work if it: (i) changes the content, representation,
+membership, weight, role, or acquisition of embodied training data; (ii) proposes
+or evaluates a signal for those decisions; or (iii) reports enough of a system's
+data recipe to recover a preparation mechanism.  Human video, simulation, and
+generated data are included only when connected to embodied policy training.
+
+\textbf{Exclude} works that only introduce a policy architecture, use an existing
+dataset without analyzing its preparation, present a generic simulator without a
+data operation, or concern an out-of-scope domain without a transferable
+mechanism.  Secondary summaries are not used to support technical claims.
+
+ArXiv and subsequently published versions are one record.  The latest full text
+within the cutoff is read; verified published metadata is preferred for citation.
+Technical-report versions are date-stamped because their scale and recipes can
+change.  Abstract-index records are not used for technical claims until promoted
+through primary-text reading.
+
+\subsection{Coding Form}
+
+Each core record is coded with the following fields:
+\begin{quote}\small
+problem; original terminology; source; modality; preparation operation;
+transformed object and granularity; decision signal; optimization objective;
+human involvement; data and compute scale; intrinsic metric; proxy metric;
+downstream simulation and real-robot evidence; cross-task/environment/learner/
+embodiment generalization; assumptions; limitations and negative results;
+data/code/model availability; publication/evidence type; provenance; and reading
+depth.
+\end{quote}
+
+The companion Chinese notes retain the paper-level synthesis used to produce
+these codes.  Quantitative results remain attributed to each paper's own setting;
+no cross-paper ranking is computed when protocols differ.
