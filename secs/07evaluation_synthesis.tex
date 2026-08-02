@@ -25,8 +25,7 @@ Real execution tests physical validity but often permits only a few trials.
 The two should be reported separately, with means, uncertainty, and trial counts.
 Evidence is stronger when an effect persists across learners, data budgets, embodiments, and held-out task factors.
 
-\input{figures/tex/evidence_hierarchy_placeholder}
-\input{tables/evaluation_protocol}
+\input{figures/tex/evidence_hierarchy}
 
 \subsection{Controlling the Intervention}
 
@@ -47,6 +46,10 @@ Near-identical scene configurations can occur in different episodes.
 Generated variants can cross a split, a VLM labeler may have seen benchmark images, and target demonstrations used for influence can overlap evaluation objects.
 Splits should occur before augmentation and at the highest shared grouping available, such as task instance, object, scene, collection session, or operator.
 Lineage-based duplicate checks should then verify the separation.
+
+Table~\ref{tab:evaluation-protocol} summarizes the controls needed to interpret an intervention without conflating preparation, optimization, and evaluation changes.
+
+\input{tables/evaluation_protocol}
 
 \subsection{Cost, Openness, and Reproducibility}
 

@@ -1,37 +1,38 @@
 \begin{table*}[t]
 \centering
-\caption{Lessons from language and multimodal data engineering and the additional control required for embodied data.}
+\caption{Language-model data mechanisms and their embodied adaptations.}
 \label{tab:llm-lessons}
 \scriptsize
 \setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
 \begin{tabularx}{\textwidth}{@{}p{3.1cm}p{4.1cm}p{4.6cm}X@{}}
 \toprule
 Mechanism & Transferable lesson & Embodied adaptation & Additional control \\
 \midrule
 Fixed-pool competition~\cite{li2024datacomp_2406_11794,gadre2023datacomp_2304_14108}
-& Hold the candidate pool, learner, compute, and evaluation fixed.
-& Submit unit membership, weights, roles, lineage, and preparation cost.
-& Separate simulation from blinded real-robot evaluation. \\
+& Fix candidate pool, learner, compute, and evaluation
+& Report units, weights, roles, lineage, and preparation cost
+& Separate simulation and blinded robot evaluation \\
 Auditable filtering~\cite{penedo2023refinedweb_2306_01116,penedo2024fineweb_2406_17557}
-& Version each gate and deduplicate before splitting.
-& Check technical validity, cross-modal alignment, and split leakage.
-& Preserve temporal order and contact differences between visually similar episodes. \\
+& Version every gate and deduplicate before splitting
+& Check validity, alignment, and lineage-based leakage
+& Preserve temporal order and contact differences \\
 Mixture learning~\cite{xie2023doremi_2305_10429,xie2023data_2302_03169}
-& Learn source weights against a declared target.
-& Use hierarchical weights and protect rare but important groups.
-& Test transfer from proxy learner or simulation to the target robot. \\
+& Learn source weights for a declared target
+& Use hierarchical weights and protect rare groups
+& Test proxy-to-learner and simulator-to-robot transfer \\
 Targeted selection~\cite{xia2024less_2402_04333,liu2023what_2312_15685}
-& Value depends on target, difficulty, and diversity.
-& Select complementary units for a declared learner and task.
-& Recalibrate after the policy changes the observed state distribution. \\
+& Condition value on target, difficulty, and diversity
+& Select complementary units for a learner and task
+& Recalibrate after policy-induced distribution shift \\
 Joint batch selection~\cite{evans2024data_2406_17711}
-& Example value depends on the surrounding batch.
-& Select coherent skill or failure--recovery groups.
-& Respect episode hierarchy and causal order. \\
+& Model value in the surrounding batch
+& Select coherent skill or failure--recovery groups
+& Respect episode hierarchy and causal order \\
 Self-judged iteration~\cite{yuan2024self_2401_10020,shumailov2024collapse}
-& Generation and judging can form a loop but may lose distribution tails.
-& Retain audited real data while iterating on generated supervision.
-& Use an independent verifier, mixture bounds, and rollback. \\
+& Audit recursive generation and distribution tails
+& Retain real data while iterating on generated supervision
+& Independent verifier, mixture bounds, and rollback \\
 \bottomrule
 \end{tabularx}
 \end{table*}

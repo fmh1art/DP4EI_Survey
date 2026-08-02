@@ -34,7 +34,7 @@ Sending the same unit to a different stage or objective is called \emph{routing}
 Provenance and version metadata are stored with the prepared dataset so that each unit can be traced back to its raw source and transformations.
 We call this trace the unit's \emph{lineage}.
 
-\input{figures/tex/data_unit_placeholder}
+\input{figures/tex/data_unit_transformation}
 
 The primary objective is to improve the trained policy, not to maximize the fraction of records that pass a filter.
 For a fixed learner $f$ and training budget $B$, let
@@ -84,16 +84,13 @@ RoboMimic shows that policy performance on human demonstrations changes substant
 Formal analysis identifies a related mechanism: action divergence and diversity in the observed transitions jointly affect imitation-learning error~\cite{belkhale2023data_2306_02437}.
 Together, these results argue against a learner-independent ranking of demonstrations.
 
-\input{figures/tex/data_prep_lifecycle}
-
 \subsection{Four Complementary Axes}
 
 The taxonomy separates four questions that are often collapsed into the word ``quality.''
 The axes are complementary descriptions of one method rather than four disjoint method families.
-Table~\ref{tab:taxonomy-axes} gives the compact definition, and Figure~\ref{fig:taxonomy-section-map} shows how the axes organize the paper.
+Figure~\ref{fig:taxonomy-section-map} gives their compact definition and shows how they organize the paper.
 
-\input{tables/taxonomy_axes}
-\input{figures/tex/taxonomy_section_map_placeholder}
+\input{figures/tex/taxonomy_overview}
 
 The \emph{operation axis} asks what changes in the data or in their use.
 At a high level, operations make raw records usable, turn usable records into training units, expand or validate those units, and update them after model feedback.

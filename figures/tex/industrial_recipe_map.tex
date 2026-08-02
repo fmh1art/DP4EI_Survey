@@ -1,0 +1,45 @@
+%!TEX root = ../../main.tex
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\scriptsize,
+  system/.style={draw=black!40, rounded corners=2pt, fill=surveylightgray,
+    text width=2.35cm, minimum height=10mm, align=center, font=\bfseries\scriptsize,
+    inner sep=2pt},
+  cell/.style={draw=black!25, rounded corners=2pt, text width=2.75cm,
+    minimum height=10mm, align=center, inner sep=2pt},
+  arrow/.style={-{Latex[length=1.5mm]}, draw=black!45},
+  colhead/.style={font=\bfseries\footnotesize, text=surveydark, align=center}
+]
+\node[colhead] at (-7.15,2.55) {System};
+\node[colhead] at (-4.25,2.55) {Source roles};
+\node[colhead] at (-1.25,2.55) {Alignment and checks};
+\node[colhead] at (1.75,2.55) {Training use};
+\node[colhead] at (4.75,2.55) {Feedback or validation};
+
+\foreach \idx/\y/\name/\src/\prep/\use/\feedback/\shade in {
+  1/1.75/{Qwen-RobotManip}/{robot, human, synthetic}/{state--action and cross-modal checks}/{representation, motion, behavior alignment}/{component ablations and data audit}/{surveylightblue},
+  2/0.65/{Qwen-RobotWorld}/{embodied and general video}/{clip normalization and action captions}/{staged world-model curriculum}/{model screening and human review}/{surveylightteal},
+  3/-0.45/{$\pi$ family}/{cross-robot, web, target, mixed quality}/{action normalization and metadata}/{pretrain, specialize, recover}/{rollout outcomes and RECAP}/{surveylightorange},
+  4/-1.55/{GR00T family}/{web, human, simulation, real}/{latent or inverse-dynamics actions}/{pyramid mixture and post-training}/{success checks and retention audits}/{surveylightrose},
+  5/-2.65/{Gemini Robotics}/{multiple embodiments and task-specific data}/{Motion Transfer}/{multi-embodiment train, then specialize}/{simulation iteration and real tests}/{surveylightblue}
+}{
+  \node[system, fill=\shade] (n\idx) at (-7.15,\y) {\name};
+  \node[cell, fill=\shade] (s\idx) at (-4.25,\y) {\src};
+  \node[cell, fill=\shade] (p\idx) at (-1.25,\y) {\prep};
+  \node[cell, fill=\shade] (u\idx) at (1.75,\y) {\use};
+  \node[cell, fill=\shade] (f\idx) at (4.75,\y) {\feedback};
+  \draw[arrow] (n\idx) -- (s\idx);
+  \draw[arrow] (s\idx) -- (p\idx);
+  \draw[arrow] (p\idx) -- (u\idx);
+  \draw[arrow] (u\idx) -- (f\idx);
+}
+\draw[-{Latex[length=1.8mm]}, thick, draw=surveyblue]
+  (-4.25,-3.45) -- node[below, align=center, text width=13.5cm,
+  font=\footnotesize, text=surveydark]
+  {shared recipe structure: assign source roles $\rightarrow$ align and verify $\rightarrow$ route by training stage $\rightarrow$ update from evidence}
+  (4.75,-3.45);
+\end{tikzpicture}
+\caption{Public industrial data recipes aligned by function rather than incomparable data volume or end-to-end score.}
+\label{fig:industrial-recipe-map}
+\end{figure*}

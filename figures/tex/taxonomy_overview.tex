@@ -1,0 +1,45 @@
+%!TEX root = ../../main.tex
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\footnotesize,
+  stage/.style={draw=surveyblue!80, rounded corners=2pt, fill=surveylightblue,
+    text width=3.45cm, minimum height=13mm, align=center, inner sep=3pt},
+  axis/.style={draw=black!45, rounded corners=2pt, fill=surveylightgray,
+    text width=2.55cm, minimum height=9mm, align=left, font=\bfseries\footnotesize,
+    inner sep=3pt},
+  lens/.style={draw=black!25, rounded corners=2pt, text width=3.25cm,
+    minimum height=9mm, align=center, inner sep=2pt},
+  arr/.style={-{Latex[length=1.8mm]}, thick, draw=surveyblue!80}
+]
+\node[font=\bfseries\small, text=surveydark, anchor=west] at (-8.25,2.35)
+  {Operation backbone: what changes?};
+\node[stage] (s1) at (-6.15,1.45) {Make records usable\\{\scriptsize source design, ingestion, alignment}\\\textbf{Section~\ref{sec:acquisition}}};
+\node[stage, right=2.5mm of s1] (s2) {Construct training units\\{\scriptsize segment, label, select, route}\\\textbf{Section~\ref{sec:curation}}};
+\node[stage, right=2.5mm of s2] (s3) {Expand and validate\\{\scriptsize augment, synthesize, verify}\\\textbf{Section~\ref{sec:evolution}}};
+\node[stage, right=2.5mm of s3] (s4) {Update from feedback\\{\scriptsize collect, revise, post-train}\\\textbf{Section~\ref{sec:recipes-engines}}};
+\draw[arr] (s1) -- (s2);
+\draw[arr] (s2) -- (s3);
+\draw[arr] (s3) -- (s4);
+
+\node[font=\bfseries\small, text=surveydark, anchor=west] at (-8.25,0.25)
+  {Cross-cutting lenses: how should operations be compared?};
+
+\node[axis] (a1) at (-6.65,-0.65) {Decision signal\\{\scriptsize Why this change?}};
+\node[lens, fill=surveylightteal, right=2mm of a1] (a11) {record-derived evidence};
+\node[lens, fill=surveylightteal, right=2mm of a11] (a12) {human or model judgment};
+\node[lens, fill=surveylightteal, right=2mm of a12] (a13) {learner or execution feedback};
+
+\node[axis, below=2.5mm of a1] (a2) {Utility evidence\\{\scriptsize What is established?}};
+\node[lens, fill=surveylightorange, right=2mm of a2] (a21) {data diagnostics};
+\node[lens, fill=surveylightorange, right=2mm of a21] (a22) {proxy agreement};
+\node[lens, fill=surveylightorange, right=2mm of a22] (a23) {policy or robot behavior};
+
+\node[axis, below=2.5mm of a2] (a3) {Lifecycle\\{\scriptsize When and by whom?}};
+\node[lens, fill=surveylightrose, right=2mm of a3] (a31) {fixed preparation};
+\node[lens, fill=surveylightrose, right=2mm of a31] (a32) {adaptive or feedback update};
+\node[lens, fill=surveylightrose, right=2mm of a32] (a33) {autonomous operator choice};
+\end{tikzpicture}
+\caption{Taxonomy and organization of the survey. The operation axis determines the section order. Decision signal, utility evidence, and lifecycle compare methods within every operation stage.}
+\label{fig:taxonomy-section-map}
+\end{figure*}

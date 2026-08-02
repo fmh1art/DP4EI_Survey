@@ -2,21 +2,21 @@
 \centering
 \begin{tikzpicture}[
   level/.style={draw, rounded corners=2pt, align=center, text width=2.88cm,
-    minimum height=2.05cm, inner sep=4pt, font=\small},
-  arr/.style={-{Latex[length=1.8mm]}, thick, draw=black!65},
-  axis/.style={-{Latex[length=2mm]}, very thick, draw=blue!60!black}
+    minimum height=1.75cm, inner sep=4pt, font=\footnotesize},
+  arr/.style={-{Latex[length=1.8mm]}, thick, draw=black!55},
+  axis/.style={-{Latex[length=2mm]}, very thick, draw=surveyblue}
 ]
-\node[level, fill=gray!10] (l0) {\textbf{L0: Static curation}\\Fixed rules, labels, and one-shot mixture\\\emph{Dataset artifact}};
-\node[level, fill=blue!7, right=3mm of l0] (l1) {\textbf{L1: Learner-aware}\\Loss, influence, or proxy-guided selection\\\emph{Offline optimization}};
-\node[level, fill=cyan!8, right=3mm of l1] (l2) {\textbf{L2: Failure-driven}\\Rollouts and interventions alter post-training data\\\emph{One or a few rounds}};
-\node[level, fill=orange!10, right=3mm of l2] (l3) {\textbf{L3: Data engine}\\Repeated collect--verify--route--train--deploy\\\emph{Predesigned controller}};
-\node[level, fill=red!8, right=3mm of l3] (l4) {\textbf{L4: Preparation agent}\\Chooses operators and experiments, allocates budget, audits, stops or rolls back\\\emph{Adaptive controller}};
+\node[level, fill=surveylightgray] (l0) {\textbf{L0: Static}\\fixed rules and one-shot mixture\\\emph{people choose the pipeline}};
+\node[level, fill=surveylightblue, right=3mm of l0] (l1) {\textbf{L1: Learner-aware}\\loss, influence, or proxy selection\\\emph{offline adaptation}};
+\node[level, fill=surveylightteal, right=3mm of l1] (l2) {\textbf{L2: Failure-driven}\\rollouts alter later training data\\\emph{one or a few rounds}};
+\node[level, fill=surveylightorange, right=3mm of l2] (l3) {\textbf{L3: Data engine}\\repeated collect--verify--train loop\\\emph{fixed controller}};
+\node[level, fill=surveylightrose, right=3mm of l3] (l4) {\textbf{L4: Preparation agent}\\chooses operators, evidence, and stopping\\\emph{adaptive controller}};
 \draw[arr] (l0) -- (l1);
 \draw[arr] (l1) -- (l2);
 \draw[arr] (l2) -- (l3);
 \draw[arr] (l3) -- (l4);
 \draw[axis] ([yshift=-7mm]l0.south west) -- node[below, align=center, font=\small] {increasing decision authority and target relevance\\increasing feedback dependence, evidence cost, and safety risk} ([yshift=-7mm]l4.south east);
 \end{tikzpicture}
-\caption{Maturity ladder from a static prepared dataset to an autonomous data-preparation agent. Levels classify how much authority an automated preparation loop receives, not the prestige of a model. A system can implement different levels for different operators. Existing systems provide strong partial evidence through L3. L4 remains a research target because autonomous operator choice, matched promotion comparisons, stopping, and rollback are not yet jointly demonstrated.}
+\caption{Evolution of data preparation by decision authority. Existing systems demonstrate substantial components through L3. L4 additionally requires autonomous experiment choice, matched promotion tests, stopping, and rollback.}
 \label{fig:autonomy-ladder}
 \end{figure*}

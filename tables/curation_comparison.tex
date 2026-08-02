@@ -1,23 +1,24 @@
 \begin{table*}[t]
 \centering
-\caption{Representative curation methods under a common schema. ``Real'' indicates that the paper includes a real-robot policy evaluation. It does not imply comparable robots, budgets, or protocols.}
+\caption{Representative curation methods under a common schema. ``Real'' denotes a reported real-robot policy evaluation.}
 \label{tab:curation-comparison}
 \scriptsize
 \setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.08}
 \begin{tabularx}{\textwidth}{@{}p{2.25cm}p{2.05cm}p{2.8cm}p{1.6cm}ccX@{}}
 \toprule
 Method & Intervention & Guiding signal & Granularity & Human labels & Real & Principal caveat \\
 \midrule
-Data Quality~\cite{belkhale2023data_2306_02437} & Diagnose and construct & Action divergence and transition diversity & Dataset or transition & No & No & A formal lens on imitation-learning distribution shift, not a universal ranking rule. \\
-SSDF~\cite{wu2024learning_2401_08957} & Recover useful failure segments & Self-supervised expert--imperfect relation & Segment & No & Yes & Quality depends on expert support and imperfect-data composition. \\
-Re-Mix~\cite{hejna2024re_2408_14037} & Learn source weights & Loss of the weakest validation group & Dataset or domain & Target split & Yes & Can amplify abnormal action distributions and requires costly full-mixture fits. \\
-Mutual information~\cite{hejna2025robot_2502_08623} & Filter demonstrations & State--action mutual information & Episode & No & Yes & Aggregate information omits temporal causality and may trade away coverage. \\
-SCIZOR~\cite{zhang2025scizor_2505_22626} & Filter and deduplicate & Task progress and joint state--action similarity & Transition or segment & No & Yes & Monotonic progress assumptions can penalize recovery or exploration. \\
-DataMIL~\cite{dass2025datamil_2505_09603} & Select subsets & Learner response estimated from subset training & Episode or task & No & Yes & Repeated subset training is expensive and transfer is learner dependent. \\
-Demo-SCORE~\cite{chen2025curating_2503_03707} & Filter unreliable strategies & Classifier trained on online successes and failures & Episode or strategy & Outcome & Yes & Requires representative rollout experience from a related policy. \\
-QoQ~\cite{lee2026quality_2603_09056} & Influence-based selection & Validation-demonstration loss & Transition $\rightarrow$ episode & Validation set & Yes & ``Quality'' inherits the coverage and bias of the chosen target set. \\
-ATHENA~\cite{xu2026athena_2606_16208} & Scalable multitask selection & Heterogeneous influence approximation & Sample or task & Target set & Yes & Approximation and target-task construction affect rankings. \\
-ReTVL~\cite{qin2026beyond_2606_24633} & Local retry-aware weighting & Retry-supervised value & Transition or segment & Retry event & Yes & A retry region is informative but is not synonymous with low value. \\
+Data Quality~\cite{belkhale2023data_2306_02437} & Diagnose / construct & Action divergence and transition diversity & Dataset / transition & No & No & Formal lens, not a universal rank \\
+SSDF~\cite{wu2024learning_2401_08957} & Recover failure segments & Expert--imperfect relation & Segment & No & Yes & Needs expert support \\
+Re-Mix~\cite{hejna2024re_2408_14037} & Learn source weights & Weakest-group validation loss & Source / domain & Target split & Yes & Costly fits, abnormal-source failure \\
+Mutual information~\cite{hejna2025robot_2502_08623} & Filter demonstrations & State--action mutual information & Episode & No & Yes & Omits causality, coverage trade-off \\
+SCIZOR~\cite{zhang2025scizor_2505_22626} & Filter / deduplicate & Progress and state--action similarity & Transition / segment & No & Yes & Monotonic-progress assumption \\
+DataMIL~\cite{dass2025datamil_2505_09603} & Select subsets & Response to subset training & Episode / task & No & Yes & Repeated training, learner dependence \\
+Demo-SCORE~\cite{chen2025curating_2503_03707} & Filter strategies & Classifier from rollout outcomes & Episode / strategy & Outcome & Yes & Needs representative rollouts \\
+QoQ~\cite{lee2026quality_2603_09056} & Influence selection & Validation--demonstration loss & Transition $\to$ episode & Validation set & Yes & Inherits target-set bias \\
+ATHENA~\cite{xu2026athena_2606_16208} & Multitask selection & Heterogeneous influence & Sample / task & Target set & Yes & Approximation and target construction \\
+ReTVL~\cite{qin2026beyond_2606_24633} & Retry-aware weighting & Retry-supervised value & Transition / segment & Retry event & Yes & Retry is not synonymous with low value \\
 \bottomrule
 \end{tabularx}
 \end{table*}

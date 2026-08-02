@@ -1,0 +1,27 @@
+%!TEX root = ../../main.tex
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  font=\scriptsize,
+  level/.style={draw=black!35, rounded corners=2pt, text width=5.2cm,
+    minimum height=10mm, align=left, inner sep=3pt},
+  arr/.style={-{Latex[length=1.8mm]}, thick, draw=surveyblue}
+]
+\node[level, fill=surveylightgray] (l1)
+  {\textbf{Data diagnostics}\quad integrity, duplication, diversity, leakage\\
+   \emph{Supports:} the intended data property changed};
+\node[level, fill=surveylightteal, above=2.5mm of l1] (l2)
+  {\textbf{Proxy or verifier}\quad VLM score, simulator, learned estimator\\
+   \emph{Supports:} agreement under the reported calibration};
+\node[level, fill=surveylightorange, above=2.5mm of l2] (l3)
+  {\textbf{Controlled policy training}\quad matched learner, compute, and volume control\\
+   \emph{Supports:} policy benefit in the tested setting};
+\node[level, fill=surveylightrose, above=2.5mm of l3] (l4)
+  {\textbf{Robot execution}\quad trials, uncertainty, shift, and safety\\
+   \emph{Supports:} physical utility on the target evaluation};
+\draw[arr] ([xshift=3mm]l1.east) -- node[right, align=left, text=surveydark]
+  {greater directness\\greater cost and risk} ([xshift=3mm]l4.east);
+\end{tikzpicture}
+\caption{Evidence hierarchy for claims about data utility. Higher levels test policy benefit more directly but do not remove the need for matched controls.}
+\label{fig:evidence-hierarchy}
+\end{figure}

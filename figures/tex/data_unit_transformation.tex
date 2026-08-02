@@ -1,0 +1,50 @@
+%!TEX root = ../../main.tex
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\footnotesize,
+  panel/.style={draw=black!35, rounded corners=2pt, fill=surveylightgray,
+    minimum height=3.8cm, inner sep=5pt},
+  head/.style={font=\bfseries\small, text=surveydark},
+  segment/.style={draw=black!35, rounded corners=1.5pt, minimum height=8mm,
+    align=center, inner sep=1.5pt, font=\scriptsize},
+  op/.style={draw=surveyblue!75, rounded corners=2pt, fill=surveylightblue,
+    text width=2.6cm, minimum height=8mm, align=center, inner sep=2pt},
+  unit/.style={draw=surveyteal!75, rounded corners=2pt, fill=surveylightteal,
+    text width=3.55cm, minimum height=8mm, align=left, inner sep=3pt},
+  arr/.style={-{Latex[length=1.8mm]}, thick, draw=black!60},
+  trace/.style={-{Latex[length=1.6mm]}, dashed, draw=surveyrose, thick}
+]
+\node[panel, minimum width=5.0cm] (rawpanel) at (0,0) {};
+\node[head, anchor=north] at ([yshift=-3mm]rawpanel.north) {Raw episode};
+\node[segment, fill=surveylightblue, text width=1.1cm] (approach) at (-1.65,0.55) {approach};
+\node[segment, fill=surveylightteal, text width=0.85cm, right=1mm of approach] (grasp) {grasp};
+\node[segment, fill=surveylightrose, text width=0.75cm, right=1mm of grasp] (retry) {retry};
+\node[segment, fill=surveylightorange, text width=1.0cm, right=1mm of retry] (recover) {recover};
+\node[align=center, text width=4.35cm] at (0,-0.65)
+  {observations, states, actions, task, outcome, and provenance};
+
+\node[panel, minimum width=3.55cm, right=7mm of rawpanel] (oppanel) {};
+\node[head, anchor=north] at ([yshift=-3mm]oppanel.north) {Preparation operators};
+\node[op, anchor=north] (split) at ([yshift=-10mm]oppanel.north) {segment and align};
+\node[op, below=2.5mm of split] (label) {label or validate};
+\node[op, below=2.5mm of label] (route) {assign role and weight};
+
+\node[panel, minimum width=5.05cm, right=7mm of oppanel] (unitpanel) {};
+\node[head, anchor=north] at ([yshift=-3mm]unitpanel.north) {Training units};
+\node[unit, anchor=north] (u1) at ([yshift=-10mm]unitpanel.north)
+  {$u_1$: approach--grasp \hfill imitation, $w_1$};
+\node[unit, below=2.5mm of u1] (u2)
+  {$u_2$: retry boundary \hfill value/safety, $w_2$};
+\node[unit, below=2.5mm of u2] (u3)
+  {$u_3$: recovery segment \hfill recovery, $w_3$};
+
+\draw[arr] (rawpanel.east) -- (oppanel.west);
+\draw[arr] (oppanel.east) -- (unitpanel.west);
+\draw[trace] ([yshift=3mm]rawpanel.south east) to[bend right=12]
+  node[below, font=\scriptsize, text=surveyrose] {lineage: source interval $+$ operator and data version}
+  ([yshift=3mm]unitpanel.south west);
+\end{tikzpicture}
+\caption{From a raw episode to role-specific training units. Segment boundaries, weights, and lineage remain explicit rather than being hidden inside a cleaned dataset.}
+\label{fig:data-unit-transformation}
+\end{figure*}

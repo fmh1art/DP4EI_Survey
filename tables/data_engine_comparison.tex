@@ -1,41 +1,42 @@
 \begin{table*}[t]
 \centering
-\caption{Representative data engines viewed as feedback controllers. The final column distinguishes a disclosed safeguard from an unresolved limit.}
+\caption{Representative feedback-driven data engines and their update controls.}
 \label{tab:data-engines}
 \scriptsize
 \setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
 \begin{tabularx}{\textwidth}{@{}p{3.0cm}p{3.7cm}p{5.1cm}X@{}}
 \toprule
 System & Feedback & Next data decision & Safeguard or limit \\
 \midrule
 RoboCat / AutoRT~\cite{bousmalis2023robocat_2306_11706,ahn2024autort_2401_12963}
-& Practice outcomes or proposed fleet tasks
-& Collect feasible experience and return it to a generalist mixture
-& Collection is gated, but gains are not attributed to one changed component. \\
+& Practice outcomes and proposed fleet tasks
+& Collect feasible experience for the generalist mixture
+& Gated collection, limited component attribution \\
 $\pi^{*}_{0.6}$/RECAP~\cite{intelligence20250_2511_14759}
-& Outcomes, autonomous trials, and optional corrections
-& Learn values from experience and train the policy toward higher-value actions
-& Each round restarts from an audited pretrained checkpoint. \\
+& Outcomes, autonomous trials, optional corrections
+& Learn values and favor higher-value actions
+& Restart from an audited pretrained checkpoint \\
 DexFlyWheel~\cite{zhu2025dexflywheel_2509_23829}
 & Simulator reward and rollout success
-& Add successful exploration and geometric variants to the next dataset
-& Simulation enables checks but bounds the reachable failure distribution. \\
+& Add successful exploration and geometric variants
+& Simulator checks, bounded failure distribution \\
 SOP~\cite{pan2026sop_2601_03044}
-& Current-policy failures, interventions, and losses
-& Stream online episodes into a task-balanced offline--online mixture
-& Mixture bounds preserve coverage; evidence spans hours rather than lifelong use. \\
+& Failures, interventions, online losses
+& Task-balanced offline--online streaming
+& Mixture bounds, short evaluation horizon \\
 LWD~\cite{wang2026learning_2605_00416}
 & Sparse outcomes from a 16-robot fleet
-& Update action generation with values learned from offline and online experience
-& An offline reference and conservative values reduce short-term drift. \\
+& Value-guided action-module updates
+& Offline reference and conservative values \\
 Robot-Powered Data Flywheels~\cite{grannen2025robot_2511_19647}
 & Novel observations and errors during use
-& Adapt an upstream perception model with task-relevant robot data
-& A two-week deployment leaves long-run transfer and bias unresolved. \\
+& Adapt upstream perception with robot data
+& Two-week deployment, long-run transfer unresolved \\
 DEED~\cite{sis2026closing_2607_20345}
-& Experience reveals gaps in offline demonstrations
-& Convert experience into revised demonstrations for the next update
-& Independent validation and rollback remain open requirements. \\
+& Experience reveals offline-data gaps
+& Revise demonstrations for the next update
+& Independent validation and rollback remain open \\
 \bottomrule
 \end{tabularx}
 \end{table*}

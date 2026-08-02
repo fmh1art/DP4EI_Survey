@@ -62,6 +62,10 @@ def main() -> None:
     included_ids: set[str] = set()
     checksum_lines = []
     for path in sorted(PDF_ROOT.rglob("*.pdf")):
+        # Layout references are kept with the project but are not part of the
+        # survey evidence corpus or its reproducibility manifest.
+        if "example_surveys" in path.parts:
+            continue
         arxiv_match = re.search(r"(\d{4}\.\d{5})", path.name)
         if not arxiv_match:
             raise RuntimeError(f"arXiv ID missing from filename: {path}")

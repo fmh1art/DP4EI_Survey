@@ -1,23 +1,25 @@
-\begin{figure*}[t]
+\begin{figure}[t]
 \centering
 \begin{tikzpicture}[
-  node distance=3.5mm,
-  box/.style={draw, rounded corners=2pt, align=center, text width=14.5cm,
-    inner sep=3.5pt, fill=gray!6},
-  branch/.style={draw, rounded corners=2pt, align=center, text width=6.8cm,
-    inner sep=3.5pt, fill=blue!6},
-  arr/.style={-{Latex[length=1.8mm]}, thick, draw=black!65}
+  font=\scriptsize,
+  node distance=3mm,
+  box/.style={draw=black!35, rounded corners=2pt, align=center, text width=6.7cm,
+    minimum height=9mm, inner sep=3pt, fill=surveylightgray},
+  branch/.style={draw=surveyblue!65, rounded corners=2pt, align=center, text width=2.95cm,
+    minimum height=10mm, inner sep=3pt, fill=surveylightblue},
+  arr/.style={-{Latex[length=1.6mm]}, thick, draw=black!55}
 ]
-\node[box] (sources) {28 resolved DBLP and arXiv queries: 1,160 title-deduplicated discovery records\\$+$ backward and forward citation tracing $+$ major dataset, benchmark, lab, and system reports};
-\node[box, below=of sources] (map) {\textbf{Evidence map: 211 unique works}\\2018--2026 baseline search $+$ targeted industrial and closed-loop update};
-\node[branch, below=5mm of map, xshift=-3.75cm] (deep) {177 core works\\examined in primary text};
-\node[branch, below=5mm of map, xshift=3.75cm] (abstract) {34 update-index records\\not used for technical claims};
-\node[box, below=15mm of map] (coding) {Core synthesis: operations, decision signals, training roles, validation evidence, lifecycle stage, assumptions, and limitations};
+\node[box] (sources) {\textbf{Discovery: 1,160 records}\\28 DBLP/arXiv queries plus citation and system tracing};
+\node[box, below=of sources] (map) {\textbf{Evidence map: 211 unique works}\\2018--2026 baseline and targeted update};
+\node[branch, below=4mm of map, xshift=-1.75cm] (deep) {\textbf{177 core works}\\primary-text synthesis};
+\node[branch, below=4mm of map, xshift=1.75cm] (abstract) {\textbf{34 update records}\\coverage only};
+\node[box, below=13mm of map] (coding) {\textbf{Structured coding}\\operation, signal, role, evidence, lifecycle, and limitation};
 \draw[arr] (sources) -- (map);
 \draw[arr] (map) -- (deep);
 \draw[arr] (map) -- (abstract);
 \draw[arr] (deep) -- (coding);
+\draw[arr] (abstract) -- (coding);
 \end{tikzpicture}
-\caption{Auditable evidence-flow summary. Update-index records establish coverage but do not support technical claims until their primary text is verified. Appendix~\ref{app:protocol} provides the queries and criteria.}
+\caption{Review and evidence flow. Update-index records establish coverage but do not support technical claims.}
 \label{fig:review-flow}
-\end{figure*}
+\end{figure}

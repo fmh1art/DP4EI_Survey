@@ -9,14 +9,13 @@ These systems show which operations can be run at industrial scale, but several 
 A technical report may establish the performance of the complete model while leaving the mixture, preparation cost, or intermediate data versions undisclosed.
 We therefore use a report as evidence about the disclosed system and do not assign its end-to-end gain to an unreported preparation step.
 
-Table~\ref{tab:industrial-recipes} reconstructs five public recipe families from primary reports.
-We record only disclosed quantities and identify conclusions that are our synthesis.
-The table compares the role of each source and operation instead of ranking reported performance numbers.
+Figure~\ref{fig:industrial-recipe-map} aligns five public recipe families by source role, preparation mechanism, training use, and feedback.
+We reconstruct these stages from primary reports, record only disclosed quantities, and identify conclusions that are our synthesis.
+The comparison emphasizes functional structure instead of ranking reported performance numbers.
 An hour of egocentric video, an hour of a 50-Hz robot trajectory, a simulated rollout, and a video--text clip are not equivalent data units.
 Evaluations on different robots, tasks, model sizes, and budgets are not directly comparable either.
 
-\input{tables/industrial_recipes}
-\input{figures/tex/industrial_recipe_placeholder}
+\input{figures/tex/industrial_recipe_map}
 
 \subsection{What the Industrial Recipes Actually Reveal}
 
@@ -84,6 +83,11 @@ The same report notes that more than 90\% of development evaluation episodes ran
 This is good systems practice, but it also means simulated iteration speed and real deployment evidence must remain separate fields.
 Reproducibility should be reported separately for data, preparation code, training mixture, model, and evaluation.
 A single ``open'' or ``closed'' label hides these differences.
+
+Table~\ref{tab:industrial-recipes} condenses the preceding analysis into a reference index.
+Its evidence column records what can be concluded from the public report, not a score for the complete recipe.
+
+\input{tables/industrial_recipes}
 
 \subsection{When a Pipeline Becomes a Data Engine}
 

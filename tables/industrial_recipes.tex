@@ -1,33 +1,34 @@
 \begin{table*}[t]
 \centering
-\caption{Structural comparison of public industrial data recipes. Quantities use each report's own units and are not comparable across rows.}
+\caption{Overview of public industrial data recipes. Reported quantities are not comparable across systems.}
 \label{tab:industrial-recipes}
 \scriptsize
 \setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
 \begin{tabularx}{\textwidth}{@{}p{3.0cm}p{4.0cm}p{5.1cm}X@{}}
 \toprule
 System & Source roles & Main preparation decision & Evidence boundary \\
 \midrule
 $\pi$ family~\cite{intelligence20250_2504_16054,intelligence20260_2604_15483,intelligence20250_2511_14759}
-& Cross-robot, web, mixed-quality, and target-task data serve different training stages.
-& Normalize actions, route sources by stage, and condition on quality or outcome metadata.
-& Family ablations support several choices, but complete volumes and mixture weights are not disclosed. \\
+& Cross-robot, web, mixed-quality, target-task
+& Action normalization, stage routing, quality and outcome conditioning
+& Component ablations, exact volumes and weights partly closed \\
 GR00T family~\cite{nvidia2025gr00t_2503_14734,jang2025dreamgen_2505_12705,nvidia2026gr00t17}
-& Web and human video broaden semantics; simulation and generation expand trajectories; real data ground control.
-& Infer missing actions, retain validated trajectories, and mix generated data with real demonstrations.
-& Within-report studies show utility and forgetting; product-scale figures are engineering evidence. \\
+& Web and human video, simulation, generated and real trajectories
+& Latent or inverse-dynamics actions, validation, real--generated mixing
+& Utility and forgetting studies, product-scale totals are system evidence \\
 Gemini Robotics~\cite{team2025gemini_2503_20020,team2025gemini_2510_03342}
-& Multimodal pretraining, three robot embodiments, and narrow specialization sets have distinct roles.
-& Relabel for embodied reasoning and use Motion Transfer to learn from heterogeneous robot motion.
-& The report ablates embodiment diversity and Motion Transfer; source quantities and filtering remain largely closed. \\
+& Multimodal pretraining, three embodiments, specialization sets
+& Embodied relabeling, Motion Transfer, task specialization
+& Embodiment and transfer ablations, source filtering largely closed \\
 Qwen-RobotManip~\cite{yuan2026qwen_2606_17846}
-& Robot demonstrations, human video, and human-to-robot synthesis form a roughly 38,100-hour corpus.
-& Retarget human motion, apply state--action and cross-modal checks, and align representation, motion, and behavior.
-& The report ablates major components, but does not isolate the physical error rate of all synthetic data. \\
+& Robot demonstrations, human video, human-to-robot synthesis
+& Motion retargeting, state--action and cross-modal checks, three alignments
+& Major-component ablations, aggregate synthetic error rate unresolved \\
 Qwen-RobotWorld~\cite{zhang2026qwen_2606_17030}
-& Embodied video supplies dynamics; general multimodal data preserves broad knowledge.
-& Standardize video, annotate actions in language, review low-scoring labels, and use a staged curriculum.
-& Generation and prediction are demonstrated; per-clip action validity and policy utility are not guaranteed. \\
+& Embodied video, general multimodal data
+& Video standardization, language action labels, review, staged curriculum
+& Generation and prediction evidence, no per-clip action certification \\
 \bottomrule
 \end{tabularx}
 \end{table*}

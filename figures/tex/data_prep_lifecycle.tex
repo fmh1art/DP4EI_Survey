@@ -2,26 +2,26 @@
 \centering
 \begin{tikzpicture}[
   node distance=7mm and 5mm,
-  stage/.style={draw, rounded corners=2pt, align=center, minimum height=10mm,
-    text width=2.65cm, inner sep=3pt, fill=blue!6},
-  signal/.style={draw, rounded corners=2pt, align=center, minimum height=8mm,
-    text width=2.65cm, inner sep=3pt, fill=orange!10},
-  arr/.style={-{Latex[length=2mm]}, thick, draw=black!70},
-  feedback/.style={-{Latex[length=2mm]}, thick, dashed, draw=purple!75}
+  stage/.style={draw=surveyblue!70, rounded corners=2pt, align=center, minimum height=10mm,
+    text width=2.65cm, inner sep=3pt, fill=surveylightblue, font=\footnotesize},
+  signal/.style={draw=surveyteal!70, rounded corners=2pt, align=center, minimum height=8mm,
+    text width=2.65cm, inner sep=3pt, fill=surveylightteal, font=\footnotesize},
+  arr/.style={-{Latex[length=2mm]}, thick, draw=black!60},
+  feedback/.style={-{Latex[length=2mm]}, thick, dashed, draw=surveyrose}
 ]
-\node[stage] (raw) {\textbf{Raw records}\\robot, human video, simulation, generated, deployment};
-\node[stage, right=of raw] (ops) {\textbf{Operations}\\validate, align, segment, label, filter, weight, synthesize};
-\node[stage, right=of ops] (dist) {\textbf{Prepared training data}\\unit, role, weight, provenance, version};
-\node[stage, right=of dist] (learner) {\textbf{Learner}\\pretrain, adapt, post-train, sample online};
-\node[stage, right=of learner] (deploy) {\textbf{Execution evidence}\\rollout utility, recovery, safety, shift};
+\node[stage] (raw) {\textbf{Raw records}\\robot, human, simulation, generated};
+\node[stage, right=of raw] (ops) {\textbf{Preparation}\\align, segment, label, select, synthesize};
+\node[stage, right=of ops] (dist) {\textbf{Training distribution}\\units, roles, weights, provenance};
+\node[stage, right=of dist] (learner) {\textbf{Learner}\\pretrain, adapt, post-train};
+\node[stage, right=of learner] (deploy) {\textbf{Behavioral evidence}\\utility, recovery, safety, shift};
 
 \draw[arr] (raw) -- (ops);
 \draw[arr] (ops) -- (dist);
 \draw[arr] (dist) -- (learner);
 \draw[arr] (learner) -- (deploy);
 
-\node[signal, below=of ops] (guide) {\textbf{Decision signals}\\rules, humans, foundation models, information, influence};
-\node[signal, below=of dist] (verify) {\textbf{Evidence ladder}\\intrinsic $\rightarrow$ proxy $\rightarrow$ trained policy $\rightarrow$ deployment};
+\node[signal, below=of ops] (guide) {\textbf{Decision signals}\\records, humans, models, execution};
+\node[signal, below=of dist] (verify) {\textbf{Utility evidence}\\diagnostic $\rightarrow$ proxy $\rightarrow$ policy $\rightarrow$ robot};
 \draw[arr] (guide) -- (ops);
 \draw[arr] (verify) -- (dist);
 \draw[feedback] (deploy.south) |- ($(verify.south)+(0,-5mm)$) -| (guide.south);

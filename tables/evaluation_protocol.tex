@@ -1,20 +1,21 @@
 \begin{table*}[t]
 \centering
-\caption{Minimum reporting protocol for a data-preparation intervention.}
+\caption{Minimum controls for evaluating a data-preparation intervention.}
 \label{tab:evaluation-protocol}
 \small
 \setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.08}
 \begin{tabularx}{\textwidth}{@{}p{2.6cm}X X@{}}
 \toprule
 Component & Required control & Failure prevented \\
 \midrule
-Data accounting & Raw and retained episodes, transitions, duration, source distribution, provenance, and leakage audit & A smaller but easier subset being presented as intrinsically superior \\
-Training budget & Same learner, initialization policy, updates, sampling opportunities, augmentations, and tuning allowance & Gains caused by extra optimization rather than preparation \\
-Intrinsic and proxy & Define defect labels, calibration set, uncertainty, confounders, and operating threshold & Treating detector AUROC or verifier score as evidence of improvement after policy training \\
-Downstream utility & Multiple seeds, uncertainty intervals, and both in-distribution and compositional or shifted tasks & Ranking methods from noisy point estimates \\
-Closed-loop evidence & Simulator and real-robot results reported separately, with interventions and failures & Mixing evidence of different physical validity \\
-Cost and risk & Human time, model calls, training and rollout compute, robot hours, discarded data, and safety events & Claiming data efficiency while externalizing preparation cost \\
-Robustness & Sensitivity to contamination, episode length, policy family, target set, and data budget & Conclusions tied to one defect, learner, or mixture \\
+Data accounting & Raw and retained units, duration, source mix, lineage, leakage audit & Easier subsets presented as intrinsically better \\
+Training budget & Same learner, initialization, updates, samples, augmentation, and tuning budget & Gains caused by extra optimization \\
+Diagnostic and proxy & Defect labels, calibration split, uncertainty, threshold, confounders & Proxy scores treated as policy utility \\
+Downstream utility & Multiple seeds, intervals, familiar, compositional, and shifted tasks & Rankings based on noisy point estimates \\
+Closed-loop evidence & Separate simulation and robot trials, with logged failures and interventions & Evidence with different physical validity merged \\
+Cost and risk & Human time, model and training compute, robot hours, discarded data, safety events & Preparation cost externalized \\
+Robustness & Contamination, episode length, learner, target set, and budget sensitivity & Conclusions tied to one setting \\
 \bottomrule
 \end{tabularx}
 \end{table*}
