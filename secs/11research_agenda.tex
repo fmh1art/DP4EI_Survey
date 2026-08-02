@@ -1,0 +1,53 @@
+%!TEX root = ../main.tex
+\section{Open Challenges and Research Agenda}
+\label{sec:agenda}
+
+The gaps exposed by the taxonomy concern measurement, representation, feedback, and accountability. They cannot be resolved by collecting a larger undifferentiated corpus. This section states concrete research questions and the evidence that would support or reject a proposed solution.
+
+\subsection{Estimating Conditional and Interaction Utility}
+
+Most pipelines cannot retrain a policy for every candidate unit or mixture. They need an inexpensive estimate of the conditional value in Equation~\ref{eq:conditional-value}. Current signals measure smoothness, information, progress, target loss, or foundation-model judgment. Each captures a different property, and none is known to transfer across learners, stages, and target distributions.
+
+A useful estimator would combine technical and semantic features with a limited number of policy-training or rollout observations selected for calibration. It should preserve separate estimates for correctness, coverage, transfer, and risk, then report uncertainty when those estimates disagree. Evaluation must test whether the selected units improve held-out learners and tasks under equal compute. A method fails as a general value estimator if it only recovers the preference of its calibration learner or if a cheap random or diversity baseline obtains the same policy utility.
+
+Pointwise value is not sufficient. A grasp depends on an approach, a correction depends on a preceding failure, and two sources can conflict even when each is useful alone. Research should estimate value over the hierarchy from transition to segment, episode, task, and source. Benchmarks can plant known complementary and conflicting groups in a fixed raw pool. The test is whether a method retains the useful combination and rejects the conflict without exhaustively training on every subset.
+
+\subsection{Representing Action Meaning Across Embodiments}
+
+A common action-vector shape does not express what an action does under a different morphology or controller. A stronger representation needs the robot's kinematic structure, end-effector definition, reference frame, control mode, timing, limits, and uncertainty. It should describe the object-centered state change intended by the command while retaining the original action and reversible transformations.
+
+Evaluation needs both representation and physical tests. Mapping a source action to a target embodiment and back should preserve its declared meaning. Simulation or execution should then test whether the target action produces the intended object-centered change within tolerance. Held-out morphology and controller families are essential. A mapping that lowers training loss but violates reachability, collision, contact, or timing constraints should fail. These controls would turn cross-embodiment alignment from format conversion into a measurable transfer problem.
+
+The same problem appears in generated data, where visually plausible motion can hide inconsistent depth, an unstable grasp, or an action label that does not cause the shown transition. Challenge sets should pair plausible and invalid units at each layer of the validation stack. Verifiers need evaluation on unseen generators and assets, with shared data or architecture disclosed. Samples that remain uncertain after semantic and geometric checks should be replayed in simulation or on a robot before they are routed to action learning.
+
+\subsection{A Shared Schema for Failure, Recovery, and Safety}
+
+Many datasets retain only an episode-level success field. This erases the onset and cause of failure, takeover, retry, near miss, recovery, and whether each action remains a valid target. A shared schema should represent these events with temporal uncertainty and allow more than one cause. It should link an intervention to the preceding state, corrective action, resulting trajectory, and safety severity.
+
+The schema is useful only if it changes learning. Holding raw trajectories fixed, a study should compare structured routing with success-only filtering, all-data imitation, and binary failure conditioning. Evaluation should measure recovery and worst-case safety in addition to average success. Human and model agreement tests establish annotation reliability, but the decisive result is whether the learner recognizes and exits failure regions without imitating unsafe behavior.
+
+Such a schema would also improve post-training comparisons. A reward method, a behavior-cloning correction, and a safety verifier could consume different units derived from the same rollout while sharing lineage. This makes it possible to attribute a gain to the failure representation instead of to an undocumented buffer change.
+
+\subsection{Stable Data Self-Evolution and Bounded Agents}
+
+A self-evolving engine observes the current policy, changes its training distribution, and then observes a successor. Feedback is delayed by training, biased by the states the current policy visits, and expensive when validation requires physical execution. The engine must respond to new failures without erasing rare skills or changing its verifier unnoticed.
+
+Evaluation therefore needs multi-round studies. Utility, weakest-group retention, calibration, safety events, and cumulative robot cost should be reported after each round. Stress tests can seed a biased verifier or generator, increase the share of self-generated experience, and compare retaining audited real data with replacing it. RECAP's checkpoint restart, SOP's mixture bounds, and LWD's offline reference offer concrete controls whose contribution can be tested through removal studies~\cite{intelligence20250_2511_14759,pan2026sop_2601_03044,wang2026learning_2605_00416}. A loop is unstable if its average score rises while rare capabilities disappear or rollback becomes impossible.
+
+Moving from a fixed engine to an L4 preparation agent adds operator choice. This problem can be studied without unrestricted robot autonomy. A benchmark can expose versioned data, an operator library with declared input and output schemas, fixed learners, and controlled access to simulation or robot evidence. At each round, the agent requests evidence, predicts the value of a preparation action, and chooses to deploy, abstain, stop, or roll back. Comparisons should include a fixed expert controller, random budget allocation, an adaptive controller, an oracle with hidden defect labels, and an LLM planner without learner feedback. The agent succeeds only if it improves policy utility under the same total budget while preserving safety, calibration, and replayability.
+
+\subsection{Cost, Governance, and Persistent Provenance}
+
+Preparation work often reports data efficiency without reporting the cost of selection. A standard account should separate human labor, model and training compute, data infrastructure, simulation, and target-robot time. Benefit should be expressed as the utility reached at a total cost and should state how preparation cost is amortized across downstream models. Several resource profiles are preferable to one hidden budget because a fleet-scale pretraining run and a small laboratory adaptation face different trade-offs.
+
+Governance is part of preparation because retention, filtering, and generation determine what enters training. Human and web data introduce consent, privacy, licensing, worker, and representation concerns. Model filters can reject unfamiliar homes, tools, bodies, or interaction styles. Autonomous collection can record bystanders or unsafe attempts. Dataset documentation should preserve source license and consent, sensitive fields, rejection rates for declared groups, access controls, and known blind spots.
+
+Provenance must survive every transformation. A generated derivative should identify its source data, generator, prompt or configuration, verifier, and training role. Closed-loop systems also need the policy and evaluator versions that triggered each operation. This persistent lineage makes deletion, audit, leakage checks, and joint rollback of data and model versions possible.
+
+\subsection{A Practical Path to Comparable Evidence}
+
+The shared evaluation track in Section~\ref{sec:evaluation} can begin with a constrained problem. One unchanged raw pool with complete lineage can expose only segmentation, a small set of curation signals, source mixture weights, and one validation operation for generated data. Contamination, target shift, action mismatch, and coverage gaps can then be varied independently.
+
+At each round, a controller would choose one data decision and purchase a fixed amount of training, simulation, or robot evidence. Hand-designed and random pipelines provide reference baselines, while an oracle with hidden labels bounds the available improvement. A data and model version is deployed only after a matched comparison shows higher policy utility without violating safety or retained-capability constraints.
+
+The experiment tests a concrete long-term hypothesis: preparation decisions can be learned while remaining attributable and reversible. Evidence would reject the hypothesis if the learned pipeline fails beyond its calibration learner, consumes more resources than fixed baselines, cannot isolate the cause of a gain, or amplifies errors across rounds. Automation by itself is not the target. The target is a better correctness--coverage--cost trade-off under controlled evidence and explicit authority limits.

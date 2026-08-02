@@ -1,0 +1,38 @@
+\begin{table*}[t]
+\centering
+\caption{Embodied data sources provide different forms of supervision. The listed role is the use most directly supported before additional reconstruction or transfer.}
+\label{tab:source-roles}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{@{}p{3.1cm}p{3.7cm}p{4.0cm}X@{}}
+\toprule
+Source family and examples & Directly observed supervision & Best-supported training role & Main preparation risk \\
+\midrule
+Target or standardized robot demonstrations~\cite{khazatsky2024droid_2403_12945,walke2023bridgedata_2308_12952,fang2023rh20t_2307_00595}
+& Robot observations, state, commands, and sometimes outcome
+& Control grounding, contact-rich skill learning, target adaptation
+& Timing, calibration, operator and platform bias \\
+Aggregated multi-robot corpora~\cite{collaboration2023open_2310_08864}
+& Source-specific observations and actions under a shared interface
+& Cross-task and cross-embodiment pretraining
+& Action semantics, source imbalance, missing metadata \\
+Portable human-operated interfaces~\cite{chi2024universal_2402_10329}
+& Egocentric observations and manipulation motion
+& Temporal structure and motion transfer with less target-robot time
+& Retargeting error and missing target dynamics \\
+Human and egocentric video~\cite{kareer2024egomimic_2410_24221,singh2024hand_2409_08273}
+& Visual interaction and human motion, usually without robot commands
+& Representation learning, task semantics, interaction priors
+& Pose reconstruction, embodiment gap, unobserved forces \\
+Simulation and generated trajectories~\cite{mandlekar2023mimicgen_2310_17596,wang2023gensim_2310_01361,wang2023robogen_2311_01455}
+& Machine-readable simulated state, action, reward, and scene factors
+& Controlled coverage, rare cases, and task expansion
+& Asset, solver, contact, and generator bias \\
+Current-policy execution~\cite{ahn2024autort_2401_12963}
+& States reached by the learner and recorded task outcomes
+& Failure diagnosis, recovery data, and post-training
+& Competence bias, unsafe exploration, correlated labels \\
+\bottomrule
+\end{tabularx}
+\end{table*}

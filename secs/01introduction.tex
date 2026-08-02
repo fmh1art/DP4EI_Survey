@@ -24,6 +24,7 @@ It describes the data that are actually presented to the optimizer and the rules
 When evaluation or robot execution of a trained model changes a later collection or preparation decision, we call the resulting closed loop a \emph{data engine}.
 When several rounds of this loop repeatedly revise the data used for training, we refer to the process as \emph{data self-evolution}.
 We use \emph{post-training} for model updates performed after broad pretraining, usually with target-task data or rollouts from the current policy.
+We use \emph{data recipe} for the combination of sources, transformations, validation, and stage-specific sampling reported for a model.
 
 This boundary is deliberately narrower than ``data for embodied AI.''
 We study data that provide, modify, or evaluate supervision for an embodied policy, with an emphasis on manipulation and generalist vision--language--action (VLA) systems.
@@ -61,7 +62,7 @@ Preparation is no longer always a one-time script because the model can change t
 Industrial reports expose the same decisions inside end-to-end model development.
 Qwen-RobotManip names representation, motion, and behavior alignment as separate parts of its data pipeline.
 The $\pi$ family conditions training on source and quality metadata instead of treating all episodes identically.
-GR00T combines real demonstrations with simulated and generated expansion, while Gemini Robotics evaluates multi-embodiment data both with and without Motion Transfer~\cite{yuan2026qwen_2606_17846,intelligence20260_2604_15483,nvidia2025gr00t_2503_14734,team2025gemini_2510_03342}.
+GR00T combines real demonstrations with simulated and generated expansion, while Gemini Robotics evaluates multi-embodiment data both with and without its Motion Transfer alignment mechanism~\cite{yuan2026qwen_2606_17846,intelligence20260_2604_15483,nvidia2025gr00t_2503_14734,team2025gemini_2510_03342}.
 These reports do not provide a common experimental setting and therefore do not support a numerical leaderboard.
 Their shared contribution to this survey is narrower: each report discloses data alignment, assignment, generation, or feedback as an explicit part of the training recipe.
 
@@ -103,6 +104,7 @@ Fourth, the survey relates embodied preparation to language-model data engineeri
 Section~\ref{sec:method} describes the review protocol.
 Section~\ref{sec:problem} formalizes the problem and introduces the taxonomy.
 Sections~\ref{sec:acquisition}--\ref{sec:evolution} follow the operation axis from source design through alignment, curation, generation, and validation.
-Section~\ref{sec:recipes-engines} examines industrial recipes, updates after initial training, and increasing levels of preparation autonomy.
-Section~\ref{sec:evaluation} defines comparable evidence and discusses lessons from large language model data preparation.
+Section~\ref{sec:industrial-recipes} reconstructs industrial data recipes, and Section~\ref{sec:data-engines} examines post-training feedback, repeated updates, and increasing preparation autonomy.
+Section~\ref{sec:evaluation} defines comparable evidence and benchmark controls.
+Section~\ref{sec:synthesis} relates the literature across operation stages and identifies what transfers from language-model data preparation.
 Section~\ref{sec:agenda} develops the research agenda.

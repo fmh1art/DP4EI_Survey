@@ -1,0 +1,43 @@
+%!TEX root = ../../main.tex
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\scriptsize,
+  family/.style={draw=black!35, rounded corners=2pt, text width=2.82cm,
+    minimum height=3.05cm, align=left, inner sep=4pt},
+  arr/.style={-{Latex[length=1.8mm]}, thick, draw=black!55},
+  head/.style={font=\bfseries\footnotesize, text=surveydark, align=center}
+]
+\node[family, fill=surveylightblue] (g1) at (-6.4,0) {
+  \textbf{Observation editing}\\[2pt]
+  \emph{Changes:} appearance or viewpoint\\[2pt]
+  \emph{Must preserve:} scene state and action correspondence\\[2pt]
+  \emph{Check:} masks, camera geometry, semantics};
+\node[family, fill=surveylightteal, right=3mm of g1] (g2) {
+  \textbf{Trajectory transform}\\[2pt]
+  \emph{Changes:} pose, timing, or motion\\[2pt]
+  \emph{Must preserve:} coupled modalities and task outcome\\[2pt]
+  \emph{Check:} geometry and kinematics};
+\node[family, fill=surveylightorange, right=3mm of g2] (g3) {
+  \textbf{Segment recomposition}\\[2pt]
+  \emph{Changes:} skill context or sequence\\[2pt]
+  \emph{Must preserve:} executable boundaries between skills\\[2pt]
+  \emph{Check:} replay and stitch success};
+\node[family, fill=surveylightrose, right=3mm of g3] (g4) {
+  \textbf{Simulation generation}\\[2pt]
+  \emph{Changes:} scene, task, reward, or expert\\[2pt]
+  \emph{Must preserve:} valid task and interaction physics\\[2pt]
+  \emph{Check:} solver, contacts, transfer audit};
+\node[family, fill=surveylightgray, right=3mm of g4] (g5) {
+  \textbf{Video or world model}\\[2pt]
+  \emph{Changes:} future observations and estimated actions\\[2pt]
+  \emph{Must preserve:} 3D, contact, and control consistency\\[2pt]
+  \emph{Check:} independent verifier and policy test};
+
+\draw[arr] ([yshift=-6mm]g1.south west) -- node[below, align=center, text=surveydark,
+  font=\footnotesize] {larger changes to behavioral supervision require stronger role-specific evidence}
+  ([yshift=-6mm]g5.south east);
+\end{tikzpicture}
+\caption{Generative interventions organized by what they change and the minimum validity question they introduce. The categories describe supervision, not generator architecture.}
+\label{fig:generation-hierarchy}
+\end{figure*}

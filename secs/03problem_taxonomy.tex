@@ -33,6 +33,7 @@ The role determines whether it supports broad pretraining, robot alignment, task
 Sending the same unit to a different stage or objective is called \emph{routing}.
 Provenance and version metadata are stored with the prepared dataset so that each unit can be traced back to its raw source and transformations.
 We call this trace the unit's \emph{lineage}.
+Figure~\ref{fig:data-unit-transformation} illustrates how one episode can yield several role-specific units while preserving that lineage.
 
 \input{figures/tex/data_unit_transformation}
 
@@ -94,7 +95,8 @@ Figure~\ref{fig:taxonomy-section-map} gives their compact definition and shows h
 
 The \emph{operation axis} asks what changes in the data or in their use.
 At a high level, operations make raw records usable, turn usable records into training units, expand or validate those units, and update them after model feedback.
-This axis provides the section order: Section~\ref{sec:acquisition} covers usable records, Section~\ref{sec:curation} covers unit construction and assignment, Section~\ref{sec:evolution} covers expansion and validation, and Section~\ref{sec:recipes-engines} covers feedback-driven updates.
+Section~\ref{sec:acquisition} covers usable records, Section~\ref{sec:curation} covers unit construction and assignment, Section~\ref{sec:evolution} covers expansion and validation, and Section~\ref{sec:data-engines} covers feedback-driven updates.
+Section~\ref{sec:industrial-recipes} sits between the static and feedback-driven stages because public recipes integrate several operations and assign them to different training phases.
 
 The \emph{decision-signal axis} asks why an operation is chosen.
 A decision can use evidence contained in the record, judgment supplied by a person or pretrained model, or feedback from the learner and its execution.
@@ -110,7 +112,7 @@ Section~\ref{sec:evaluation} uses this axis to separate these claims and to defi
 The \emph{lifecycle axis} asks when the decision changes and who chooses the next operation.
 A pipeline may be fixed before training, adapt its sampling during training, or use later rollouts to revise collection and preparation.
 In the last case, authority may still remain with a human-designed controller, or an automated agent may choose which operation and diagnostic to run.
-This distinction supports the progression from static curation to the data engines and preparation agents studied in Sections~\ref{sec:recipes-engines} and~\ref{sec:agenda}.
+This distinction supports the progression from static curation to the data engines and preparation agents studied in Sections~\ref{sec:data-engines} and~\ref{sec:agenda}.
 
 We record the transformed object, granularity, and intended objective as secondary attributes rather than additional top-level axes.
 These fields tell us, for example, whether an operation changes an entire episode or one transition and whether it targets validity or coverage.

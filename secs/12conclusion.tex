@@ -1,0 +1,25 @@
+%!TEX root = ../main.tex
+\section{Conclusion}
+\label{sec:conclusion}
+
+Episode counts do not determine what an embodied model learns.
+Learning depends on how raw records are made usable, converted into training units, expanded, and assigned to training stages.
+This survey organizes those decisions by the operation performed, the signal that guides it, the evidence used to validate it, and the point in the lifecycle at which it changes.
+The four axes connect source design and alignment to curation, generation, post-training, and repeated data updates without treating them as unrelated engineering steps.
+
+The literature supports three conclusions that rule out common shortcuts.
+Data utility is conditional on the learner, robot, task, stage, and surrounding dataset, so one universal quality score is inadequate.
+The useful decision often lies below the episode because valid behavior, mistakes, retries, and recoveries require different labels and objectives.
+Generated data must pass checks matched to its training role.
+Visual plausibility alone does not establish valid action supervision.
+
+Public industrial recipes reinforce these conclusions despite their different scales and disclosure levels.
+They consistently separate source roles, align motion and control, validate data before action learning, and change sampling across pretraining, specialization, and post-training.
+Feedback-driven systems extend this recipe with states visited by the current policy.
+Those states can make failure correction data-efficient, but they also couple the next dataset to the policy and verifier's current errors.
+Reference data, retained-capability tests, mixture controls, and joint data--model rollback are therefore part of the learning system rather than optional record keeping.
+
+The next research step is not unrestricted automation.
+It is a controlled data-preparation system whose decisions can be compared, attributed, and reversed.
+Progress requires shared raw pools, fixed-budget learners, layered evidence, cost and risk accounting, and multi-round tests that expose error amplification.
+An autonomous preparation agent becomes credible only when it can choose an informative experiment, respect authority limits, and decline to change the data when the available evidence is insufficient.

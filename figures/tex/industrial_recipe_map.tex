@@ -3,76 +3,50 @@
 \centering
 \begin{tikzpicture}[
   font=\scriptsize,
-  system/.style={draw=black!40, rounded corners=2pt, fill=surveylightgray,
-    text width=2.35cm, minimum height=10mm, align=center, font=\bfseries\scriptsize,
-    inner sep=2pt},
-  cell/.style={draw=black!25, rounded corners=2pt, text width=2.75cm,
-    minimum height=10mm, align=center, inner sep=2pt},
-  arrow/.style={-{Latex[length=1.5mm]}, draw=black!45},
-  colhead/.style={font=\bfseries\footnotesize, text=surveydark, align=center}
+  stage/.style={draw=black!40, rounded corners=2pt, text width=2.65cm,
+    minimum height=2.9cm, align=left, inner sep=4pt},
+  arr/.style={-{Latex[length=1.8mm]}, thick, draw=black!55},
+  loop/.style={-{Latex[length=1.8mm]}, thick, dashed, draw=surveyrose}
 ]
-\node[colhead] at (-7.15,2.55) {System};
-\node[colhead] at (-4.25,2.55) {Source roles};
-\node[colhead] at (-1.25,2.55) {Alignment and checks};
-\node[colhead] at (1.75,2.55) {Training use};
-\node[colhead] at (4.75,2.55) {Feedback or validation};
+\node[stage, fill=surveylightblue] (source) at (-6.3,0) {
+  \textbf{1. Assign source roles}\\[2pt]
+  robot control grounding\\
+  human and web semantics\\
+  simulation and generated coverage\\
+  current-policy failures};
+\node[stage, fill=surveylightteal, right=3.5mm of source] (align) {
+  \textbf{2. Align representation}\\[2pt]
+  schema and metadata\\
+  reference frame and timing\\
+  motion transfer\\
+  inferred action uncertainty};
+\node[stage, fill=surveylightorange, right=3.5mm of align] (check) {
+  \textbf{3. Validate by role}\\[2pt]
+  technical and cross-modal checks\\
+  geometric or physical replay\\
+  model and human audit};
+\node[stage, fill=surveylightrose, right=3.5mm of check] (route) {
+  \textbf{4. Route by stage}\\[2pt]
+  broad pretraining\\
+  embodiment alignment\\
+  task specialization\\
+  recovery post-training};
+\node[stage, fill=surveylightgray, right=3.5mm of route] (evidence) {
+  \textbf{5. Evaluate and revise}\\[2pt]
+  component controls\\
+  rollout outcomes\\
+  retention and safety\\
+  simulation and real tests};
 
-\node[system, fill=surveylightblue] (n1) at (-7.15,1.75) {Qwen-RobotManip};
-\node[cell, fill=surveylightblue] (s1) at (-4.25,1.75) {robot, human, synthetic};
-\node[cell, fill=surveylightblue] (p1) at (-1.25,1.75) {state--action and cross-modal checks};
-\node[cell, fill=surveylightblue] (u1) at (1.75,1.75) {representation, motion, behavior alignment};
-\node[cell, fill=surveylightblue] (f1) at (4.75,1.75) {component ablations and data audit};
-
-\node[system, fill=surveylightteal] (n2) at (-7.15,0.65) {Qwen-RobotWorld};
-\node[cell, fill=surveylightteal] (s2) at (-4.25,0.65) {embodied and general video};
-\node[cell, fill=surveylightteal] (p2) at (-1.25,0.65) {clip normalization and action captions};
-\node[cell, fill=surveylightteal] (u2) at (1.75,0.65) {staged world-model curriculum};
-\node[cell, fill=surveylightteal] (f2) at (4.75,0.65) {model screening and human review};
-
-\node[system, fill=surveylightorange] (n3) at (-7.15,-0.45) {$\pi$ family};
-\node[cell, fill=surveylightorange] (s3) at (-4.25,-0.45) {cross-robot, web, target, mixed quality};
-\node[cell, fill=surveylightorange] (p3) at (-1.25,-0.45) {action normalization and metadata};
-\node[cell, fill=surveylightorange] (u3) at (1.75,-0.45) {pretrain, specialize, recover};
-\node[cell, fill=surveylightorange] (f3) at (4.75,-0.45) {rollout outcomes and RECAP};
-
-\node[system, fill=surveylightrose] (n4) at (-7.15,-1.55) {GR00T family};
-\node[cell, fill=surveylightrose] (s4) at (-4.25,-1.55) {web, human, simulation, real};
-\node[cell, fill=surveylightrose] (p4) at (-1.25,-1.55) {latent or inverse-dynamics actions};
-\node[cell, fill=surveylightrose] (u4) at (1.75,-1.55) {pyramid mixture and post-training};
-\node[cell, fill=surveylightrose] (f4) at (4.75,-1.55) {success checks and retention audits};
-
-\node[system, fill=surveylightblue] (n5) at (-7.15,-2.65) {Gemini Robotics};
-\node[cell, fill=surveylightblue] (s5) at (-4.25,-2.65) {multiple embodiments and task-specific data};
-\node[cell, fill=surveylightblue] (p5) at (-1.25,-2.65) {Motion Transfer};
-\node[cell, fill=surveylightblue] (u5) at (1.75,-2.65) {multi-embodiment train, then specialize};
-\node[cell, fill=surveylightblue] (f5) at (4.75,-2.65) {simulation iteration and real tests};
-
-\draw[arrow] (n1) -- (s1);
-\draw[arrow] (s1) -- (p1);
-\draw[arrow] (p1) -- (u1);
-\draw[arrow] (u1) -- (f1);
-\draw[arrow] (n2) -- (s2);
-\draw[arrow] (s2) -- (p2);
-\draw[arrow] (p2) -- (u2);
-\draw[arrow] (u2) -- (f2);
-\draw[arrow] (n3) -- (s3);
-\draw[arrow] (s3) -- (p3);
-\draw[arrow] (p3) -- (u3);
-\draw[arrow] (u3) -- (f3);
-\draw[arrow] (n4) -- (s4);
-\draw[arrow] (s4) -- (p4);
-\draw[arrow] (p4) -- (u4);
-\draw[arrow] (u4) -- (f4);
-\draw[arrow] (n5) -- (s5);
-\draw[arrow] (s5) -- (p5);
-\draw[arrow] (p5) -- (u5);
-\draw[arrow] (u5) -- (f5);
-\draw[-{Latex[length=1.8mm]}, thick, draw=surveyblue]
-  (-4.25,-3.45) -- node[below, align=center, text width=13.5cm,
-  font=\footnotesize, text=surveydark]
-  {shared recipe structure: assign source roles $\rightarrow$ align and verify $\rightarrow$ route by training stage $\rightarrow$ update from evidence}
-  (4.75,-3.45);
+\draw[arr] (source) -- (align);
+\draw[arr] (align) -- (check);
+\draw[arr] (check) -- (route);
+\draw[arr] (route) -- (evidence);
+\draw[loop] (evidence.south) -- ++(0,-0.55) -|
+  node[below, pos=0.52, align=center, text=surveyrose, font=\footnotesize]
+  {evaluation can revise source allocation, checks, and training roles}
+  (source.south);
 \end{tikzpicture}
-\caption{Public industrial data recipes aligned by function rather than incomparable data volume or end-to-end score.}
+\caption{Functional structure shared by public industrial data recipes. Systems differ in their sources and implementations, but meaningful comparison requires each stage to be reported separately.}
 \label{fig:industrial-recipe-map}
 \end{figure*}

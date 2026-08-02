@@ -7,6 +7,10 @@ Filtering reallocates a finite pool.
 Augmentation and synthesis attempt to create missing coverage.
 In embodied learning, a generated image is useful only when it remains coupled to an executable state transition and a valid task.
 We organize generation by what is transformed and how its validity can be tested, not by the visual generator family.
+A world model here means a model that predicts how an observed scene may evolve.
+Figure~\ref{fig:generation-hierarchy} gives this organization and links each intervention family to the new validity condition it creates.
+
+\input{figures/tex/generation_hierarchy}
 
 \subsection{A Hierarchy of Generative Interventions}
 
@@ -36,7 +40,6 @@ Such systems can expand nominal task count quickly, but generated tasks inherit 
 Task count alone is not evidence of behavioral coverage.
 
 Video and world-model generation predicts demonstrations or alternative futures conditioned on language, actions, images, or geometry.
-A world model in this context is a model that predicts how an observed scene may evolve.
 Xiaomi-Robotics-U0 targets embodied synthesis with multiple views and geometric constraints ~\cite{li2026xiaomi_2607_11643}.
 Such models can propose rare scenes and future states at much lower marginal cost than real collection, but a photorealistic rollout can hide inconsistent three-dimensional geometry, unreachable motion, or incorrect contact.
 Generated pixels do not automatically supply calibrated robot actions.

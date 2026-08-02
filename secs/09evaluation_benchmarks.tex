@@ -1,0 +1,46 @@
+%!TEX root = ../main.tex
+\section{Evaluation and Benchmarks for Data Preparation}
+\label{sec:evaluation}
+
+The literature contains many positive within-paper results but few fair cross-paper comparisons. Reported gains usually differ in raw pool, learner, training budget, robot, and success definition. A number establishes that an operation worked under its reported setting. It does not rank that operation against a number from another paper. Evaluation should instead state which claim a measurement supports and isolate the data decision from other changes in training.
+
+\subsection{Evidence Has Different Directness}
+
+Data-level outcomes establish that the intended local change occurred. Examples include fewer unreadable records, lower measured duplication, or broader coverage of declared task factors. These diagnostics are inexpensive and interpretable. They do not establish that the changed data help a policy.
+
+Proxy outcomes use a model, estimator, or simulator to predict suitability. Examples include a vision--language score, inverse-kinematics feasibility, estimated influence, or simulated task success. Proxies are closer to the intended training role, but their calibration data, uncertainty, and threshold must be reported. The same proxy should not both select samples and serve as the only test of the selected set.
+
+Downstream outcomes retrain a policy and measure behavior. This is the strongest evidence for training utility and the most expensive. Simulation supports repeated controlled trials. Real execution tests physical validity, but often permits fewer trials and narrower tasks. The two should remain separate. Evidence becomes stronger when an effect persists across learners, data budgets, embodiments, and held-out task factors.
+Figure~\ref{fig:evidence-hierarchy} therefore divides downstream evidence into controlled policy training and target-robot execution while retaining the three evidence classes defined in Section~\ref{sec:method}.
+
+\input{figures/tex/evidence_hierarchy}
+
+The hierarchy in Figure~\ref{fig:evidence-hierarchy} is not a replacement rule. Higher-level evidence still needs lower-level diagnostics to explain why an intervention worked or failed. A downstream gain without data accounting cannot reveal whether the cause was defect removal, coverage, a changed mixture, or leakage.
+
+\subsection{Control the Data Intervention}
+
+The minimum comparison includes the unprepared full pool, a random subset matched to the retained volume, and the proposed prepared set. When true defect or utility labels exist, an oracle provides a useful upper bound. The random control separates selection from the effect of using less data. The full-pool control tests whether useful coverage was removed. The oracle separates limitations of the decision signal from limitations of the operation itself.
+
+Compute should be controlled in two regimes. Under fixed-update evaluation, all policies receive the same number of optimizer updates and batch samples. This tests value per training unit. Under fixed-pass evaluation, each policy receives the same number of passes through its own dataset. This tests the end-to-end recipe, including the fact that a smaller set is revisited more often. Hyperparameter and threshold tuning budgets must also match.
+
+Leakage needs lineage-aware checks. Near-identical scenes can occur in separate robot episodes, generated variants can cross a split, and a model labeler may have seen benchmark imagery. Splitting should happen before augmentation at the highest shared group available, such as task instance, object, scene, collection session, or operator. Derived units should inherit that split through lineage.
+
+Table~\ref{tab:evaluation-protocol} summarizes the controls needed to avoid conflating preparation, optimization, and evaluation.
+
+\input{tables/evaluation_protocol}
+
+\subsection{Report Cost, Openness, and Uncertainty}
+
+Retaining half of a dataset is not a cost result if selecting that half required many training runs, extensive labeling, or target-robot rollouts. Preparation cost should separate human labor, scoring and training compute, simulation, robot time, and data infrastructure. The end-to-end result should state the total cost required to reach a declared deployment utility. An expensive selector may be justified when one preparation pass supports many large pretraining runs. A simple rule may be preferable for a small adaptation run.
+
+Uncertainty should be reported at the level supported by the experiment. Simulation studies need repeated seeds and intervals. Real-robot studies need trial counts, per-task outcomes, and clear reset and intervention rules. A pooled average can conceal a harmed embodiment or a lost rare skill. Closed-loop studies additionally need curves over interaction rounds and cumulative robot cost.
+
+Reproducibility requires more than a final dataset. A study should identify the raw source version, operator implementation and configuration, scoring checkpoint, sampling weights, training role, and lineage from source interval to training unit. OpenVLA and Octo make policy baselines more accessible~\cite{kim2024openvla_2406_09246,team2024octo_2405_12213}. A reusable preparation benchmark also needs a raw or defect-injected pool on which competing operators can be rerun. Closed industrial reports can provide systems evidence, but unavailable sources or internal rollouts limit causal reproduction.
+
+\subsection{A Shared Robot-Data Evaluation Track}
+
+A practical benchmark would combine four linked assets. First, a versioned raw pool should span several embodiments and source types. It should include natural defects, controlled defects, successes, failures, recoveries, redundant regions, and deliberate near-duplicate cases. Second, a preparation interface should require each method to emit training units, roles, weights, uncertainty, lineage, and cost logs rather than only a cleaned archive. Third, fixed lightweight and generalist learners should be trained under several update budgets. Fourth, the evaluation should separate defect diagnostics, held-out simulation, and a smaller blinded real-robot audit.
+
+The task split should cover familiar cases, new combinations of familiar factors, and distribution shifts. Results should report average deployment performance, the weakest task or embodiment group, retained capabilities, preparation and training cost, and safety. Stress tests should vary one known defect or shift at a time, including timing error, rare recovery removal, source imbalance, and action mismatch. They should then combine natural defects to test whether a method has overfit one visible artifact.
+
+Fixed raw snapshots make results repeatable, while periodically refreshed hidden cases can test benchmark overfitting. The purpose is not one global rank. The benchmark should expose where a pipeline works, which evidence it purchases, and how its benefit changes with learner, budget, and target distribution. This design makes the conditional utility claim in Section~\ref{sec:problem} empirically testable.
