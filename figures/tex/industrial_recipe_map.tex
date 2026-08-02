@@ -17,23 +17,56 @@
 \node[colhead] at (1.75,2.55) {Training use};
 \node[colhead] at (4.75,2.55) {Feedback or validation};
 
-\foreach \idx/\y/\name/\src/\prep/\use/\feedback/\shade in {
-  1/1.75/{Qwen-RobotManip}/{robot, human, synthetic}/{state--action and cross-modal checks}/{representation, motion, behavior alignment}/{component ablations and data audit}/{surveylightblue},
-  2/0.65/{Qwen-RobotWorld}/{embodied and general video}/{clip normalization and action captions}/{staged world-model curriculum}/{model screening and human review}/{surveylightteal},
-  3/-0.45/{$\pi$ family}/{cross-robot, web, target, mixed quality}/{action normalization and metadata}/{pretrain, specialize, recover}/{rollout outcomes and RECAP}/{surveylightorange},
-  4/-1.55/{GR00T family}/{web, human, simulation, real}/{latent or inverse-dynamics actions}/{pyramid mixture and post-training}/{success checks and retention audits}/{surveylightrose},
-  5/-2.65/{Gemini Robotics}/{multiple embodiments and task-specific data}/{Motion Transfer}/{multi-embodiment train, then specialize}/{simulation iteration and real tests}/{surveylightblue}
-}{
-  \node[system, fill=\shade] (n\idx) at (-7.15,\y) {\name};
-  \node[cell, fill=\shade] (s\idx) at (-4.25,\y) {\src};
-  \node[cell, fill=\shade] (p\idx) at (-1.25,\y) {\prep};
-  \node[cell, fill=\shade] (u\idx) at (1.75,\y) {\use};
-  \node[cell, fill=\shade] (f\idx) at (4.75,\y) {\feedback};
-  \draw[arrow] (n\idx) -- (s\idx);
-  \draw[arrow] (s\idx) -- (p\idx);
-  \draw[arrow] (p\idx) -- (u\idx);
-  \draw[arrow] (u\idx) -- (f\idx);
-}
+\node[system, fill=surveylightblue] (n1) at (-7.15,1.75) {Qwen-RobotManip};
+\node[cell, fill=surveylightblue] (s1) at (-4.25,1.75) {robot, human, synthetic};
+\node[cell, fill=surveylightblue] (p1) at (-1.25,1.75) {state--action and cross-modal checks};
+\node[cell, fill=surveylightblue] (u1) at (1.75,1.75) {representation, motion, behavior alignment};
+\node[cell, fill=surveylightblue] (f1) at (4.75,1.75) {component ablations and data audit};
+
+\node[system, fill=surveylightteal] (n2) at (-7.15,0.65) {Qwen-RobotWorld};
+\node[cell, fill=surveylightteal] (s2) at (-4.25,0.65) {embodied and general video};
+\node[cell, fill=surveylightteal] (p2) at (-1.25,0.65) {clip normalization and action captions};
+\node[cell, fill=surveylightteal] (u2) at (1.75,0.65) {staged world-model curriculum};
+\node[cell, fill=surveylightteal] (f2) at (4.75,0.65) {model screening and human review};
+
+\node[system, fill=surveylightorange] (n3) at (-7.15,-0.45) {$\pi$ family};
+\node[cell, fill=surveylightorange] (s3) at (-4.25,-0.45) {cross-robot, web, target, mixed quality};
+\node[cell, fill=surveylightorange] (p3) at (-1.25,-0.45) {action normalization and metadata};
+\node[cell, fill=surveylightorange] (u3) at (1.75,-0.45) {pretrain, specialize, recover};
+\node[cell, fill=surveylightorange] (f3) at (4.75,-0.45) {rollout outcomes and RECAP};
+
+\node[system, fill=surveylightrose] (n4) at (-7.15,-1.55) {GR00T family};
+\node[cell, fill=surveylightrose] (s4) at (-4.25,-1.55) {web, human, simulation, real};
+\node[cell, fill=surveylightrose] (p4) at (-1.25,-1.55) {latent or inverse-dynamics actions};
+\node[cell, fill=surveylightrose] (u4) at (1.75,-1.55) {pyramid mixture and post-training};
+\node[cell, fill=surveylightrose] (f4) at (4.75,-1.55) {success checks and retention audits};
+
+\node[system, fill=surveylightblue] (n5) at (-7.15,-2.65) {Gemini Robotics};
+\node[cell, fill=surveylightblue] (s5) at (-4.25,-2.65) {multiple embodiments and task-specific data};
+\node[cell, fill=surveylightblue] (p5) at (-1.25,-2.65) {Motion Transfer};
+\node[cell, fill=surveylightblue] (u5) at (1.75,-2.65) {multi-embodiment train, then specialize};
+\node[cell, fill=surveylightblue] (f5) at (4.75,-2.65) {simulation iteration and real tests};
+
+\draw[arrow] (n1) -- (s1);
+\draw[arrow] (s1) -- (p1);
+\draw[arrow] (p1) -- (u1);
+\draw[arrow] (u1) -- (f1);
+\draw[arrow] (n2) -- (s2);
+\draw[arrow] (s2) -- (p2);
+\draw[arrow] (p2) -- (u2);
+\draw[arrow] (u2) -- (f2);
+\draw[arrow] (n3) -- (s3);
+\draw[arrow] (s3) -- (p3);
+\draw[arrow] (p3) -- (u3);
+\draw[arrow] (u3) -- (f3);
+\draw[arrow] (n4) -- (s4);
+\draw[arrow] (s4) -- (p4);
+\draw[arrow] (p4) -- (u4);
+\draw[arrow] (u4) -- (f4);
+\draw[arrow] (n5) -- (s5);
+\draw[arrow] (s5) -- (p5);
+\draw[arrow] (p5) -- (u5);
+\draw[arrow] (u5) -- (f5);
 \draw[-{Latex[length=1.8mm]}, thick, draw=surveyblue]
   (-4.25,-3.45) -- node[below, align=center, text width=13.5cm,
   font=\footnotesize, text=surveydark]
