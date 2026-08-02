@@ -1,30 +1,31 @@
 %!TEX root = ../main.tex
-\section{Evaluation and Cross-Cutting Synthesis}
+\section{Assessing Data Utility: Evaluation and Cross-Cutting Synthesis}
 \label{sec:evaluation}
 
 The literature contains many positive within-paper results but few fair cross-paper comparisons.
-Robots, tasks, data pools, policy families, model initializations, training steps, extra pretraining data, and success definitions usually differ.
+Cross-paper results usually differ in the data pool, learner, training budget, robot, and success definition.
 A number reported in one setting establishes that an operation can work under that setting.
 It does not rank the operation against a number from another paper.
 This section specifies the evidence needed for comparison and then synthesizes conclusions that recur despite protocol differences.
 
 \subsection{Three Levels of Outcome}
 
-Intrinsic outcomes describe properties of the prepared data, such as invalid-file rate, label-noise estimate, duplicate rate, smoothness, entropy, coverage, balance, or retained fraction.
-They are cheap, interpretable diagnostics.
-They do not show that the measured property is causally useful to a policy.
+Data-level outcomes describe whether the intended local change occurred.
+Examples include fewer unreadable records, lower measured duplication, or broader task coverage.
+These diagnostics are inexpensive and interpretable, but they do not establish that the change helps a policy.
 
-Proxy outcomes include foundation-model scores, information estimates, influence, predicted executability, inverse-kinematics feasibility, simulator replay, or a learned success classifier.
-They are closer to a target, but their calibration set, model bias, and chosen decision threshold must be reported.
+Proxy outcomes use a model, estimator, or simulator to predict whether data are suitable.
+They are closer to the training objective, but their calibration data, bias, and decision threshold must be reported.
 The same proxy should not define both the filter and the test of filtering.
 
-Downstream outcomes retrain a policy and measure success, generalization, sample efficiency, recovery, and safety.
+Downstream outcomes retrain a policy and measure its behavior.
 This is the strongest evidence for training utility and the most expensive.
 Simulation affords repetitions and control over task factors.
 Real execution tests physical validity but often permits only a few trials.
 The two should be reported separately, with means, uncertainty, and trial counts.
 Evidence is stronger when an effect persists across learners, data budgets, embodiments, and held-out task factors.
 
+\input{figures/tex/evidence_hierarchy_placeholder}
 \input{tables/evaluation_protocol}
 
 \subsection{Controlling the Intervention}
@@ -50,13 +51,14 @@ Lineage-based duplicate checks should then verify the separation.
 \subsection{Cost, Openness, and Reproducibility}
 
 ``Using 50\% of the data'' is not a cost result if choosing that half required training many policies, running target-robot rollouts, or manually labeling every episode.
-Report preparation cost in human minutes, foundation-model calls, accelerator hours, simulator rollouts, real-robot hours, storage and input/output operations, and safety interventions.
+Report preparation cost by its main resources: human labor, model or training compute, simulation, robot time, and data infrastructure.
 Then report total cost to reach a target deployment utility.
 Expensive learner-aware selection can still be worthwhile when its preparation cost is shared across many long pretraining runs.
 A cheap rule can be preferable for a small adaptation run.
 
 Reproducibility requires more than releasing final data.
-The operator code, model checkpoint used for scoring, prompt and threshold, source version, exclusion log, learned weights, random seeds, and lineage should be available.
+Reproduction requires the operator implementation and configuration, the exact source version, and the lineage from raw to retained data.
+Learned selectors must additionally release or identify the scoring checkpoint and training state.
 OpenVLA and Octo make policy baselines more accessible ~\cite{kim2024openvla_2406_09246,team2024octo_2405_12213}, but reproducible preparation additionally needs a raw or defect-injected pool on which alternative operators can be rerun.
 Closed industrial reports can reveal scale and recipes, yet claims depending on unavailable data or internal rollouts remain weaker evidence for causal comparison.
 
@@ -76,12 +78,13 @@ Pretraining studies show the value of controlled pipeline competition.
 The DataComp-LM design is more informative for embodied intelligence than any individual text filter.
 It answers a causal question: under a fixed raw pool, learner, token budget, and evaluation suite, which preparation pipeline produces the best model?
 Robot papers often instead compare a curated set and a baseline with different episode counts, updates, augmentations, or policy architectures.
-A controlled robot-data benchmark must hold the raw pool, learner, budget, and evaluation fixed while adding action semantics, episode- and segment-level splits, separate simulation and real-robot evaluation, preparation cost, and safety.
+A controlled robot-data benchmark must hold the raw pool, learner, training budget, and evaluation fixed.
+It must additionally preserve action semantics and lineage, separate simulation from real execution, and account for preparation cost and safety.
 Unlike text tokens, robot transitions are not freely exchangeable, and their acquisition price depends on resets, supervision, embodiment, and risk.
 
 Mixture optimization also suggests hierarchical, stage-specific routing.
 Language corpora have domains.
-Embodied corpora have nested source, task, environment, skill, embodiment, episode, segment, and transition groups.
+Embodied corpora are hierarchical: sources contain tasks and environments, which in turn contain episodes, segments, and transitions.
 A single learned source weight captures only the top of the routing hierarchy.
 A useful transfer of DoReMi and DSIR is to train a cheap proxy learner and estimate which groups reduce loss on the target distribution, then test whether the learned weights transfer to a larger VLA.
 The target distribution cannot be assumed to remain fixed.
@@ -124,7 +127,7 @@ The fourth is an evaluation suite that separates defect detection, held-out simu
 The audit should cover familiar conditions, new combinations of familiar factors, and distribution shifts.
 Results should report deployment performance, the weakest task or embodiment group, preparation and training cost, and safety separately instead of collapsing them into one rank.
 
-Stress tests should vary contamination, episode length, label noise, action delay, rare recovery frequency, source imbalance, and embodiment mismatch.
+Stress tests should vary one known defect or distribution shift at a time, including timing error, rare recoveries, source imbalance, or embodiment mismatch.
 A method that detects one injected artifact but fails under natural mixed defects is not a general quality metric.
 Fixed raw snapshots make results repeatable.
 Periodically refreshing evaluation cases that remain hidden from submitters can measure overfitting and support continued updates to the survey.
@@ -152,7 +155,7 @@ Likewise, segment recomposition and world-model generation can increase the numb
 These errors require separate checks and ultimately a downstream policy evaluation.
 
 Feedback loops make data and model versions part of one experimental record.
-The current model selects experience that trains its successor, so reproduction and rollback require the raw source, preparation decisions, verifier, training role, model version, and deployment evidence.
+The current model selects experience that trains its successor, so reproduction and rollback require joint data, verifier, and model lineage together with the evidence used for promotion.
 RECAP, SOP, and LWD use current-policy experience but also retain a pretrained or offline reference or restrict the update path ~\cite{intelligence20250_2511_14759,pan2026sop_2601_03044,wang2026learning_2605_00416}.
 Results on recursively generated language data do not prove that robot policies will collapse, but they explain why these controls deserve direct tests ~\cite{shumailov2024collapse}.
 Each round needs a stated coverage or failure hypothesis, a matched comparison, retained reference data, and a rollback condition.

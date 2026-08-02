@@ -6,26 +6,27 @@ Robot learning is entering a data-rich but not yet data-coherent regime.
 Open X-Embodiment brings heterogeneous datasets into a common interface, DROID distributes real-world collection across institutions, and the Universal Manipulation Interface (UMI) reduces the need for continuous access to a target robot.
 Recent generalist policies consequently train on data from different robots, tasks, environments, and forms of supervision~\cite{collaboration2023open_2310_08864,khazatsky2024droid_2403_12945,chi2024universal_2402_10329,kim2024openvla_2406_09246,team2024octo_2405_12213}.
 This expansion is often summarized by episode counts or hours, but neither quantity explains what a model can learn from the data.
-A large collection can still mix incompatible coordinate frames, control modes, frequencies, language descriptions, success criteria, operator styles, and physical assumptions.
+A large collection can still mix incompatible sensing, control, annotation, and physical assumptions.
 Even a technically valid record may duplicate behavior already covered, use actions that do not transfer to the target robot, or provide supervision that is suitable only for one training stage.
 
-We use \emph{raw embodied record} for the observations, states, actions, language, outcome, and metadata stored for an episode or a segment of behavior.
-Before such a record is used for learning, a pipeline may repair timestamps, align coordinates, locate task boundaries, add labels, remove defects, set a sampling weight, assign a training role, or generate a related example.
+We use \emph{raw embodied record} for the sensor and control streams of an episode or behavior segment together with its task, outcome, and provenance metadata.
+Before learning, a pipeline makes the record technically usable and converts it into the examples or behavior segments actually consumed by the learner.
+We call these outputs \emph{training units} and include the decision about how each unit enters training.
 This survey uses \emph{data preparation for embodied intelligence} for these decisions.
-The definition includes decisions made before training and later decisions triggered by model evaluation or deployment.
+The definition includes decisions made before training and later decisions triggered by model evaluation or robot execution.
 It does not treat every part of robot learning as data preparation.
 
 Preparation changes more than the contents of a saved dataset.
-It also determines which examples a learner sees, how often they are sampled, and whether they are used for broad pretraining, robot alignment, task adaptation, recovery, safety, or evaluation.
+It also determines which examples a learner sees, how often they are sampled, and whether they provide broad representation learning, action supervision, corrective training, or evaluation.
 We call this combination of prepared examples, sampling weights, and training roles the \emph{training distribution}.
 The term does not imply that the distribution has a simple analytic form.
 It describes the data that are actually presented to the optimizer and the rules used to present them.
-When evaluation of a trained or deployed model changes a later collection or preparation decision, we call the resulting closed loop a \emph{data engine}.
+When evaluation or robot execution of a trained model changes a later collection or preparation decision, we call the resulting closed loop a \emph{data engine}.
 When several rounds of this loop repeatedly revise the data used for training, we refer to the process as \emph{data self-evolution}.
+We use \emph{post-training} for model updates performed after broad pretraining, usually with target-task data or rollouts from the current policy.
 
-%上面这一段没说清楚，我们的特点，核心句：“Our core scope is manipulation and generalist visionlanguage–action (VLA) learning.”感觉有问题，不是前文表达的
 This boundary is deliberately narrower than ``data for embodied AI.''
-Our core scope is manipulation and generalist vision--language--action (VLA) learning.
+We study data that provide, modify, or evaluate supervision for an embodied policy, with an emphasis on manipulation and generalist vision--language--action (VLA) systems.
 Collection is included when its design changes compatibility, coverage, or the feedback available for later preparation.
 Human video and simulation are included when they are converted into supervision for embodied policy learning.
 Model and system reports are included when they disclose a data operation or a reproducible part of a data recipe.
@@ -40,25 +41,24 @@ Our focus is the decision made after a source is available: what should be chang
 This decision has become a distinct research problem for three reasons.
 
 First, data operations increasingly contain learned components.
-Recent methods learn source-mixture weights, estimate redundancy or information, predict task progress, and approximate how a training example changes a target learner~\cite{hejna2024re_2408_14037,hejna2025robot_2502_08623,dass2025datamil_2505_09603,zhang2025scizor_2505_22626,xu2026athena_2606_16208}.
+Recent methods replace fixed heuristics with learned estimates of coverage, task progress, mixture value, or influence on a target learner~\cite{hejna2024re_2408_14037,hejna2025robot_2502_08623,dass2025datamil_2505_09603,zhang2025scizor_2505_22626,xu2026athena_2606_16208}.
 Their behavior depends on the model and calibration data used to make the decision, so the operation itself requires evaluation.
 
-%这段话不知道啥意思
-Second, foundation models can label and generate data at a scale that makes exhaustive human inspection impossible~\cite{blank2024scaling_2410_17772,mandlekar2023mimicgen_2310_17596,li2026xiaomi_2607_11643}.
-The bottleneck then moves from producing examples to detecting semantic, geometric, and physical errors and deciding which generated examples can supervise robot actions.
+Second, pretrained models and data generators can apply one labeling or synthesis procedure to far more records than people can inspect individually.
+NILS uses pretrained models to infer state changes and produce language annotations, while MimicGen turns a small set of demonstrations into a much larger set of executed trajectories~\cite{blank2024scaling_2410_17772,mandlekar2023mimicgen_2310_17596}.
+At this scale, producing a candidate label or trajectory is often easier than establishing that it is semantically correct and safe to use as action supervision.
 
-% deployment这个术语用的对吗？不知道deployment在这里具体指的是什么
-Third, deployment is becoming a source of targeted training data.
-Self-improving systems use successes, failures, and human interventions from the current policy to decide what to collect or train on next~\cite{bousmalis2023robocat_2306_11706,ahn2024autort_2401_12963,intelligence20250_2511_14759,pan2026sop_2601_03044,wang2026learning_2605_00416}.
+Third, rollouts from a trained policy are becoming a source of targeted data.
+Here, a rollout means an execution during evaluation or continued robot use, not necessarily a fully autonomous product deployment.
+Self-improving systems use rollout successes, failures, and human interventions to decide what to collect or train on next~\cite{bousmalis2023robocat_2306_11706,ahn2024autort_2401_12963,intelligence20250_2511_14759,pan2026sop_2601_03044,wang2026learning_2605_00416}.
 Preparation is no longer always a one-time script because the model can change the data used to train its successor.
 
-Industrial reports show the same change at system scale.
-Qwen emphasizes representation, motion, and behavior alignment.
-The $\pi$ family assigns different sources and quality levels to different training roles.
-GR00T combines real demonstrations with generated and simulated expansion.
-Gemini Robotics reports Motion Transfer, which aligns motion data across robot embodiments~\cite{yuan2026qwen_2606_17846,intelligence20260_2604_15483,nvidia2025gr00t_2503_14734,team2025gemini_2510_03342}.
+Industrial reports expose the same decisions inside end-to-end model development.
+Qwen-RobotManip names representation, motion, and behavior alignment as separate parts of its data pipeline.
+The $\pi$ family conditions training on source and quality metadata instead of treating all episodes identically.
+GR00T combines real demonstrations with simulated and generated expansion, while Gemini Robotics evaluates multi-embodiment data both with and without Motion Transfer~\cite{yuan2026qwen_2606_17846,intelligence20260_2604_15483,nvidia2025gr00t_2503_14734,team2025gemini_2510_03342}.
 These reports do not provide a common experimental setting and therefore do not support a numerical leaderboard.
-They do show that data preparation has become a recurring design problem rather than an undocumented preprocessing detail. % 这句话没有被很好的支持，论证逻辑不明确且不严密
+Their shared contribution to this survey is narrower: each report discloses data alignment, assignment, generation, or feedback as an explicit part of the training recipe.
 
 \input{tables/adjacent_surveys}
 
@@ -67,7 +67,7 @@ They do show that data preparation has become a recurring design problem rather 
 The central claim of this survey is that data quality is not a fixed property of a record.
 A record is useful only in relation to a target robot, learner, task, training stage, and surrounding dataset.
 We call this dependence \emph{conditional data utility}.
-Quality is also multidimensional because technical validity, semantic correctness, action compatibility, physical feasibility, coverage, diversity, and safety describe different properties and can disagree.
+Quality is also multidimensional because a record can be valid in storage and semantics yet redundant, unsafe, or incompatible with the target robot.
 
 A failed trajectory provides a concrete example.
 It is harmful when every failed action is presented as an expert target.
@@ -89,15 +89,15 @@ Source type, modality, transformed object, granularity, and objective are record
 The survey makes four contributions.
 First, it defines data preparation as the set of decisions that convert raw embodied records into training examples, sampling weights, and stage-specific roles.
 This boundary separates data preparation from general data collection and policy architecture design.
-Second, it provides an evidence map of 211 works with search records, reading-depth labels, and structured coding. % survey中应该说reading-depth labels吗？这不是很常见的写法吧。survey的paper不是应该都是精读的吗
-The resulting taxonomy compares operations by their decision signal, granularity, cost, validation, generalization, and failure modes rather than by headline performance.
-Third, the survey reconstructs public industrial recipes and compares data engines by the feedback they observe, the data decision they make, and the controls used during model updates. % 你的描述太黏糊了，一句话可以讲清楚的地方加了很多描述性的句子。这些句子可以另起一行。
-This comparison separates disclosed facts from within-paper evidence and from our cross-paper interpretation.
+Second, it provides a reproducible evidence map of 211 records and bases the technical synthesis on 177 works examined beyond the abstract.
+The resulting taxonomy compares how operations are chosen, what they change, and what evidence supports their value rather than ranking headline performance.
+Third, it reconstructs public industrial data recipes and compares how data engines use model feedback to update later training data.
+Disclosed implementation facts are kept separate from controlled evidence and from our cross-paper interpretation.
 Fourth, the survey relates embodied preparation to language-model data engineering and develops a research agenda for evaluating data value, stabilizing closed-loop updates, and limiting the authority of autonomous preparation systems.
 
 Section~\ref{sec:method} describes the review protocol.
 Section~\ref{sec:problem} formalizes the problem and introduces the taxonomy.
 Sections~\ref{sec:acquisition}--\ref{sec:evolution} follow the operation axis from source design through alignment, curation, generation, and validation.
-Section~\ref{sec:recipes-engines} examines industrial recipes, post-training loops, and increasing levels of preparation autonomy.
+Section~\ref{sec:recipes-engines} examines industrial recipes, updates after initial training, and increasing levels of preparation autonomy.
 Section~\ref{sec:evaluation} defines comparable evidence and discusses lessons from large language model data preparation.
 Section~\ref{sec:agenda} develops the research agenda.

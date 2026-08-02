@@ -1,26 +1,21 @@
-% 表头名字太长了，一般会简洁的表达，必要的解释可以放到caption或者正文中。Distinguishing scope这一列有必要放吗，我看你论文中写了这些内容。
 \begin{table*}[t]
 \centering
-\caption{Positioning relative to adjacent surveys. A check mark means that the topic is an organizing axis rather than an incidental discussion.} 
+\caption{Difference in organizing focus from adjacent surveys. A check mark indicates a central organizing dimension rather than incidental coverage.}
 \label{tab:adjacent-surveys}
-\scriptsize
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{\textwidth}{@{}>{\RaggedRight\arraybackslash}p{3.1cm}>{\RaggedRight\arraybackslash}p{2.4cm}*{4}{>{\centering\arraybackslash}p{1.35cm}}>{\RaggedRight\arraybackslash}X@{}}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\textwidth}{@{}>{\RaggedRight\arraybackslash}X>{\RaggedRight\arraybackslash}p{3.4cm}cccc@{}}
 \toprule
-Survey & Primary organizing principle & Curation and mixing & Utility evidence & Closed-loop evolution & Reproducible review protocol & Distinguishing scope \\
+Survey & Organizes the field by & Curation & Utility & Feedback & Protocol \\
 \midrule
 Data Pyramid~\cite{ye2026data_2607_24744}
-& Data-source hierarchy & \cmark & \xmark & \xmark & \xmark
-& Maps real-robot, human, simulation, and vision--language sources and their scale--alignment trade-off. \\
-VLA datasets, benchmarks, and data engines~\cite{wang2026vision_2604_23001}
-& Resources and infrastructure & \cmark & \xmark & \cmark & \xmark
-& Catalogs manipulation datasets, benchmarks, video-to-data systems, hardware engines, and generative engines. \\
-Robot learning from human videos~\cite{ma2026robot_2604_27621}
-& Transfer path & \xmark & \xmark & \xmark & \xmark
-& Organizes task-, observation-, and action-oriented transfer from human video. \\
+& Data-source hierarchy & \cmark & \xmark & \xmark & \xmark \\
+VLA data survey~\cite{wang2026vision_2604_23001}
+& Dataset and engine type & \cmark & \xmark & \cmark & \xmark \\
+Human-video survey~\cite{ma2026robot_2604_27621}
+& Transfer path & \xmark & \xmark & \xmark & \xmark \\
 \textbf{This survey}
-& Preparation decision and feedback & \cmark & \cmark & \cmark & \cmark
-& Studies how raw records become training examples, sampling rules, and stage-specific roles, including evidence strength and cost. \\
+& Preparation decision & \cmark & \cmark & \cmark & \cmark \\
 \bottomrule
 \end{tabularx}
 \end{table*}

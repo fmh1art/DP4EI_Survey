@@ -1,11 +1,12 @@
 %!TEX root = ../main.tex
-\section{Industrial Data Recipes and Self-Evolving Data Engines}
+\section{Closing the Loop: Industrial Data Recipes and Self-Evolving Engines}
 \label{sec:recipes-engines}
 
+This section covers the feedback-driven part of the operation axis and applies all four axes to composite systems.
 The preceding sections examine one preparation operation at a time.
-Industrial embodied models instead disclose a \emph{data recipe}, which is the combined choice of sources, transformations, labels, filters, sampling rules, training stages, and feedback loops.
+Industrial embodied models instead disclose a \emph{data recipe}: how several sources are transformed, assigned to training stages, and revised after evaluation.
 These systems show which operations can be run at industrial scale, but several parts of a recipe usually change together.
-A technical report may establish the performance of the complete model while leaving source weights, rejected-data statistics, labor, or intermediate checkpoints undisclosed.
+A technical report may establish the performance of the complete model while leaving the mixture, preparation cost, or intermediate data versions undisclosed.
 We therefore use a report as evidence about the disclosed system and do not assign its end-to-end gain to an unreported preparation step.
 
 Table~\ref{tab:industrial-recipes} reconstructs five public recipe families from primary reports.
@@ -15,13 +16,14 @@ An hour of egocentric video, an hour of a 50-Hz robot trajectory, a simulated ro
 Evaluations on different robots, tasks, model sizes, and budgets are not directly comparable either.
 
 \input{tables/industrial_recipes}
+\input{figures/tex/industrial_recipe_placeholder}
 
 \subsection{What the Industrial Recipes Actually Reveal}
 
 The Qwen-RobotManip recipe shows why alignment must precede large-scale mixing.
 Its corpus totals approximately 38,100 hours~\cite{yuan2026qwen_2606_17846}.
 The disclosed total combines more than 11,000 hours of robot demonstrations, 1,933 hours of egocentric human video, and 24,808 hours of human-to-robot synthesis across 15 morphologies.
-The scale is enabled by a chain that first retargets and smooths hand motion, removes hands and reconstructs the background, searches for a feasible robot base and an inverse kinematics solution, and depth-composites the robot.
+The scale is enabled by a chain that retargets human motion, reconstructs robot observations, and searches for feasible robot configurations.
 It then applies five state--action checks and three cross-modal checks.
 This is materially different from concatenating datasets and padding missing action dimensions with zeros.
 A masked 80-dimensional schema fixes field meaning.
@@ -37,13 +39,13 @@ Data from other robots matters most for a low-data target, whereas a well-covere
 Cross-embodiment scale should report results for each source and target robot pair, not only a global hour count.
 
 The $\pi_{0.5}$ recipe illustrates why training role can be more informative than source type.
-It uses mobile-manipulator, static multi-environment, cross-embodiment laboratory, high-level, verbal-instruction, and web data for different purposes.
+It assigns robot data, high-level supervision, verbal instructions, and web data to different purposes.
 Its broad pretraining mixture is mostly not the exact target household mobile-manipulation distribution.
 Post-training then routes short successful episodes while retaining web and high-level supervision and adding verbal-instruction demonstrations~\cite{intelligence20250_2504_16054}.
 A source can consequently be low value as an action target but high value as general semantic supervision or as supervision for high-level task structure.
 
 $\pi_{0.7}$ pushes role separation further.
-Instead of discarding every failure or suboptimal rollout, it annotates speed, quality, mistakes, strategy, and control mode and conditions the policy on the desired metadata ~\cite{intelligence20260_2604_15483}.
+Instead of discarding every failure or suboptimal rollout, it records quality and strategy metadata and conditions the policy on the desired behavior~\cite{intelligence20260_2604_15483}.
 In its ablations, autonomous evaluation data and metadata both matter.
 Without contextual metadata, adding progressively lower-quality data can hurt, whereas the conditioned model continues to benefit in the reported setting.
 This resolves an apparent conflict in the curation literature.  ``Keep only successes'' is reasonable when all retained actions are interpreted as expert targets.  ``Keep failures'' can be reasonable when outcome, mistake intervals, and desired behavior are represented and the objective can use them.
@@ -80,7 +82,7 @@ Version 1.5 reports thousands of tasks over three embodiments and interleaved re
 Its Motion Transfer ablation isolates the alignment mechanism, while its exact source quantities, filters, and annotation lineage remain closed.
 The same report notes that more than 90\% of development evaluation episodes ran in simulation and that final model quality still requires real testing~\cite{team2025gemini_2510_03342}.
 This is good systems practice, but it also means simulated iteration speed and real deployment evidence must remain separate fields.
-Reproducibility should be reported separately for raw data, transformation code, mixture, model, verifier, and evaluation.
+Reproducibility should be reported separately for data, preparation code, training mixture, model, and evaluation.
 A single ``open'' or ``closed'' label hides these differences.
 
 \subsection{When a Pipeline Becomes a Data Engine}
@@ -88,7 +90,7 @@ A single ``open'' or ``closed'' label hides these differences.
 A static pipeline applies a fixed sequence of operations to a raw dataset.
 A data engine differs because the performance of the current learner changes which data are collected, generated, labeled, weighted, or checked in a later round.
 In each round, the system trains or updates a model on a versioned training distribution and evaluates that model on a declared target.
-The evaluation may record success, failure, intervention, uncertainty, safety, coverage, and subgroup outcomes.
+The evaluation records task outcomes together with interventions, uncertainty, and coverage gaps.
 A controller uses those observations to choose the next predefined data action within explicit human, compute, simulation, and robot budgets.
 
 The feedback requirement matters.
@@ -157,8 +159,8 @@ Calling them fully autonomous L4 agents would overstate the evidence.
 \input{figures/tex/autonomy_ladder}
 
 An L4 agent differs from a prescribed loop because it chooses the next experiment.
-At each round, it needs access to versioned data and model lineage, verifier calibration, observed coverage gaps, remaining budget, and safety risk.
-It may then acquire, repair, label, segment, filter, route, mix, generate, train, audit, roll back, or stop.
+At each round, it needs versioned data and model lineage, calibrated evaluation, a budget, and explicit safety limits.
+It may then choose whether to obtain new records, revise existing units, change their training role, run a diagnostic, or stop.
 These choices produce evidence at different delays and costs.
 A technical check may return immediately, while controlled policy training or a robot rollout may take hours and expose physical risk.
 The agent should optimize downstream policy performance over the full sequence of decisions after accounting for preparation cost and risk.

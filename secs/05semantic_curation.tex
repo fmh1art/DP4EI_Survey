@@ -1,7 +1,8 @@
 %!TEX root = ../main.tex
-\section{Semantic Enrichment, Curation, and Routing}
+\section{Constructing Training Units: Semantic Enrichment, Curation, and Routing}
 \label{sec:curation}
 
+This section covers the second part of the operation axis: turning usable records into training units and assigning those units a role.
 After technical alignment, a pipeline must identify the behavior contained in a record and decide how that behavior should be used for training.
 These decisions affect each other.
 Segmentation determines which unit receives a label or score, while a progress or outcome signal can reveal where a subtask, retry, or recovery begins.
@@ -13,7 +14,7 @@ One episode-level success bit maps all transitions to the same target quality de
 It also prevents a long trajectory from being recomposed for a new instruction.
 Modern preparation increasingly operates on subtask segments and state transitions.
 
-Boundary signals include gripper or contact changes, object motion, end-effector velocity, abrupt changes in learned representations, language-aligned task progress, and operator interventions.
+Boundary signals fall into three groups: measured motion or contact, learned semantic change, and explicit operator intervention.
 Purely kinematic boundaries are cheap but can split semantically atomic behavior or merge visually quiet planning with idle time.
 Foundation-model labeling provides task semantics.
 Natural language Instruction Labeling for Scalability (NILS) detects state changes and uses pretrained models to produce language supervision without task-specific training~\cite{blank2024scaling_2410_17772}.
@@ -30,10 +31,11 @@ A pipeline can remove only an idle or corrupted interval, attach different langu
 
 Visual-language models can infer objects, task descriptions, progress, and success at a scale where exhaustive human annotation is impossible.
 Their labels are nevertheless proxy evidence, not ground truth.
-Common failure modes include hallucinating an occluded state, describing intention rather than achieved change, using inconsistent granularity, missing brief contact, and inheriting geographic or object-recognition bias from pretraining.
+Their errors usually arise from missed visual evidence, temporal misalignment, or a mismatch between intended and achieved change.
+Pretraining bias can make these errors systematic across environments and objects.
 
 Auto-labeling should allow the model to abstain when it is uncertain.
-Structured fields for objects, relations, state changes, actions, and outcomes should be generated before free text.
+Structured descriptions of the entities, state change, behavior, and outcome should be generated before free text.
 Multiple views and temporal windows can expose inconsistent labels.
 Cross-field checks can test whether an asserted placement corresponds to a changed object relation.
 Confidence should be calibrated on a human audit sampled across tasks, sources, and confidence levels.
@@ -63,8 +65,8 @@ These methods resolve an apparent conflict in the literature.  ``Removing failed
 \subsection{Signals for Selection and Weighting}
 
 Rules and simple statistics are inexpensive and interpretable.
-Common signals include range checks, idle ratio, path length, jerk, smoothness, action saturation, success labels, and duplicate detection.
-They are effective for known technical defects, but a smooth trajectory may be confidently wrong and a corrective recovery may be intentionally non-smooth.
+These signals cover known technical defects, repeated or idle behavior, and coarse outcome labels.
+They work well when the defect is known, but a smooth trajectory may be confidently wrong and a corrective recovery may be intentionally non-smooth.
 Thresholds also correlate with episode length and task difficulty.
 
 Representation and information measures support richer selection.

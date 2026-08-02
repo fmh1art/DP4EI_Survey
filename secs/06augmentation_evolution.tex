@@ -1,7 +1,8 @@
 %!TEX root = ../main.tex
-\section{Augmentation, Synthesis, and Data Evolution}
+\section{Expanding and Validating Data: Augmentation and Synthesis}
 \label{sec:evolution}
 
+This section covers the third part of the operation axis: expanding prepared units and validating the resulting supervision.
 Filtering reallocates a finite pool.
 Augmentation and synthesis attempt to create missing coverage.
 In embodied learning, a generated image is useful only when it remains coupled to an executable state transition and a valid task.
@@ -9,7 +10,7 @@ We organize generation by what is transformed and how its validity can be tested
 
 \subsection{A Hierarchy of Generative Interventions}
 
-Observation-level augmentation changes lighting, texture, background, camera noise, crop, or viewpoint while intending to preserve state and action.
+Observation-level augmentation changes appearance or viewpoint while intending to preserve state and action.
 It is inexpensive and often useful for visual robustness, but must respect occlusion and camera-frame actions.
 Generating a plausible new view without updating its camera pose or visibility metadata creates a mislabeled action observation.
 GenAug and ROSIE use pretrained image generators to alter demonstration scenes while preserving the intended behavior ~\cite{chen2023genaug_2302_06671,yu2023scaling_2302_11550}.
@@ -17,7 +18,7 @@ RoVi-Aug extends the intervention to robot-video augmentation, whereas RoboEngin
 Together they show the scale advantage of image-space editing.
 They also expose its central audit question, namely whether pixels outside the edited region, geometry, action labels, and task success still describe the same transition.
 
-Trajectory-level transformation perturbs initial states, object poses, timing, or motion and updates actions through geometry, replay, or optimization.
+Trajectory-level transformation changes the scene or motion and recomputes actions through geometry, replay, or optimization.
 It preserves more action structure than video editing but depends on accurate object frames and on the task remaining valid after transformation.
 Mirroring, retiming, and spatial warping are valid only when every coupled observation, action, and task field is transformed consistently, as discussed in Section~\ref{sec:acquisition}.
 
@@ -68,7 +69,7 @@ Evaluation should report how many samples pass the checks required for their tra
 \subsection{Generative Diversity Can Be Illusory}
 
 Counting prompts or rendered scenes overstates coverage when samples inherit the same generator biases.
-Diversity should be measured at several levels: visual appearance, object and layout factors, action paths, state transitions, task strategy, failure cause, and embodiment.
+Diversity should be measured separately in visual context, physical interaction, behavior strategy, and embodiment.
 Near-duplicate video may still contain distinct contact dynamics, while visually diverse generations may induce the same action sequence.
 Joint state--action or transition-space diagnostics are more relevant to control than image embeddings alone, an intuition also reflected in SCIZOR's joint-space deduplication ~\cite{zhang2025scizor_2505_22626}.
 

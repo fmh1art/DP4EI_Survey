@@ -1,7 +1,8 @@
 %!TEX root = ../main.tex
-\section{Source Design, Ingestion, and Alignment}
+\section{Preparing Usable Records: Source Design, Ingestion, and Alignment}
 \label{sec:acquisition}
 
+This section covers the first part of the operation axis: making heterogeneous raw records usable together.
 Preparation starts when a collection process decides which behavior to record and how to record it.
 The interface determines which states can be visited, how accurately actions are represented, which failures remain observable, and how much alignment will be required later.
 We include these choices as source design when they change data compatibility or coverage.
@@ -20,7 +21,7 @@ As a recent preprint, it is evidence of an emerging system pattern rather than a
 
 Portable human-operated interfaces reduce the amount of target-robot time needed for collection.
 UMI reproduces relevant gripper geometry, recovers six-degree-of-freedom motion, and reduces observation mismatch at deployment~\cite{chi2024universal_2402_10329}.
-Human videos offer much greater semantic and environmental breadth, but usually lack robot states, metric scale, actions, forces, and reliable task boundaries.
+Human videos offer much greater semantic and environmental breadth, but usually lack calibrated robot state, action, and task-boundary supervision.
 Their use spans representation pretraining, observation transfer, and action reconstruction~\cite{ma2026robot_2604_27621}.
 EgoMimic co-trains aligned egocentric human and robot demonstrations, whereas Hand-Object Interaction Pretraining (HOP) reconstructs three-dimensional hand--object interaction and retargets it into robot experience ~\cite{kareer2024egomimic_2410_24221,singh2024hand_2409_08273}.
 Both illustrate that ``human video'' becomes action supervision only through explicit geometric and embodiment assumptions.
@@ -40,7 +41,7 @@ It also prevents those data from silently serving as precise action targets for 
 
 \subsection{Coverage Must Be Designed, Not Counted}
 
-Episode count hides variation in task concepts, objects, backgrounds, viewpoints, initial conditions, operators, embodiments, outcomes, and transition density.
+Episode count hides how coverage is distributed across tasks, environments, embodiments, and outcomes.
 Repeating a narrow configuration can improve statistical precision without expanding coverage.
 Adding a new environment can expand coverage but may also introduce a different action convention.
 The acquisition target should be a structured coverage record rather than a global quota.
@@ -59,11 +60,10 @@ Most current systems still rely on hand-designed task proposals and success filt
 \subsection{Ingestion and Technical Quality Control}
 
 Technical validity is the cheapest part of the evidence ladder and should be resolved before semantic scoring.
-A minimum ingestion contract verifies file readability, schema and version compatibility, units, tensor shapes, and required fields.
-It checks clocks, dropped frames, cross-stream synchronization, and command-to-actuation delay.
-Calibration, robot description, joint limits, reset boundaries, and controller identity must also be present.
-Sensor checks cover blur, exposure, occlusion, saturation, missing values, and implausible jumps.
-Action checks cover range, idle fraction, clipping, jerk, collisions, and emergency interventions.
+A minimum ingestion contract checks three layers.
+Storage checks cover file readability, schema, units, shapes, and required fields.
+Timing checks cover dropped frames, synchronization, and command-to-actuation delay.
+Robot checks verify calibration and controller metadata and flag implausible sensor or action values.
 
 These checks should emit repair decisions and uncertainty, not only pass or fail.
 Interpolation can repair short sensor gaps but may fabricate contact transitions.
@@ -84,7 +84,7 @@ It also records the reference frame, rotation convention, units, controller gain
 Converting to a camera- or end-effector-centric representation can remove base-placement variation, but calibration error then becomes label noise.
 Some mappings are many-to-one: compressing a dexterous hand into ``gripper openness'' loses interaction semantics and is not invertible.
 
-Temporal alignment reconciles sensor rate, controller rate, observation latency, action horizon, interpolation, and the meaning of an action chunk.
+Temporal alignment reconciles the sensing and control clocks and defines which observation each action or action chunk responds to.
 A frame paired with a command issued several control cycles later teaches the policy to associate the observation with the wrong action.
 Resampling should not introduce frequency artifacts or average away contact boundaries.
 Both command time and measured execution time should be retained when the delay varies.
@@ -93,7 +93,7 @@ Behavioral alignment asks whether the same normalized action has the same conseq
 This is the least solved layer.
 An embodiment-conditioned action encoder can incorporate kinematic graphs and control metadata.
 Mapping an action to another embodiment and back can test whether its meaning is preserved, while a rollout can test whether the mapped action produces the intended state transition.
-Open X-Embodiment demonstrates the benefit of a common training interface, but its heterogeneity also motivates learner-aware mixture methods such as Re-Mix~\cite{collaboration2023open_2310_08864,hejna2024re_2408_14037}.
+Open X-Embodiment demonstrates the benefit of a common training interface, but its heterogeneity also motivates mixture methods guided by a target learner, such as Re-Mix~\cite{collaboration2023open_2310_08864,hejna2024re_2408_14037}.
 
 \subsection{Jointly Transform All Coupled Modalities}
 
@@ -105,5 +105,6 @@ It is generally invalid for pouring, breaking, or frictional contact.
 An augmentation is valid only when the observation, action, and task description preserve the same state transition.
 Image plausibility alone is insufficient.
 
-Preparation artifacts also need a data contract that records source and license, collection context, robot and controller, coordinate frames, clocks, transformations, labels, confidence, training roles, relationships between training and test records, and version hashes.
+Preparation artifacts also need a data contract that records provenance, sensing and control conventions, applied transformations, and the intended use of each derived unit.
+The contract must also preserve version and train--test relationships.
 Without this contract, a later score, failure report, or model version cannot be traced to the preparation decision that produced the training example.

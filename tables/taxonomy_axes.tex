@@ -1,19 +1,29 @@
-% 同样的问题，你的表格内容太多了，谁家表格写这么多字？一点都不简洁！
-
 \begin{table*}[t]
 \centering
-\caption{The proposed taxonomy separates four questions that are often conflated. A paper may occupy several cells on each axis. Classification records the actual mechanism, not the method's self-assigned label.}
+\caption{Four complementary views of a data-preparation method. The operation axis orders the technical review; the other axes support comparison across operation stages.}
 \label{tab:taxonomy-axes}
 \small
 \setlength{\tabcolsep}{5pt}
-\begin{tabularx}{\textwidth}{@{}p{2.7cm}p{3.1cm}X p{4.4cm}@{}}
+\begin{tabularx}{\textwidth}{@{}p{2.7cm}p{3.3cm}p{5.0cm}X@{}}
 \toprule
-Axis & Question & Categories & What the axis reveals \\
+Axis & Question & High-level categories & Use in this survey \\
 \midrule
-Operation & What changes? & Source and task design, validation and repair, alignment, segmentation and relabeling, filtering, weighting and routing, synthesis, packaging, and versioning & Methods with different names may implement the same data intervention, while a single engine may compose many interventions. \\
-Decision signal & Why is it changed? & Rules and statistics, human judgment, pretrained models, representation or information measures, target-learner feedback, simulators or models of environment transitions, and deployment feedback & Automation level alone is insufficient. Signal bias, calibration, and acquisition cost determine failure modes. \\
-Utility evidence & How is value established? & Intrinsic properties, proxies or verifiers, controlled downstream training, simulated rollouts, real-robot deployment, and cross-embodiment replication & Separates detecting an intended defect from demonstrating that its removal improves a policy. \\
-Lifecycle and authority & When is it changed, and who chooses the next operation? & One-shot offline preparation, pretraining iteration, training-time sampling, post-training correction, continual deployment loops, and autonomous operation or experiment selection & Distinguishes static datasets, predesigned engines that alter acquisition or routing, and agents that also choose and audit the controller action. \\
+Operation
+& What changes?
+& Make records usable; construct training units; expand or validate units; update from feedback
+& Supplies the section backbone. \\
+Decision signal
+& Why is it changed?
+& Record-derived evidence; human or pretrained-model judgment; learner or execution feedback
+& Compares the basis and likely bias of a decision. \\
+Utility evidence
+& What does the result prove?
+& Data-level change; proxy agreement; downstream behavior
+& Separates local checks from demonstrated policy benefit. \\
+Lifecycle
+& When and by whom?
+& Fixed preparation; adaptive sampling; feedback-driven update; autonomous operator choice
+& Locates feedback and decision authority. \\
 \bottomrule
 \end{tabularx}
 \end{table*}

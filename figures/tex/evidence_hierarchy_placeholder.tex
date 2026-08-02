@@ -1,0 +1,11 @@
+%!TEX root = ../../main.tex
+% PPT绘图说明：从下到上画data diagnostics、proxy/verifier、controlled policy training、robot execution四层证据。
+% 左侧向上箭头表示更接近真实policy utility，右侧向上箭头表示成本和环境风险增加。
+% 每层给出它能支持的结论和不能支持的结论，例如proxy通过不能直接证明policy提升。
+% 在controlled policy training旁标出matched learner、matched compute和random volume-matched baseline三个控制条件。
+\begin{figure*}[t]
+\centering
+\fbox{\rule{0pt}{5.8cm}\rule{0.96\textwidth}{0pt}}
+\caption{Planned evidence hierarchy for data-preparation claims. Higher levels test policy utility more directly but require stronger controls and greater evaluation cost.}
+\label{fig:evidence-hierarchy}
+\end{figure*}

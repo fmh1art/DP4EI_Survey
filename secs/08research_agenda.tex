@@ -93,14 +93,15 @@ RECAP's checkpoint restart, SOP's mixture bounds, and LWD's offline reference pr
 Most current engines automate a controller designed by people.
 Which buffer to sample, which failures trigger intervention, which generator to call, and when to retrain are fixed in advance.
 The L4 problem in Figure~\ref{fig:autonomy-ladder} is harder because an agent must select preparation operators and information-gathering experiments when utility is observed only after a delay and with noise.
-For example, after detecting weak performance on deformable objects, it must choose among collecting demonstrations, preserving failed prefixes, requesting corrections, generating scenes, changing a mixture, calibrating a verifier, or first running a diagnostic rollout.
+For example, after detecting weak performance on deformable objects, it must decide whether the gap requires new experience, a different use of existing experience, synthetic expansion, or better diagnosis.
 These actions differ in cost, delay, safety, and how clearly the eventual outcome can be attributed to the choice.
 
 This can be studied without granting unrestricted real-robot autonomy.
-A benchmark should expose a versioned raw pool, an operator library with explicit input and output schemas, fixed learners, a simulator, limited hidden real-robot audits, a cost model, and deliberately constructed defects or coverage gaps.
+A benchmark should expose versioned data, a typed operator library, fixed learners, and a controlled source of simulation or robot evidence.
+Known defects and coverage gaps should make the reason for each intervention measurable.
 At each round an agent receives only the evidence it requested, emits an executable preparation plan and predicted gain, and may promote, abstain, stop, or roll back.
 Comparisons should include a fixed expert pipeline, random allocation, adaptive allocation that learns from earlier rounds, an oracle with defect labels, and an LLM planner without learner or rollout feedback.
-Metrics should include the policy-performance gap from the best affordable sequence, evidence and robot cost, safety violations, retention of the weakest group, calibration of predicted gains, unnecessary rollbacks, and exact replayability from lineage.
+Evaluation should measure policy gain under a fixed total budget, retained capability and safety, calibration of predicted gains, and replayability of the chosen sequence.
 
 Progress toward such an agent can be tested in stages.
 Its transformations must first be valid and reversible.
@@ -112,7 +113,7 @@ An LLM that writes a fluent pipeline but cannot meet these criteria is an interf
 \subsection{Cost and Resource Accounting}
 
 Preparation papers rarely include full costs, making an expensive selector appear data-efficient.
-Standardized accounts should include human review, model inference, subset-training runs, simulation, storage and decoding, network transfer, target-robot hours, interventions, energy use, and discarded collection.
+Standardized accounts should separate human labor, model and training compute, data infrastructure, simulation, and target-robot use.
 Benefits should be expressed as utility reached at a total cost and should state how preparation cost is shared across downstream models.
 
 Such accounting makes staged validation comparable.

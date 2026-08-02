@@ -1,12 +1,13 @@
-Embodied foundation models learn from robot demonstrations, human video, simulation rollouts, generated trajectories, and records collected during deployment.
+Embodied foundation models learn from robot demonstrations, human video, simulation rollouts, generated trajectories, and records collected during policy execution.
 These sources differ in their supervision, action representation, physical validity, and relevance to the target robot.
-A raw record may contain camera observations, robot states, actions, language, outcome labels, and collection metadata.
-Before training, these records must be checked, aligned, segmented, labeled, selected, combined, or expanded with generated data.
+A raw record can combine multimodal observations, robot state and action, and metadata about the task, outcome, and collection process.
+Preparation first makes these records usable, then constructs and selects the examples presented to a learner, and may later expand or update them with generated or execution data.
 We refer to these operations as \emph{data preparation for embodied intelligence}.
 Their product is prepared training data, including both the examples presented to a learning algorithm and the rules that determine when and how often each example is used.
 
-This survey reviews 211 papers and system reports through four questions: what operation changes the data, what signal guides the operation, what evidence demonstrates a benefit, and when the decision is made in the data lifecycle.
-The operation axis structures our review of source design, technical checks, cross-embodiment alignment, segmentation and labeling, selection and mixture design, augmentation, generation, validation, and updates driven by deployment failures.
+This survey maps 211 papers and system records and bases its technical synthesis on 177 works examined beyond the abstract.
+We organize the evidence through four questions: what operation changes the data, what signal guides the operation, what evidence demonstrates a benefit, and when the decision is made in the data lifecycle.
+The operation axis structures the review around usable records, training-unit construction, data expansion and validation, and feedback-driven updates.
 The other three axes support comparisons within each stage.
 We also reconstruct the publicly disclosed data recipes of Qwen-RobotManip, Qwen-RobotWorld, the $\pi$ family, GR00T, and Gemini Robotics while avoiding direct comparison of results obtained with different data units, models, and evaluation protocols.
 
@@ -14,5 +15,5 @@ Four findings recur across these settings.
 First, the usefulness of a record depends on the target robot, model, task, and training stage, so data quality cannot be represented by one universal score.
 Second, an episode may contain useful, redundant, failed, and recovery segments that require different labels and training roles.
 Third, synthetic and self-generated data need checks independent of the generator and, when they provide action supervision, validation through policy training or physical execution.
-Fourth, deployment failures can guide subsequent collection and preparation, but the feedback loop must retain reference data, audit model errors, and support rollback.
-Together, these findings explain the progression from static curation to learner-guided selection, failure-driven post-training, repeated data-engine updates, and autonomous data-preparation agents.
+Fourth, failures observed during policy rollouts can guide subsequent collection and preparation, but the feedback loop must retain reference data, audit model errors, and support rollback.
+Together, these findings explain the progression from static curation to learner-guided selection, failure-driven updates after initial training, repeated data-engine updates, and autonomous data-preparation agents.

@@ -4,154 +4,117 @@
 
 \subsection{From Raw Records to Training Units}
 
-% 我觉得这一段定义的很好，定义的清晰，切为下文介绍data prep买下了伏笔。
-The distinction introduced in Section~\ref{sec:introduction} can be stated formally without assuming that every source has the same fields.
+The distinction introduced in Section~\ref{sec:introduction} can be stated without assuming that every source contains the same fields.
 Let $T$ denote the length of an episode.
-For a raw episode $e$, let $m$ contain provenance, embodiment, sensor, calibration, operator, and timing metadata.
-Let $o_{1:T}$, $s_{1:T}$, and $a_{1:T}$ denote its observations, states, and actions.
-The variables $\ell$ and $y$ denote its language or task context and its recorded outcomes or interventions.
-We write the episode as:
+For a raw episode $e$, let $m$ contain its provenance, embodiment, sensor, calibration, operator, and timing metadata.
+Let $o_{1:T}$, $s_{1:T}$, and $a_{1:T}$ denote observations, robot states, and actions.
+The variables $\ell$ and $y$ denote language or task context and recorded outcomes or interventions.
+We write:
 \begin{equation}
 e=(m,\,o_{1:T},\,s_{1:T},\,a_{1:T},\,\ell,\,y).
 \end{equation}
-Some fields may be absent, weakly synchronized, expressed in incompatible coordinates, or incorrect.
-Human video may lack robot state $s$ and action $a$, while generated data may fill every field but still violate geometry or dynamics.
+Some fields may be absent or unreliable.
+Human video often lacks robot state and action, while generated data can fill every field but still violate geometry or dynamics.
 
-Let $\rawdata$ denote the collection of raw episodes and let $\traindata$ denote the units that are actually available to the learner after preparation.
-A preparation pipeline contains $K$ operators $p_1,\ldots,p_K$.
-The pipeline depends on a context $c=(f,b,\tau,k,B)$.
-Here, $f$ is the learner family, $b$ is the target embodiment, and $\tau$ is the target task and deployment distribution.
-The variables $k$ and $B$ denote the training stage and available preparation budget.
-The pipeline is:
+Let $\rawdata$ denote a collection of raw records and $\traindata$ the units made available to a learner.
+Let $c$ denote the training context: the target learner, robot embodiment, evaluation tasks, and training stage.
+A preparation pipeline $\pipeline_c$ chosen for this context applies one or more operators to obtain:
 \begin{equation}
-\pipeline_{c}=p_K\circ\cdots\circ p_2\circ p_1,
-\qquad
-\pipeline_c(\rawdata)=\traindata.
+\traindata=\pipeline_c(\rawdata).
+\label{eq:prep-map}
 \end{equation}
-% 这个是否是解释上一句的意思，他不限定在一个episode，可以是修改里面的某个片段？如果是的话，需要修改描述，描述要直接了当，让人能看得懂
-An operator need not preserve the original episode boundary.
-It may produce segments, individual transitions, counterexamples, paired modalities, or synthetic alternatives.
+These factors matter because the same record may be useful for visual pretraining but invalid as an action target for a particular robot.
 
-% 这里上来就是z_j，什么意思啊？我理解应该是原始数据和想得到的数据
-Each prepared unit $z_j$ contains more than an input and target.
-Let $x_j$ and $t_j$ denote its input and training target, $w_j$ its sampling weight, $r_j$ its training role, $g_j$ its lineage record, and $v_j$ its version.
-We write:
+Equation~\ref{eq:prep-map} does not require one input episode to remain one output example.
+An operator can keep an episode intact, split it into behavior segments, extract individual transitions, pair it with another modality, or generate several alternatives.
+We use \emph{training unit} for whichever of these objects is actually presented to the learner.
+A unit may also carry a sampling weight and a training role.
+The role determines whether it supports broad pretraining, robot alignment, task learning, recovery, or evaluation.
+Sending the same unit to a different stage or objective is called \emph{routing}.
+Provenance and version metadata are stored with the prepared dataset so that each unit can be traced back to its raw source and transformations.
+We call this trace the unit's \emph{lineage}.
+
+\input{figures/tex/data_unit_placeholder}
+
+The primary objective is to improve the trained policy, not to maximize the fraction of records that pass a filter.
+For a fixed learner $f$ and training budget $B$, let
 \begin{equation}
-z_j=(x_j,t_j,w_j,r_j,g_j,v_j). % 我有点质疑这里定义的这么复杂的动机，有必要定义这么多概念吗，比如g_j和v_j？后面是否会用到
+\theta_{\pipeline}=\operatorname{Train}\!\left(f,\pipeline_c(\rawdata),B\right)
 \end{equation}
-The training role states how the unit may be used, for example in broad pretraining, embodiment alignment, task adaptation, recovery learning, negative supervision, safety training, or verifier calibration.
-Changing this role is called \emph{routing} because the same record is sent to a different training stage or objective rather than simply kept or removed.
-Lineage links every derived unit to the original record and records each label, coordinate transformation, filter, and generator that changed it.
-
-The purpose of preparation is to improve the trained policy under a finite budget, not merely to make a dataset appear cleaner.
-Let $\Pi$ denote the set of candidate pipelines and let $B_{\mathrm{train}}$ denote the training budget used to compare them.
-Training learner family $f$ on the output of pipeline $\pipeline$ produces the policy $\theta_{\pipeline}=\operatorname{Train}(f,\pipeline_c(\rawdata),B_{\mathrm{train}})$.
-Let $\utility(\theta)$ denote the expected downstream performance of policy $\theta$ on target distribution $\tau$, including the task, generalization, recovery, or safety measures relevant to the study.
-Let $C_{\mathrm{prep}}$ and $C_{\mathrm{train}}$ denote preparation and training cost.
-Let $R$ denote risks from leakage, unsafe collection, bias, or unstable feedback.
-For non-negative trade-off weights $\lambda$, $\mu$, and $\nu$, a candidate pipeline can be compared through:
+denote the policy trained after applying pipeline $\pipeline$.
+Let $\Pi$ be the set of candidate pipelines and $\tau$ the evaluation distribution.
+Let $\utility(\theta)$ denote the reported task, generalization, recovery, or safety performance of policy $\theta$ on $\tau$.
+Candidate pipelines should first be compared by expected policy performance on the declared target tasks:
 \begin{equation}
-\begin{aligned}
-% 这里的定义同样也很复杂，又是training cost，又是R的。我们是否可以优先考虑data prep的质量，是否可以先不考虑cost？
-\pipeline^{*}=\underset{\pipeline\in\Pi}{\arg\max}\quad
-&\mathbb{E}_{\tau}[\utility(\theta_{\pipeline})]\\[-0.2em]
-&-\lambda C_{\mathrm{prep}}-\mu C_{\mathrm{train}}-\nu R.
-\end{aligned}
+\pipeline^{*}=\underset{\pipeline\in\Pi}{\arg\max}\;
+\mathbb{E}_{\tau}\!\left[\utility(\theta_{\pipeline})\right].
 \label{eq:prep-objective}
 \end{equation}
-Equation~\ref{eq:prep-objective} is a comparison principle rather than an algorithm proposed by this survey.
-It makes preparation cost and risk visible alongside policy performance.
-Preparation cost includes human review, model inference, simulation, storage, and robot time.
-The equation also exposes a common experimental confound.
-If filtering removes half of the data while the number of training epochs stays fixed, the filtered policy receives fewer optimizer updates and sees each retained example a different number of times.
-The experiment then changes both the data and the compute schedule.
+Preparation cost and risk remain important evaluation dimensions, but adding them to the objective would obscure the central question of whether the data improve learning.
 
-\subsection{Quality Depends on the Training Context}
+The fixed budget in Equation~\ref{eq:prep-objective} prevents a common confound.
+If filtering removes half of the data while the epoch count stays fixed, the filtered policy receives fewer optimizer updates and each retained example is repeated differently.
+The comparison then changes both data preparation and training compute.
 
-% 你这想表达一个训练数据技术上的正确性和训练价值是不同的？technical correctness不知道是什么意思
-Technical correctness and training value should be kept separate.
-% 这里又不知道什么意思了，不知道你想表达的意思
-An episode can be readable, synchronized, and physically valid without improving a policy that already covers the same behavior.
-We therefore record technical, semantic, control, physical, coverage, alignment, and safety properties as separate dimensions.
+\subsection{Validity Is Not the Same as Usefulness}
 
-% 这句话就比较清楚，很好的解释了你上面想说的，我都不知道你上面在说啥，不知所云的话不如删了，直接了当表达意思
-The value of a candidate episode can be expressed as the change in policy performance caused by the training units derived from it.
-For a prepared dataset $\mathcal{D}$ and context $c$, let $\theta_{\mathcal{D}}$ denote the policy trained on $\mathcal{D}$.
-Let $Z(e;c)$ denote the units derived from raw episode $e$ under context $c$. % 不知道这里的context $c$ 具体什么意思。不具体
-We define the expected marginal value of the episode as:
+An error-free record need not improve a policy.
+It may repeat behavior already covered by the training set or provide actions that do not transfer to the target robot.
+Conversely, a failed episode may contain a valid approach or recovery even though it is unsuitable as a complete expert demonstration.
+We therefore distinguish whether a record is internally valid from whether it adds useful supervision in a specific training context.
+
+This dependence can be expressed by the performance change caused by adding one episode.
+For a prepared dataset $\mathcal{D}$, let $\theta_{\mathcal{D}}$ denote a policy trained on $\mathcal{D}$ under the same budget convention.
+The pipeline output $\pipeline_c(e)$ contains the training units derived from candidate episode $e$ for context $c$.
+Its expected value is:
 \begin{equation}
-V(e\mid c,\mathcal{D})=
-\mathbb{E}_{\tau}[\utility(\theta_{\mathcal{D}\cup Z(e;c)})-
-\utility(\theta_{\mathcal{D}})].
+V(e\mid \mathcal{D},c)=
+\mathbb{E}_{\tau}\!\left[
+\utility(\theta_{\mathcal{D}\cup\pipeline_c(e)})-
+\utility(\theta_{\mathcal{D}})
+\right].
 \label{eq:conditional-value}
 \end{equation}
-% 这里我大概懂什么意思了，就是说一个data的价值应该是由他所在的数据集决定的，这一段写得不错，很清楚
-This value depends on the surrounding dataset because a valid episode may duplicate existing behavior, restore missing coverage, or conflict with an action convention used by other records.
+The equation states a counterfactual question: how would policy performance change if the units derived from $e$ were added to the current dataset?
+Exact retraining for every candidate is normally infeasible, so selection scores attempt to estimate this quantity more cheaply.
+
+The value depends on the surrounding dataset because an episode can duplicate existing behavior, fill a coverage gap, or conflict with another action convention.
 It also depends on the learner.
-RoboMimic's controlled study found strong interactions among demonstration quality, observations, learning algorithms, and training choices~\cite{mandlekar2021what_2108_03298}.
-% 这句话不知道什么意思，你说likewise，那么和上面是并列关系，我没看到和上一句的关系在哪
-Formal work likewise identifies action divergence and transition diversity as coupled determinants of imitation performance~\cite{belkhale2023data_2306_02437}.
-Exact retraining with and without every episode is normally infeasible.
-% 不太理解
-Equation~\ref{eq:conditional-value} states the quantity that selection scores and other inexpensive estimates attempt to approximate.
+RoboMimic shows that policy performance on human demonstrations changes substantially with the learning algorithm, observation space, and training choices~\cite{mandlekar2021what_2108_03298}.
+Formal analysis identifies a related mechanism: action divergence and diversity in the observed transitions jointly affect imitation-learning error~\cite{belkhale2023data_2306_02437}.
+Together, these results argue against a learner-independent ranking of demonstrations.
 
 \input{figures/tex/data_prep_lifecycle}
 
-\subsection{Four Orthogonal Taxonomy Axes}
+\subsection{Four Complementary Axes}
 
-% 你在这对表格进行描述，因为现在表格内容太复杂了，不够简洁，我看不懂你对表格的描述的意思，请先按照要求修改表格内容
-Table~\ref{tab:taxonomy-axes} summarizes the taxonomy.
-The four axes answer different questions and do not divide papers into mutually exclusive bins.
-A system may use several operations, signals, and forms of evidence at different lifecycle stages.
+The taxonomy separates four questions that are often collapsed into the word ``quality.''
+The axes are complementary descriptions of one method rather than four disjoint method families.
+Table~\ref{tab:taxonomy-axes} gives the compact definition, and Figure~\ref{fig:taxonomy-section-map} shows how the axes organize the paper.
 
 \input{tables/taxonomy_axes}
+\input{figures/tex/taxonomy_section_map_placeholder}
 
-% 你写作有一个问题，总喜欢并列罗列很多很多术语。像下面你都在说operation，你就不能简述吗，然后列一个表格详细介绍？我觉得这四个维度这么重要，可以通过图表的形式详细说明，在文字中避免 “It includes source and task design, technical validation and repair, representation and alignment, segmentation and relabeling, scoring and filtering, weighting and routing, augmentation and synthesis, and packaging or versioning.” 这种大段并列的描述。其他地方也同样存在这个问题。大量并列的items，其实是你没有进行high-level概括的一种表现。
-The \emph{operation axis} provides the main structure of the technical review.
-It includes source and task design, technical validation and repair, representation and alignment, segmentation and relabeling, scoring and filtering, weighting and routing, augmentation and synthesis, and packaging or versioning.
-Filtering changes which units are present.
-Weighting changes how often a unit is sampled.
-Routing changes the training stage or objective in which the unit is used.
-Calling all three operations ``curation'' would hide these different effects.
+The \emph{operation axis} asks what changes in the data or in their use.
+At a high level, operations make raw records usable, turn usable records into training units, expand or validate those units, and update them after model feedback.
+This axis provides the section order: Section~\ref{sec:acquisition} covers usable records, Section~\ref{sec:curation} covers unit construction and assignment, Section~\ref{sec:evolution} covers expansion and validation, and Section~\ref{sec:recipes-engines} covers feedback-driven updates.
 
-The \emph{decision-signal axis} records why the operation is applied.
-Signals range from inexpensive rules and human labels to pretrained models, representation statistics, feedback from the target learner, simulation, and real execution.
-We call a signal \emph{learner-aware} when it uses losses, predictions, or outcomes from the learner being trained.
-This axis is not an ordering from weak to strong automation.
-A checksum is sufficient for detecting a corrupted file, while a robot rollout would be unnecessarily costly. % 我没有很能get到这一句话和上下文的关系
-Target-specific signals can answer harder questions, but they cost more and can introduce model bias or feedback error. % Why? and what is target-specific signals?
+The \emph{decision-signal axis} asks why an operation is chosen.
+A decision can use evidence contained in the record, judgment supplied by a person or pretrained model, or feedback from the learner and its execution.
+The last group is target-specific because it depends on the policy, task, or robot being improved.
+Such feedback can answer whether a record helps that target, but it requires training or execution and can inherit errors from the current model.
 
-% 这一段写得不好，我看完之后不知道你想表大的意思。不知道utility-evidence的概念的具体直观的含义
-The \emph{utility-evidence axis} records what a result establishes.
-Intrinsic measurements show that an intended property of the data changed.
-Proxy measurements show agreement with a model, simulator, or estimator.
-Controlled policy training tests whether the prepared data improve learning under a matched budget.
-Deployment tests whether the improvement survives the target robot and environment.
-These forms of evidence answer different questions and should not be merged into one quality score.
+The \emph{utility-evidence axis} asks what the reported result demonstrates.
+Changing a data statistic shows that the operation had its intended local effect.
+Agreement with a model or simulator provides proxy evidence.
+Only controlled policy training or robot execution tests whether the changed data improve embodied behavior.
+Section~\ref{sec:evaluation} uses this axis to separate these claims and to define comparable experiments.
 
-The \emph{lifecycle axis} records when a data decision changes and who chooses the next operation.
-Offline preparation fixes the pipeline before training.
-Training-time methods update sampling from observed losses or progress.
-Post-training methods use failures and interventions from a trained policy.
-Continual methods also revise acquisition or validation after deployment.
-At each stage, people may prescribe the full loop or an automated system may choose the next preparation operator and diagnostic experiment.
-This distinction separates a static synthetic dataset, a data engine that invokes a predefined generator after a failure, and an agent that can decide whether to collect, relabel, audit, abstain, or roll back.
+The \emph{lifecycle axis} asks when the decision changes and who chooses the next operation.
+A pipeline may be fixed before training, adapt its sampling during training, or use later rollouts to revise collection and preparation.
+In the last case, authority may still remain with a human-designed controller, or an automated agent may choose which operation and diagnostic to run.
+This distinction supports the progression from static curation to the data engines and preparation agents studied in Sections~\ref{sec:recipes-engines} and~\ref{sec:agenda}.
 
-\subsection{Lifecycle Backbone and Secondary Attributes}
-
-For navigation, we arrange the operation axis into eight recurring stages.
-The first four stages cover source and task design, ingestion and technical quality control, cross-embodiment alignment, and semantic enrichment.
-The next three cover selection and routing, augmentation and synthesis, and layered validation.
-The final stage uses training or deployment feedback to revise an earlier decision.
-This order is a reading structure rather than a mandatory pipeline.
-A failed generated trajectory can return to segmentation, deployment can change future source design, and the same verifier may be used before and after training.
-
-% 还是一样的问题，你这一段列了很多概念，知道我看完没有一个全貌的认识，被你的描述弄的云里雾里的
-We also record the object and granularity of each operation.
-The object may be a video, frame, state, sensor stream, action, language instruction, episode, segment, transition, cross-modal link, task, or source distribution.
-Separate objective fields record correctness, diversity, coverage, difficulty, executability, physical consistency, generalization, efficiency, stability, and safety. % 上面同样的问题，一堆并列的句子
-These attributes reveal combinations that receive little study.
-Most current work concentrates on model-guided episode filtering and visual synthesis checked by semantic similarity.
-Fewer studies estimate the value of individual transitions across embodiments, validate generated contact against deployment, or choose among discarding a failure, relabeling it, using it for recovery, and collecting new data.
-Almost no system jointly learns which operator to run, how much evidence to purchase, when to promote or roll back a version, and when to stop.
-Sections~\ref{sec:recipes-engines} and~\ref{sec:agenda} return to these gaps.
+We record the transformed object, granularity, and intended objective as secondary attributes rather than additional top-level axes.
+These fields tell us, for example, whether an operation changes an entire episode or one transition and whether it targets validity or coverage.
+Keeping them secondary preserves a readable taxonomy while still exposing under-studied combinations.
