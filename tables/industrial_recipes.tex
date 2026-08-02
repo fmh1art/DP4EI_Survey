@@ -1,10 +1,6 @@
 \begin{table*}[t]
 \centering
-\caption{Publicly disclosed data recipes of representative embodied foundation
-models.  Scale is reported in each source's own units and is not directly
-comparable.  ``Evidence boundary'' separates controlled evidence from our
-cross-report interpretation.  An undisclosed field must not be inferred from an
-end-to-end model result.}
+\caption{Publicly disclosed data recipes of representative embodied foundation models. Scale is reported in each source's own units and is not directly comparable. ``Evidence boundary'' separates controlled evidence from our cross-report interpretation. An undisclosed field must not be inferred from an end-to-end model result.}
 \label{tab:industrial-recipes}
 \scriptsize
 \setlength{\tabcolsep}{3.5pt}
@@ -12,88 +8,30 @@ end-to-end model result.}
 \toprule
 System & Disclosed source roles & Preparation and stage routing & Evidence boundary \\
 \midrule
-Physical Intelligence:
-$\pi_{0.5}\!\rightarrow\!\pi_{0.7}\!\rightarrow\!\pi^{*}_{0.6}$
-~\cite{intelligence20250_2504_16054,intelligence20260_2604_15483,intelligence20250_2511_14759}
-& $\pi_{0.5}$ separates mobile, multi-environment, cross-embodiment,
-high-level, verbal-instruction, and web roles.  $\pi_{0.7}$ adds
-mixed-quality demonstrations, autonomous evaluation data, interventions,
-egocentric video, and web tasks.  $\pi^{*}_{0.6}$ adds target-task rollouts.
-& Per-dataset action normalization and structural padding precede staged
-mixtures.  Post-training routes short successful episodes and verbal or high-level
-supervision.  $\pi_{0.7}$ conditions behavior on quality, mistake, speed,
-strategy, and control-mode metadata rather than deleting all weak episodes.
-$\pi^{*}_{0.6}$ learns outcome-conditioned values from demonstrations,
-autonomous trials, and corrections, then trains the policy to favor actions with
-higher predicted value.
-& Source-removal and prompt or metadata ablations, plus multi-round real-robot
-results, support several within-family claims.  Full source volumes, mixture
-weights, annotation cost, and rejected-data statistics remain incomplete. \\
+Physical Intelligence: $\pi_{0.5}\!\rightarrow\!\pi_{0.7}\!\rightarrow\!\pi^{*}_{0.6}$ ~\cite{intelligence20250_2504_16054,intelligence20260_2604_15483,intelligence20250_2511_14759}
+& $\pi_{0.5}$ separates mobile, multi-environment, cross-embodiment, high-level, verbal-instruction, and web roles. $\pi_{0.7}$ adds mixed-quality demonstrations, autonomous evaluation data, interventions, egocentric video, and web tasks. $\pi^{*}_{0.6}$ adds target-task rollouts.
+& Per-dataset action normalization and structural padding precede staged mixtures. Post-training routes short successful episodes and verbal or high-level supervision. $\pi_{0.7}$ conditions behavior on quality, mistake, speed, strategy, and control-mode metadata rather than deleting all weak episodes. $\pi^{*}_{0.6}$ learns outcome-conditioned values from demonstrations, autonomous trials, and corrections, then trains the policy to favor actions with higher predicted value.
+& Source-removal and prompt or metadata ablations, plus multi-round real-robot results, support several within-family claims. Full source volumes, mixture weights, annotation cost, and rejected-data statistics remain incomplete. \\
 \midrule
-NVIDIA GR00T N1, DreamGen, and GR00T-Dreams
-~\cite{nvidia2025gr00t_2503_14734,jang2025dreamgen_2505_12705,nvidia2026gr00t17}
-& A pyramid places web and human video at the broad base, generated and simulated
-trajectories in the middle, and embodiment-specific real demonstrations at the
-top.  The later 1.7 documentation reports roughly 32k hours of real
-demonstration and egocentric data and 8k hours of simulation.
-& Models that infer actions from successive observations convert video without
-recorded controls.  Prompt generation, re-captioning, and judging filter the
-resulting trajectories.  DexMimicGen supplies successful simulated trajectories.
-N1 uses a 1:1 real-to-generated ratio in one post-training setting.  DreamGen
-turns a small real seed into task-conditioned video-derived trajectories before
-robot post-training.
-& N1 contains source and low-data experiments and reports a useful negative
-case: narrow right-hand post-training erased a left-to-right handover skill.
-Version-level scale from product documentation is engineering evidence, not a
-controlled comparison with N1. \\
+NVIDIA GR00T N1, DreamGen, and GR00T-Dreams ~\cite{nvidia2025gr00t_2503_14734,jang2025dreamgen_2505_12705,nvidia2026gr00t17}
+& A pyramid places web and human video at the broad base, generated and simulated trajectories in the middle, and embodiment-specific real demonstrations at the top. The later 1.7 documentation reports roughly 32k hours of real demonstration and egocentric data and 8k hours of simulation.
+& Models that infer actions from successive observations convert video without recorded controls. Prompt generation, re-captioning, and judging filter the resulting trajectories. DexMimicGen supplies successful simulated trajectories. N1 uses a 1:1 real-to-generated ratio in one post-training setting. DreamGen turns a small real seed into task-conditioned video-derived trajectories before robot post-training.
+& N1 contains source and low-data experiments and reports a useful negative case: narrow right-hand post-training erased a left-to-right handover skill. Version-level scale from product documentation is engineering evidence, not a controlled comparison with N1. \\
 \midrule
-Gemini Robotics and Gemini Robotics 1.5
-~\cite{team2025gemini_2503_20020,team2025gemini_2510_03342}
-& The first report combines thousands of hours of ALOHA~2 demonstrations with
-web, code, image, audio, video, embodied-reasoning, and visual question-answering
-data.  Specialization
-uses 2,000--5,000 high-quality episodes per task.  Version 1.5 adds ALOHA, bi-arm
-Franka, and Apollo humanoid data across thousands of tasks.
-& Robot actions ground a pretrained multimodal model.  Relabeling connects
-embodied reasoning to action prediction, while narrow high-quality sets specialize
-hard tasks.  Motion Transfer (MT) aligns heterogeneous robot motion, and the
-same 1.5 checkpoint controls three embodiments.  Interleaved trials across
-models reduce work-cell variance.
-& The 1.5 report isolates single- versus multi-embodiment data and MT, a
-stronger recipe ablation than most industrial reports.  It also states that
-over 90\% of development evaluations were simulated.  Data quantities by
-source, filtering thresholds, label lineage, and preparation cost are largely
-closed. \\
+Gemini Robotics and Gemini Robotics 1.5 ~\cite{team2025gemini_2503_20020,team2025gemini_2510_03342}
+& The first report combines thousands of hours of ALOHA~2 demonstrations with web, code, image, audio, video, embodied-reasoning, and visual question-answering data. Specialization uses 2,000--5,000 high-quality episodes per task. Version 1.5 adds ALOHA, bi-arm Franka, and Apollo humanoid data across thousands of tasks.
+& Robot actions ground a pretrained multimodal model. Relabeling connects embodied reasoning to action prediction, while narrow high-quality sets specialize hard tasks. Motion Transfer (MT) aligns heterogeneous robot motion, and the same 1.5 checkpoint controls three embodiments. Interleaved trials across models reduce work-cell variance.
+& The 1.5 report isolates single- versus multi-embodiment data and MT, a stronger recipe ablation than most industrial reports. It also states that over 90\% of development evaluations were simulated. Data quantities by source, filtering thresholds, label lineage, and preparation cost are largely closed. \\
 \midrule
-Qwen-RobotManip
-~\cite{yuan2026qwen_2606_17846}
-& About 38,100 hours: more than 11,000 hours of robot demonstrations, 1,933 hours
-of egocentric human video, and 24,808 hours synthesized across 15 robot
-morphologies, plus a 28-million-example vision--language mixture.
-& A human-to-robot chain performs retargeting and smoothing, hand segmentation and
-inpainting, base-pose and inverse-kinematics search, and depth compositing.  Five state--action
-gates and three video--language--state checks precede an 80-dimensional masked
-common representation, camera-frame action alignment, camera-view positional
-encoding, and embodiment or control prompts.
-& The report ablates action alignment, data scale, and synthetic sources and
-evaluates both in- and out-of-distribution transfer.  It exposes source-level
-defects, but the independent marginal value and physical error rate of the
-24,808 synthetic hours are not fully identified. \\
+Qwen-RobotManip ~\cite{yuan2026qwen_2606_17846}
+& About 38,100 hours: more than 11,000 hours of robot demonstrations, 1,933 hours of egocentric human video, and 24,808 hours synthesized across 15 robot morphologies, plus a 28-million-example vision--language mixture.
+& A human-to-robot chain performs retargeting and smoothing, hand segmentation and inpainting, base-pose and inverse-kinematics search, and depth compositing. Five state--action gates and three video--language--state checks precede an 80-dimensional masked common representation, camera-frame action alignment, camera-view positional encoding, and embodiment or control prompts.
+& The report ablates action alignment, data scale, and synthetic sources and evaluates both in- and out-of-distribution transfer. It exposes source-level defects, but the independent marginal value and physical error rate of the 24,808 synthetic hours are not fully identified. \\
 \midrule
-Qwen-RobotWorld
-~\cite{zhang2026qwen_2606_17030}
-& The Embodied World Knowledge corpus contains 8.6 million video--text clips and more
-than 200 million frames.  The mixture contains 70\% embodied and 30\% general data and
-spans over 20
-embodiments and 500 action categories.
-& Language is used as a shared action interface.  Domain-adaptive video
-preprocessing, five-layer action annotation, and an LLM-judge and human-review
-loop precede a staged curriculum with four embodied phases.  The world
-model can generate candidates for training, planning, and virtual evaluation.
-& World-model and downstream demonstrations support generation and prediction
-claims in the report.  They do not establish that every generated clip has
-valid robot actions or positive policy-training utility.  Using one model as
-both generator and uncalibrated judge would be circular. \\
+Qwen-RobotWorld ~\cite{zhang2026qwen_2606_17030}
+& The Embodied World Knowledge corpus contains 8.6 million video--text clips and more than 200 million frames. The mixture contains 70\% embodied and 30\% general data and spans over 20 embodiments and 500 action categories.
+& Language is used as a shared action interface. Domain-adaptive video preprocessing, five-layer action annotation, and an LLM-judge and human-review loop precede a staged curriculum with four embodied phases. The world model can generate candidates for training, planning, and virtual evaluation.
+& World-model and downstream demonstrations support generation and prediction claims in the report. They do not establish that every generated clip has valid robot actions or positive policy-training utility. Using one model as both generator and uncalibrated judge would be circular. \\
 \bottomrule
 \end{tabularx}
 \end{table*}

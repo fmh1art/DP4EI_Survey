@@ -2,39 +2,30 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-Embodied intelligence does not learn from raw episode counts.  It learns from the
-distribution produced after a sequence of often hidden decisions.  By organizing
-those decisions along operation, signal, utility evidence, and lifecycle axes,
-this survey connects acquisition, alignment, semantic enrichment, curation,
-mixture design, synthesis, validation, and deployment feedback within one
-problem.  The synthesis rejects two convenient simplifications.  Data quality is
-not a policy-independent scalar, and generated plausibility is not physical or
-training validity.
+Episode counts alone do not determine what an embodied model learns.
+Training depends on the checks, transformations, labels, selection rules, sampling weights, and training roles applied before an example reaches the optimizer.
+This survey organizes those decisions along four axes: the operation performed, the signal that guides it, the evidence used to validate it, and the lifecycle stage at which it changes.
+The operation axis connects source design, technical checks, alignment, segmentation, labeling, curation, mixture design, generation, validation, and deployment feedback within one review structure.
 
-Industrial recipes sharpen this conclusion.  Qwen-RobotManip shows how
-representation, motion, and behavior alignment enable scale.  The $\pi$ family
-shows how training role and metadata can make mixed-quality experience usable.
-GR00T assigns real anchors, simulation, and generated trajectories to different
-tiers, while Gemini Robotics isolates cross-embodiment data from the mechanism
-that aligns its motion.  None provides a universal recipe,
-and their end-to-end scores are not a causal ranking of data operations.  Their
-shared lesson is that a source becomes valuable through alignment, routing,
-verification, and stage-specific use.
+The literature supports two conclusions that rule out common shortcuts.
+First, a record does not have one quality value that is valid for every robot, model, task, and training stage.
+A failed episode, for example, should not be kept or removed as a whole when its valid prefix, failed action, retry, and recovery serve different purposes.
+Second, realistic generated images or videos do not by themselves establish valid action supervision.
+Generated data require checks matched to their intended training role and, when they supervise actions, evidence from policy training or physical execution.
 
-The most consequential shift is from one-shot cleaning to target-conditional
-feedback control.  Failures and interventions make stronger evidence possible
-because the deployed policy reveals its gaps, but they also introduce
-feedback-dependent bias, error amplification, forgetting, verifier drift, and
-unsafe
-exploration.  LLM data engineering contributes evaluation on fixed candidate
-pools, mixture learning, learner-aware selection, and warnings about recursive
-generation.  Embodied learning adds action causality, physical validity, and
-costly real feedback.  Progress requires calibrated links between proxies and
-policy utility, explicit failure routing, retained real anchors, independent
-verification, matched promotion comparisons, and joint rollback of data and
-model versions.
-Only after these controls are demonstrated should a predesigned data engine gain
-the authority of an autonomous data-preparation agent.  Under that discipline,
-data preparation becomes an independent, reproducible research layer for
-embodied foundation models rather than an unreported collection of engineering
-choices.
+Industrial recipes reinforce these conclusions without providing a common numerical benchmark.
+Qwen-RobotManip shows that representation, motion, and behavior alignment are prerequisites for mixing data at scale.
+The $\pi$ family shows how metadata and training roles can make mixed-quality experience usable.
+GR00T assigns real demonstrations, simulation, and generated trajectories to different parts of training.
+Gemini Robotics separates the contribution of cross-embodiment data from the Motion Transfer mechanism used to align that data.
+Their end-to-end scores cannot identify the effect of every preparation step, but the disclosed recipes consistently rely on alignment, role assignment, validation, and stage-specific sampling.
+
+The field is also moving from one-time preparation toward repeated updates driven by the current policy.
+Deployment failures reveal states that are missing from static demonstration data and can guide collection, correction, recovery training, and reward modeling.
+The same feedback can amplify model bias, remove rare capabilities, shift verifier behavior, or encourage unsafe exploration.
+Lessons from language-model data engineering help with controlled pipeline comparisons, mixture learning, learner-guided selection, and audits of recursive generation.
+Embodied learning additionally requires action timing, controller semantics, physical validity, and costly real-world feedback.
+
+A reliable data engine must therefore retain audited real data, record the origin and role of every derived example, use independent checks, compare successor models under matched budgets, and roll back data and model versions together.
+Only after these controls are demonstrated should an automated system choose preparation operators and experiments without a fully prescribed controller.
+Under these conditions, data preparation becomes a reproducible research problem for embodied foundation models rather than an undocumented collection of engineering choices.

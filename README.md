@@ -1,7 +1,7 @@
 # Data Preparation for Embodied Intelligence Survey
 
 This repository preserves the original ACM-style conference template and uses it
-for the survey **“From Raw Interactions to Trainable Distributions: Data
+for the survey **“From Raw Records to Continually Updated Training Data: Data
 Preparation for Embodied Intelligence.”** The active manuscript is written in
 English; the source survey and structured paper notes remain available in Chinese.
 
@@ -33,14 +33,17 @@ primary PDFs, duplicate or missing labels, and active TODO markers.
 | `secs/` | One logical manuscript section per `.tex` file. Start with `%!TEX root = ../main.tex`, add a stable `\label`, and cite only verified BibTeX keys. | `secs/05semantic_curation.tex` |
 | `tables/` | Reusable table environments. The section imports the whole table with `\input{tables/name}`; captions and labels live in the table file. | `tables/curation_comparison.tex` |
 | `figures/tex/` | Editable TikZ figures. The file contains the complete `figure`/`figure*` environment and is imported with `\input`. | `figures/tex/data_prep_lifecycle.tex` |
-| `figures/fig/` | Legacy PDF figure assets showing the binary-asset convention. These are retained as template samples but are not used by the survey. | `figures/fig/framework_overview.pdf` |
-| `citations/` | BibTeX databases. `survey_ref.bib`, `survey_extra.bib`, and `survey_industry.bib` are active; `ref.bib` is the preserved legacy sample. | `citations/survey_industry.bib` |
+| `figures/fig/` | Binary figure assets. The retained PDF demonstrates the expected asset format but is not imported by the survey. | `figures/fig/sample_figure.pdf` |
+| `citations/` | Active BibTeX databases. Citation keys in the manuscript resolve against the three `survey_*.bib` files. | `citations/survey_industry.bib` |
 | `appendix/` | Review protocol and full evidence map. Edit the evidence CSV, then regenerate the table rather than hand-editing it. | `appendix/survey_protocol.tex` |
 | `_pdfs/papers/` | Primary PDFs grouped by research theme. Filenames contain the note ID, short title, and arXiv ID. | `_pdfs/papers/02_data_curation_and_valuation/P049_Re-Mix_2408.14037.pdf` |
 | `_pdfs/manifests/` | Complete 211-work evidence map, local-PDF metadata/hashes, missing-PDF list, and dated raw search snapshots. | `_pdfs/manifests/evidence_map.csv` |
 | `_pdfs/survey_and_notes/` | The original Chinese survey draft and structured Chinese paper notes. | `embodied_data_prep_survey_zh.md` |
 | `scripts/` | Reproducible literature search, arXiv metadata, PDF download/manifest, appendix rendering, and manuscript checks. | `scripts/search_literature.py` |
-| `algorithmn/`, `plots/`, `secs/bk/`, `secs/experiment/` | Preserved legacy template examples. They show algorithm, plot-data, backup-section, and nested-section conventions and are intentionally not imported by `main.tex`. | `algorithmn/deepprep.tex` |
+| `algorithmn/` | A minimal algorithm template that documents its input path and label convention. It is not imported by `main.tex`. | `algorithmn/sample_algorithm.tex` |
+| `plots/data/`, `plots/plot/`, `plots/tex/` | One plot example split into source data, rendered asset, and LaTeX wrapper. These files are not imported by `main.tex`. | `plots/tex/sample_plot.tex` |
+| `secs/bk/`, `secs/experiment/` | Minimal examples for an archived section and a nested section. They are not imported by `main.tex`. | `secs/experiment/sample_nested_section.tex` |
+| `appendix/figures/`, `appendix/previous/`, `appendix/tables/` | Minimal appendix asset, archived-section, and table examples. They document file placement and `\input` relationships. | `appendix/tables/sample_table.tex` |
 
 The active dependency list is determined by `\input` statements in `main.tex`;
 an old `.tex`, figure, or table can therefore remain as a format sample without
@@ -67,10 +70,9 @@ python3 scripts/update_pdf_manifests.py
 # Check active citations, references, inputs, and placeholders.
 python3 scripts/check_manuscript.py
 
-# Compile with Tectonic; a standard latexmk installation also works.
-mkdir -p build
-tectonic --keep-logs --outdir build main.tex
-# alternatively: latexmk -pdf -outdir=build main.tex
+# PDF compilation is performed by the connected Overleaf project.
+# Run only the source-level check locally before synchronizing changes.
+python3 scripts/check_manuscript.py
 ```
 
 Build products are ignored through `.gitignore`. Submission-specific DOI,

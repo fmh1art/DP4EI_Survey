@@ -2,211 +2,139 @@
 \section{Semantic Enrichment, Curation, and Routing}
 \label{sec:curation}
 
-After technical alignment, a pipeline must decide what behavior a record contains
-and how it should influence training.  These are coupled problems: segmentation
-determines the unit that can be labeled and valued, while a learned value signal
-often reveals where a segment boundary or retry occurred.
+After technical alignment, a pipeline must identify the behavior contained in a record and decide how that behavior should be used for training.
+These decisions affect each other.
+Segmentation determines which unit receives a label or score, while a progress or outcome signal can reveal where a subtask, retry, or recovery begins.
 
 \subsection{Why Episodes Are Too Coarse}
 
-A teleoperated episode can include approach, grasp, transport, failed insertion,
-retry, recovery, and terminal idle time.  One episode-level success bit maps all
-transitions to the same target quality despite their different roles.  It also
-prevents a long trajectory from being recomposed for a new instruction.  Modern
-preparation increasingly operates on subtask segments and state transitions.
+A teleoperated episode can include approach, grasp, transport, failed insertion, retry, recovery, and terminal idle time.
+One episode-level success bit maps all transitions to the same target quality despite their different roles.
+It also prevents a long trajectory from being recomposed for a new instruction.
+Modern preparation increasingly operates on subtask segments and state transitions.
 
-Boundary signals include gripper or contact changes, object motion, end-effector
-velocity, abrupt changes in learned representations, language-aligned task progress,
-and operator interventions.  Purely kinematic boundaries are cheap but can split
-semantically atomic behavior or merge visually quiet planning with idle time.
-Foundation-model labeling provides task semantics.  Natural language Instruction
-Labeling for Scalability (NILS) detects state changes and
-uses pretrained models to produce language supervision without task-specific
-training~\cite{blank2024scaling_2410_17772}.  Earlier, Data-driven Instruction
-Augmentation for Language-conditioned Control (DIAL) propagated a small set of
-human trajectory descriptions through a vision--language model (VLM) to augment
-language supervision for a much larger robot dataset
-~\cite{xiao2022robotic_2211_11736}.  Their strength is scalable relabeling, while
-their risk is a correlated error chain in object detection, state-change
-inference, locating events in time, and language generation.
+Boundary signals include gripper or contact changes, object motion, end-effector velocity, abrupt changes in learned representations, language-aligned task progress, and operator interventions.
+Purely kinematic boundaries are cheap but can split semantically atomic behavior or merge visually quiet planning with idle time.
+Foundation-model labeling provides task semantics.
+Natural language Instruction Labeling for Scalability (NILS) detects state changes and uses pretrained models to produce language supervision without task-specific training~\cite{blank2024scaling_2410_17772}.
+Earlier, Data-driven Instruction Augmentation for Language-conditioned Control (DIAL) propagated a small set of human trajectory descriptions through a vision--language model (VLM) to augment language supervision for a much larger robot dataset ~\cite{xiao2022robotic_2211_11736}.
+Their strength is scalable relabeling, while their risk is a correlated error chain in object detection, state-change inference, locating events in time, and language generation.
 
-A robust segmentation record should retain soft boundary confidence and the
-signals that triggered it.  It should also preserve a hierarchy from episode to
-phase, primitive, and transition.  Hard boundaries can then be sampled with tolerance during
-training.  This representation supports three operations unavailable at episode
-level.  A pipeline can discard only an idle or corrupted interval and attach
-different language to individual subtasks.  It can also keep a failure prefix as
-context while sending the recovery suffix to a recovery objective.
+A robust segmentation record should retain the confidence of each proposed boundary and the signals that produced it.
+It should also preserve a hierarchy from episode to phase, primitive, and transition.
+Training can then vary an uncertain boundary within a recorded tolerance instead of treating one predicted frame as exact.
+This representation supports operations that are unavailable at episode level.
+A pipeline can remove only an idle or corrupted interval, attach different language to separate subtasks, or use a failure prefix as context while assigning the recovery suffix to a recovery objective.
 
 \subsection{Foundation-Model Labels Need Their Own Quality Control}
 
-Visual-language models can infer objects, task descriptions, progress, and
-success at a scale where exhaustive human annotation is impossible.  Their labels
-are nevertheless proxy evidence, not ground truth.  Common failure modes include
-hallucinating an occluded state, describing intention rather than achieved change,
-using inconsistent granularity, missing brief contact, and inheriting geographic
-or object-recognition bias from pretraining.
+Visual-language models can infer objects, task descriptions, progress, and success at a scale where exhaustive human annotation is impossible.
+Their labels are nevertheless proxy evidence, not ground truth.
+Common failure modes include hallucinating an occluded state, describing intention rather than achieved change, using inconsistent granularity, missing brief contact, and inheriting geographic or object-recognition bias from pretraining.
 
-Auto-labeling should allow the model to abstain when it is uncertain.  Structured
-fields for
-objects, relations, state changes, actions, and outcomes should be generated
-before free text.  Multiple views and temporal windows can expose inconsistent
-labels.  Cross-field checks can test whether an asserted placement corresponds
-to a changed object relation.  Confidence should be calibrated on a human audit
-sampled across tasks, sources, and confidence levels.  Unresolved cases should
-be routed to review.  Agreement among
-several prompts of the same model is not independent evidence.  Stronger audits
-use different model families and compare labels with measurable state or
-execution where available.
+Auto-labeling should allow the model to abstain when it is uncertain.
+Structured fields for objects, relations, state changes, actions, and outcomes should be generated before free text.
+Multiple views and temporal windows can expose inconsistent labels.
+Cross-field checks can test whether an asserted placement corresponds to a changed object relation.
+Confidence should be calibrated on a human audit sampled across tasks, sources, and confidence levels.
+Unresolved cases should be routed to review.
+Agreement among several prompts of the same model is not independent evidence.
+Stronger audits use different model families and compare labels with measurable state or execution where available.
 
-Label utility must also be tested downstream.  A fluent detailed description may
-increase superficial linguistic variety while fragmenting equivalent tasks into inconsistent
-instructions.  Conversely, a coarse label can improve sharing but erase goal
-parameters needed for precise control.  The appropriate granularity depends on
-the training objective and stage.  A label hierarchy can preserve both coarse
-sharing and task-specific detail.
+Label utility must also be tested downstream.
+A fluent detailed description may increase superficial linguistic variety while fragmenting equivalent tasks into inconsistent instructions.
+Conversely, a coarse label can improve sharing but erase goal parameters needed for precise control.
+The appropriate granularity depends on the training objective and stage.
+A label hierarchy can preserve both coarse sharing and task-specific detail.
 
 \subsection{Failure Is a Type, Not a Quality Level}
 
-Discarding all failed episodes removes unsafe final actions but also removes
-near-success states, recovery examples, causal information about task boundaries,
-and precisely the distribution encountered by an imperfect policy.  Keeping them
-as expert demonstrations is equally problematic.  The useful distinction is
-structural.  A pipeline should label the cause and onset of a failure, separate
-valid prefixes and recoveries, mark operator takeover and retry, and route each
-part to a compatible objective.
+Discarding all failed episodes removes unsafe final actions but also removes near-success states, recovery examples, causal information about task boundaries, and precisely the distribution encountered by an imperfect policy.
+Keeping them as expert demonstrations is equally problematic.
+The useful distinction is structural.
+A pipeline should label the cause and onset of a failure, separate valid prefixes and recoveries, mark operator takeover and retry, and route each part to a compatible objective.
 
-Self-Supervised Data Filtering (SSDF) uses relations between expert and imperfect
-data to select useful segments from failures.  Its simulation and Franka
-experiments show that imperfect
-data need not be discarded wholesale~\cite{wu2024learning_2401_08957}.  ReTVL
-uses retry structure to learn local value rather than assuming monotonic progress
-~\cite{qin2026beyond_2606_24633}.  Demo-SCORE goes one step closer to the target
-policy: a classifier trained on successful and unsuccessful online rollouts
-filters unreliable demonstration strategies~\cite{chen2025curating_2503_03707}.
-These methods resolve an apparent conflict in the literature.  ``Removing failed
-data helps'' and ``failed data improves robustness'' can both hold because the
-first often means removing mislabeled action targets, whereas the second uses
-failure with outcome, boundary, retry, or recovery structure.
+Self-Supervised Data Filtering (SSDF) uses relations between expert and imperfect data to select useful segments from failures.
+Its simulation and Franka experiments show that imperfect data need not be discarded wholesale~\cite{wu2024learning_2401_08957}.
+ReTVL uses retry structure to learn local value rather than assuming monotonic progress ~\cite{qin2026beyond_2606_24633}.
+Demo-SCORE goes one step closer to the target policy: a classifier trained on successful and unsuccessful online rollouts filters unreliable demonstration strategies~\cite{chen2025curating_2503_03707}.
+These methods resolve an apparent conflict in the literature.  ``Removing failed data helps'' and ``failed data improves robustness'' can both hold because the first often means removing mislabeled action targets, whereas the second uses failure with outcome, boundary, retry, or recovery structure.
 
 \subsection{Signals for Selection and Weighting}
 
-Rules and simple statistics are inexpensive and interpretable.  Common signals
-include range checks, idle ratio, path length, jerk, smoothness, action
-saturation, success labels, and duplicate detection.  They are effective for
-known technical defects,
-but a smooth trajectory may be confidently wrong and a corrective recovery may be
-intentionally non-smooth.  Thresholds also correlate with episode length and task
-difficulty.
+Rules and simple statistics are inexpensive and interpretable.
+Common signals include range checks, idle ratio, path length, jerk, smoothness, action saturation, success labels, and duplicate detection.
+They are effective for known technical defects, but a smooth trajectory may be confidently wrong and a corrective recovery may be intentionally non-smooth.
+Thresholds also correlate with episode length and task difficulty.
 
-Representation and information measures support richer selection.  Embedding
-distance can identify duplicates and coverage gaps.  Mutual information between
-state and action favors demonstrations that are both informative and predictable.
-The mutual-information curation study
-evaluates this signal on simulation and real robot data
-~\cite{hejna2025robot_2502_08623}.  Crucially, its difficult Pen-in-Cup setting
-slightly favors the full dataset over the filtered subset, consistent with lost
-state coverage.  This negative case is more informative than a universal
-``less is more'' claim because estimator quality, granularity, and retained
-coverage matter.  Smoothness-driven RINSE similarly supplies a preference for
-smooth trajectories, but
-its appropriate weight depends on whether a task contains impacts, retries, or
-rapid corrections~\cite{kulkarni2026learning_2604_23000}.
-Dataset-level entropy and learnability analyses broaden the diagnostic view
-~\cite{xiao2025data_2511_09119}, while structure-aware selection such as SIEVE
-operates over motion primitives and their transitions
-~\cite{wu2026sieve_2607_06442}.  These signals are useful hypotheses about what
-to inspect or retain, but neither a descriptive statistic nor a learned
-structural score is policy utility until controlled retraining verifies it.
+Representation and information measures support richer selection.
+Embedding distance can identify duplicates and coverage gaps.
+Mutual information between state and action favors demonstrations that are both informative and predictable.
+The mutual-information curation study evaluates this signal on simulation and real robot data ~\cite{hejna2025robot_2502_08623}.
+Crucially, its difficult Pen-in-Cup setting slightly favors the full dataset over the filtered subset, consistent with lost state coverage.
+This negative case rules out a universal ``less is more'' conclusion.
+The effect of filtering depends on the accuracy of the estimator, the unit being filtered, and the coverage that remains.
+Smoothness-driven RINSE similarly favors smooth trajectories, but the signal should carry less weight in tasks that contain impacts, retries, or rapid corrections~\cite{kulkarni2026learning_2604_23000}.
+Dataset-level entropy and learnability analyses broaden the diagnostic view ~\cite{xiao2025data_2511_09119}, while structure-aware selection such as SIEVE operates over motion primitives and their transitions~\cite{wu2026sieve_2607_06442}.
+These signals identify records that deserve inspection or selection.
+They do not establish that the selected data improve a policy until a controlled training comparison verifies the effect.
 
-Learned progress provides another decision signal.  SCIZOR learns a task-progress signal
-and deduplicates in joint state--action space, moving beyond image-only similarity
-~\cite{zhang2025scizor_2505_22626}.  This is attractive at scale, but progress is
-not monotonic in assembly, search, recovery, or tasks that temporarily undo a
-state.  Progress-based filters require retry-aware calibration and should retain
-low-confidence non-monotonic segments for targeted evaluation.
+Learned progress provides another decision signal.
+SCIZOR learns a task-progress signal and deduplicates in joint state--action space, moving beyond image-only similarity ~\cite{zhang2025scizor_2505_22626}.
+This is attractive at scale, but progress is not monotonic in assembly, search, recovery, or tasks that temporarily undo a state.
+Progress-based filters require retry-aware calibration and should retain low-confidence non-monotonic segments for targeted evaluation.
 
-Learner-aware methods ask how a training unit affects a particular learner or
-target set.  Influence estimates approximate how changing the weight or
-membership of a unit changes loss on that target.  DataMIL estimates data
-effects from subset-trained models~\cite{dass2025datamil_2505_09603}.  QoQ defines
-quality through reduction of loss on validation demonstrations and aggregates
-transition influence within trajectories~\cite{lee2026quality_2603_09056}.
-ATHENA scales heterogeneous influence approximations to multi-task VLA curation
-and evaluates both benchmark and real-robot tasks
-~\cite{xu2026athena_2606_16208}.  These methods more directly approximate
-Equation~\ref{eq:conditional-value}, but their estimates are tied to the chosen
-target.  A narrow or biased validation set makes its preferences the
-definition of quality.  Approximations used to avoid full retraining can be
-unstable, and repeated
-training, rollouts, or influence computation can dominate the saved training
-cost.
+Learner-aware methods ask how a training unit affects a particular learner or target set.
+Influence estimates approximate how changing the weight or membership of a unit changes loss on that target.
+DataMIL estimates data effects from subset-trained models~\cite{dass2025datamil_2505_09603}.
+QoQ defines quality through reduction of loss on validation demonstrations and aggregates transition influence within trajectories~\cite{lee2026quality_2603_09056}.
+ATHENA scales heterogeneous influence approximations to multi-task VLA curation and evaluates both benchmark and real-robot tasks ~\cite{xu2026athena_2606_16208}.
+These methods more directly approximate Equation~\ref{eq:conditional-value}, but their estimates are tied to the chosen target.
+A narrow or biased validation set makes its preferences the definition of quality.
+Approximations used to avoid full retraining can be unstable, and repeated training, rollouts, or influence computation can dominate the saved training cost.
 
 \input{tables/curation_comparison}
 
 \subsection{Detection Quality Is Not Policy Utility}
 
-The controlled audit ``What Demonstration Curation Metrics Do to Your Policy''
-explicitly separates detection of injected defects from the performance of a
-policy trained after curation~\cite{bedi2026what_2606_10229}.  It finds that a
-metric's ability to recognize an intended structural defect can disagree with
-downstream utility and exposes episode-length confounding.  Its small task and
-rollout scale limit generality, but the methodological warning applies broadly.
-A detector can achieve a high area under the receiver operating characteristic
-curve (AUROC) by identifying a visible artifact while
-removing rare states needed for recovery.  Policy utility can improve even with
-modest defect recall if the removed examples exert disproportionate gradients.
+The controlled audit ``What Demonstration Curation Metrics Do to Your Policy'' explicitly separates detection of injected defects from the performance of a policy trained after curation~\cite{bedi2026what_2606_10229}.
+It finds that a metric's ability to recognize an intended structural defect can disagree with downstream utility and exposes episode-length confounding.
+Its small task and rollout scale limit generality, but the methodological warning applies broadly.
+A detector can achieve a high area under the receiver operating characteristic curve (AUROC) by identifying a visible artifact while removing rare states needed for recovery.
+Policy utility can improve even with modest defect recall if the removed examples exert disproportionate gradients.
 
-A curation study should first establish whether the operation changed its
-intended data property and what else changed at the chosen threshold.  It should
-then test whether that intervention improves a trained policy under equal data
-access and compute, reporting the target distribution and uncertainty.  The
-first question diagnoses the mechanism.  Only the second supports a utility
-claim.
+A curation study should first establish whether the operation changed its intended data property and what else changed at the chosen threshold.
+It should then test whether that intervention improves a trained policy under equal data access and compute, reporting the target distribution and uncertainty.
+The first question diagnoses the mechanism.
+Only the second supports a utility claim.
 
 \subsection{Mixtures, Sampling, and Role Routing}
 
-Cross-source training adds a joint decision.  Proportions affect both
-gradient scale and how often rare capabilities are seen.  Uniform sampling
-overweights large sources.  Uniform-by-dataset can over-amplify tiny noisy
-sources, while fixed hand weights become stale as the learner changes.  Re-Mix
-learns mixture weights with an objective that protects the worst-performing data
-group and reports
-large gains over uniform or human mixtures in its own two-embodiment evaluation
-~\cite{hejna2024re_2408_14037}.  The paper also identifies a revealing failure:
-the learned objective can increase weight on abnormal action distributions.  The
-optimization target requires constraints and independent audits.
+Cross-source training adds a joint decision.
+Proportions affect both gradient scale and how often rare capabilities are seen.
+Uniform sampling overweights large sources.
+Uniform-by-dataset can over-amplify tiny noisy sources, while fixed hand weights become stale as the learner changes.
+Re-Mix learns mixture weights with an objective that protects the worst-performing data group and reports large gains over uniform or human mixtures in its own two-embodiment evaluation ~\cite{hejna2024re_2408_14037}.
+The paper also identifies a revealing failure: the learned objective can increase weight on abnormal action distributions.
+The optimization target requires constraints and independent audits.
 
-Language-model preparation offers transferable mechanisms, not transferable
-quality definitions.  DoReMi learns domain weights from the relative loss of a
-small proxy model, while Data Selection for Language Models via Importance
-Resampling (DSIR)
-resamples according to an importance estimate toward a target distribution
-~\cite{xie2023doremi_2305_10429,xie2023data_2302_03169}.  In robotics, analogous
-mixture updates must account for temporal correlation, embodiment, execution
-cost, and physical validity.  A useful hierarchy is source $\rightarrow$ task
-$\rightarrow$ episode $\rightarrow$ segment, with minimum sampling shares that protect rare
-embodiments and safety-critical failures from collapse.
+Language-model preparation offers transferable mechanisms, not transferable quality definitions.
+DoReMi learns domain weights from the relative loss of a small proxy model.
+Data Selection for Language Models via Importance Resampling (DSIR) instead resamples examples according to an importance estimate for the target distribution~\cite{xie2023doremi_2305_10429,xie2023data_2302_03169}.
+In robotics, analogous mixture updates must account for temporal correlation, embodiment, execution cost, and physical validity.
+A useful hierarchy is source $\rightarrow$ task $\rightarrow$ episode $\rightarrow$ segment, with minimum sampling shares that protect rare embodiments and safety-critical failures from collapse.
 
-Routing is stronger than weighting.  Rather than asking whether an example is
-globally good, a pipeline can send broad but weakly aligned video to
-representation pretraining and aligned robot actions to behavior cloning, which
-trains a policy to reproduce recorded actions.
-Unsuccessful attempts with outcome labels can support value or recovery
-learning, while uncertain synthetic episodes can train a verifier.
-Stage-conditioned routing explains why industrial recipes
-often use a broad pretraining mixture followed by narrower embodiment and task
-post-training, and why one fixed mixture is rarely optimal for the entire
-lifecycle.
+Routing changes the purpose of a record rather than only its sampling frequency.
+A pipeline can use broad but weakly aligned video for representation pretraining and reserve aligned robot actions for behavior cloning, which trains a policy to reproduce recorded actions.
+Unsuccessful attempts with outcome labels can support value or recovery learning, while uncertain synthetic episodes can train a verifier.
+Stage-conditioned routing explains why industrial recipes often use a broad pretraining mixture followed by narrower embodiment and task post-training, and why one fixed mixture is rarely optimal for the entire lifecycle.
 
 \subsection{Synthesis: The Correctness--Coverage--Cost Trade-off}
 
-Across curation methods, stricter thresholds typically improve one observable
-property while reducing coverage and data volume.  More diversity can initially
-expand support but later inject incompatible conventions.  Smoothness can reject
-noise but also reject corrective behavior.  A learner-aware estimator can improve
-near-term loss but narrow long-term transfer.  No single threshold optimizes
-correctness, coverage and diversity, target alignment, and cost in every setting.
-A robust preparation system should expose this trade-off and calibrate cheap proxies with
-periodic fixed-budget retraining, and preserve discarded data and reason codes so
-decisions can be reversed when the learner or target changes.
+Across curation methods, a stricter threshold often improves one measured property while reducing coverage and data volume.
+Greater diversity can expand the range of states but may also introduce incompatible action conventions.
+Smoothness checks can reject noise and corrective behavior at the same time.
+A learner-aware score can improve short-term validation loss while narrowing transfer to other tasks or models.
+No single threshold optimizes correctness, coverage, target alignment, and cost in every setting.
+A robust system should report these separate effects, periodically compare inexpensive scores with fixed-budget policy training, and retain rejected records with reason codes.
+These records allow an earlier decision to be reversed when the learner or target changes.

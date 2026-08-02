@@ -9,9 +9,9 @@
   arr/.style={-{Latex[length=2mm]}, thick, draw=black!70},
   feedback/.style={-{Latex[length=2mm]}, thick, dashed, draw=purple!75}
 ]
-\node[stage] (raw) {\textbf{Raw sources}\\robot, human video, simulation, generated, deployment};
+\node[stage] (raw) {\textbf{Raw records}\\robot, human video, simulation, generated, deployment};
 \node[stage, right=of raw] (ops) {\textbf{Operations}\\validate, align, segment, label, filter, weight, synthesize};
-\node[stage, right=of ops] (dist) {\textbf{Trainable distribution}\\sample, role, weight, provenance, version};
+\node[stage, right=of ops] (dist) {\textbf{Prepared training data}\\unit, role, weight, provenance, version};
 \node[stage, right=of dist] (learner) {\textbf{Learner}\\pretrain, adapt, post-train, sample online};
 \node[stage, right=of learner] (deploy) {\textbf{Execution evidence}\\rollout utility, recovery, safety, shift};
 
@@ -28,8 +28,6 @@
 \draw[feedback] (deploy.north) to[out=115,in=65,looseness=1.35]
   node[above,align=center,font=\small] {failure mining, active acquisition,\\mixture and verifier recalibration} (raw.north);
 \end{tikzpicture}
-\caption{Data preparation as a feedback-controlled transformation from raw
-interactions to a target-conditional training distribution.  Solid arrows form
-the data path.  Dashed arrows change future preparation decisions.}
+\caption{Data preparation transforms raw records into training units, sampling weights, and stage-specific roles. Solid arrows show the forward data path. Dashed arrows show how evaluation changes later preparation decisions.}
 \label{fig:lifecycle}
 \end{figure*}

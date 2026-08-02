@@ -1,104 +1,20 @@
-%!TEX root = ../main.tex
-\usepackage{xspace}
-\usepackage{listings}
-\usepackage{framed}
-\usepackage{multirow}
-\usepackage[normalem]{ulem}
+%!TEX root = main.tex
+% Packages required by the active survey and the retained template samples.
+\usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{threeparttable}
 \usepackage{graphicx}
-\usepackage{soul}
-\usepackage{textcomp}
 \usepackage{xcolor}
-\usepackage{multirow}
 \usepackage{booktabs}
-\usepackage{balance}
 \usepackage{tabularx}
-\usepackage{subcaption}
-\usepackage{bm}
-\usepackage{url}
-\usepackage{makecell}
-\usepackage{enumitem}
 \usepackage{pifont}
-% Legacy sample tables use only U+2713/U+2717 from utfsym.  This lightweight
-% replacement avoids utfsym's pdfLaTeX-only Unicode declarations under XeTeX.
-\newcommand{\usym}[1]{\ifnum#1=2713\relax\ding{51}\else\ding{55}\fi}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,backgrounds,calc,fit,positioning,shapes.geometric}
-\usepackage{colortbl}
-\usepackage{framed}
 \usepackage{array}
 \usepackage{ragged2e}
 \usepackage{longtable}
 
-% Survey-specific semantic shorthands.  The older template commands below are
-% deliberately retained as examples for future papers using this repository.
-\newcommand{\dataprep}{\textsc{DataPrep}\xspace}
-\newcommand{\qualityvec}{\bm{q}}
-\newcommand{\utility}{\mathcal{U}}
-\newcommand{\rawdata}{\mathcal{D}_{\mathrm{raw}}}
-\newcommand{\traindata}{\mathcal{D}_{\mathrm{train}}}
-\newcommand{\pipeline}{\mathcal{P}}
-\newcommand{\evidenceone}{\textsc{E1}}
-\newcommand{\evidencetwo}{\textsc{E2}}
-\newcommand{\evidencethree}{\textsc{E3}}
-
-% \usepackage{algorithm}
-% \usepackage{algorithmic}
-
-
-\usepackage{algpseudocode}
-% 定义蓝色注释命令
-\newcommand{\commentstyle}[1]{\textit{\textcolor{blue}{\# #1}}}
-
-\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-            \node[shape=circle, draw, inner sep=1pt] (char) {#1};}}
-
-\lstset{language=SQL,
-	basicstyle={\small\ttfamily},
-	belowskip=3mm,
-	breakatwhitespace=true,
-	breaklines=true,
-	classoffset=0,
-	columns=flexible,
-	commentstyle=\color{dkgreen},
-	framexleftmargin=0.05em,
-	frameshape={}{}{}{}, %To remove to vertical lines on left, set `frameshape={}{}{}{}`
-	keywordstyle=\color{blue},
-	numbers=none, %If you want line numbers, set `numbers=left`
-	numberstyle=\tiny\color{gray},
-	showstringspaces=false,
-	stringstyle=\color{mauve},
-	tabsize=3,
-	xleftmargin =1ex
-}
-
-\newtheorem{example}{Example}
-
-% algorithm position
+% Keep float spacing consistent across figures, tables, and algorithm samples.
 \setlength{\floatsep}{10pt plus 2pt minus 2pt}
 \setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
 \setlength{\intextsep}{10pt plus 2pt minus 2pt}
-\definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}
-\definecolor{dropred}{rgb}{0.75, 0.22, 0.17}
-% \definecolor{ForestGreen}{HTML}{229954}
-
-
-% \definecolor{shadecolor}{gray}{0.92} % 设置背景色
-% \newenvironment{findingbox}{%
-%   \par\vspace{-0.5em}
-%   \setlength{\FrameSep}{2pt} % 默认约 3pt，这里设为 10pt 让内部更宽敞
-%   \begin{shaded}
-% }{
-%   \end{shaded}
-%   \par\vspace{-0.5em} 
-% }
-
-
-
-\makeatletter
-\DeclareRobustCommand*\cal{\@fontswitch\relax\mathcal}
-\makeatother
-
-\newcommand{\labelprefix}{}

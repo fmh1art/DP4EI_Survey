@@ -1,0 +1,9 @@
+{
+  "description": "Replace this object with the values used to generate sample_plot.pdf.",
+  "x_label": "Preparation budget",
+  "y_label": "Downstream success rate",
+  "points": [
+    {"x": 1, "y": 0.40},
+    {"x": 2, "y": 0.52}
+  ]
+}

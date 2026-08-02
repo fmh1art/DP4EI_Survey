@@ -1,25 +1,18 @@
-Embodied foundation models draw on robot demonstrations, human video,
-simulation, generated trajectories, and deployment experience.  These records
-differ in embodiment, control semantics, timing, annotation, physical validity,
-and relevance to the learner.  Data volume alone does not describe how useful
-such a mixture will be for training.  This survey examines data preparation for
-embodied intelligence, defined as the decisions that turn heterogeneous
-interactions into a trainable distribution whose value can be tested downstream.
-We review 211 papers and system reports and organize them by the operation
-performed, the signal used to make the decision, the evidence used to assess
-utility, and the point in the data lifecycle at which the decision occurs.  The
-review covers source design, technical validation, cross-embodiment alignment,
-semantic enrichment, curation and mixture design, augmentation, synthesis,
-verification, and failure-driven updates.  We also compare publicly disclosed
-recipes from Qwen-RobotManip and Qwen-RobotWorld, the $\pi$ family, GR00T, and
-Gemini Robotics.  Their results are analyzed structurally because their data
-units, models, and evaluation protocols are not directly comparable.  Across the
-literature, data quality is conditional on the learner and training stage,
-useful preparation increasingly operates below the episode level, and synthetic
-or self-generated data requires independent validation.  Failed experience is
-useful only when its outcome and temporal structure determine how it enters
-training.  These findings motivate evaluation protocols that connect intrinsic
-diagnostics and proxy scores to controlled policy training and deployment.  They
-also clarify the progression from static curation to selection guided by the
-current learner, failure-driven post-training, and closed-loop data systems that
-repeatedly revise and audit the training distribution.
+Embodied foundation models learn from robot demonstrations, human video, simulation rollouts, generated trajectories, and records collected during deployment.
+These sources differ in their supervision, action representation, physical validity, and relevance to the target robot.
+A raw record may contain camera observations, robot states, actions, language, outcome labels, and collection metadata.
+Before training, these records must be checked, aligned, segmented, labeled, selected, combined, or expanded with generated data.
+We refer to these operations as \emph{data preparation for embodied intelligence}.
+Their product is prepared training data, including both the examples presented to a learning algorithm and the rules that determine when and how often each example is used.
+
+This survey reviews 211 papers and system reports through four questions: what operation changes the data, what signal guides the operation, what evidence demonstrates a benefit, and when the decision is made in the data lifecycle.
+The operation axis structures our review of source design, technical checks, cross-embodiment alignment, segmentation and labeling, selection and mixture design, augmentation, generation, validation, and updates driven by deployment failures.
+The other three axes support comparisons within each stage.
+We also reconstruct the publicly disclosed data recipes of Qwen-RobotManip, Qwen-RobotWorld, the $\pi$ family, GR00T, and Gemini Robotics while avoiding direct comparison of results obtained with different data units, models, and evaluation protocols.
+
+Four findings recur across these settings.
+First, the usefulness of a record depends on the target robot, model, task, and training stage, so data quality cannot be represented by one universal score.
+Second, an episode may contain useful, redundant, failed, and recovery segments that require different labels and training roles.
+Third, synthetic and self-generated data need checks independent of the generator and, when they provide action supervision, validation through policy training or physical execution.
+Fourth, deployment failures can guide subsequent collection and preparation, but the feedback loop must retain reference data, audit model errors, and support rollback.
+Together, these findings explain the progression from static curation to learner-guided selection, failure-driven post-training, repeated data-engine updates, and autonomous data-preparation agents.
