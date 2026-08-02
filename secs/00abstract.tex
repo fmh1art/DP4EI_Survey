@@ -1,25 +1,16 @@
-Embodied foundation models draw on robot demonstrations, human video,
-simulation, generated trajectories, and deployment experience.  These records
-differ in embodiment, control semantics, timing, annotation, physical validity,
-and relevance to the learner.  Data volume alone does not describe how useful
-such a mixture will be for training.  This survey examines data preparation for
-embodied intelligence, defined as the decisions that turn heterogeneous
-interactions into a trainable distribution whose value can be tested downstream.
-We review 211 papers and system reports and organize them by the operation
-performed, the signal used to make the decision, the evidence used to assess
-utility, and the point in the data lifecycle at which the decision occurs.  The
-review covers source design, technical validation, cross-embodiment alignment,
-semantic enrichment, curation and mixture design, augmentation, synthesis,
-verification, and failure-driven updates.  We also compare publicly disclosed
-recipes from Qwen-RobotManip and Qwen-RobotWorld, the $\pi$ family, GR00T, and
-Gemini Robotics.  Their results are analyzed structurally because their data
-units, models, and evaluation protocols are not directly comparable.  Across the
-literature, data quality is conditional on the learner and training stage,
-useful preparation increasingly operates below the episode level, and synthetic
-or self-generated data requires independent validation.  Failed experience is
-useful only when its outcome and temporal structure determine how it enters
-training.  These findings motivate evaluation protocols that connect intrinsic
-diagnostics and proxy scores to controlled policy training and deployment.  They
-also clarify the progression from static curation to selection guided by the
-current learner, failure-driven post-training, and closed-loop data systems that
-repeatedly revise and audit the training distribution.
+Embodied foundation models draw on robot demonstrations, human video, simulation, generated trajectories, and deployment experience. These records differ in embodiment, control semantics, timing, annotation, physical validity, and relevance to the learner.
+Data volume alone does not describe how useful such a mixture will be for training. This survey examines data preparation for embodied intelligence, defined as the decisions that turn heterogeneous interactions into a trainable distribution whose value can be tested downstream. % 这边说的很奇怪，为什么data preparation for embodied intelligence指的是decisions that turn heterogeneous interactions into a trainable distribution。什么事interactions？trainable distribution又是什么，为什么这么说？
+We review 211 papers and system reports and organize them by the operation performed, the signal used to make the decision, the evidence used to assess
+utility, and the point in the data lifecycle at which the decision occurs. 
+% 上面我还能理解，我不知道你下面这段话在说什么。上面的组织是有逻辑的，我能理解他是data prep中的一些步骤。下面完全不知道你在说什么，而且你罗列的这些点，和上面的四个步骤有什么关系？感觉言之无物
+The review covers source design, technical  validation, cross-embodiment alignment, semantic enrichment, curation and mixture design, augmentation, synthesis, verification, and failure-driven updates.
+We also compare publicly disclosed recipes from Qwen-RobotManip and Qwen-RobotWorld, the $\pi$ family, GR00T, and Gemini Robotics.
+Their results are analyzed structurally because their data units, models, and evaluation protocols are not directly comparable.
+% Across the literature，这个用法在论文里很少见。并且下面这句话太长了，很难get到你想表达的意思。这个长句的前后逻辑也不强
+Across the literature, data quality is conditional on the learner and training stage, useful preparation increasingly operates below the episode level, and synthetic or self-generated data requires independent validation.
+% 这句话也不理解
+Failed experience is useful only when its outcome and temporal structure determine how it enters training.
+% 这么复杂的句子，鬼知道你什么意思啊
+These findings motivate evaluation protocols that connect intrinsic diagnostics and proxy scores to controlled policy training and deployment.
+% 同样的问题，你的英文表述问题很验证
+They also clarify the progression from static curation to selection guided by the current learner, failure-driven post-training, and closed-loop data systems that repeatedly revise and audit the training distribution.
