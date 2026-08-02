@@ -112,12 +112,15 @@ retraining tests learning utility.  Deployment tests whether utility survives
 physical and distribution shift.  These answer different questions and should
 not be merged into a single score.
 
-\textbf{Lifecycle.}  Offline preparation freezes $\pipeline$ before training.
-Training-time methods update sampling from losses or progress; post-training
-methods mine failures; continual methods change acquisition and verification
-after deployment.  The lifecycle axis separates a static synthetic dataset from
-a data engine that uses policy failures to decide what to generate next, even if
-both call their operation ``augmentation.''
+\textbf{Lifecycle and authority.}  Offline preparation freezes $\pipeline$
+before training.  Training-time methods update sampling from losses or progress;
+post-training methods mine failures; continual methods change acquisition and
+verification after deployment.  A further distinction asks whether people
+predefine that loop or an agent chooses among preparation operators and
+diagnostic experiments.  The axis thus separates a static synthetic dataset, a
+data engine that uses policy failures to trigger a prescribed generator, and an
+agent that can decide to collect, relabel, audit, abstain, or roll back---even if
+all use the word ``augmentation.''
 
 \subsection{Lifecycle Backbone and Secondary Attributes}
 
@@ -138,4 +141,6 @@ dense in offline episode filtering guided by representations and in visual
 synthesis checked by semantic similarity.  It is sparse in transition-level
 cross-embodiment value, deployment-calibrated validation of generated contact,
 and cost-aware routing of failures among discard, relabel, recovery training, and
-new acquisition.  The gaps motivate Section~\ref{sec:agenda}.
+new acquisition.  Almost no system jointly learns operator choice, experiment
+allocation, promotion, stopping, and rollback.  These gaps motivate
+Sections~\ref{sec:recipes-engines} and~\ref{sec:agenda}.

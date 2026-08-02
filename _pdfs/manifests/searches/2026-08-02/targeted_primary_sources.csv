@@ -1,0 +1,8 @@
+query_family,note_id,primary_source,decision,evidence_use
+industrial synthetic recipe,P205,arXiv:2505.12705,include deep,DreamGen generation and robot-post-training mechanism
+robot reward verification,P206,arXiv:2601.00675,include deep,reward-model negatives and real-robot calibration
+LLM targeted selection,P207,arXiv:2402.04333,include deep,target-gradient instruction selection
+LLM alignment data,P208,arXiv:2312.15685,include deep,quality-complexity-diversity selection
+recursive generated data,P209,Nature doi:10.1038/s41586-024-07566-y and arXiv:2305.17493,include deep,self-training collapse risk and real-anchor motivation
+LLM self-training,P210,arXiv:2401.10020,include deep,self-proposed and self-judged iterative alignment
+robot data flywheel,P211,arXiv:2511.19647,include deep,deployment-driven collection and foundation-model adaptation

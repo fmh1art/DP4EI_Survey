@@ -82,22 +82,82 @@ evidence for causal comparison.
 
 \subsection{What Transfers from Language and Multimodal Data Engineering}
 
-Language-model pipelines establish useful experimental machinery: explicit
-source provenance, deduplication before splitting, staged rule/model filters,
-learned domain mixtures, ablations over pipeline versions, and fixed-compute
-model-based evaluation.  RefinedWeb and FineWeb document large-scale web
-filtering and deduplication; DoReMi and DSIR optimize mixtures or resampling;
-DataComp fixes a data pool and training procedure so data work can be compared;
-JEST performs joint example selection for multimodal training
-~\cite{penedo2023refinedweb_2306_01116,penedo2024fineweb_2406_17557,xie2023doremi_2305_10429,xie2023data_2302_03169,gadre2023datacomp_2304_14108,evans2024data_2406_17711}.
+The most useful lesson from language-model data work is methodological: treat
+the data pipeline itself as an optimizable, versioned system.  RefinedWeb and
+FineWeb expose staged filtering and deduplication; DataComp-LM fixes a 240T-token
+candidate pool, model/compute tracks, and 53 evaluations so that preparation can
+be compared under a controlled training intervention
+~\cite{penedo2023refinedweb_2306_01116,penedo2024fineweb_2406_17557,li2024datacomp_2406_11794}.
+DoReMi and DSIR learn mixture or resampling decisions instead of treating source
+ratios as invisible constants~\cite{xie2023doremi_2305_10429,xie2023data_2302_03169}.
+LESS estimates optimizer-aware influence for targeted instruction tuning, while
+DEITA separates quality, complexity, and diversity rather than selecting on one
+score~\cite{xia2024less_2402_04333,liu2023what_2312_15685}.  JEST further shows
+that the useful object can be a jointly selected batch, not an independently
+ranked example~\cite{evans2024data_2406_17711}.  Table~\ref{tab:llm-lessons}
+maps these mechanisms to embodied preparation and, equally importantly, records
+what fails to transfer.
 
-The transferable contribution is the \emph{evaluation paradigm}, not a specific
-text-quality filter.  Robot records are sequential and cross-modal; actions are
-coordinate- and controller-dependent; neighboring transitions are correlated;
-physical feasibility and recovery cannot be judged from tokens; and real
-rollouts are costly and hazardous.  A robot analogue of DataComp therefore needs
-episode/segment group splits, action semantics, simulator and real tiers, and
-cost/safety accounting.
+\input{tables/llm_to_ei_lessons}
+
+\textbf{Pretraining suggests controlled pipeline competition.}
+The DataComp-LM design is more important for EI than any winning text filter.
+It answers a causal question: under a fixed raw pool, learner, token budget, and
+evaluation suite, which preparation pipeline produces the best model?  Robot
+papers often instead compare a curated set and a baseline with different episode
+counts, updates, augmentations, or policy architectures.  A DataComp-Robot design
+must preserve the fixed-intervention logic while adding action semantics,
+episode/segment group splits, simulation and real tiers, preparation cost, and
+safety.  Unlike text tokens, robot transitions are not freely exchangeable, and
+their acquisition price depends on resets, supervision, embodiment, and risk.
+
+\textbf{Mixture optimization suggests hierarchical, stage-specific routing.}
+Language corpora have domains; embodied corpora have nested source, task,
+environment, skill, embodiment, episode, segment, and transition groups.  A
+single learned source weight is therefore only the top of the routing hierarchy.
+A useful transfer of DoReMi/DSIR is to train a cheap proxy learner and estimate
+which groups reduce target regret, then test whether weights transfer to a larger
+VLA.  The non-transferable assumption is stationarity.  Once a robot policy is
+deployed, its failures change and its data distribution follows; a ratio learned
+offline becomes a controller prior, not a permanent optimum.  Minimum floors are
+also needed for rare safety/recovery groups even when their short-term average
+loss contribution is small.
+
+\textbf{Instruction tuning suggests target-conditional selection below the
+episode.}  LESS and DEITA support two ideas: value should be conditioned on a
+target learner/task, and correctness, difficulty, and diversity should not be
+collapsed prematurely.  For EI, the analogous candidate is often not a whole
+episode but a coherent skill segment, correction, or failure--recovery pair.
+Gradient influence is an informative proxy, yet a pointwise approximation can
+miss temporal credit, complementary approach/grasp segments, and the
+distribution shift caused by the improved policy.  The proper evaluation is
+whether a selected hierarchical set reduces fixed-budget policy regret across
+held-out tasks and learners, not whether its proxy score is high.
+
+\textbf{LLM post-training suggests iterative judges, but also their failure
+mode.}  Self-Rewarding Language Models illustrate a loop in which a model
+generates candidates, judges responses, constructs preference pairs, and updates
+itself~\cite{yuan2024self_2401_10020}.  The embodied analogue is attractive:
+generate counterfactual failures, score trajectories with a reward VLM, collect
+new behavior, and repeat.  It is also more dangerous.  A VLM may accept a
+physically impossible contact, and a policy can change the visual distribution
+on which its judge was calibrated.  Work on recursively generated training data
+shows the more general risk: indiscriminate replacement of natural data can
+erase distribution tails across generations~\cite{shumailov2024collapse}.
+We do not claim the language theorem directly predicts robot-policy collapse;
+we infer a design constraint.  Self-evolving embodied pipelines should
+accumulate audited real anchors, identify synthetic lineage, use independent
+verifiers, enforce subgroup floors, and test each round for tail and safety
+retention.
+
+The mapping is therefore \emph{mechanism-level}, not heuristic-level.  Text
+pipelines teach how to version operators, run fixed-compute ablations, optimize
+mixtures, estimate target influence, and audit recursive generation.  They do
+not supply action causality, timing, controller semantics, physical validity, or
+safe exploration.  Those missing properties explain why autonomous embodied
+data preparation requires the layered evidence and control architecture in
+Section~\ref{sec:recipes-engines}, rather than a direct port of web-data filters
+or an LLM-as-judge.
 
 \subsection{A DataComp-Robot Evaluation Track}
 
@@ -119,7 +179,7 @@ but fails under natural mixed defects should not be called a general quality
 metric.  Fixed raw snapshots make results repeatable; periodic hidden refreshes
 measure overfitting and support a living survey.
 
-\subsection{Seven Cross-Paper Principles}
+\subsection{Eight Cross-Paper Principles}
 
 \textbf{P1: quality is target-conditional.}  Formal data-quality analysis,
 mixture learning, datamodels, and influence methods all condition value on a
@@ -162,15 +222,29 @@ chooses data that trains its successor.  Reproducing or rolling back a result
 requires the raw source, preparation policy, verifier, training role, model
 version, and deployment evidence as one causal graph.
 
+\textbf{P8: self-evolution is a constrained experiment, not data accumulation.}
+RECAP, SOP, and LWD obtain relevance from current-policy experience, but each
+also retains an offline/pretrained reference or limits the update path
+~\cite{intelligence20250_2511_14759,pan2026sop_2601_03044,wang2026learning_2605_00416}.
+Recursive-data results explain why this pattern is principled rather than merely
+conservative~\cite{shumailov2024collapse}: each round needs a hypothesis about a
+gap, a controlled promotion test, anchor retention, and a rollback condition.
+More self-generated data is not evidence of positive evolution.
+
 \subsection{Paradigm Evolution}
 
-The field's evolution is better understood by its decision signal than by year.
-The first regime uses manual inspection and deterministic technical rules.  The
-second uses pretrained representations and foundation models for semantic labels,
-deduplication, and verification.  The third uses learner loss, datamodels,
-influence, and task progress to estimate conditional training value.  The emerging
-fourth regime uses simulator and real execution to update acquisition, mixtures,
-and generators.  Each regime trades increased relevance for increased cost and
-feedback risk.  The likely stable architecture is therefore a cascade: rules for
-obvious defects, models for scalable semantics, learner-aware estimates for
-borderline allocation, and sparse rollout audits for calibration.
+The field's evolution is better understood by increasing data-decision authority
+than by year (Figure~\ref{fig:autonomy-ladder}).  Static rule pipelines first
+made records technically usable.  Pretrained models then supplied scalable
+semantic labels and verifiers.  Learner-aware selectors used loss, datamodels,
+influence, and progress to estimate target-conditional value.  Failure-driven
+post-training added policy-induced states and interventions.  Current data
+engines repeatedly couple acquisition, verification, routing, and deployment;
+the prospective preparation agent would also choose the experiment and know
+when to abstain, stop, or roll back.  Each step raises target relevance and
+decision scope, but also increases cost, endogeneity, and feedback risk.  A
+stable architecture is consequently a cascade---rules for obvious defects,
+models for scalable semantics, learner-aware estimates for disputed allocation,
+and sparse simulation/real audits for calibration---inside a versioned
+controller, not a wholesale replacement of simple checks by one autonomous
+judge.

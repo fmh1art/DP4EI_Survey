@@ -34,10 +34,8 @@ def main() -> None:
         r"\\cite[a-zA-Z*]*\s*(?:\[[^\]]*\]\s*){0,2}\{([^}]+)\}", content
     )
     cited = {key.strip() for group in cite_groups for key in group.split(",") if key.strip()}
-    bib_text = "\n".join(
-        (ROOT / "citations" / name).read_text(encoding="utf-8")
-        for name in ("survey_ref.bib", "survey_extra.bib")
-    )
+    bibliography_files = sorted((ROOT / "citations").glob("survey_*.bib"))
+    bib_text = "\n".join(path.read_text(encoding="utf-8") for path in bibliography_files)
     bib_keys = re.findall(r"@\w+\s*\{\s*([^,\s]+)\s*,", bib_text)
     duplicates = sorted(key for key, count in Counter(bib_keys).items() if count > 1)
     missing_citations = sorted(cited - set(bib_keys))

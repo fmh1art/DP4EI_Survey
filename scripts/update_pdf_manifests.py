@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PDF_ROOT = ROOT / "_pdfs" / "papers"
 MANIFEST = ROOT / "_pdfs" / "manifests"
-NOTES = MANIFEST / "all_204_note_entries.csv"
+NOTES = MANIFEST / "evidence_map.csv"
 
 SURVEYS = {
     "2607.24744": ("SUP01", "Data Pyramid for Embodied Manipulation"),

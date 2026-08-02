@@ -54,7 +54,15 @@ bottleneck from production to calibration and verification
 ~\cite{blank2024scaling_2410_17772,mandlekar2023mimicgen_2310_17596,li2026xiaomi_2607_11643}.
 Third, self-improving systems turn deployment outcomes into future collection and
 post-training data, so preparation becomes a feedback policy rather than a
-one-shot preprocessing script~\cite{bousmalis2023robocat_2306_11706,ahn2024autort_2401_12963,chen2025curating_2503_03707}.
+one-shot preprocessing script~\cite{bousmalis2023robocat_2306_11706,ahn2024autort_2401_12963,intelligence20250_2511_14759,pan2026sop_2601_03044,wang2026learning_2605_00416}.
+Fourth, industrial foundation-model reports now disclose sufficiently different
+recipes to support structural synthesis: Qwen foregrounds representation,
+motion, and behavior alignment; the $\pi$ family exposes stage- and
+metadata-dependent routing; GR00T combines real anchors with neural/simulated
+expansion; and Gemini reports cross-embodiment Motion Transfer
+~\cite{yuan2026qwen_2606_17846,intelligence20260_2604_15483,nvidia2025gr00t_2503_14734,team2025gemini_2510_03342}.
+These reports do not support a leaderboard, but they show that data preparation
+has become a first-class systems architecture.
 
 \input{tables/adjacent_surveys}
 
@@ -84,14 +92,14 @@ not used as mutually exclusive bins.
 
 \subsection{Contributions and Reader's Guide}
 
-This survey makes six visible contributions.
+This survey makes seven visible contributions.
 
 \begin{itemize}[leftmargin=*]
     \item \textbf{A focused problem definition.}  We define preparation as the
     transformation of raw, heterogeneous interactions into target-conditional,
     trainable distributions, and separate it from data collection in general and
     from policy architecture design.
-    \item \textbf{An auditable evidence map.}  We organize 204 papers and system
+    \item \textbf{An auditable evidence map.}  We organize 211 papers and system
     reports, distinguish reading depth and evidence source, publish the search
     queries and structured manifests, and reserve abstract-only records for
     horizon scanning.
@@ -102,10 +110,14 @@ This survey makes six visible contributions.
     intervention, granularity, assumptions, human/compute cost, target dependence,
     validation, generalization, reproducibility, and failure modes rather than by
     incomparable headline numbers.
-    \item \textbf{Cross-paper synthesis.}  We identify recurring principles,
-    reconcile apparent conflicts about filtering, diversity, and failed data, and
-    describe the transition from rules to model-based signals and closed-loop
-    evolution.
+    \item \textbf{Industrial-recipe and data-engine synthesis.}  We reconstruct
+    public recipes for Qwen, Physical Intelligence, GR00T, and Gemini Robotics;
+    compare engines by feedback, data action, update, and safeguard; and separate
+    disclosed facts, within-paper evidence, and our inference.
+    \item \textbf{Cross-domain and evolutionary synthesis.}  We reconcile
+    conflicts about filtering, diversity, and failed data, transfer mechanisms
+    rather than text heuristics from LLM data engineering, and derive a five-level
+    path from static curation to an auditable data-preparation agent.
     \item \textbf{A falsifiable research agenda.}  We propose concrete benchmarks
     and the \evodataprep framework for learning cost-aware preparation policies
     with calibrated verification, safety constraints, and rollback.
@@ -113,6 +125,8 @@ This survey makes six visible contributions.
 
 Section~\ref{sec:method} describes the review protocol.  Section~\ref{sec:problem}
 formalizes the problem and taxonomy.  Sections~\ref{sec:acquisition}--
-\ref{sec:evolution} review the technical lifecycle.  Section~\ref{sec:evaluation}
-examines evidence and cross-cutting conclusions, before
+\ref{sec:evolution} review the technical lifecycle.
+Section~\ref{sec:recipes-engines} synthesizes industrial recipes, post-training
+loops, and the autonomy ladder.  Section~\ref{sec:evaluation} examines evidence,
+LLM-derived mechanisms, and cross-cutting conclusions, before
 Section~\ref{sec:agenda} develops the research agenda.

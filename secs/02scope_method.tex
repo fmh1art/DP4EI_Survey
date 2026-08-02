@@ -32,7 +32,7 @@ to determine its operation and evidence.
 
 \subsection{Discovery and Screening}
 
-The search covers January 2018 through August 1, 2026.  We combine: (i) DBLP and
+The search covers January 2018 through August 2, 2026.  We combine: (i) DBLP and
 arXiv queries over conjunctions of robot/embodied/VLA with \emph{data curation},
 \emph{demonstration selection}, \emph{quality}, \emph{filtering}, \emph{mixture},
 \emph{relabeling}, \emph{segmentation}, \emph{augmentation}, \emph{synthetic
@@ -46,6 +46,12 @@ The resolved snapshot contains 1,160 title-deduplicated database records from
 28 queries.  Eight queries that failed transiently in the initial run were
 retried successfully; both the original failures and resolved summaries are
 retained.  This count is a discovery universe rather than an inclusion count.
+On August 2, we performed a targeted primary-source update for industrial data
+recipes, online/fleet post-training, robot data flywheels and reward models, and
+LLM instruction-selection/self-training risks.  Exact-title verification,
+official-lab report checks, and citation tracing promoted five existing records
+to deep reading and added seven eligible works.  We preserve this targeted pass
+separately rather than retroactively inflating the 1,160-record baseline search.
 
 Title/abstract screening removes clearly out-of-scope uses of ``data curation''
 and ``data engine.''  Full-text screening then requires a recoverable operation,
@@ -59,10 +65,10 @@ update rather than silently added.
 
 \input{figures/tex/review_flow}
 
-The resulting evidence map contains 204 unique works: 56 deep reads (method/data
-sections, relevant experiments, and limitations checked), 114 method-level reads
+The resulting evidence map contains 211 unique works: 68 deep reads (method/data
+sections, relevant experiments, and limitations checked), 109 method-level reads
 (abstract plus directly relevant primary-text sections), and 34 abstract-index
-records.  The 170 deep or method-level works form the technical synthesis.  The
+records.  The 177 deep or method-level works form the technical synthesis.  The
 34 abstract-index records contribute only to horizon scanning and coverage
 diagnostics; no technical claim in this paper relies on them.  This distinction
 prevents a large bibliography from masquerading as equally deep evidence.

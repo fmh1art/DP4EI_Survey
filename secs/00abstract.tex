@@ -1,23 +1,29 @@
-Embodied foundation models are trained on a rapidly expanding mixture of robot
-demonstrations, human videos, simulation, generated trajectories, and deployment
+Embodied foundation models are trained on expanding mixtures of robot
+demonstrations, human video, simulation, generated trajectories, and deployment
 experience.  These records are not interchangeable: they differ in embodiment,
 control semantics, timing, annotation, physical validity, and relevance to the
-policy being trained.  Consequently, raw scale is an inadequate account of the
-data bottleneck.  This survey studies \emph{data preparation for embodied
-intelligence}: the decisions that transform heterogeneous interactions into a
-trainable distribution with verifiable downstream value.  We synthesize an
-auditable evidence map of 204 papers and system reports through four orthogonal
-lenses: the operation performed on data, the signal that guides it, the evidence
-used to establish utility, and its position in the data--model lifecycle.  This
-view unifies source design, technical validation, cross-embodiment alignment,
-segmentation and relabeling, filtering and mixture optimization, augmentation and
-synthesis, layered verification, and failure-driven iteration.  Across these
-areas, the literature supports five conclusions.  Data quality is conditional on
-the learner, task, embodiment, stage, and budget; useful decisions increasingly
-occur below the episode level; shape-compatible actions need not be
-semantically compatible; synthetic-data generation is limited by validation
-rather than visual plausibility alone; and offline pipelines are evolving into
-feedback controllers.  We distinguish intrinsic, proxy, and downstream evidence,
-explain why results reported under different training budgets cannot be ranked
-directly, and derive a research agenda for utility-calibrated metrics,
-cross-embodiment semantics, stable self-evolution, and cost-aware evaluation.
+learner.  Raw scale is therefore an inadequate account of the data bottleneck.
+This survey studies \emph{data preparation for embodied intelligence}: the
+decisions that transform heterogeneous interactions into a trainable
+distribution with verifiable downstream value.  We synthesize an auditable
+evidence map of 211 papers and system reports through four orthogonal lenses:
+the operation performed, its decision signal, the evidence used to establish
+utility, and its lifecycle position.  This view unifies source design, technical
+validation, cross-embodiment alignment, semantic enrichment, filtering and
+mixture optimization, augmentation and synthesis, layered verification, and
+failure-driven evolution.  We further reconstruct public recipes from
+Qwen-RobotManip/RobotWorld, the $\pi$ family, GR00T, and Gemini Robotics, and
+compare data engines by gap signal, data action, learner update, and stability
+control rather than by incomparable end-to-end scores.  The evidence supports
+six conclusions: quality is learner-, task-, stage-, and budget-conditional;
+useful decisions increasingly occur below the episode; alignment is a
+precondition for cross-source scale; training role is often more informative
+than source type; generation and self-training move the bottleneck to independent
+verification; and failures become useful only after typed annotation and
+routing.  We distinguish intrinsic, proxy, controlled-training, and deployment
+evidence, derive mechanism-level lessons from LLM data engineering, and formalize
+an evolution from static curation to learner-aware selection, failure-driven
+post-training, multi-round data engines, and ultimately auditable autonomous
+data-preparation agents.  The resulting agenda targets utility-calibrated
+metrics, cross-embodiment semantics, stable self-evolution, causal promotion
+tests, rollback, and cost/safety-aware agent evaluation.

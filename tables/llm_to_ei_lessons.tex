@@ -1,0 +1,71 @@
+\begin{table*}[t]
+\centering
+\caption{Mechanism-level transfer from language/multimodal data engineering to
+embodied intelligence (EI).  The final column states the assumption that breaks
+under sequential, action-conditioned physical data.}
+\label{tab:llm-lessons}
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{@{}p{3.2cm}p{4.25cm}p{5.1cm}X@{}}
+\toprule
+LLM/multimodal mechanism & Transferable principle & EI instantiation & Broken assumption / required control \\
+\midrule
+Fixed-pool data competition
+~\cite{li2024datacomp_2406_11794,gadre2023datacomp_2304_14108}
+& Freeze the raw pool, learner, compute budgets, and evaluation; vary only the
+data pipeline.
+& A DataComp-Robot track submits episode/segment membership, weights, roles,
+lineage, and preparation cost to fixed lightweight and foundation VLA learners.
+& Robot utility needs simulation and blinded real tiers; robot hours, reset
+labor, and safety prevent a fully cheap, deterministic leaderboard. \\
+\midrule
+Auditable filtering/deduplication
+~\cite{penedo2023refinedweb_2306_01116,penedo2024fineweb_2406_17557}
+& Version every rule/model gate, record rejection rates, deduplicate before
+splitting, and validate each pipeline change at fixed compute.
+& Cascade technical checks, cross-modal alignment, joint state--action
+deduplication, and lineage-based leakage tests.
+& Text documents are nearly exchangeable units; adjacent transitions and
+segments have causal order, and visually similar episodes may contain distinct
+contact dynamics. \\
+\midrule
+Domain reweighting/resampling
+~\cite{xie2023doremi_2305_10429,xie2023data_2302_03169}
+& Learn mixture weights from a proxy learner or target distribution instead of
+setting them entirely by intuition.
+& Hierarchical source/task/skill/embodiment weights, with stage-specific floors
+and transfer to a larger VLA.
+& Domains evolve with the deployed policy; proxy-to-target and sim-to-real
+weight transfer can fail, while tiny safety groups must not receive zero mass. \\
+\midrule
+Targeted instruction selection
+~\cite{xia2024less_2402_04333,liu2023what_2312_15685}
+& Estimate target influence and jointly consider quality, complexity, and
+diversity; a small targeted subset can outperform indiscriminate use in the
+reported language settings.
+& Select complementary trajectories/segments for a task, learner, and budget;
+retain difficulty and recovery coverage instead of ranking by one quality
+score.
+& Pointwise gradients ignore temporal credit and group complementarity;
+policy-induced state shift makes a once-influential episode stale. \\
+\midrule
+Joint example/batch selection
+~\cite{evans2024data_2406_17711}
+& Value depends on interactions within a candidate batch, not only independent
+example scores.
+& Select coherent approach--grasp--place groups or success--failure--recovery
+sets while controlling task and embodiment coverage.
+& Arbitrary transition shuffling destroys executable sequences; selection must
+respect hierarchical groups and causal split boundaries. \\
+\midrule
+Self-judged iterative alignment
+~\cite{yuan2024self_2401_10020,shumailov2024collapse}
+& A model can propose, judge, and retrain on new supervision, but recursive
+replacement of natural data can erase distribution tails.
+& Generate counterfactual failures or preferences, calibrate a robot reward
+model, and iterate with immutable real demonstrations and deployment audits.
+& A shared generator/judge can ratify its own physical errors; real anchors,
+independent verifiers, mixture floors, canaries, and rollback are mandatory. \\
+\bottomrule
+\end{tabularx}
+\end{table*}

@@ -106,7 +106,48 @@ worst-group retention, calibration drift, error amplification, safety events, an
 rollback frequency.  Stress tests should seed a biased verifier or generator and
 measure whether the loop detects and corrects the bias.  A method that obtains a
 short-term average gain while collapsing rare capabilities is unstable, even if
-its final aggregate success is high.
+its final aggregate success is high.  The recursive-data collapse result is not a
+robotics theorem, but it supplies an actionable stress test: progressively
+increase the fraction of self-generated experience while measuring tail coverage
+and keep-versus-replace policies under a fixed real anchor
+~\cite{shumailov2024collapse}.  RECAP's checkpoint restart, SOP's mixture bounds,
+and LWD's offline reference provide concrete controls to ablate rather than
+informal assurances~\cite{intelligence20250_2511_14759,pan2026sop_2601_03044,wang2026learning_2605_00416}.
+
+\subsection{From Fixed Data Engines to Autonomous Preparation Agents}
+
+Most current engines automate a controller designed by people: which buffer to
+sample, which failures trigger intervention, which generator to call, and when to
+retrain are fixed in advance.  The L4 problem in
+Figure~\ref{fig:autonomy-ladder} is harder: an agent must select preparation
+operators and information-gathering experiments under delayed, noisy utility.
+For example, after detecting weak performance on deformable objects, it must
+choose among collecting demonstrations, preserving failed prefixes, requesting
+corrections, generating scenes, changing a mixture, calibrating a verifier, or
+first running a diagnostic rollout.  These actions have different cost, delay,
+identifiability, and safety.
+
+This can be studied without granting unrestricted real-robot autonomy.  A
+benchmark should expose a versioned raw pool, typed operator library, fixed
+learners, simulator and limited hidden real audits, a cost model, and planted
+defects or coverage gaps.  At each round an agent receives only the evidence it
+purchased, emits an executable preparation plan and predicted gain, and may
+promote, abstain, stop, or roll back.  Comparisons should include a fixed expert
+pipeline, random and bandit allocation, an oracle with defect labels, and an
+LLM planner without learner/rollout feedback.  Metrics are cumulative utility
+regret, evidence and robot cost, safety violations, worst-group retention,
+calibration of predicted gains, unnecessary rollbacks, and exact replayability
+from lineage.
+
+Four capabilities are falsifiable milestones.  \emph{Operator competence}
+requires valid, reversible transformations.  \emph{Experimental competence}
+requires isolating a data decision with matched controls rather than changing
+the learner simultaneously.  \emph{Transfer competence} requires the chosen
+pipeline to help a held-out learner or deployment shift.  \emph{Governance
+competence} requires respecting authority boundaries, immutable anchors, and
+safety budgets even when a proxy predicts a gain.  An LLM that writes a fluent
+pipeline but cannot meet these criteria is an interface to preparation, not an
+autonomous preparation agent.
 
 \subsection{Cost--Benefit and Environmental Accounting}
 
@@ -159,8 +200,10 @@ multiple contamination and target shifts, compare Bayesian optimization or
 bandit allocation with hand pipelines, and measure utility regret plus total cost.
 
 The stronger long-term hypothesis is that data preparation can be learned as a
-policy while remaining auditable.  It is falsified if learned pipelines fail to
-transfer beyond their calibration learner, consume more total resources than
-fixed baselines, or amplify errors across rounds.  Stating these failure criteria
-is important: ``automation'' alone is not an academic contribution unless it
-improves the correctness--coverage--cost frontier under controlled evidence.
+policy while remaining auditable---the transition from the L3 engine to the L4
+agent.  It is falsified if learned pipelines fail to transfer beyond their
+calibration learner, consume more total resources than fixed baselines, cannot
+attribute their gains to a data decision, or amplify errors across rounds.
+Stating these failure criteria is important: ``automation'' alone is not an
+academic contribution unless it improves the correctness--coverage--cost frontier
+under controlled evidence and can safely decline authority it has not earned.

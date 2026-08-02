@@ -1,6 +1,6 @@
 # 面向具身智能的数据准备：结构化论文笔记库
 
-**版本：v1.0｜检索截止：2026-08-01｜语言：中文**
+**版本：v1.1｜检索截止：2026-08-02｜语言：中文**
 
 这份笔记库服务于 survey《从原始交互到可训练分布：面向具身智能的数据准备、数据引擎与自进化》。它不是只罗列“机器人数据集”，而是记录每项工作在数据生命周期中执行了什么操作、使用什么质量信号、如何验证、留下什么空白。
 
@@ -922,12 +922,14 @@
 - **核心结论：** 可用多个专门 verifier 分别审查语义、几何和物理，而非单一总分。
 - **局限与启发：** 判别器仍可能偏向训练分布，真实接触验证不足。
 
-### P129. Qwen-RobotWorld (2026) [M]
+### P129. Qwen-RobotWorld (2026) [D]
 
 - **定位：** 语言条件的机器人视频世界模型与数据生成器。
-- **数据准备流程：** 用多来源机器人视频训练未来生成，可用于合成数据、虚拟评估和规划。
-- **核心结论：** 同一世界模型可在 pipeline 中承担生成与评估，但必须防止自评估闭环偏差。
-- **局限与启发：** 公开报告对训练数据过滤、物理真实性和真机相关性披露有限。
+- **数据准备流程：** EWK 含 8.6M video–text、200M+ 帧，其中 70% embodied、30% general；覆盖 manipulation（约 5.9M）、driving、navigation、human-to-robot，跨 20+ 本体和 500+ action category。先做域自适应视频预处理，再用 task goal、action detail、physical feedback、comprehensive/concise caption 五层标注；LLM judge 与人工复核把低分 caption 路由回定向 prompt refinement。训练采用 General+Expert progressive curriculum，embodied SFT 依次引入 single-view、multi-view、concatenated view 和复杂跨域数据。
+- **关键细节：** language action 被设计为自包含状态转移说明；通用数据主动排除 AIGC 图像/视频作为真实视觉锚点。human-to-robot 分支用 MANO 重建、重定向、去手/修复、MuJoCo IK 和多本体渲染。
+- **证据：** 报告在 world-model benchmark、跨任务/本体生成、多视角一致性以及 synthetic data、virtual evaluation、planning 三类应用上给出实验；这些是自身设置内证据，不能把视频生成指标直接视为 policy utility。
+- **核心结论：** 语言可统一异构 action intent，但不能自动提供校准关节动作或接触有效性；同一模型若同时生成并无校准地评估样本，会形成自确认偏差。
+- **局限与启发：** action caption 必须在无 proprioception 条件下足以解释转移，这一假设对精细控制很强；真实策略训练的边际收益、接触错误率和 generator–verifier 独立性仍需外部验证。
 
 ### P130. LabVLA / RoboGenesis (2026) [M]
 
@@ -976,9 +978,10 @@
 ### P136. π*0.6 / RECAP (2025) [D]
 
 - **定位：** 将示范、on-policy rollout 和人类纠正统一到离线强化学习闭环。
-- **数据准备流程：** 先用大规模离线数据训练 advantage-conditioned generalist，再在目标场景收集 rollout 与遥操作干预，循环重训和专门化。
-- **核心结论：** 在线失败和纠正不应只做 SFT；利用 advantage/value 可区分好坏动作并提升真实吞吐。
-- **局限与启发：** 需要可靠奖励/价值估计和多轮真机采集，系统成本高。
+- **数据准备流程：** 先用大规模离线数据训练 generalist，再在目标场景合并 demonstration、autonomous rollout、terminal success/failure 与遥操作 intervention。价值函数预测距成功的负时间或大额失败惩罚，优势条件策略再从混合质量动作中提取更好行为。
+- **稳定性设计：** 报告中的多轮实现每轮都从同一个已审计的预训练 checkpoint 微调 value/policy，而不是直接从上轮继承；作者在其设置中将这一选择与减少漂移联系起来。
+- **核心结论：** 在线失败和纠正不应默认做 expert-action SFT；结果、价值与优势让同一条轨迹中的好坏动作承担不同训练角色。
+- **局限与启发：** 需要可靠奖励/价值估计、多轮真机采集和人类干预基础设施；从共同 checkpoint 重启是一个特定实现的稳定化证据，不是所有闭环的普遍最优规则。
 
 ### P137. ROVE (2026) [D]
 
@@ -994,12 +997,13 @@
 - **核心结论：** 把采集能力、评估能力和最终策略解耦，可减少单模型自确认偏差；报告仅 4 条种子也能扩展。
 - **局限与启发：** verifier 的 false positive 会造成数据污染，collector 分布可能过窄。
 
-### P139. DexFlyWheel (2026) [D]
+### P139. DexFlyWheel (2025) [D]
 
 - **定位：** 灵巧手的示范—残差强化学习—合成增强闭环。
-- **数据准备流程：** 先模仿学习，利用 residual RL 改善策略并生成新 rollout，再做视觉/轨迹增强和再训练。
-- **核心结论：** 对高维灵巧操作，策略改进本身可以成为高质量数据生成器。
-- **局限与启发：** 真机探索和手部安全成本高，残差策略可能难转为可复用示范。
+- **数据准备流程：** 每任务只采一条 VR 遥操作 seed；warm-up augmentation 后训练 base imitation policy，以 residual RL 在 base policy 附近探索。冻结组合策略在随机对象/位姿/环境中 rollout，只把成功轨迹加入下一轮，再做 episode-level 几何增强，形成三轮闭环（报告设置为 20、100、500 条/轮）。
+- **证据：** 四个单/双臂灵巧任务在仿真中从单条 seed 扩展到最终每任务平均约 2,040 个 scenario configuration，并以 digital twin 部署到真实双臂系统；所有数字仅说明该仿真/奖励设置内有效。
+- **核心结论：** 对高维灵巧操作，策略改进可以成为数据生成器；IL 保留类人先验、residual RL 补探索、仿真成功 gate 提供低成本验证，三者不可简单归为“合成增强”。
+- **局限与启发：** 当前不是开放世界 failure miner：可达分布由 digital twin、对象库和人工奖励限定，success-only 回流可能丢失恢复/失败边界；真机证据来自 sim-to-real 后的最终数据，而非真机在线自进化。
 
 ### P140. RISE (2026) [M]
 
@@ -1067,16 +1071,18 @@
 ### P149. LWD: Learning with Distributed Fleet Data (2026) [D]
 
 - **定位：** 机器人群规模的 offline-to-online 数据飞轮。
-- **数据准备流程：** 16 台双臂机器人并行收集 rollout、成功/失败和人类干预，集中训练后同步新策略，循环提升 8 个任务。
-- **核心结论：** 并行 fleet 能显著缩短策略—数据反馈周期；共享 schema 和版本控制成为核心基础设施。
-- **局限与启发：** 硬件资源高，跨设备漂移和同步部署增加工程复杂度。
+- **数据准备流程：** 16 台双臂机器人在 8 个任务上并行产生成功、失败、retry、部分进展与 intervention，累计约 60 机器人小时/约 4 小时墙钟时间。Distributional value learning 用混合 offline/online replay 吸收异质 return，QAM 把 critic 信号传给 flow-based action expert。
+- **稳定性设计：** 固定 offline reference、clipped double critic 与混合 replay 限制在线漂移；在线阶段冻结 VLM backbone，仅更新 action expert，把数据分布的快速变化与参数可变范围联合设计。
+- **核心结论：** 并行 fleet 缩短策略—数据反馈周期，但关键不是“上传更多失败”，而是保留 return/进度/干预语义并用 critic 正确路由。
+- **局限与启发：** 四小时研究不能证明长期 verifier 和数据分布稳定；硬件、跨设备漂移、同步部署和安全成本仍高。
 
 ### P150. SOP: Scalable Online Post-Training for VLA (2026) [D]
 
 - **定位：** 小时级真机在线后训练系统。
-- **数据准备流程：** 多机器人分布式采集当前策略 rollout，针对失败进行 prompt/on-policy correction，再快速更新大 VLA。
-- **核心结论：** 高信息密度纠正与并行采集可把在线学习从数天降到小时级。
-- **局限与启发：** 快速迭代提高了安全和回归风险，需要严格 gate。
+- **数据准备流程：** 10 台机器人、3 类真实任务的 actor 异步上传完整 episode，单一 learner 将静态与在线 buffer 交织训练，并可插入 HG-DAgger 或 RECAP 式更新。任务间均匀加权，任务内根据近期 online/offline loss 动态调节，online 比例限制在 0.2–0.8。
+- **部署控制：** 新 checkpoint 只在 episode 边界更换，避免一次轨迹中策略版本变化。报告在自身设置中发现，3 小时目标 on-policy 交互比额外 80 小时静态示范填补了更多性能缺口；这是策略附近边际价值的系统内证据，不是通用小时换算率。
+- **核心结论：** 在线数据之所以高价值，是因为它由当前策略诱导并暴露当前错误分布；价值同时取决于新旧 buffer 路由和更新时延。
+- **局限与启发：** 现有实验是小时级而非长期运行，且依赖人类干预或任务奖励；快速广播提高了安全与回归风险。
 
 ### P151. World-VLA-Loop (2026) [D]
 
@@ -1164,33 +1170,38 @@
 - **核心结论：** 数据角色、动作归一化、长度筛选和阶段化混合共同决定能力，不能只归因于模型规模。
 - **局限与启发：** 大量人工/私有数据和配比细节限制复现。
 
-### P163. π0.7 (2026) [M]
+### P163. π0.7 (2026) [D]
 
 - **定位：** 可操控的通用机器人基础模型。
-- **数据准备流程：** 在 π 系列数据栈上加入更丰富条件、后训练和可控行为数据，支持上下文适配与新能力。
-- **核心结论：** 前沿模型正把行为风格、推理和动作控制都视为可标注/可混合的数据维度。
-- **局限与启发：** 公开报告对完整数据清洗与各源比例披露有限。
+- **数据准备流程：** 混合人类示范、失败/次优 demonstration、已有策略的 autonomous evaluation/RL rollout、人工干预、开源机器人数据、egocentric human video 与 web auxiliary tasks。对 episode 粗标 strategy、speed、1–5 quality、mistake interval 和 control mode，把 metadata、subtask text 与 generated subgoal image 放进 prompt；训练中随机 dropout 各种条件以支持不同推理方式。
+- **关键实验：** 报告比较 full model、no metadata 与 no evaluation data；带 metadata 时，加入平均质量逐渐下降的更大数据仍能带来收益，而无 metadata 的模型会因低质量数据增加而退化。自动评测数据及其 quality/mistake context 对吞吐提升尤其明显。
+- **核心结论：** “过滤低质量”与“保留失败”不矛盾：若 objective 把所有动作当 expert target，应严格路由；若数据带结果和错误边界且模型可条件化目标质量，次优/失败可提供状态覆盖、策略蒸馏和负面信息。
+- **局限与启发：** 质量/错误/速度标签依赖人工，完整源比例和 annotation cost 未公开；成功利用历史模型 rollout 仍需真实 anchor、独立回归和跨轮漂移检查。
 
-### P164. GR00T N1 / N1.6 / N1.7 (2025–2026) [M]
+### P164. GR00T N1 / N1.6 / N1.7 (2025–2026) [D]
 
 - **定位：** NVIDIA 人形基础模型系列。
-- **数据准备流程：** 混合真实人形/机械臂、仿真、遥操作、合成视频和视觉语言数据；使用统一全身动作表示与 post-training 工具链。
-- **核心结论：** 人形训练需要把数据生成仿真、动作重定向、域随机化和真实纠正整合到同一平台。
-- **局限与启发：** 技术报告偏系统概览，原始数据来源、质量阈值和配比透明度有限。
+- **数据准备流程：** N1 数据金字塔以 web/human video 提供广覆盖，neural video 和 simulation 扩展中层，real robot teleoperation 做本体锚定。actionless human/neural video 通过 latent action 或 inverse dynamics 获得伪动作；88 小时 in-house 真实数据扩展为约 827 小时 neural video，780k 仿真轨迹约等于 6,500 小时且只保留成功。生成 prompt 由商用多模态模型提出、判断 instruction following、重描述并过滤；一项 neural post-training 采用 1:1 real:neural。
+- **版本信息：** 官方 N1.7 工程文档披露约 32k 小时 real demonstration/egocentric human data 与 8k 小时 simulation，并更新跨本体来源；该数字用于记录 recipe 演化，不与 N1 论文实验直接拼接。
+- **负面证据：** N1 目标后训练数据只使用右手后，checkpoint 丢失原有 left-to-right handover 能力，直接说明 stage-specific mixture 可造成技能遗忘；报告也明确 neural video 的物理定律局限。
+- **核心结论：** 人形训练需要数据工厂和分层角色，而不是“越多合成越好”；真实 anchor、mix floor、技能回归与 lineage 是工业 recipe 的核心控制。
+- **局限与启发：** N1 报告约 50k H100 小时训练成本，但真实数据过滤阈值、各源保留率和 N1.7 博客数字的独立因果贡献不透明；产品文档是工程证据，不应与同行评审消融等价。
 
-### P165. Gemini Robotics (2025) [M]
+### P165. Gemini Robotics (2025) [D]
 
 - **定位：** 将 Gemini 视觉语言知识扩展到低层机器人动作。
-- **数据准备流程：** 联合视觉语言与多本体机器人动作数据，支持高频控制和跨本体泛化。
-- **核心结论：** 大模型语义能力与机器人动作数据是互补监督，数据 prep 需明确哪些参数/头接收哪类数据。
-- **局限与启发：** 闭源数据和 pipeline 细节不足。
+- **数据准备流程：** 在 ALOHA 2 fleet 上历时 12 个月收集数千小时 expert teleoperation，覆盖数千任务、不同技能/物体/难度/horizon/dexterity；联合 web document、code、image/audio/video、embodied reasoning 与 VQA。难任务专项适配每任务整理 2,000–5,000 条 high-quality episode；另一条路径重标注 action dataset，使动作预测与 ER 空间概念连接。安全部分用 ASIMOV 数据和 constitutional/post-training。
+- **证据：** generalist、π0 reimplementation 与 diffusion baseline 使用同一 diverse mixture；专项模型使用同一 specialization data。报告还展示最多 100 条示范的新任务适配和新本体适配，但这些不能隔离完整预训练数据与 backbone 的各自贡献。
+- **核心结论：** 非动作多模态数据承担语义/推理，机器人数据承担物理动作 grounding，专项高质量数据承担精度；data prep 应标明每种监督进入哪个阶段/模块，而不是只列来源。
+- **局限与启发：** 原始量按来源、过滤规则、混合比例、重标注流程与人工成本大多不公开；企业系统结果是完整 recipe 证据，而不是单个数据算子的因果证据。
 
-### P166. Gemini Robotics 1.5 (2025) [M]
+### P166. Gemini Robotics 1.5 (2025) [D]
 
 - **定位：** 进一步强调跨本体运动迁移与推理—动作交织。
-- **数据准备流程：** 在异构动作数据上学习运动迁移，并加入动作前/中的推理标注。
-- **核心结论：** 数据准备不只统一动作，还需保存任务语义、推理阶段和 embodiment context。
-- **局限与启发：** 推理标签来源和质量控制不透明。
+- **数据准备流程：** 联合 ALOHA、bi-arm Franka、Apollo humanoid 的 multi-embodiment robot data（数千任务）与公开 text/image/video；Motion Transfer (MT) 作为架构/训练 recipe 对齐不同机器人运动和物理作用。Thinking VLA 在 action 前生成语言 reasoning；GR-ER 1.5 负责任务规划、success/progress detection 和高层 orchestrator。
+- **证据：** 报告设置 single-embodiment、multi-embodiment without MT 与 full MT 三组消融，并构造只在源本体采集、在另一目标本体测试的 cross-embodiment benchmark。所有模型在同一 work cell 做 interleaved A/B/n 真机测试；开发期超过 90% evaluation episode 在 MuJoCo 中完成，报告明确最终质量仍需真机。
+- **核心结论：** 添加跨本体数据与对齐机制是可分离但交互的因素；低数据 humanoid 从外部本体受益最大，已有大量数据的 ALOHA 边际收益较小。应报告 source–target transfer matrix，而不是一个总“跨本体增益”。
+- **局限与启发：** 各来源数量、动作标准化、MT 具体转换、thinking label 来源和过滤阈值仍不公开；GRoD 对比因版本数据量不同并非 apples-to-apples，不能用于直接 recipe 排名。
 
 ### P167. Gemini Robotics ER 2 (2026) [M]
 
@@ -1202,9 +1213,11 @@
 ### P168. Qwen-RobotManip (2026) [D]
 
 - **定位：** 跨 15 种机器人平台的大规模操控数据对齐方案。
-- **数据准备流程：** 约 1,933 小时人类数据经重定向、去手/修复、仿真渲染与深度合成生成约 24,808 小时机器人数据；统一为 80D masked 向量，以相机坐标末端增量和 CaPE 对齐，并用结构化 prompt 做行为适配。
-- **核心结论：** 代表“表示对齐—运动对齐—行为对齐”三层数据准备；规模扩张必须建立在语义和本体一致性上。
-- **局限与启发：** 大量合成数据的物理真实性与各阶段独立贡献需要更细消融。
+- **数据构成：** 总计约 38.1k 小时，包括超过 11k 小时机器人示范、1,933 小时人类第一视角以及由后者跨 15 种本体派生的 24,808 小时机器人数据，另混合 28M 视觉—语言样本。
+- **转换与过滤：** human-to-robot 链先做手势重定向/平滑，用 SAM3 分割手臂、ProPainter 去手修复背景，搜索 robot base 和 IK 解，再做深度合成；随后通过五类 state–action gate 和三类 video–language–state 一致性检查。报告在一个 RoboMIND UR 类子集中披露，状态—动作趋势检查触发约 81% 的 episode，说明源级缺陷可能压倒规模优势。
+- **对齐表示：** 动作统一为 80D masked 向量，但不停在 padding：以相机坐标中的末端增量和 CaPE 对齐运动，并在 prompt 中显式编码本体、控制模式和行为上下文。
+- **核心结论：** 代表“表示对齐—运动对齐—行为对齐”三层数据准备；输入维度一致仅是可读性，不等于控制语义一致。
+- **局限与启发：** 论文对动作对齐、数据规模和合成源做了消融，但 24.8k 合成小时的独立物理错误率、各转换环节的边际价值和对其他 learner 的可转移性仍未完全识别。
 
 ### P169. Qwen-VLA (2025) [M]
 
@@ -1459,6 +1472,58 @@
 - **数据准备流程：** 用 CLIP/VLM 分数、去重、语义平衡和下游评测选择训练数据。
 - **核心结论：** 机器人数据可借鉴多模态匹配，但必须加入动作、时间和物理维度。
 - **局限与启发：** 静态图文指标无法验证动作可执行性。
+
+## I. 2026-08-02 定向补充：工业数据引擎与 LLM 后训练启发
+
+### P205. DreamGen: Unlocking Generalization in Robot Learning through Video World Models (2025) [D]
+
+- **定位：** GR00T 数据工厂中以视频世界模型生成 neural trajectories 的代表性管线。
+- **数据准备流程：** 四阶段首先用遥操作机器人视频适配 image-to-video 世界模型（默认用 LoRA 缓解网络视频先验遗忘），再以新行为/环境条件生成视频，用 latent-action model 或 inverse-dynamics model 恢复伪动作，最后用这些 neural trajectory 后训练 visuomotor policy。
+- **证据：** 报告同时构建 DreamGenBench，用 instruction following 和 physics following 等诊断比较多个视频模型，并在自身实验中观察到 benchmark 与下游策略成功的相关。这支持 proxy 的排序价值，但不等于每条生成轨迹都物理可执行。
+- **核心结论：** 世界模型的价值不只是预测，而是把任务缺口编译成候选训练数据；视频生成和动作恢复是两个独立错误源，应分别报告生成量、动作可解码率、验证保留率和真实数据锚点。
+- **局限与启发：** 视觉合理性不保证动作、接触和动力学正确，benchmark–policy 相关也可能依赖本体和动作解码器；论文内收益与特定模型及数据混合耦合。
+
+### P206. RoboReward: General-Purpose Vision-Language Reward Models for Robotics (2026) [D]
+
+- **定位：** 针对真实机器人后训练构建专门的视觉语言 reward 数据与评测。
+- **数据准备流程：** 从 OXE 和 RoboArena 构造跨任务、跨本体成功/失败监督；针对成功数据占主导的问题，通过反事实重标注和时间裁剪生成负例、近失和部分进展，再训练和校准 reward VLM。
+- **核心结论：** 通用 embodied reasoning 模型不必然是可靠数据 verifier；验证器本身也需要覆盖失败边界的数据准备和独立 benchmark。
+- **局限与启发：** 负例生成规则可能形成新偏差，短时视频 reward 仍不能替代长时接触和安全验证。
+
+### P207. LESS: Selecting Influential Data for Targeted Instruction Tuning (2024) [D]
+
+- **定位：** 用优化器感知的梯度影响近似选择目标相关的指令微调样本。
+- **数据准备流程：** 在 warmup 后以低秩梯度特征估计候选训练样本与目标验证样本之间的影响，再在固定预算下选择小子集进行 instruction tuning。
+- **核心结论：** 后训练数据价值是目标条件和训练动态条件的；对 EI，可类比为用小规模目标 rollout/验证任务选择预训练片段，而不是采用一个全局质量分。
+- **局限与启发：** 梯度近似依赖模型、优化器和目标集，顺序控制与长轨迹交互无法由独立样本影响完整表达。
+
+### P208. What Makes Good Data for Alignment? / DEITA (2023) [D]
+
+- **定位：** 联合考虑 instruction 数据的质量、复杂度和多样性，以很小的 SFT 子集实现对齐。
+- **数据准备流程：** 由模型对响应质量和指令复杂度评分，再以表示去重/多样性约束选择数据，形成分层过滤而非单阈值排序。
+- **核心结论：** EI 后训练也应把成功正确性、技能难度和状态覆盖分开建模；高分但重复的成功轨迹不等于高价值数据池。
+- **局限与启发：** LLM judge 的偏差会传入选择器，且文本复杂度不能直接映射到物理难度或风险。
+
+### P209. AI Models Collapse When Trained on Recursively Generated Data (2024) [D]
+
+- **定位：** 分析模型反复以先前模型生成数据替代真实数据时的分布退化。
+- **数据准备流程：** 在可分析分布与生成模型实验中研究递归训练，显示低概率的分布尾部质量（tail mass）会在多代迭代中先丢失，最终导致分布收缩或失真。
+- **核心结论：** EI 自进化不能让自生成成功轨迹替代真实锚点；罕见失败、人工纠正和独立真实审计是防止能力支持集收缩的结构性机制。
+- **局限与启发：** 文本/图像生成结论不能直接量化机器人闭环退化，但揭示了反复自筛选和同源验证的共同风险。
+
+### P210. Self-Rewarding Language Models (2024) [D]
+
+- **定位：** 让模型同时生成候选响应并充当 judge，迭代构造偏好数据和执行 DPO。
+- **数据准备流程：** 每轮采样多候选，由模型按评判提示生成奖励，构造成对偏好数据并更新模型，然后进入下一轮。
+- **核心结论：** 生成器、选择器和学习器可以在闭环中共同演化；对 EI 的关键启发是把 judge 输出保存为有版本的训练数据，而不是只保存最终策略。
+- **局限与启发：** 自评会放大共同盲点，物理系统更需要异构 verifier、真实 rollout 校准和安全 gate。
+
+### P211. Robot-Powered Data Flywheels (2025) [D]
+
+- **定位：** 把执行实际服务的机器人转化为基础模型的持续数据采集器。
+- **数据准备流程：** 机器人在真实部署中执行有用任务，借助环境中的结构化资源获得弱监督，筛选和标注当前模型欠覆盖的观测，再回流适配视觉语言基础模型。
+- **核心结论：** data engine 不必只改善机器人动作策略，也可以让机器人主动采集能够改善上游 foundation model 的现实数据，形成双向数据飞轮。
+- **局限与启发：** 单场景部署证据不能证明通用持续学习；必须处理隐私、任务偏差、长期漂移和模型—数据版本对应。
 
 ## 使用建议
 

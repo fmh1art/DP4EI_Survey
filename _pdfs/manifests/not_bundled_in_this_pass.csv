@@ -92,15 +92,12 @@ P124,GraspVLA / SynGrasp-1B,2025,M,no
 P125,ORV-Data,2026,A,no
 P127,SIM1,2026,D,no
 P128,ABot-PhysWorld,2026,M,no
-P129,Qwen-RobotWorld,2026,M,no
 P130,LabVLA / RoboGenesis,2026,M,no
 P131,DataLadder,2026,A,no
 P132,PointWorld,2026,M,no
 P133,ViTacWorld,2026,M,no
-P136,π*0.6 / RECAP,2025,D,no
 P137,ROVE,2026,D,no
 P138,Seed2Scale,2026,D,no
-P139,DexFlyWheel,2026,D,no
 P140,RISE,2026,M,no
 P141,HELP / VLAC-CUT Self-Improvement,2026,M,no
 P142,EAP: Entangled Action Pairs,2026,M,no
@@ -110,18 +107,12 @@ P145,SRDF,2026,M,no
 P146,RoboPocket,2026,A,no
 P147,HandITL,2026,M,no
 P148,DeMaVLA,2026,D,no
-P149,LWD: Learning with Distributed Fleet Data,2026,D,no
-P150,SOP: Scalable Online Post-Training for VLA,2026,D,no
 P151,World-VLA-Loop,2026,D,no
 P153,ENPIRE: Agentic Robot Policy Self-Improvement,2026,M,no
 P154,Green-VLA DataQA and Reversal Augmentation,2026,M,no
 P155,Continual VLA via Reinforcement Fine-Tuning,2026,M,no
 P156,ExpReS-VLA,2026,M,no
-P164,GR00T N1 / N1.6 / N1.7,2025–2026,M,no
-P165,Gemini Robotics,2025,M,no
-P166,Gemini Robotics 1.5,2025,M,no
 P167,Gemini Robotics ER 2,2026,M,no
-P168,Qwen-RobotManip,2026,D,no
 P169,Qwen-VLA,2025,M,no
 P170,Qwen-RobotNav,2026,M,no
 P171,Xiaomi-Robotics-0,2025,M,no
@@ -141,7 +132,6 @@ P184,ABot-M0,2026,D,no
 P185,LDA-1B,2026,D,no
 P186,DeMaVLA Technical Report,2026,D,no
 P189,FineWeb-Edu,2024,D,no
-P190,DataComp-LM,2024,D,no
 P192,Data Mixing Laws,2024,M,no
 P194,Llama 3 / The Llama 3 Herd,2024,M,no
 P195,Dolma,2024,M,no

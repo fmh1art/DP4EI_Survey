@@ -9,10 +9,10 @@
   arr/.style={-{Latex[length=1.8mm]}, thick, draw=black!65}
 ]
 \node[box] (sources) {28 resolved DBLP/arXiv queries: 1,160 title-deduplicated discovery records\\$+$ backward/forward citation tracing $+$ major dataset, benchmark, lab, and system reports};
-\node[box, below=of sources] (map) {\textbf{Evidence map: 204 unique works}\\2018--2026; manipulation-centered embodied data preparation};
-\node[branch, below=5mm of map, xshift=-3.75cm] (deep) {56 deep reads\\+ 114 method-level reads};
+\node[box, below=of sources] (map) {\textbf{Evidence map: 211 unique works}\\2018--2026; baseline search $+$ targeted industrial/closed-loop update};
+\node[branch, below=5mm of map, xshift=-3.75cm] (deep) {68 deep reads\\+ 109 method-level reads};
 \node[branch, below=5mm of map, xshift=3.75cm] (abstract) {34 abstract-index records\\for horizon scanning};
-\node[box, below=15mm of map] (coding) {Core synthesis: 170 records coded by operation, object/granularity, decision signal, objective, evidence, lifecycle stage, scale/cost, generalization, limitations, and openness};
+\node[box, below=15mm of map] (coding) {Core synthesis: 177 records coded by operation, object/granularity, decision signal, objective, evidence, lifecycle stage, scale/cost, generalization, limitations, and openness};
 \draw[arr] (sources) -- (map);
 \draw[arr] (map) -- (deep);
 \draw[arr] (map) -- (abstract);
