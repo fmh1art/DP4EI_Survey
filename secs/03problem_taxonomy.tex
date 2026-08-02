@@ -4,6 +4,7 @@
 
 \subsection{From Raw Records to Training Units}
 
+% 我觉得这一段定义的很好，定义的清晰，切为下文介绍data prep买下了伏笔。
 The distinction introduced in Section~\ref{sec:introduction} can be stated formally without assuming that every source has the same fields.
 Let $T$ denote the length of an episode.
 For a raw episode $e$, let $m$ contain provenance, embodiment, sensor, calibration, operator, and timing metadata.
@@ -27,14 +28,16 @@ The pipeline is:
 \qquad
 \pipeline_c(\rawdata)=\traindata.
 \end{equation}
+% 这个是否是解释上一句的意思，他不限定在一个episode，可以是修改里面的某个片段？如果是的话，需要修改描述，描述要直接了当，让人能看得懂
 An operator need not preserve the original episode boundary.
 It may produce segments, individual transitions, counterexamples, paired modalities, or synthetic alternatives.
 
+% 这里上来就是z_j，什么意思啊？我理解应该是原始数据和想得到的数据
 Each prepared unit $z_j$ contains more than an input and target.
 Let $x_j$ and $t_j$ denote its input and training target, $w_j$ its sampling weight, $r_j$ its training role, $g_j$ its lineage record, and $v_j$ its version.
 We write:
 \begin{equation}
-z_j=(x_j,t_j,w_j,r_j,g_j,v_j).
+z_j=(x_j,t_j,w_j,r_j,g_j,v_j). % 我有点质疑这里定义的这么复杂的动机，有必要定义这么多概念吗，比如g_j和v_j？后面是否会用到
 \end{equation}
 The training role states how the unit may be used, for example in broad pretraining, embodiment alignment, task adaptation, recovery learning, negative supervision, safety training, or verifier calibration.
 Changing this role is called \emph{routing} because the same record is sent to a different training stage or objective rather than simply kept or removed.
@@ -49,6 +52,7 @@ Let $R$ denote risks from leakage, unsafe collection, bias, or unstable feedback
 For non-negative trade-off weights $\lambda$, $\mu$, and $\nu$, a candidate pipeline can be compared through:
 \begin{equation}
 \begin{aligned}
+% 这里的定义同样也很复杂，又是training cost，又是R的。我们是否可以优先考虑data prep的质量，是否可以先不考虑cost？
 \pipeline^{*}=\underset{\pipeline\in\Pi}{\arg\max}\quad
 &\mathbb{E}_{\tau}[\utility(\theta_{\pipeline})]\\[-0.2em]
 &-\lambda C_{\mathrm{prep}}-\mu C_{\mathrm{train}}-\nu R.
@@ -64,13 +68,16 @@ The experiment then changes both the data and the compute schedule.
 
 \subsection{Quality Depends on the Training Context}
 
+% 你这想表达一个训练数据技术上的正确性和训练价值是不同的？technical correctness不知道是什么意思
 Technical correctness and training value should be kept separate.
+% 这里又不知道什么意思了，不知道你想表达的意思
 An episode can be readable, synchronized, and physically valid without improving a policy that already covers the same behavior.
 We therefore record technical, semantic, control, physical, coverage, alignment, and safety properties as separate dimensions.
 
+% 这句话就比较清楚，很好的解释了你上面想说的，我都不知道你上面在说啥，不知所云的话不如删了，直接了当表达意思
 The value of a candidate episode can be expressed as the change in policy performance caused by the training units derived from it.
 For a prepared dataset $\mathcal{D}$ and context $c$, let $\theta_{\mathcal{D}}$ denote the policy trained on $\mathcal{D}$.
-Let $Z(e;c)$ denote the units derived from raw episode $e$ under context $c$.
+Let $Z(e;c)$ denote the units derived from raw episode $e$ under context $c$. % 不知道这里的context $c$ 具体什么意思。不具体
 We define the expected marginal value of the episode as:
 \begin{equation}
 V(e\mid c,\mathcal{D})=
@@ -78,23 +85,28 @@ V(e\mid c,\mathcal{D})=
 \utility(\theta_{\mathcal{D}})].
 \label{eq:conditional-value}
 \end{equation}
+% 这里我大概懂什么意思了，就是说一个data的价值应该是由他所在的数据集决定的，这一段写得不错，很清楚
 This value depends on the surrounding dataset because a valid episode may duplicate existing behavior, restore missing coverage, or conflict with an action convention used by other records.
 It also depends on the learner.
 RoboMimic's controlled study found strong interactions among demonstration quality, observations, learning algorithms, and training choices~\cite{mandlekar2021what_2108_03298}.
+% 这句话不知道什么意思，你说likewise，那么和上面是并列关系，我没看到和上一句的关系在哪
 Formal work likewise identifies action divergence and transition diversity as coupled determinants of imitation performance~\cite{belkhale2023data_2306_02437}.
 Exact retraining with and without every episode is normally infeasible.
+% 不太理解
 Equation~\ref{eq:conditional-value} states the quantity that selection scores and other inexpensive estimates attempt to approximate.
 
 \input{figures/tex/data_prep_lifecycle}
 
 \subsection{Four Orthogonal Taxonomy Axes}
 
+% 你在这对表格进行描述，因为现在表格内容太复杂了，不够简洁，我看不懂你对表格的描述的意思，请先按照要求修改表格内容
 Table~\ref{tab:taxonomy-axes} summarizes the taxonomy.
 The four axes answer different questions and do not divide papers into mutually exclusive bins.
 A system may use several operations, signals, and forms of evidence at different lifecycle stages.
 
 \input{tables/taxonomy_axes}
 
+% 你写作有一个问题，总喜欢并列罗列很多很多术语。像下面你都在说operation，你就不能简述吗，然后列一个表格详细介绍？我觉得这四个维度这么重要，可以通过图表的形式详细说明，在文字中避免 “It includes source and task design, technical validation and repair, representation and alignment, segmentation and relabeling, scoring and filtering, weighting and routing, augmentation and synthesis, and packaging or versioning.” 这种大段并列的描述。其他地方也同样存在这个问题。大量并列的items，其实是你没有进行high-level概括的一种表现。
 The \emph{operation axis} provides the main structure of the technical review.
 It includes source and task design, technical validation and repair, representation and alignment, segmentation and relabeling, scoring and filtering, weighting and routing, augmentation and synthesis, and packaging or versioning.
 Filtering changes which units are present.
@@ -106,9 +118,10 @@ The \emph{decision-signal axis} records why the operation is applied.
 Signals range from inexpensive rules and human labels to pretrained models, representation statistics, feedback from the target learner, simulation, and real execution.
 We call a signal \emph{learner-aware} when it uses losses, predictions, or outcomes from the learner being trained.
 This axis is not an ordering from weak to strong automation.
-A checksum is sufficient for detecting a corrupted file, while a robot rollout would be unnecessarily costly.
-Target-specific signals can answer harder questions, but they cost more and can introduce model bias or feedback error.
+A checksum is sufficient for detecting a corrupted file, while a robot rollout would be unnecessarily costly. % 我没有很能get到这一句话和上下文的关系
+Target-specific signals can answer harder questions, but they cost more and can introduce model bias or feedback error. % Why? and what is target-specific signals?
 
+% 这一段写得不好，我看完之后不知道你想表大的意思。不知道utility-evidence的概念的具体直观的含义
 The \emph{utility-evidence axis} records what a result establishes.
 Intrinsic measurements show that an intended property of the data changed.
 Proxy measurements show agreement with a model, simulator, or estimator.
@@ -133,9 +146,10 @@ The final stage uses training or deployment feedback to revise an earlier decisi
 This order is a reading structure rather than a mandatory pipeline.
 A failed generated trajectory can return to segmentation, deployment can change future source design, and the same verifier may be used before and after training.
 
+% 还是一样的问题，你这一段列了很多概念，知道我看完没有一个全貌的认识，被你的描述弄的云里雾里的
 We also record the object and granularity of each operation.
 The object may be a video, frame, state, sensor stream, action, language instruction, episode, segment, transition, cross-modal link, task, or source distribution.
-Separate objective fields record correctness, diversity, coverage, difficulty, executability, physical consistency, generalization, efficiency, stability, and safety.
+Separate objective fields record correctness, diversity, coverage, difficulty, executability, physical consistency, generalization, efficiency, stability, and safety. % 上面同样的问题，一堆并列的句子
 These attributes reveal combinations that receive little study.
 Most current work concentrates on model-guided episode filtering and visual synthesis checked by semantic similarity.
 Fewer studies estimate the value of individual transitions across embodiments, validate generated contact against deployment, or choose among discarding a failure, relabeling it, using it for recovery, and collecting new data.
