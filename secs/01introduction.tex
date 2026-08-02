@@ -3,10 +3,11 @@
 \label{sec:introduction}
 
 Robot learning is entering a data-rich but not yet data-coherent regime.
-Open X-Embodiment aggregates heterogeneous datasets into a common interface;
-DROID distributes real-world collection across institutions; UMI moves
-demonstration away from a continuously occupied robot; and recent generalist
-policies train on mixtures spanning embodiments, tasks, and supervision
+Open X-Embodiment aggregates heterogeneous datasets into a common interface.
+DROID distributes real-world collection across institutions, while the Universal
+Manipulation Interface (UMI) moves
+demonstration away from a continuously occupied robot.  Recent generalist
+policies train on mixtures that span embodiments, tasks, and supervision
 types~\cite{collaboration2023open_2310_08864,khazatsky2024droid_2403_12945,chi2024universal_2402_10329,kim2024openvla_2406_09246,team2024octo_2405_12213}.
 This expansion is often summarized by episode counts or hours.  Neither is a
 sufficient statistic.  A million records can contain incompatible coordinate
@@ -23,46 +24,52 @@ filter, weight, route, augment, synthesize, verify, package, and iteratively evo
 their records.  Its output is not merely a cleaned dataset.  It is a versioned
 training distribution conditioned on a target learner, embodiment, task
 distribution, training stage, deployment environment, and budget.
+When feedback from a trained or deployed model changes a later data decision,
+we call the resulting closed loop a \emph{data engine}.  This definition is
+narrower than using the term for any data-processing pipeline.
+When such feedback repeatedly revises the training distribution across rounds,
+we refer to the process as \emph{data self-evolution}.
 
 This boundary is deliberately narrower than ``data for embodied AI.''  Our core
 scope is manipulation and generalist vision--language--action (VLA) learning.  We
 include collection when the acquisition design changes compatibility, coverage,
-or feedback signals; human video and simulation when they are transformed into
-robot-learning supervision; and model/system reports when they disclose a data
-operation or recipe.  We do not systematically review robot hardware, policy
-architectures, generic simulators, navigation, autonomous driving, or benchmarks
+or feedback signals.  Human video and simulation enter the review when they are
+transformed into robot-learning supervision.  Model and system reports enter
+when they disclose a data operation or recipe.  We do not systematically review
+robot hardware, policy architectures, generic simulators, navigation, autonomous
+driving, or benchmarks
 that only evaluate a final model.  These topics enter only when they expose a
 general data-preparation mechanism.
 
 \subsection{Why a Separate Survey Is Needed}
 
 Adjacent reviews provide valuable maps, but their primary units differ from ours
-(Table~\ref{tab:adjacent-surveys}).  The Data Pyramid is source-centric; a recent
-VLA survey catalogs datasets, benchmarks, and data engines; and the human-video
+(Table~\ref{tab:adjacent-surveys}).  The Data Pyramid is source-centric.  A recent
+VLA survey catalogs datasets, benchmarks, and data engines, while the human-video
 survey organizes transfer mechanisms~\cite{ye2026data_2607_24744,wang2026vision_2604_23001,ma2026robot_2604_27621}.
 They do not center the decision problem common to all sources: \emph{which
 transformation should be applied, using which signal, and what evidence shows
 that it increased training value?}  That decision is becoming a distinct
 technical layer for three reasons.
 
-First, data operations increasingly contain learnable components.  Mixture
-optimization, mutual-information estimators, datamodels, progress estimators, and
-influence functions replace or augment fixed rules
+Data operations increasingly contain learned components.  Recent methods learn
+source-mixture weights, estimate redundancy and information, predict task
+progress, or approximate how a training record changes a target learner
 ~\cite{hejna2024re_2408_14037,hejna2025robot_2502_08623,dass2025datamil_2505_09603,zhang2025scizor_2505_22626,xu2026athena_2606_16208}.
-Second, foundation models can label or generate data at scale, shifting the
+Foundation models can also label or generate data at scale, which moves the
 bottleneck from production to calibration and verification
 ~\cite{blank2024scaling_2410_17772,mandlekar2023mimicgen_2310_17596,li2026xiaomi_2607_11643}.
-Third, self-improving systems turn deployment outcomes into future collection and
+Meanwhile, self-improving systems turn deployment outcomes into future collection and
 post-training data, so preparation becomes a feedback policy rather than a
 one-shot preprocessing script~\cite{bousmalis2023robocat_2306_11706,ahn2024autort_2401_12963,intelligence20250_2511_14759,pan2026sop_2601_03044,wang2026learning_2605_00416}.
-Fourth, industrial foundation-model reports now disclose sufficiently different
-recipes to support structural synthesis: Qwen foregrounds representation,
-motion, and behavior alignment; the $\pi$ family exposes stage- and
-metadata-dependent routing; GR00T combines real anchors with neural/simulated
-expansion; and Gemini reports cross-embodiment Motion Transfer
+The same shift is visible in industrial reports.  Qwen foregrounds
+representation, motion, and behavior alignment.  The $\pi$ family describes
+stage- and metadata-dependent routing.  GR00T combines real anchors with generated
+and simulated expansion.  Gemini reports Motion Transfer, a training mechanism
+that aligns motion across robot embodiments
 ~\cite{yuan2026qwen_2606_17846,intelligence20260_2604_15483,nvidia2025gr00t_2503_14734,team2025gemini_2510_03342}.
 These reports do not support a leaderboard, but they show that data preparation
-has become a first-class systems architecture.
+has become a recurring systems concern rather than a hidden preprocessing step.
 
 \input{tables/adjacent_surveys}
 
@@ -76,7 +83,7 @@ is the only observation of a deployment failure.  Conversely, an apparently
 smooth successful trajectory can add little if it duplicates states already
 covered or encodes an action convention incompatible with the target robot.
 Formal analyses of imitation data already show that state diversity, action
-divergence, and transition stochasticity interact rather than admit a universal
+divergence, and uncertainty in state transitions interact rather than admit a universal
 ordering~\cite{belkhale2023data_2306_02437}.  Empirical curation work reinforces
 the point: removing half of a dataset can help in one setting but lose important
 coverage in another~\cite{hejna2025robot_2502_08623,bedi2026what_2606_10229}.
@@ -87,46 +94,30 @@ evidence guides that change.  The \emph{utility-evidence axis} asks whether the
 claim is supported by an intrinsic diagnostic, a proxy, controlled policy
 training, or deployment.  The \emph{lifecycle axis} asks whether a decision is
 static, training-time, post-training, or continually revised.  Source type,
-modality, object/granularity, and objective are recorded as additional attributes,
+modality, transformed object, granularity, and objective are recorded as additional attributes,
 not used as mutually exclusive bins.
 
 \subsection{Contributions and Reader's Guide}
 
-This survey makes seven visible contributions.
-
-\begin{itemize}[leftmargin=*]
-    \item \textbf{A focused problem definition.}  We define preparation as the
-    transformation of raw, heterogeneous interactions into target-conditional,
-    trainable distributions, and separate it from data collection in general and
-    from policy architecture design.
-    \item \textbf{An auditable evidence map.}  We organize 211 papers and system
-    reports, distinguish reading depth and evidence source, publish the search
-    queries and structured manifests, and reserve abstract-only records for
-    horizon scanning.
-    \item \textbf{An explanatory taxonomy.}  Four orthogonal axes---operation,
-    signal, utility evidence, and lifecycle---explain both method equivalence and
-    differences hidden by source-based categories.
-    \item \textbf{Comparable technical analysis.}  We compare methods by their
-    intervention, granularity, assumptions, human/compute cost, target dependence,
-    validation, generalization, reproducibility, and failure modes rather than by
-    incomparable headline numbers.
-    \item \textbf{Industrial-recipe and data-engine synthesis.}  We reconstruct
-    public recipes for Qwen, Physical Intelligence, GR00T, and Gemini Robotics;
-    compare engines by feedback, data action, update, and safeguard; and separate
-    disclosed facts, within-paper evidence, and our inference.
-    \item \textbf{Cross-domain and evolutionary synthesis.}  We reconcile
-    conflicts about filtering, diversity, and failed data, transfer mechanisms
-    rather than text heuristics from LLM data engineering, and derive a five-level
-    path from static curation to an auditable data-preparation agent.
-    \item \textbf{A falsifiable research agenda.}  We propose concrete benchmarks
-    and the \evodataprep framework for learning cost-aware preparation policies
-    with calibrated verification, safety constraints, and rollback.
-\end{itemize}
+The survey makes four contributions.  First, it defines data preparation as the
+transformation of raw interactions into target-conditional training
+distributions, separating this problem from general data collection and policy
+architecture design.  Second, it provides an evidence map of 211 works with
+search records, reading-depth labels, and structured coding.  The resulting
+taxonomy compares operations by their decision signal, granularity, cost,
+validation, generalization, and failure modes instead of headline performance.
+Third, the survey reconstructs public industrial recipes and compares data
+engines by the feedback they observe, the data decision they make, and the
+controls used during model updates.  This comparison also separates disclosed
+facts from within-paper evidence and cross-paper interpretation.  Finally, the
+survey relates embodied preparation to language-model data engineering and
+develops a research agenda for utility calibration, stable closed-loop updates,
+and bounded preparation autonomy.
 
 Section~\ref{sec:method} describes the review protocol.  Section~\ref{sec:problem}
 formalizes the problem and taxonomy.  Sections~\ref{sec:acquisition}--
 \ref{sec:evolution} review the technical lifecycle.
 Section~\ref{sec:recipes-engines} synthesizes industrial recipes, post-training
 loops, and the autonomy ladder.  Section~\ref{sec:evaluation} examines evidence,
-LLM-derived mechanisms, and cross-cutting conclusions, before
-Section~\ref{sec:agenda} develops the research agenda.
+lessons from large language model data preparation, and cross-cutting
+conclusions.  Section~\ref{sec:agenda} then develops the research agenda.

@@ -1,29 +1,25 @@
-Embodied foundation models are trained on expanding mixtures of robot
-demonstrations, human video, simulation, generated trajectories, and deployment
-experience.  These records are not interchangeable: they differ in embodiment,
-control semantics, timing, annotation, physical validity, and relevance to the
-learner.  Raw scale is therefore an inadequate account of the data bottleneck.
-This survey studies \emph{data preparation for embodied intelligence}: the
-decisions that transform heterogeneous interactions into a trainable
-distribution with verifiable downstream value.  We synthesize an auditable
-evidence map of 211 papers and system reports through four orthogonal lenses:
-the operation performed, its decision signal, the evidence used to establish
-utility, and its lifecycle position.  This view unifies source design, technical
-validation, cross-embodiment alignment, semantic enrichment, filtering and
-mixture optimization, augmentation and synthesis, layered verification, and
-failure-driven evolution.  We further reconstruct public recipes from
-Qwen-RobotManip/RobotWorld, the $\pi$ family, GR00T, and Gemini Robotics, and
-compare data engines by gap signal, data action, learner update, and stability
-control rather than by incomparable end-to-end scores.  The evidence supports
-six conclusions: quality is learner-, task-, stage-, and budget-conditional;
-useful decisions increasingly occur below the episode; alignment is a
-precondition for cross-source scale; training role is often more informative
-than source type; generation and self-training move the bottleneck to independent
-verification; and failures become useful only after typed annotation and
-routing.  We distinguish intrinsic, proxy, controlled-training, and deployment
-evidence, derive mechanism-level lessons from LLM data engineering, and formalize
-an evolution from static curation to learner-aware selection, failure-driven
-post-training, multi-round data engines, and ultimately auditable autonomous
-data-preparation agents.  The resulting agenda targets utility-calibrated
-metrics, cross-embodiment semantics, stable self-evolution, causal promotion
-tests, rollback, and cost/safety-aware agent evaluation.
+Embodied foundation models draw on robot demonstrations, human video,
+simulation, generated trajectories, and deployment experience.  These records
+differ in embodiment, control semantics, timing, annotation, physical validity,
+and relevance to the learner.  Data volume alone does not describe how useful
+such a mixture will be for training.  This survey examines data preparation for
+embodied intelligence, defined as the decisions that turn heterogeneous
+interactions into a trainable distribution whose value can be tested downstream.
+We review 211 papers and system reports and organize them by the operation
+performed, the signal used to make the decision, the evidence used to assess
+utility, and the point in the data lifecycle at which the decision occurs.  The
+review covers source design, technical validation, cross-embodiment alignment,
+semantic enrichment, curation and mixture design, augmentation, synthesis,
+verification, and failure-driven updates.  We also compare publicly disclosed
+recipes from Qwen-RobotManip and Qwen-RobotWorld, the $\pi$ family, GR00T, and
+Gemini Robotics.  Their results are analyzed structurally because their data
+units, models, and evaluation protocols are not directly comparable.  Across the
+literature, data quality is conditional on the learner and training stage,
+useful preparation increasingly operates below the episode level, and synthetic
+or self-generated data requires independent validation.  Failed experience is
+useful only when its outcome and temporal structure determine how it enters
+training.  These findings motivate evaluation protocols that connect intrinsic
+diagnostics and proxy scores to controlled policy training and deployment.  They
+also clarify the progression from static curation to selection guided by the
+current learner, failure-driven post-training, and closed-loop data systems that
+repeatedly revise and audit the training distribution.

@@ -8,7 +8,7 @@
 ]
 \node[level, fill=gray!10] (l0) {\textbf{L0: Static curation}\\Fixed rules, labels, and one-shot mixture\\\emph{Dataset artifact}};
 \node[level, fill=blue!7, right=3mm of l0] (l1) {\textbf{L1: Learner-aware}\\Loss, influence, or proxy-guided selection\\\emph{Offline optimization}};
-\node[level, fill=cyan!8, right=3mm of l1] (l2) {\textbf{L2: Failure-driven}\\Rollouts/interventions alter post-training data\\\emph{One/few rounds}};
+\node[level, fill=cyan!8, right=3mm of l1] (l2) {\textbf{L2: Failure-driven}\\Rollouts and interventions alter post-training data\\\emph{One or a few rounds}};
 \node[level, fill=orange!10, right=3mm of l2] (l3) {\textbf{L3: Data engine}\\Repeated collect--verify--route--train--deploy\\\emph{Predesigned controller}};
 \node[level, fill=red!8, right=3mm of l3] (l4) {\textbf{L4: Preparation agent}\\Chooses operators and experiments, allocates budget, audits, stops or rolls back\\\emph{Adaptive controller}};
 \draw[arr] (l0) -- (l1);
@@ -19,9 +19,9 @@
 \end{tikzpicture}
 \caption{Maturity ladder from a static prepared dataset to an autonomous
 data-preparation agent.  Levels classify the authority of a data-decision loop,
-not the prestige of a model: a system can implement different levels for
+not the prestige of a model.  A system can implement different levels for
 different operators.  Existing systems provide strong partial evidence through
-L3; L4 remains a research target because autonomous operator choice, causal
-promotion tests, stopping, and rollback are not yet jointly demonstrated.}
+L3.  L4 remains a research target because autonomous operator choice, matched
+promotion comparisons, stopping, and rollback are not yet jointly demonstrated.}
 \label{fig:autonomy-ladder}
 \end{figure*}

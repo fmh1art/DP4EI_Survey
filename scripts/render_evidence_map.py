@@ -46,7 +46,7 @@ def main() -> None:
         r"\section{Complete Evidence Map}",
         r"\label{app:evidence-map}",
         r"\small",
-        r"Table~\ref{tab:evidence-map} lists every record in the evidence map. D denotes deep reading, M method-level reading, and A abstract-index horizon scanning. The machine-readable CSV is the authoritative companion artifact.",
+        r"Table~\ref{tab:evidence-map} lists every record in the evidence map. D denotes deep reading, M method-level reading, and A an abstract-index record used only to track emerging work. The machine-readable CSV is the authoritative companion artifact.",
         r"\setlength{\LTleft}{0pt}",
         r"\setlength{\LTright}{0pt}",
         r"\refstepcounter{table}\label{tab:evidence-map}",

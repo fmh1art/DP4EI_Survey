@@ -1,7 +1,7 @@
 \begin{table*}[t]
 \centering
 \caption{The proposed taxonomy separates four questions that are often
-conflated.  A paper may occupy several cells on each axis; classification records
+conflated.  A paper may occupy several cells on each axis.  Classification records
 the actual mechanism, not the method's self-assigned label.}
 \label{tab:taxonomy-axes}
 \small
@@ -10,10 +10,10 @@ the actual mechanism, not the method's self-assigned label.}
 \toprule
 Axis & Question & Categories & What the axis reveals \\
 \midrule
-Operation & What changes? & Source/task design; validate/repair; align; segment/relabel; score/filter; weight/route; augment/synthesize; package/version & Methods with different names may implement the same data intervention, while a single engine may compose many interventions. \\
-Decision signal & Why is it changed? & Rules/statistics; human judgment; pretrained model; representation/information; learner loss/influence; simulator/world model; rollout/deployment feedback & Automation level alone is insufficient: signal bias, calibration, and acquisition cost determine failure modes. \\
-Utility evidence & How is value established? & Intrinsic property; proxy or verifier; controlled downstream training; simulated rollout; real-robot deployment; cross-embodiment replication & Separates detecting an intended defect from demonstrating that its removal improves a policy. \\
-Lifecycle/authority & When is it changed, and who chooses the next operation? & One-shot offline; pretraining iteration; training-time sampling; post-training correction; continual deployment loop; autonomous operator/experiment selection & Distinguishes static datasets, predesigned engines that alter acquisition or routing, and agents that also choose and audit the controller action. \\
+Operation & What changes? & Source and task design, validation and repair, alignment, segmentation and relabeling, filtering, weighting and routing, synthesis, packaging, and versioning & Methods with different names may implement the same data intervention, while a single engine may compose many interventions. \\
+Decision signal & Why is it changed? & Rules and statistics, human judgment, pretrained models, representation or information measures, target-learner feedback, simulators or predictive environment models, and deployment feedback & Automation level alone is insufficient.  Signal bias, calibration, and acquisition cost determine failure modes. \\
+Utility evidence & How is value established? & Intrinsic properties, proxies or verifiers, controlled downstream training, simulated rollouts, real-robot deployment, and cross-embodiment replication & Separates detecting an intended defect from demonstrating that its removal improves a policy. \\
+Lifecycle and authority & When is it changed, and who chooses the next operation? & One-shot offline preparation, pretraining iteration, training-time sampling, post-training correction, continual deployment loops, and autonomous operation or experiment selection & Distinguishes static datasets, predesigned engines that alter acquisition or routing, and agents that also choose and audit the controller action. \\
 \bottomrule
 \end{tabularx}
 \end{table*}

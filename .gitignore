@@ -3,12 +3,14 @@ build/
 *.aux
 *.bbl
 *.blg
+*.cut
 *.fdb_latexmk
 *.fls
 *.log
 *.out
 *.synctex.gz
 *.toc
+/main.pdf
 
 # Editor and operating-system metadata
 .DS_Store

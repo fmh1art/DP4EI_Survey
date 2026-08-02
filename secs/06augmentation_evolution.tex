@@ -2,111 +2,120 @@
 \section{Augmentation, Synthesis, and Data Evolution}
 \label{sec:evolution}
 
-Filtering reallocates a finite pool; augmentation and synthesis attempt to create
+Filtering reallocates a finite pool.  Augmentation and synthesis attempt to create
 missing coverage.  In embodied learning, a generated image is useful only when it
-remains coupled to an executable state transition and a valid task.  We therefore
+remains coupled to an executable state transition and a valid task.  We
 organize generation by what is transformed and how its validity can be tested,
 not by the visual generator family.
 
 \subsection{A Hierarchy of Generative Interventions}
 
-\textbf{Observation-level augmentation} changes lighting, texture, background,
-camera noise, crop, or viewpoint while intending to preserve state and action.
+Observation-level augmentation changes lighting, texture, background, camera
+noise, crop, or viewpoint while intending to preserve state and action.
 It is inexpensive and often useful for visual robustness, but must respect
 occlusion and camera-frame actions.  Generating a plausible new view without
-updating its extrinsics or visibility creates a mislabeled action observation.
+updating its camera pose or visibility metadata creates a mislabeled action
+observation.
 GenAug and ROSIE use pretrained image generators to alter demonstration scenes
 while preserving the intended behavior
 ~\cite{chen2023genaug_2302_06671,yu2023scaling_2302_11550}.  RoVi-Aug extends
 the intervention to robot-video augmentation, whereas RoboEngine combines
 generative editing with explicit robot-data engineering
 ~\cite{chen2024rovi_2409_03403,yuan2025roboengine_2503_18738}.  Together they
-show the scale advantage of image-space editing; they also expose its central
-audit question: whether pixels outside the edited region, geometry, action
-labels, and task success remain jointly invariant.
+show the scale advantage of image-space editing.  They also expose its central
+audit question, namely whether pixels outside the edited region, geometry, action
+labels, and task success still describe the same transition.
 
-\textbf{Trajectory-level transformation} perturbs initial states, object poses,
-timing, or motion and updates actions through geometry, replay, or optimization.
+Trajectory-level transformation perturbs initial states, object poses, timing,
+or motion and updates actions through geometry, replay, or optimization.
 It preserves more action structure than video editing but depends on accurate
-object frames and task invariances.  Mirroring, retiming, and spatial warping are
-valid only under the co-transformation principle from
-Section~\ref{sec:acquisition}.
+object frames and on the task remaining valid after transformation.  Mirroring,
+retiming, and spatial warping are
+valid only when every coupled observation, action, and task field is transformed
+consistently, as discussed in Section~\ref{sec:acquisition}.
 
-\textbf{Segment recomposition} decomposes demonstrations into object-relative
-skills and instantiates or stitches them in new scenes.  MimicGen is the canonical
+Segment recomposition decomposes demonstrations into object-relative skills and
+instantiates or stitches them in new scenes.  MimicGen is a representative
 example: it extracts task segments from a small number of human demonstrations,
 transforms them with respect to new object configurations, and executes the
 resulting sequence to obtain additional demonstrations
 ~\cite{mandlekar2023mimicgen_2310_17596}.  This substantially reduces manual
 demonstration demand in the paper's task suite, but assumes that task segmentation,
 object pose, and segment-level invariance are reliable.  Error at a stitch can be
-physically small yet place the next primitive outside its valid initiation set.
+physically small yet leave the robot in a state from which the next primitive
+cannot succeed.
 
-\textbf{Simulation/task generation} creates assets, scenes, goals, rewards, and
-expert trajectories.  Its strength is programmatic state access and scalable
-failure generation; its weaknesses are generator bias, solver artifacts, and the
-reality gap.  Variation should be measured in causal task factors and contact
-conditions, not only texture entropy.
+Simulation-based task generation creates assets, scenes, goals, rewards, and
+expert trajectories.  Its strength is exact machine-readable state and scalable
+failure generation.  Its weaknesses are generator bias, solver artifacts, and
+mismatch between simulation and reality.  Variation should be measured in task
+factors that change behavior and contact, not only in visual texture.
 GenSim composes task-generation and planning components, while RoboGen uses
 generative models to propose tasks, environments, and supervision
 ~\cite{wang2023gensim_2310_01361,wang2023robogen_2311_01455}.  Such systems can
 expand nominal task count quickly, but generated tasks inherit the proposer,
-asset library, reward generator, and planner's joint support; counting tasks is
-therefore not evidence of behavioral coverage.
+asset library, reward generator, and planner's combined range of possibilities.  Task count alone
+is not evidence of behavioral coverage.
 
-\textbf{Video and world-model generation} predicts demonstrations or counterfactual
-futures conditioned on language, actions, images, or geometry.  Xiaomi-Robotics-U0
-targets embodied synthesis with multi-view and geometric constraints
+Video and world-model generation predicts demonstrations or alternative
+futures conditioned on language, actions, images, or geometry.  A world model
+in this context is a model that predicts how an observed scene may evolve.
+Xiaomi-Robotics-U0 targets embodied synthesis with multiple views and geometric constraints
 ~\cite{li2026xiaomi_2607_11643}.  Such models can propose rare scenes and future
 states at much lower marginal cost than real collection, but a photorealistic
-rollout can hide inconsistent 3-D geometry, unreachable motion, or incorrect
-contact.  Generated pixels do not automatically supply calibrated robot actions;
-action recovery is a separate inverse problem whose uncertainty must be stored.
+rollout can hide inconsistent three-dimensional geometry, unreachable motion, or incorrect
+contact.  Generated pixels do not automatically supply calibrated robot actions.
+Recovering actions from pixels is a separate estimation problem whose
+uncertainty must be stored.
 
 \subsection{The Bottleneck Is Layered Validation}
 
 Generation quality is sometimes evaluated with visual fidelity or a
-vision--language score.  These are necessary at most, never sufficient.  The
+vision--language score.  These tests can reject some defects but cannot establish
+that a trajectory is executable or useful for training.  The
 validation stack in Table~\ref{tab:validation-stack} proceeds from cheap technical
 checks to expensive deployment evidence.  A sample should advance only as far as
 its intended training role requires: an observation-only pretraining clip may not
 need action validity, whereas a contact-rich behavior-cloning target must pass
-kinematic and physical gates.
+kinematic and physical checks.
 
 \input{tables/validation_stack}
 
-The layers have asymmetric errors.  A semantic verifier can accept a visually
-correct but physically impossible trajectory; inverse kinematics can find a
-joint path that violates force or collision constraints; a simulator can replay a
-trajectory under inaccurate contact parameters; and a policy can exploit a
+The layers fail in different ways.  A semantic verifier can accept a visually
+correct but physically impossible trajectory.  Inverse kinematics can find a
+joint path that violates force or collision constraints.  A simulator can replay a
+trajectory under inaccurate contact parameters, and a policy can exploit a
 simulator artifact.  Agreement between generator and verifier is also weak when
 they share training data or architecture.  High-risk samples should be checked by
-heterogeneous models, analytic constraints, and real measurements where possible.
+models from different families, geometric and physical constraints, and real
+measurements where possible.
 
 Validation should emit calibrated uncertainty and reason codes.  Hard rejection
 throws away informative near misses that can train a verifier, world model, or
-recovery policy.  A better routing policy sends: valid action supervision to
-policy training; semantically valid but action-uncertain video to representation
-learning; physically invalid samples to verifier negatives; and ambiguous
-high-value cases to simulation or human review.  The relevant quantity is
-\emph{verified yield per unit cost}, not raw generation throughput.
+recovery policy.  Routing should reflect the type of evidence available.  Valid
+action supervision can enter policy training.  Semantically valid video with
+uncertain actions is better suited to representation learning, while physically
+invalid samples can serve as negative examples for a verifier.  Ambiguous
+high-value cases should go to simulation or human review.  Evaluation should
+report how many samples pass the checks required for their training role per
+unit cost, not only raw generation throughput.
 
 \subsection{Generative Diversity Can Be Illusory}
 
-Counting prompts or rendered scenes overstates coverage when samples share a
-generator's narrow prior.  Diversity should be measured at several levels:
+Counting prompts or rendered scenes overstates coverage when samples inherit the
+same generator biases.  Diversity should be measured at several levels:
 visual appearance, object and layout factors, action paths, state transitions,
 task strategy, failure cause, and embodiment.  Near-duplicate video may still
 contain distinct contact dynamics, while visually diverse generations may induce
 the same action sequence.  Joint state--action or transition-space diagnostics
-are therefore more relevant to control than image embeddings alone, an intuition
+are more relevant to control than image embeddings alone, an intuition
 also reflected in SCIZOR's joint-space deduplication
 ~\cite{zhang2025scizor_2505_22626}.
 
 Generated data also changes the learner that later evaluates it.  A verifier
 calibrated on an earlier policy can overvalue already mastered synthetic states or
-miss novel failure modes.  Periodic controlled retraining and rollout audits are
-needed to recalibrate generation priorities.  The ideal generator and verifier
-form a constrained adversarial relationship: the generator targets coverage gaps
-and challenging valid cases, while independent verifiers search for semantic and
-physical violations rather than rewarding familiar-looking output.
+miss new failure modes.  Periodic controlled retraining and rollout audits are
+needed to recalibrate generation priorities.  Generation should target coverage
+gaps and difficult but valid cases.  Independently calibrated verifiers should
+then search for semantic and physical violations instead of rewarding output that
+merely resembles the generator's training distribution.

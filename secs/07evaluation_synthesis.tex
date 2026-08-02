@@ -6,27 +6,29 @@ The literature contains many positive within-paper results but few fair
 cross-paper comparisons.  Robots, tasks, data pools, policy families, model
 initializations, training steps, extra pretraining data, and success definitions
 usually differ.  A number reported in one setting establishes that an operation
-can work under that setting; it does not rank the operation against a number from
+can work under that setting.  It does not rank the operation against a number from
 another paper.  This section specifies the evidence needed for comparison and
 then synthesizes conclusions that recur despite protocol differences.
 
 \subsection{Three Levels of Outcome}
 
-\textbf{Intrinsic outcomes} describe the prepared data: invalid-file rate,
+Intrinsic outcomes describe properties of the prepared data, such as
+invalid-file rate,
 label-noise estimate, duplicate rate, smoothness, entropy, coverage, balance, or
 retained fraction.  They are cheap, interpretable diagnostics.  They do not show
 that the measured property is causally useful to a policy.
 
-\textbf{Proxy outcomes} include foundation-model scores, information estimates,
+Proxy outcomes include foundation-model scores, information estimates,
 influence, predicted executability, inverse-kinematics feasibility, simulator
 replay, or a learned success classifier.  They are closer to a target, but their
-calibration set, model bias, and operating point must be reported.  The same proxy
+calibration set, model bias, and chosen decision threshold must be reported.  The same proxy
 should not define both the filter and the test of filtering.
 
-\textbf{Downstream outcomes} retrain a policy and measure success, generalization,
+Downstream outcomes retrain a policy and measure success, generalization,
 sample efficiency, recovery, and safety.  This is the strongest evidence for
 training utility and the most expensive.  Simulation affords repetitions and
-factor control; real execution tests physical validity but often has few trials.
+control over task factors.  Real execution tests physical validity but often
+permits only a few trials.
 The two should be reported separately, with means, uncertainty, and trial counts.
 Evidence is stronger when an effect persists across learners, data budgets,
 embodiments, and held-out task factors.
@@ -36,42 +38,45 @@ embodiments, and held-out task factors.
 \subsection{Controlling the Intervention}
 
 Table~\ref{tab:evaluation-protocol} gives a minimum protocol.  Its central design
-is a factorial comparison among: unprepared full data; a random subset matched to
-the retained volume; the proposed prepared subset; and, where relevant, an oracle
-using ground-truth defect or utility labels.  A volume-matched random control
-separates selection from regularization or fewer updates.  The full-data control
+is a controlled comparison among the unprepared full data, a random subset
+matched to the retained volume, the proposed prepared subset, and, where
+relevant, an oracle using ground-truth defect or utility labels.  A volume-matched
+random control separates selection from effects caused by using less data
+or fewer updates.  The full-data control
 tests whether information was unnecessarily removed.  The oracle quantifies how
 much headroom is due to the metric versus the underlying intervention.
 
 Compute must be controlled in two complementary regimes.  Under
 \emph{fixed-update} evaluation, every policy receives the same number of gradient
-steps and batch samples, measuring value per training token/transition.  Under
+steps and batch samples, measuring value per training unit.  Under
 \emph{fixed-pass} evaluation, each sees the same number of passes through its own
 data, measuring an end-to-end recipe.  Reporting both reveals whether a smaller
 curated set helps because its units are more valuable or because it is revisited
 more often.  Hyperparameter tuning budgets must also match: a method-specific
 threshold tuned on the test tasks is extra supervision.
 
-Data leakage is unusually subtle in embodied settings.  Near-identical scene
-configurations can occur in different episodes; generated variants can cross a
-split; a VLM labeler may have seen benchmark images; and target demonstrations
+Data leakage is subtle in embodied settings.  Near-identical scene
+configurations can occur in different episodes.  Generated variants can cross a
+split, a VLM labeler may have seen benchmark images, and target demonstrations
 used for influence can overlap evaluation objects.  Splits should occur before
-augmentation and at the highest causal grouping available (task instance, object,
-scene, collection session, and operator), with lineage-based duplicate checks.
+augmentation and at the highest shared grouping available, such as task
+instance, object, scene, collection session, or operator.  Lineage-based
+duplicate checks should then verify the separation.
 
 \subsection{Cost, Openness, and Reproducibility}
 
 ``Using 50\% of the data'' is not a cost result if choosing that half required
 training many policies, running target-robot rollouts, or manually labeling every
 episode.  Report preparation cost in human minutes, foundation-model calls,
-accelerator hours, simulator rollouts, real-robot hours, storage/I/O, and safety
-interventions.  Then report total cost to reach a target deployment utility.
-Expensive learner-aware selection can still be worthwhile when amortized across
-many long pretraining runs; a cheap rule can be preferable for a small adaptation
-run.
+accelerator hours, simulator rollouts, real-robot hours, storage and input/output
+operations, and safety interventions.  Then report total cost to reach a target
+deployment utility.
+Expensive learner-aware selection can still be worthwhile when its preparation
+cost is shared across many long pretraining runs.  A cheap rule can be preferable
+for a small adaptation run.
 
 Reproducibility requires more than releasing final data.  The operator code,
-model/checkpoint used for scoring, prompt and threshold, source version, exclusion
+model checkpoint used for scoring, prompt and threshold, source version, exclusion
 log, learned weights, random seeds, and lineage should be available.  OpenVLA and
 Octo make policy baselines more accessible
 ~\cite{kim2024openvla_2406_09246,team2024octo_2405_12213}, but reproducible
@@ -84,15 +89,18 @@ evidence for causal comparison.
 
 The most useful lesson from language-model data work is methodological: treat
 the data pipeline itself as an optimizable, versioned system.  RefinedWeb and
-FineWeb expose staged filtering and deduplication; DataComp-LM fixes a 240T-token
-candidate pool, model/compute tracks, and 53 evaluations so that preparation can
+FineWeb expose staged filtering and deduplication.  DataComp-LM fixes a
+240-trillion-token candidate pool, model and compute tracks, and 53 evaluations
+so that preparation can
 be compared under a controlled training intervention
 ~\cite{penedo2023refinedweb_2306_01116,penedo2024fineweb_2406_17557,li2024datacomp_2406_11794}.
 DoReMi and DSIR learn mixture or resampling decisions instead of treating source
 ratios as invisible constants~\cite{xie2023doremi_2305_10429,xie2023data_2302_03169}.
-LESS estimates optimizer-aware influence for targeted instruction tuning, while
-DEITA separates quality, complexity, and diversity rather than selecting on one
-score~\cite{xia2024less_2402_04333,liu2023what_2312_15685}.  JEST further shows
+LESS estimates how training examples affect targeted instruction tuning, while
+the Data-Efficient Instruction Tuning for Alignment method (DEITA) separates
+quality, complexity, and diversity rather than selecting on one
+score~\cite{xia2024less_2402_04333,liu2023what_2312_15685}.  The joint-example
+selection method JEST further shows
 that the useful object can be a jointly selected batch, not an independently
 ranked example~\cite{evans2024data_2406_17711}.  Table~\ref{tab:llm-lessons}
 maps these mechanisms to embodied preparation and, equally importantly, records
@@ -100,151 +108,158 @@ what fails to transfer.
 
 \input{tables/llm_to_ei_lessons}
 
-\textbf{Pretraining suggests controlled pipeline competition.}
-The DataComp-LM design is more important for EI than any winning text filter.
-It answers a causal question: under a fixed raw pool, learner, token budget, and
+Pretraining studies show the value of controlled pipeline competition.  The
+DataComp-LM design is more informative for embodied intelligence than any
+individual text filter.  It answers a causal question: under a fixed raw pool,
+learner, token budget, and
 evaluation suite, which preparation pipeline produces the best model?  Robot
 papers often instead compare a curated set and a baseline with different episode
-counts, updates, augmentations, or policy architectures.  A DataComp-Robot design
-must preserve the fixed-intervention logic while adding action semantics,
-episode/segment group splits, simulation and real tiers, preparation cost, and
-safety.  Unlike text tokens, robot transitions are not freely exchangeable, and
+counts, updates, augmentations, or policy architectures.  A controlled robot-data
+benchmark must hold the raw pool, learner, budget, and evaluation fixed while
+adding action semantics, episode- and segment-level splits, separate simulation
+and real-robot evaluation, preparation cost, and safety.  Unlike text tokens,
+robot transitions are not freely exchangeable, and
 their acquisition price depends on resets, supervision, embodiment, and risk.
 
-\textbf{Mixture optimization suggests hierarchical, stage-specific routing.}
-Language corpora have domains; embodied corpora have nested source, task,
+Mixture optimization also suggests hierarchical, stage-specific routing.
+Language corpora have domains.  Embodied corpora have nested source, task,
 environment, skill, embodiment, episode, segment, and transition groups.  A
-single learned source weight is therefore only the top of the routing hierarchy.
-A useful transfer of DoReMi/DSIR is to train a cheap proxy learner and estimate
-which groups reduce target regret, then test whether weights transfer to a larger
-VLA.  The non-transferable assumption is stationarity.  Once a robot policy is
-deployed, its failures change and its data distribution follows; a ratio learned
-offline becomes a controller prior, not a permanent optimum.  Minimum floors are
-also needed for rare safety/recovery groups even when their short-term average
-loss contribution is small.
+single learned source weight captures only the top of the routing hierarchy.
+A useful transfer of DoReMi and DSIR is to train a cheap proxy learner and estimate
+which groups reduce loss on the target distribution, then test whether the learned
+weights transfer to a larger VLA.  The target distribution cannot be assumed to
+remain fixed.  Once a robot policy is deployed, its failures change and its data
+distribution follows.  A ratio learned
+offline becomes an initial setting for later controller updates, not a permanent
+optimum.  Minimum sampling shares are also needed for rare safety and recovery
+groups even when their short-term average loss contribution is small.
 
-\textbf{Instruction tuning suggests target-conditional selection below the
-episode.}  LESS and DEITA support two ideas: value should be conditioned on a
-target learner/task, and correctness, difficulty, and diversity should not be
-collapsed prematurely.  For EI, the analogous candidate is often not a whole
-episode but a coherent skill segment, correction, or failure--recovery pair.
+Instruction tuning suggests target-conditional selection below the episode.
+LESS and DEITA support two ideas.  Value should be conditioned on a
+target learner and task, and correctness, difficulty, and diversity should not be
+collapsed prematurely.  For embodied intelligence, the analogous candidate is
+often not a whole episode but a coherent skill segment, correction, or
+failure--recovery pair.
 Gradient influence is an informative proxy, yet a pointwise approximation can
-miss temporal credit, complementary approach/grasp segments, and the
-distribution shift caused by the improved policy.  The proper evaluation is
-whether a selected hierarchical set reduces fixed-budget policy regret across
-held-out tasks and learners, not whether its proxy score is high.
+miss which earlier actions deserve credit for a later outcome, complementary
+approach and grasp segments, and the distribution shift caused by the improved
+policy.  The proper evaluation is
+whether a selected hierarchical set improves policy utility under a fixed budget
+across held-out tasks and learners, not whether its proxy score is high.
 
-\textbf{LLM post-training suggests iterative judges, but also their failure
-mode.}  Self-Rewarding Language Models illustrate a loop in which a model
+LLM post-training suggests iterative judges, but it also exposes their failure
+mode.  Self-Rewarding Language Models illustrate a loop in which a model
 generates candidates, judges responses, constructs preference pairs, and updates
-itself~\cite{yuan2024self_2401_10020}.  The embodied analogue is attractive:
-generate counterfactual failures, score trajectories with a reward VLM, collect
-new behavior, and repeat.  It is also more dangerous.  A VLM may accept a
+itself~\cite{yuan2024self_2401_10020}.  In an embodied system, the same mechanism
+could generate alternative failure examples, score trajectories with a reward VLM,
+collect new behavior, and repeat.  The risks are more severe when actions affect
+the physical world.  A VLM may accept a
 physically impossible contact, and a policy can change the visual distribution
 on which its judge was calibrated.  Work on recursively generated training data
-shows the more general risk: indiscriminate replacement of natural data can
-erase distribution tails across generations~\cite{shumailov2024collapse}.
-We do not claim the language theorem directly predicts robot-policy collapse;
-we infer a design constraint.  Self-evolving embodied pipelines should
-accumulate audited real anchors, identify synthetic lineage, use independent
-verifiers, enforce subgroup floors, and test each round for tail and safety
-retention.
+shows the more general risk.  Indiscriminate replacement of natural data can
+erase rare parts of the distribution across generations~\cite{shumailov2024collapse}.
+We do not claim that this language-model result directly predicts robot-policy
+collapse.  Instead, it motivates a design constraint.  Self-evolving embodied
+pipelines should accumulate audited real anchors, identify synthetic lineage, use independent
+verifiers, preserve minimum sampling shares for rare groups, and test each round
+for rare-case and safety retention.
 
-The mapping is therefore \emph{mechanism-level}, not heuristic-level.  Text
-pipelines teach how to version operators, run fixed-compute ablations, optimize
-mixtures, estimate target influence, and audit recursive generation.  They do
+The transferable lessons concern experimental and system mechanisms, not the
+meaning of a quality score.  Text pipelines teach how to version operators, run
+controlled comparisons under fixed compute, optimize mixtures, estimate target
+influence, and audit recursive generation.  They do
 not supply action causality, timing, controller semantics, physical validity, or
 safe exploration.  Those missing properties explain why autonomous embodied
 data preparation requires the layered evidence and control architecture in
 Section~\ref{sec:recipes-engines}, rather than a direct port of web-data filters
-or an LLM-as-judge.
+or an LLM judge.
 
-\subsection{A DataComp-Robot Evaluation Track}
+\subsection{A Controlled Robot-Data Evaluation Track}
 
-We propose a benchmark with four assets.  First, a versioned raw pool contains
-multiple embodiments and sources, including natural and controlled defects, failed
-and recovery episodes, redundant coverage, and aligned test leakage traps.
-Second, a preparation submission emits training units, weights, roles, lineage,
-and cost logs rather than a single cleaned archive.  Third, fixed lightweight and
-foundation-policy learners are trained at multiple update budgets.  Fourth,
-evaluation separates intrinsic defect detection, held-out simulation, and a
-smaller blinded real-robot audit across in-distribution, compositional, and shifted
-conditions.  A Pareto leaderboard reports deployment utility, worst-group
-performance, preparation/training cost, and safety---not one scalar rank.
+We propose four linked assets for such a benchmark.  A versioned raw pool should
+span multiple embodiments and sources and include natural and controlled defects,
+failed and recovery episodes, redundant coverage, and deliberately constructed
+near-duplicate or source-overlap cases for testing leakage.  A preparation
+submission should emit training units, weights,
+roles, lineage, and cost logs rather than a single cleaned archive.  The benchmark
+should train fixed lightweight and generalist policy learners at several update
+budgets.  Evaluation should then separate intrinsic defect detection, held-out
+simulation, and a smaller real-robot audit on tasks hidden from submitters.  The
+audit should cover familiar conditions, new combinations of familiar factors,
+and distribution shifts.  Results should report deployment utility, performance
+of the weakest task or embodiment group, preparation and training cost, and
+safety as a trade-off rather than
+collapse them into one rank.
 
-The benchmark should include intervention stress tests: contamination level,
-episode length, label noise, action delay, rare recovery frequency, source
-imbalance, and embodiment mismatch.  A method that detects one injected artifact
-but fails under natural mixed defects should not be called a general quality
-metric.  Fixed raw snapshots make results repeatable; periodic hidden refreshes
-measure overfitting and support a living survey.
+Stress tests should vary contamination, episode length, label noise, action
+delay, rare recovery frequency, source imbalance, and embodiment mismatch.  A
+method that detects one injected artifact but fails under natural mixed defects
+is not a general quality metric.  Fixed raw snapshots make results repeatable.
+Periodically refreshing evaluation cases that remain hidden from submitters can
+measure overfitting and support continued updates to the survey.
 
-\subsection{Eight Cross-Paper Principles}
+\subsection{Cross-Paper Findings}
 
-\textbf{P1: quality is target-conditional.}  Formal data-quality analysis,
-mixture learning, datamodels, and influence methods all condition value on a
-learner or target, explicitly or implicitly
+Several findings remain consistent despite differences in tasks and evaluation
+protocols.  Data value is conditional on a learner and target distribution.
+Formal analysis, mixture learning, models fit on dataset subsets, and influence
+methods all express this dependence, either explicitly or through their validation set
 ~\cite{belkhale2023data_2306_02437,hejna2024re_2408_14037,dass2025datamil_2505_09603,lee2026quality_2603_09056}.
-A universal score is therefore best interpreted as a prior, later recalibrated by
-target evidence.
-
-\textbf{P2: correctness and coverage form a frontier.}  Strong filtering removes
-harmful labels and also removes rare states.  The mutual-information hard-task
-result, the curation-metric audit, and Re-Mix's abnormal-source failure show why a
-single threshold or learned weight can move to the wrong point on that frontier
+A score learned without target evidence is best treated as an initial estimate.
+The estimate must also preserve a trade-off between correctness and coverage.
+Strong filtering can remove harmful labels and rare states at the same time.  The
+hard-task result for mutual-information filtering, the controlled curation audit,
+and Re-Mix's abnormal-source failure all show how a plausible score can select the
+wrong point on this trade-off
 ~\cite{hejna2025robot_2502_08623,bedi2026what_2606_10229,hejna2024re_2408_14037}.
 
-\textbf{P3: the actionable unit is moving below the episode.}  Segment recovery,
-progress-based selection, retry value, and transition influence extract useful
-behavior from mixed-quality trajectories
+The unit on which a useful decision is made is increasingly smaller than an
+episode.  Segment recovery, progress-based selection, retry value, and transition
+influence extract different roles from a mixed-quality trajectory
 ~\cite{wu2024learning_2401_08957,zhang2025scizor_2505_22626,wu2026sieve_2607_06442,qin2026beyond_2606_24633,lee2026quality_2603_09056}.
-This shift requires uncertainty-aware boundaries and hierarchical lineage.
+This observation also resolves much of the disagreement about failed data.  An
+unmarked failed action sequence is not equivalent to a valid prefix, marked
+retry, recovery, a negative example for a verifier, or a safety boundary.
+Boundaries should carry
+uncertainty, and lineage should link each derived segment to its original episode
+and routing decision.
 
-\textbf{P4: cross-embodiment standardization must align consequences, not shapes.}
-Common schemas enable scale, but spatial frame, control quantity, timing,
-morphology, and controller dynamics determine whether a label means the same
-transition.  Structural masks are necessary interfaces, not complete semantic
-alignment.
-
-\textbf{P5: generation moves the bottleneck to verification.}  Segment
-recomposition and world-model synthesis can rapidly expand nominal data
+Cross-embodiment data and generated data expose the same underlying requirement.
+A record is useful only when the meaning of its supervision survives the
+transformation.  Common shapes and masks do not align reference frames, timing,
+controller effects, morphology, or contact.  Similarly, segment recomposition and
+world-model generation can expand apparent coverage quickly, but their value
+depends on joint semantic, geometric, kinematic, physical, and downstream checks
 ~\cite{mandlekar2023mimicgen_2310_17596,li2026xiaomi_2607_11643}.
-The limiting evidence is whether semantics, geometry, kinematics, contact, and
-policy utility survive jointly.
 
-\textbf{P6: failed data is valuable when structured.}  An unlabeled failed action
-sequence is not equivalent to a marked retry, valid prefix, recovery, negative,
-or safety boundary.  Conflicting empirical claims usually arise from these
-different semantics, not from a universal benefit or harm of failure.
-
-\textbf{P7: data and models must be co-versioned.}  In a feedback loop, the model
-chooses data that trains its successor.  Reproducing or rolling back a result
-requires the raw source, preparation policy, verifier, training role, model
-version, and deployment evidence as one causal graph.
-
-\textbf{P8: self-evolution is a constrained experiment, not data accumulation.}
-RECAP, SOP, and LWD obtain relevance from current-policy experience, but each
-also retains an offline/pretrained reference or limits the update path
+Feedback loops make data and model versions part of one experimental record.  The
+current model selects experience that trains its successor, so reproduction and
+rollback require the raw source, preparation decisions, verifier, training role,
+model version, and deployment evidence.  RECAP, SOP, and LWD use current-policy
+experience but also retain a pretrained or offline reference or restrict the
+update path
 ~\cite{intelligence20250_2511_14759,pan2026sop_2601_03044,wang2026learning_2605_00416}.
-Recursive-data results explain why this pattern is principled rather than merely
-conservative~\cite{shumailov2024collapse}: each round needs a hypothesis about a
-gap, a controlled promotion test, anchor retention, and a rollback condition.
-More self-generated data is not evidence of positive evolution.
+Results on recursively generated language data do not prove that robot policies
+will collapse, but they explain why these controls deserve direct tests
+~\cite{shumailov2024collapse}.  Each round needs a stated coverage or failure
+hypothesis, a matched comparison, retained anchor data, and a rollback condition.
+Accumulating more self-generated data is not itself evidence of improvement.
 
 \subsection{Paradigm Evolution}
 
 The field's evolution is better understood by increasing data-decision authority
 than by year (Figure~\ref{fig:autonomy-ladder}).  Static rule pipelines first
 made records technically usable.  Pretrained models then supplied scalable
-semantic labels and verifiers.  Learner-aware selectors used loss, datamodels,
-influence, and progress to estimate target-conditional value.  Failure-driven
-post-training added policy-induced states and interventions.  Current data
-engines repeatedly couple acquisition, verification, routing, and deployment;
-the prospective preparation agent would also choose the experiment and know
+semantic labels and verifiers.  Learner-aware selectors used loss, models fit on
+dataset subsets, influence, and progress to estimate target-conditional value.
+Failure-driven post-training added states visited by the current policy and
+interventions.  Current data
+engines repeatedly couple acquisition, verification, routing, and deployment.
+The prospective preparation agent would also choose the experiment and know
 when to abstain, stop, or roll back.  Each step raises target relevance and
-decision scope, but also increases cost, endogeneity, and feedback risk.  A
-stable architecture is consequently a cascade---rules for obvious defects,
-models for scalable semantics, learner-aware estimates for disputed allocation,
-and sparse simulation/real audits for calibration---inside a versioned
-controller, not a wholesale replacement of simple checks by one autonomous
-judge.
+decision scope, but it also increases cost and the risk that a model reinforces
+errors in the data it selects.  A stable architecture assigns obvious technical
+defects to rules and scalable semantic decisions to models.  It uses
+learner-aware estimates when cheaper signals disagree and reserves simulation or real
+audits for calibration.  These layers operate inside a versioned controller.
+They are not replaced wholesale by one autonomous judge.

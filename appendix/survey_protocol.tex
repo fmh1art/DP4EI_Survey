@@ -7,92 +7,95 @@
 The archived DBLP discovery strings are the conjunction of a robotics context
 with each of the following phrases:
 \begin{quote}\small
-robot data curation; robot demonstration selection; robot data quality; robot
-data filtering; robot data mixing; robot trajectory annotation segmentation;
-robot instruction relabeling; robot demonstration augmentation; robot synthetic
-demonstration generation; robot world model data generation; robot
-self-improvement data; robot online post-training; robot autonomous data
-collection; cross-embodiment action alignment; vision-language-action data
-engine; embodied data preparation.
+\texttt{robot data curation}, \texttt{robot demonstration selection},
+\texttt{robot data quality}, \texttt{robot data filtering}, \texttt{robot data
+mixing}, \texttt{robot trajectory annotation segmentation}, \texttt{robot
+instruction relabeling}, \texttt{robot demonstration augmentation},
+\texttt{robot synthetic demonstration generation}, \texttt{robot world model
+data generation}, \texttt{robot self-improvement data}, \texttt{robot online
+post-training}, \texttt{robot autonomous data collection},
+\texttt{cross-embodiment action alignment},
+\texttt{vision-language-action data engine}, and \texttt{embodied data
+preparation}.
 \end{quote}
 
 The arXiv queries restrict to \texttt{cat:cs.RO} and combine it with:
 \begin{quote}\small
-\texttt{"data curation"}; \texttt{"demonstration selection"};
-\texttt{"data quality"}; \texttt{"data filtering"};
-\texttt{"data mixing"}; \texttt{"automatic annotation" OR relabeling OR
-segmentation}; \texttt{"data augmentation" OR "synthetic demonstrations"};
-\texttt{"world model" AND "data generation"};
-\texttt{"self-improvement" OR "online post-training"};
-\texttt{"autonomous data collection"};
-\texttt{"cross-embodiment" OR "action alignment"}; and
+\texttt{"data curation"}, \texttt{"demonstration selection"},
+\texttt{"data quality"}, \texttt{"data filtering"},
+\texttt{"data mixing"}, \texttt{"automatic annotation" OR relabeling OR
+segmentation}, \texttt{"data augmentation" OR "synthetic demonstrations"},
+\texttt{"world model" AND "data generation"},
+\texttt{"self-improvement" OR "online post-training"},
+\texttt{"autonomous data collection"},
+\texttt{"cross-embodiment" OR "action alignment"}, and
 \texttt{"data engine"}.
 \end{quote}
 
-The artifact contains \texttt{scripts/search\_literature.py}, dated raw XML/JSON
-responses, query summaries (including transient endpoint errors rather than
-hiding them), targeted retry files, and both initial and resolved deduplicated
-discovery CSVs.  The resolved run contains 1,160 title-deduplicated candidates;
-all eight initial query failures were recovered, without overwriting the failed
+The artifact contains \texttt{scripts/search\_literature.py}, dated raw database
+responses, and query summaries that retain transient endpoint errors.  It also
+contains targeted retry files and both initial and resolved deduplicated discovery
+files in comma-separated-value format.  The resolved run contains 1,160
+title-deduplicated candidates.
+All eight initial query failures were recovered without overwriting the failed
 first-pass log.  Search-engine output is a discovery aid, not an automatic
-inclusion decision.  It is supplemented with backward/forward citations and
+inclusion decision.  It is supplemented with backward and forward citations and
 checks of major labs, datasets, benchmarks, model reports, and official data
 documentation.
 
 \subsection{Targeted Update on August 2, 2026}
 
 After the baseline search, we ran a documented targeted pass over arXiv, primary
-technical reports, and official research/project pages using:
+technical reports, and official research and project pages using:
 \begin{quote}\small
-\texttt{"Qwen-RobotManip"}; \texttt{"Qwen-RobotWorld"};
-\texttt{"GR00T" AND (data OR DreamGen)};
-\texttt{"Gemini Robotics" AND (data OR "Motion Transfer")};
-\texttt{VLA AND ("online post-training" OR "fleet-scale")};
-\texttt{robot AND ("data flywheel" OR "reward model")};
-\texttt{LLM AND ("instruction data selection" OR "self-rewarding")}; and
+\texttt{"Qwen-RobotManip"}, \texttt{"Qwen-RobotWorld"},
+\texttt{"GR00T" AND (data OR DreamGen)},
+\texttt{"Gemini Robotics" AND (data OR "Motion Transfer")},
+\texttt{VLA AND ("online post-training" OR "fleet-scale")},
+\texttt{robot AND ("data flywheel" OR "reward model")},
+\texttt{LLM AND ("instruction data selection" OR "self-rewarding")}, and
 \texttt{"recursively generated data" AND collapse}.
 \end{quote}
 We checked report bibliographies and official model-family pages, then verified
-metadata against the arXiv API or the version-of-record page.  Seven records were
-added (DreamGen, RoboReward, LESS, DEITA, model collapse, Self-Rewarding Language
-Models, and Robot-Powered Data Flywheels); five previously indexed systems were
+metadata against the arXiv metadata service or the version-of-record page.  Seven
+records were added: DreamGen, RoboReward, LESS, DEITA, AI Models Collapse,
+Self-Rewarding Language Models, and Robot-Powered Data Flywheels.  Five previously indexed systems were
 promoted from method-level to deep reading.  The query-to-record audit is stored
 in \path{_pdfs/manifests/searches/2026-08-02/targeted_primary_sources.csv}.
-Official documentation is coded as engineering/release evidence and cannot by
+Official documentation is coded as engineering and release evidence and cannot by
 itself support a causal performance claim.
 
 \subsection{Inclusion, Exclusion, and Version Rules}
 
-\textbf{Include} a primary work if it: (i) changes the content, representation,
-membership, weight, role, or acquisition of embodied training data; (ii) proposes
-or evaluates a signal for those decisions; or (iii) reports enough of a system's
-data recipe to recover a preparation mechanism.  Human video, simulation, and
-generated data are included only when connected to embodied policy training.
+A primary work is included if it changes the content, representation, membership,
+weight, role, or acquisition of embodied training data.  A work is also eligible
+if it proposes or evaluates a signal for those decisions, or reports enough of a
+system's data recipe to recover a preparation mechanism.  Human video,
+simulation, and generated data are included only when connected to embodied
+policy training.
 
-\textbf{Exclude} works that only introduce a policy architecture, use an existing
+Works are excluded if they only introduce a policy architecture, use an existing
 dataset without analyzing its preparation, present a generic simulator without a
 data operation, or concern an out-of-scope domain without a transferable
 mechanism.  Secondary summaries are not used to support technical claims.
 
 ArXiv and subsequently published versions are one record.  The latest full text
-within the cutoff is read; verified published metadata is preferred for citation.
+within the cutoff is read.  Verified published metadata is preferred for citation.
 Technical-report versions are date-stamped because their scale and recipes can
 change.  Abstract-index records are not used for technical claims until promoted
 through primary-text reading.
 
 \subsection{Coding Form}
 
-Each core record is coded with the following fields:
-\begin{quote}\small
-problem; original terminology; source; modality; preparation operation;
-transformed object and granularity; decision signal; optimization objective;
-human involvement; data and compute scale; intrinsic metric; proxy metric;
-downstream simulation and real-robot evidence; cross-task/environment/learner/
-embodiment generalization; assumptions; limitations and negative results;
-data/code/model availability; publication/evidence type; provenance; and reading
-depth.
-\end{quote}
+Each core record is coded for its problem, original terminology, source,
+modality, preparation operation, transformed object, granularity, decision
+signal, and optimization objective.  Additional fields record human involvement,
+data and compute scale, intrinsic and proxy metrics, downstream simulation and
+real-robot evidence, and generalization across tasks, environments, learners, and
+embodiments.  The form also records assumptions, limitations, negative results,
+data, code, and model availability, publication and evidence type, provenance,
+and reading depth.
 
 The companion Chinese notes retain the paper-level synthesis used to produce
-these codes.  Quantitative results remain attributed to each paper's own setting;
-no cross-paper ranking is computed when protocols differ.
+these codes.  Quantitative results remain attributed to each paper's own setting.
+No cross-paper ranking is computed when protocols differ.

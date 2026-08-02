@@ -2,21 +2,21 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-Embodied intelligence does not learn from raw episode counts; it learns from the
+Embodied intelligence does not learn from raw episode counts.  It learns from the
 distribution produced after a sequence of often hidden decisions.  By organizing
 those decisions along operation, signal, utility evidence, and lifecycle axes,
 this survey connects acquisition, alignment, semantic enrichment, curation,
 mixture design, synthesis, validation, and deployment feedback within one
-problem.  The synthesis rejects two convenient simplifications: data quality is
+problem.  The synthesis rejects two convenient simplifications.  Data quality is
 not a policy-independent scalar, and generated plausibility is not physical or
 training validity.
 
-Industrial recipes sharpen this conclusion.  Qwen-RobotManip shows that
-representation, motion, and behavior alignment enable scale; the $\pi$ family
-shows that training role and metadata can make mixed-quality experience usable;
-GR00T shows how real anchors, simulation, and neural trajectories occupy
-different tiers; and Gemini Robotics shows the value of isolating cross-
-embodiment data from its alignment mechanism.  None provides a universal recipe,
+Industrial recipes sharpen this conclusion.  Qwen-RobotManip shows how
+representation, motion, and behavior alignment enable scale.  The $\pi$ family
+shows how training role and metadata can make mixed-quality experience usable.
+GR00T assigns real anchors, simulation, and generated trajectories to different
+tiers, while Gemini Robotics isolates cross-embodiment data from the mechanism
+that aligns its motion.  None provides a universal recipe,
 and their end-to-end scores are not a causal ranking of data operations.  Their
 shared lesson is that a source becomes valuable through alignment, routing,
 verification, and stage-specific use.
@@ -24,13 +24,15 @@ verification, and stage-specific use.
 The most consequential shift is from one-shot cleaning to target-conditional
 feedback control.  Failures and interventions make stronger evidence possible
 because the deployed policy reveals its gaps, but they also introduce
-endogeneity, error amplification, forgetting, verifier drift, and unsafe
-exploration.  LLM data engineering contributes controlled-pool evaluation,
-mixture learning, target-aware selection, and warnings about recursive
-generation; embodied learning adds action causality, physical validity, and
-costly real feedback.  Progress therefore requires calibrated links between
-proxies and policy utility, typed failure routing, immutable real anchors,
-independent verification, causal promotion tests, and co-versioned rollback.
+feedback-dependent bias, error amplification, forgetting, verifier drift, and
+unsafe
+exploration.  LLM data engineering contributes evaluation on fixed candidate
+pools, mixture learning, learner-aware selection, and warnings about recursive
+generation.  Embodied learning adds action causality, physical validity, and
+costly real feedback.  Progress requires calibrated links between proxies and
+policy utility, explicit failure routing, retained real anchors, independent
+verification, matched promotion comparisons, and joint rollback of data and
+model versions.
 Only after these controls are demonstrated should a predesigned data engine gain
 the authority of an autonomous data-preparation agent.  Under that discipline,
 data preparation becomes an independent, reproducible research layer for

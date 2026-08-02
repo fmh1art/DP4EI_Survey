@@ -8,63 +8,66 @@ updated, and what prevents a locally improving loop from drifting or collapsing.
 \setlength{\tabcolsep}{3.5pt}
 \begin{tabularx}{\textwidth}{@{}p{2.8cm}p{3.5cm}p{6.15cm}X@{}}
 \toprule
-System & Gap/feedback signal & Data action and model update & Control mechanism and remaining limit \\
+System & Gap and feedback signal & Data action and model update & Control mechanism and remaining limit \\
 \midrule
 RoboCat / AutoRT
 ~\cite{bousmalis2023robocat_2306_11706,ahn2024autort_2401_12963}
-& New-task practice outcomes; foundation-model task proposals, affordances,
-and safety checks.
+& New-task practice outcomes, foundation-model task proposals, physical
+feasibility, and safety checks.
 & Generate practice or fleet experience, add it to a generalist mixture, and
-fine-tune; AutoRT separates semantic task proposal from executable robot
+fine-tune.  AutoRT separates semantic task proposal from executable robot
 collection.
-& Safety rules and human/environment constraints gate collection.  The loop
+& Safety rules and human or environment constraints gate collection.  The loop
 does not autonomously attribute gains among proposer, data, objective, and
 model changes. \\
 \midrule
 $\pi^{*}_{0.6}$/RECAP
 ~\cite{intelligence20250_2511_14759}
-& Terminal success/failure labels, time-to-outcome values, autonomous trials,
+& Terminal success and failure labels, time-to-outcome values, autonomous trials,
 and optional human interventions.
 & Train a language-conditioned value function on accumulated experience and
-extract an advantage-conditioned VLA; repeat collection and offline updates.
-& Policy/value are restarted from the audited pretrained checkpoint at each
+train the VLA to favor actions with higher predicted value.  Collection and
+offline updates then repeat.
+& Policy and value models are restarted from the audited pretrained checkpoint at each
 iteration in the reported implementation to limit drift.  Rewards and
 interventions still require task-specific human infrastructure. \\
 \midrule
 DexFlyWheel
 ~\cite{zhu2025dexflywheel_2509_23829}
-& Simulator reward and rollout success under new objects/configurations.
-& One human seed bootstraps imitation learning; residual RL explores; successful
+& Simulator reward and rollout success under new objects and configurations.
+& One human seed bootstraps imitation learning.  Reinforcement learning then
+adjusts the imitation policy through exploration, and successful
 rollouts and geometric augmentation form the next iteration's dataset.
 & Closed-loop simulation makes validity testable, but manual reward design and
-the digital twin define the reachable distribution; it is not an open-world
-failure-discovery system. \\
+the simulation model define the reachable distribution.  It does not discover
+unanticipated failures in the real world. \\
 \midrule
 SOP
 ~\cite{pan2026sop_2601_03044}
-& Fresh on-policy failures/interventions and sliding-window online versus
-offline training losses.
-& A distributed actor fleet streams complete episodes to one learner; a
-task-balanced sampler mixes static and online buffers and plug-in HG-DAgger or
+& Fresh failures and interventions produced by the current policy, together with
+recent online and offline training losses.
+& A distributed actor fleet streams complete episodes to one learner.  A
+task-balanced sampler mixes static and online buffers, and human-intervention or
 RECAP updates are broadcast asynchronously.
-& Uniform task weights and a clipped 0.2--0.8 online ratio preserve coverage;
-checkpoints change only between episodes.  It still depends on human
+& Uniform task weights and a clipped 0.2--0.8 online ratio preserve coverage.
+Checkpoints change only between episodes.  It still depends on human
 interventions or task rewards and is tested over hours, not lifelong operation. \\
 \midrule
 LWD
 ~\cite{wang2026learning_2605_00416}
 & Sparse terminal rewards over successes, failures, retries, partial progress,
 and intervention segments from a 16-robot fleet.
-& Distributional value learning uses heterogeneous offline/online replay;
-critic gradients update a flow-based action expert through adjoint matching,
-and the shared policy is repeatedly redeployed.
-& A fixed offline reference, clipped double critic, mixed replay, and freezing
-the VLM backbone online reduce instability.  Four-hour studies do not yet
-establish long-term verifier or distribution stability. \\
+& A value model predicts a distribution of possible returns from both offline
+and online experience.  Its gradients update the action-generation module, and
+the shared policy is repeatedly redeployed.
+& A fixed offline reference, two value estimates combined conservatively, mixed
+replay, and freezing the pretrained vision--language part of the policy during
+online updates reduce instability.  Four-hour studies do not yet
+establish long-term verifier stability or stability of the data distribution. \\
 \midrule
 Robot-Powered Data Flywheels
 ~\cite{grannen2025robot_2511_19647}
-& Deployment novelty and errors, with environmental/catalog signals that can
+& Deployment novelty and errors, with environmental or catalog signals that can
 provide labels during use.
 & A two-week library deployment collects task-relevant robot observations and
 uses them to adapt an upstream visual foundation model, feeding improved
@@ -73,14 +76,14 @@ perception back to the robot system.
 action policy.  Site-specific labels and limited duration leave transfer and
 long-run bias unresolved. \\
 \midrule
-DEED
+DEED (Data-Efficient Post-Training and Experience-Driven Learning)
 ~\cite{sis2026closing_2607_20345}
 & Deployment experience and failures reveal gaps in an offline demonstration
 set.
 & Experience is converted into new or revised demonstrations, then used to
 update the policy and the next data-collection decision.
-& Makes demonstration evolution explicit, but causal promotion tests,
-independent verifiers, and rollback remain necessary when several loop
+& Makes demonstration evolution explicit, but controlled comparisons before
+model replacement, independent verifiers, and rollback remain necessary when several loop
 components change together. \\
 \bottomrule
 \end{tabularx}

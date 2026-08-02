@@ -4,71 +4,78 @@
 
 \subsection{From Records to a Trainable Distribution}
 
-Let a raw episode be
+Let $T$ denote the episode length.  For a raw episode $e$, let $m$ contain its
+provenance, embodiment, sensor, calibration, operator, and timing metadata.  Let
+$o_{1:T}$, $s_{1:T}$, and $a_{1:T}$ denote observations, states, and actions.
+The variables $\ell$ and $y$ denote language or task context and recorded outcomes
+or interventions.  We write the episode as
 \begin{equation}
-e=(m,\,o_{1:T},\,s_{1:T},\,a_{1:T},\,\ell,\,y),
+e=(m,\,o_{1:T},\,s_{1:T},\,a_{1:T},\,\ell,\,y).
 \end{equation}
-where $m$ stores provenance, embodiment, sensor, calibration, operator, and timing
-metadata; $o$, $s$, and $a$ are observations, states, and actions; $\ell$ denotes
-available language or task context; and $y$ contains outcomes or interventions.
 Fields may be missing, weakly synchronized, differently parameterized, or
 incorrect.  Human video may lack $s$ and robot $a$ entirely, while generated data
 may contain all fields but violate geometry or dynamics.
 
-A preparation pipeline is a composition of operators
+Let $\rawdata$ be a collection of raw episodes and $\traindata$ the resulting
+training units.  A preparation pipeline contains $K$ operators
+$p_1,\ldots,p_K$.  It is conditioned on a context
+$c=(f,b,\tau,k,B)$, where $f$ is the learner family, $b$ the target embodiment,
+$\tau$ the task and deployment distribution, $k$ the training stage, and $B$ the
+available resource budget.  The pipeline is
 \begin{equation}
 \pipeline_{c}=p_K\circ\cdots\circ p_2\circ p_1,
 \qquad
-\pipeline_c(\rawdata)=\traindata,
+\pipeline_c(\rawdata)=\traindata.
 \end{equation}
-conditioned on context $c=(f,b,\tau,k,B)$: learner family $f$, target embodiment
-$b$, task/deployment distribution $\tau$, training stage $k$, and resource budget
-$B$.  Operators need not preserve episode boundaries; they may emit segments,
-transitions, counterexamples, paired modalities, or synthetic branches.  Each
-prepared unit should retain
+Operators need not preserve episode boundaries.  They may emit segments,
+transitions, counterexamples, paired modalities, or synthetic branches.
+
+For each prepared unit $z_j$, let $x_j$ and $t_j$ be its input and target.  Let
+$w_j$ be its sampling weight, $r_j$ its training role, $g_j$ its lineage record,
+and $v_j$ its version.  The stored unit is
 \begin{equation}
-z_j=(x_j,t_j,w_j,r_j,g_j,v_j),
+z_j=(x_j,t_j,w_j,r_j,g_j,v_j).
 \end{equation}
-with input $x_j$, target $t_j$, sampling weight $w_j$, training role $r_j$, lineage
-$g_j$, and version $v_j$.  Roles distinguish, for example, broad pretraining,
-embodiment alignment, task adaptation, recovery, negative/safety supervision, and
-verifier calibration.  Lineage makes every label, coordinate transform, filter,
+Roles distinguish, for example, broad pretraining,
+embodiment alignment, task adaptation, recovery, negative examples, safety
+supervision, and verifier calibration.  Lineage makes every label, coordinate transform, filter,
 and generator traceable to the raw record.
 
-The desired pipeline maximizes deployment utility rather than a standalone
-cleanliness score:
+For a candidate pipeline $\pipeline$ from the set $\Pi$, training with budget
+$B_{\mathrm{train}}$ yields the policy
+$\theta_{\pipeline}=\operatorname{Train}(f,\pipeline_c(\rawdata),
+B_{\mathrm{train}})$.  Let $\utility(\theta)$ denote expected policy utility on
+$\tau$.  The terms $C_{\mathrm{prep}}$ and $C_{\mathrm{train}}$ denote preparation
+and training cost, and $R$ denotes leakage, safety, bias, and feedback risk.  With
+non-negative trade-off weights $\lambda$, $\mu$, and $\nu$, the desired pipeline
+maximizes deployment utility rather than a standalone cleanliness score:
 \begin{equation}
 \begin{aligned}
-\theta_{\pipeline}&=\operatorname{Train}
-(f,\pipeline_c(\rawdata),B_{\mathrm{train}}),\\
-\pipeline^{*}&=\underset{\pipeline\in\Pi}{\arg\max}\;
-\mathbb{E}_{\tau}[\utility(\theta_{\pipeline})]\\[-0.2em]
-&\quad-\lambda C_{\mathrm{prep}}-\mu C_{\mathrm{train}}-\nu R.
+\pipeline^{*}=\underset{\pipeline\in\Pi}{\arg\max}\quad
+&\mathbb{E}_{\tau}[\utility(\theta_{\pipeline})]\\[-0.2em]
+&-\lambda C_{\mathrm{prep}}-\mu C_{\mathrm{train}}-\nu R.
 \end{aligned}
 \label{eq:prep-objective}
 \end{equation}
-where $C_{\mathrm{prep}}$ includes human, model, simulator, storage, and robot costs,
-and $R$ covers leakage, safety, bias, and feedback-instability risk.  This
-formulation exposes a common evaluation mistake: keeping the number of epochs
-fixed after filtering changes both the number of optimizer steps and the number
+Preparation cost includes human review, model inference, simulation, storage,
+and robot time.  This objective exposes a common evaluation mistake.  Keeping
+the number of epochs fixed after filtering changes both the number of optimizer steps and the number
 of times each retained example is observed.  The claimed intervention is then
 confounded with compute and resampling.
 
-\subsection{Quality Is a Conditional Vector}
+\subsection{Quality Is Conditional and Multidimensional}
 
-An episode has no policy-independent scalar ``quality.''  We instead represent
-observable properties as
-\begin{equation}
-\begin{aligned}
-\qualityvec(e)=[&q_{\mathrm{tech}},q_{\mathrm{semantic}},q_{\mathrm{control}},
-q_{\mathrm{physical}},\\
-&q_{\mathrm{coverage}},q_{\mathrm{alignment}},q_{\mathrm{safety}}].
-\end{aligned}
-\end{equation}
-and reserve \emph{value} for its conditional marginal contribution:
+An episode has no policy-independent scalar ``quality.''  We record technical,
+semantic, control, physical, coverage, alignment, and safety properties
+separately.  These observable properties are not themselves training value.
+For a prepared dataset $\mathcal{D}$ and context $c$, let
+$\theta_{\mathcal{D}}$ denote the policy trained on that dataset.  Let $Z(e;c)$
+be the prepared training units derived from a candidate raw episode $e$ under
+context $c$.  We use \emph{value} for the expected marginal contribution of that
+episode:
 \begin{equation}
 V(e\mid c,\mathcal{D})=
-\mathbb{E}[\utility(\theta_{\mathcal{D}\cup e})-
+\mathbb{E}_{\tau}[\utility(\theta_{\mathcal{D}\cup Z(e;c)})-
 \utility(\theta_{\mathcal{D}})].
 \label{eq:conditional-value}
 \end{equation}
@@ -76,11 +83,12 @@ The value depends on the surrounding mixture because an individually valid
 episode can be redundant, restore missing coverage, or conflict with an action
 convention.  It also depends on the learner: RoboMimic's controlled study showed
 strong interactions among demonstration quality, observation, algorithm, and
-training choices~\cite{mandlekar2021what_2108_03298}; formal work identifies
+training choices~\cite{mandlekar2021what_2108_03298}.  Formal work identifies
 action divergence and transition diversity as coupled determinants of imitation
 performance~\cite{belkhale2023data_2306_02437}.  Equations~\ref{eq:prep-objective}
-and~\ref{eq:conditional-value} are conceptual---exact marginal retraining is
-usually infeasible---but they define what proxy metrics are trying to estimate.
+and~\ref{eq:conditional-value} are conceptual.  Exact marginal retraining is
+usually infeasible, but these objectives state what proxy metrics are trying to
+estimate.
 
 \input{figures/tex/data_prep_lifecycle}
 
@@ -91,56 +99,64 @@ questions, not a partition of papers.
 
 \input{tables/taxonomy_axes}
 
-\textbf{Operation.}  We distinguish acquisition/task design, technical
-validation and repair, representation/alignment, segmentation/relabeling,
-scoring/filtering, weighting/routing, augmentation/synthesis, and packaging or
-versioning.  Filtering changes membership; weighting changes sampling
-probability; routing changes the training stage or objective.  Treating all three
+The operation axis distinguishes acquisition and task design, technical
+validation and repair, representation and alignment, segmentation and relabeling,
+scoring and filtering, weighting and routing, augmentation and synthesis, and packaging or
+versioning.  Filtering changes membership.  Weighting changes sampling
+probability, while routing changes the training stage or objective.  Treating all
+three
 as ``curation'' hides materially different interventions.
 
-\textbf{Decision signal.}  Signals progress from inexpensive rules and human
-labels through pretrained models and representation statistics to learner-aware
-loss, influence, simulator feedback, and real execution.  This is not a simple
-quality hierarchy.  Later signals are more target-relevant but costlier and can
-be noisier; a cheap checksum is the right detector for a corrupted file, while a
-real rollout is excessive.  A mature pipeline cascades signals, reserving costly
+The decision-signal axis ranges from inexpensive rules and human
+labels through pretrained models and representation statistics to feedback from
+the target learner, simulator, or real execution.  We call a signal
+\emph{learner-aware} when it depends on the losses, predictions, or outcomes of
+the learner being trained.  This is not a simple quality hierarchy.  Later
+signals are more target-relevant but costlier and can
+be noisier.  A cheap checksum is the right detector for a corrupted file, while a
+real rollout is excessive.  A mature pipeline applies signals in stages and reserves costly
 evidence for ambiguous or high-impact decisions.
 
-\textbf{Utility evidence.}  Intrinsic metrics show that an intended property
-changed.  Proxy metrics show agreement with a verifier or estimator.  Controlled
+The utility-evidence axis distinguishes what a reported result establishes.
+Intrinsic metrics show that an intended property changed.  Proxy metrics show
+agreement with a verifier or estimator.  Controlled
 retraining tests learning utility.  Deployment tests whether utility survives
 physical and distribution shift.  These answer different questions and should
 not be merged into a single score.
 
-\textbf{Lifecycle and authority.}  Offline preparation freezes $\pipeline$
-before training.  Training-time methods update sampling from losses or progress;
-post-training methods mine failures; continual methods change acquisition and
+The lifecycle axis records when the data decision changes and who controls it.
+Offline preparation freezes $\pipeline$ before training.  Training-time methods
+update sampling from losses or progress.
+Post-training methods mine failures, while continual methods change acquisition and
 verification after deployment.  A further distinction asks whether people
 predefine that loop or an agent chooses among preparation operators and
-diagnostic experiments.  The axis thus separates a static synthetic dataset, a
+diagnostic experiments.  The axis separates a static synthetic dataset, a
 data engine that uses policy failures to trigger a prescribed generator, and an
-agent that can decide to collect, relabel, audit, abstain, or roll back---even if
+agent that can decide to collect, relabel, audit, abstain, or roll back, even if
 all use the word ``augmentation.''
 
 \subsection{Lifecycle Backbone and Secondary Attributes}
 
-For navigation, we arrange operations along eight recurring stages: (1) source
-and task design; (2) ingestion and technical quality control; (3) standardization
-and cross-embodiment alignment; (4) segmentation and semantic enrichment; (5)
-scoring, filtering, weighting, and routing; (6) augmentation and synthesis; (7)
-layered validation; and (8) training/deployment feedback.  The order is not
-strict.  A failed generated trajectory can return to segmentation; deployment
-can revise source design; and the same verifier may act before and after training.
+For navigation, we arrange operations along eight recurring stages.  The first
+four cover source and task design, ingestion and technical quality control,
+cross-embodiment alignment, and semantic enrichment.  The next three cover
+selection and routing, augmentation and synthesis, and layered validation.  The
+last stage uses training or deployment feedback to revise earlier decisions.
+The order is not
+strict.  A failed generated trajectory can return to segmentation.  Deployment
+can revise source design, and the same verifier may act before and after training.
 
-We additionally code the transformed object (video/frame, state/sensor, action,
-language, episode/segment/transition, cross-modal link, or task/source
-distribution) and objective (correctness, diversity, coverage, difficulty,
-executability, physical consistency, generalization, efficiency, stability, or
-safety).  These attributes reveal underexplored combinations.  Current work is
-dense in offline episode filtering guided by representations and in visual
-synthesis checked by semantic similarity.  It is sparse in transition-level
-cross-embodiment value, deployment-calibrated validation of generated contact,
-and cost-aware routing of failures among discard, relabel, recovery training, and
-new acquisition.  Almost no system jointly learns operator choice, experiment
-allocation, promotion, stopping, and rollback.  These gaps motivate
+We additionally code what is transformed and at what granularity.  The object may
+be a video, frame, state, sensor stream, action, language instruction, episode,
+segment, transition, cross-modal link, or task and source distribution.  We
+separately record whether the objective concerns correctness, diversity,
+coverage, difficulty, executability, physical consistency, generalization,
+efficiency, stability, or safety.  These attributes reveal underexplored
+combinations.  Most current work concentrates on representation-guided episode
+filtering and visual synthesis checked by semantic similarity.  Fewer studies
+examine transition-level value across embodiments, calibrate generated contact
+against deployment evidence, or route failures by cost among discard,
+relabeling, recovery training, and new acquisition.  Almost no system jointly
+learns which operator to run, how to allocate experiments, when to promote or
+roll back a version, and when to stop.  These gaps motivate
 Sections~\ref{sec:recipes-engines} and~\ref{sec:agenda}.

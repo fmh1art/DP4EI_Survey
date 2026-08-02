@@ -9,61 +9,62 @@ systems are scientifically important because they reveal which data operations
 survive at industrial scale, but they create a distinct evidence problem.  A
 technical report may establish the behavior of the complete model while leaving
 source weights, rejected-data statistics, labor, or intermediate checkpoints
-undisclosed.  We therefore use reports as \emph{system evidence}, not as license
+undisclosed.  We use reports as evidence about the complete system, not as license
 to assign an end-to-end gain to one hidden preparation step.
 
 Table~\ref{tab:industrial-recipes} reconstructs five public recipe families from
 primary reports.  We record only disclosed quantities and mark our synthesis as
-such.  Comparisons are structural rather than numerical: an hour of egocentric
+such.  Comparisons are structural rather than numerical.  An hour of egocentric
 video, an hour of a 50-Hz robot trajectory, a simulated rollout, and a
-video--text clip are not equivalent units; neither are evaluations on different
-robots, tasks, model sizes, or budgets.
+video--text clip are not equivalent units.  Evaluations on different robots,
+tasks, model sizes, and budgets are not directly comparable either.
 
 \input{tables/industrial_recipes}
 
 \subsection{What the Industrial Recipes Actually Reveal}
 
-\textbf{Alignment is a precondition for scale, not cleanup after scale.}
-Qwen-RobotManip makes this principle unusually explicit.  Its approximately
-38.1k-hour corpus combines more than 11k hours of robot demonstrations, 1,933
+The Qwen-RobotManip recipe shows why alignment must precede large-scale mixing.
+Its corpus totals approximately 38,100 hours and combines more than 11,000 hours
+of robot demonstrations, 1,933
 hours of egocentric human video, and 24,808 hours of human-to-robot synthesis
 across 15 morphologies~\cite{yuan2026qwen_2606_17846}.  The scale is enabled by
 a chain that first retargets and smooths hand motion, removes hands and
-reconstructs the background, searches for a feasible robot base and inverse-
-kinematic solution, and depth-composites the robot.  It then applies five
+reconstructs the background, searches for a feasible robot base and an inverse
+kinematics solution, and depth-composites the robot.  It then applies five
 state--action checks and three cross-modal checks.  This is materially different
-from concatenating datasets and zero-padding actions: a masked 80-D schema fixes
-field meaning, camera-frame end-effector deltas and camera positional encoding
-align motion, and prompts expose embodiment and control mode to the learner.
-The report's audit found severe source-specific defects---including a subset in
-which its state--action trend test rejected 81\% of episodes---which is direct
-evidence that ``published robot data'' is not synonymous with ``training-ready
-robot data.''
+from concatenating datasets and padding missing action dimensions with zeros.  A
+masked 80-dimensional schema fixes field meaning.  Camera-frame end-effector
+deltas align motion, while a positional encoding represents the camera view and
+prompts expose embodiment and
+control mode to the learner.  The report's audit found severe source-specific
+defects.  In one subset, its state--action trend test rejected 81\% of episodes.
+This result is direct evidence that ``published robot data'' is not synonymous
+with ``training-ready robot data.''
 
 The same conclusion appears in a different form in Gemini Robotics 1.5.  Merely
 adding other embodiments generally helps, but the reported single-embodiment,
 multi-embodiment-without-Motion-Transfer, and full-recipe ablation shows that a
 motion-alignment mechanism changes how much cross-robot data can be used
-~\cite{team2025gemini_2510_03342}.  The benefit is asymmetric: data from other
+~\cite{team2025gemini_2510_03342}.  The benefit is asymmetric.  Data from other
 robots matters most for a low-data target, whereas a well-covered ALOHA platform
-has less to gain.  Thus, ``cross-embodiment scale'' should be reported as a
-source--target transfer matrix, not a global hour count.
+has less to gain.  Cross-embodiment scale should report results for each source
+and target robot pair, not only a global hour count.
 
-\textbf{Training role is often more informative than source type.}
-$\pi_{0.5}$ uses mobile-manipulator, static multi-environment,
+The $\pi_{0.5}$ recipe illustrates why training role can be more informative
+than source type.  It uses mobile-manipulator, static multi-environment,
 cross-embodiment laboratory, high-level, verbal-instruction, and web data for
 different purposes.  Its broad pretraining mixture is mostly not the exact
-target household mobile-manipulation distribution; post-training then routes
-short successful episodes while retaining web/high-level supervision and adding
-verbal-instruction demonstrations~\cite{intelligence20250_2504_16054}.  An
-ingredient can consequently be low value as an action target but high value as
-a semantic anchor or task decomposer.
+target household mobile-manipulation distribution.  Post-training then routes
+short successful episodes while retaining web and high-level supervision and adding
+verbal-instruction demonstrations~\cite{intelligence20250_2504_16054}.  A source
+can consequently be low value as an action target but high value as
+general semantic supervision or as supervision for high-level task structure.
 
 $\pi_{0.7}$ pushes role separation further.  Instead of discarding every
 failure or suboptimal rollout, it annotates speed, quality, mistakes, strategy,
 and control mode and conditions the policy on the desired metadata
 ~\cite{intelligence20260_2604_15483}.  In its ablations, autonomous evaluation
-data and metadata both matter; without contextual metadata, adding progressively
+data and metadata both matter.  Without contextual metadata, adding progressively
 lower-quality data can hurt, whereas the conditioned model continues to benefit
 in the reported setting.  This resolves an apparent conflict in the curation
 literature.  ``Keep only successes'' is reasonable when all retained actions
@@ -72,80 +73,91 @@ outcome, mistake intervals, and desired behavior are represented and the
 objective can use them.  The disagreement is about \emph{routing and semantics},
 not whether a failure bit has universal positive or negative value.
 
-\textbf{Synthetic data is a multiplier only when anchored and routed.}
-GR00T N1 organizes web/human, neural/simulated, and real robot data as a pyramid,
-using latent or inverse-dynamics actions where ground-truth control is absent and
+GR00T N1 illustrates a third pattern.  Synthetic expansion is useful only when
+it is anchored by real data and routed to a suitable training role.  When a
+video lacks recorded controls, a latent-action model can encode its motion and
+an inverse-dynamics model can estimate the action between successive
+observations.  The recipe
+organizes web and human data, generated and simulated data, and real robot data
+as a pyramid.  It uses inferred latent or inverse-dynamics actions where
+recorded control is absent and
 real data for embodiment grounding~\cite{nvidia2025gr00t_2503_14734}.  In one
-neural post-training experiment it samples real and neural trajectories 1:1;
-its simulation branch keeps successful trajectories.  DreamGen similarly
-separates four stages: adapt an image-to-video model with teleoperated robot
-video, generate task/environment-conditioned video, recover pseudo-actions with
-a latent-action or inverse-dynamics model, and post-train the policy on the
-resulting neural trajectories~\cite{jang2025dreamgen_2505_12705}.  Its
-DreamGenBench instruction/physics diagnostics correlate with downstream policy
-success in the reported experiments, useful evidence for model-level routing but
+generated-data post-training experiment it samples real and generated
+trajectories 1:1.  Its simulation branch keeps successful trajectories.
+DreamGen follows four stages.  It adapts an image-to-video model with
+teleoperated robot video, generates task- and environment-conditioned video,
+recovers pseudo-actions with a latent-action or inverse-dynamics model, and
+post-trains the policy on the resulting video-derived trajectories
+~\cite{jang2025dreamgen_2505_12705}.  Its
+DreamGenBench instruction and physics diagnostics correlate with downstream policy
+success in the reported experiments.  We interpret this result as support for
+routing at the dataset level, but it is
 not certification that every generated trajectory is executable.  The N1 report
-also supplies a valuable negative result: post-training without
-left-to-right handover examples removed that capability.  Broad anchors and
-minimum mixture floors are therefore not conservative bookkeeping; they are
-controls against stage-induced forgetting.
+also supplies a valuable negative result.  Post-training without left-to-right
+handover examples removed that capability.  Broad anchor data and minimum
+sampling shares for important sources are controls against stage-induced
+forgetting, not conservative bookkeeping.
 
-Qwen-RobotWorld expands the generator side with an 8.6M-clip, 200M-plus-frame
+Qwen-RobotWorld expands the generator side with 8.6 million clips and more than
+200 million frames in a
 corpus spanning more than 20 embodiments and 500 action categories
 ~\cite{zhang2026qwen_2606_17030}.  Its processing chain first standardizes video,
 then produces five-layer action descriptions and sends low-scoring captions from
-an LLM judge to targeted prompt revision and human review.  Training preserves a
-70:30 embodied/general mixture and progressively introduces single-view,
+an LLM-based judge to targeted prompt revision and human review.  Training
+preserves a 70:30 mixture of embodied and general data and progressively introduces single-view,
 multi-view, concatenated-view, and complex cross-domain data.  The report also
 excludes AI-generated media from its general-data anchor because of artifact and
-bias concerns---a useful counterexample to indiscriminate synthetic scaling.
-Language can make human, robot, and simulated motion addressable through one
+bias concerns.  This choice is a useful counterexample to indiscriminate
+synthetic scaling.  Language can describe human, robot, and simulated motion through one
 interface, but it does not recover calibrated joint actions or certify contact.
-Outputs should therefore be routed by training role: broad video dynamics,
-proposal, and planning data need different gates from behavior-cloning targets.
+Outputs should be routed by training role.  Broad video dynamics, proposal, and
+planning data need different validation from behavior-cloning targets.
 A world model may support virtual evaluation, but the same checkpoint should not
 generate and uncritically approve its own samples.
 
-\textbf{Disclosure itself is a recipe property.}
-Gemini Robotics reports thousands of hours of ALOHA~2 demonstrations, non-action
-multimodal data, and 2k--5k high-quality episodes per specialization task
-~\cite{team2025gemini_2503_20020}; version 1.5 reports thousands of tasks over
+The Gemini Robotics reports also show that disclosure is part of what can be
+evaluated about a recipe.  They describe thousands of hours of ALOHA~2
+demonstrations, multimodal data without action labels, and 2,000--5,000
+high-quality episodes per specialization task
+~\cite{team2025gemini_2503_20020}.  Version 1.5 reports thousands of tasks over
 three embodiments and interleaved real-robot comparisons.  Its Motion Transfer
-ablation is unusually diagnostic, while its exact source quantities, filters,
+ablation isolates the alignment mechanism, while its exact source quantities, filters,
 and annotation lineage remain closed.  The same report notes that more than
 90\% of development evaluation episodes ran in simulation and that final model
 quality still requires real testing~\cite{team2025gemini_2510_03342}.  This is
 good systems practice, but it also means simulated iteration speed and real
-deployment evidence must remain separate fields.  Reproducibility should thus
-be graded component-wise---raw data, transformation code, mixture, model,
-verifier, and evaluation---rather than labeling an entire industrial system
-simply ``open'' or ``closed.''
+deployment evidence must remain separate fields.  Reproducibility should be
+reported separately for raw data, transformation code, mixture, model, verifier,
+and evaluation.  A single ``open'' or ``closed'' label hides these differences.
 
 \subsection{When a Pipeline Becomes a Data Engine}
 
-A static pipeline computes $\traindata=\pipeline(\rawdata)$ once.  We reserve
-\emph{data engine} for a system in which evidence from the current learner
-causally changes a future data decision:
-\begin{align}
-\theta_t &= \operatorname{Train}(\pipeline_t(\mathcal{D}_{\leq t})),\\
-E_t &= \operatorname{Audit}(\theta_t;\tau_t),\\
-(\pipeline_{t+1},q_{t+1})
- &= \operatorname{Control}(\pipeline_t,E_t,\mathcal{B}_t),
-\end{align}
-where $E_t$ can contain success, failure, intervention, uncertainty, safety,
-coverage, and subgroup outcomes; $q_{t+1}$ requests collection, generation,
-relabeling, reweighting, or a verification experiment; and $\mathcal{B}_t$
-records human, compute, simulation, and robot budgets.  Re-running the same ETL
-script or periodically fine-tuning on all new logs is lifecycle automation, but
-not yet a data engine under this definition.
+A static pipeline applies a fixed sequence of operations to a raw dataset.  A
+data engine, as defined in the Introduction, adds a causal feedback path from the
+current learner to a later data decision.  In each round, the system trains or
+updates a model on a versioned distribution and audits that model on a declared
+target.  The audit may record success, failure, intervention, uncertainty,
+safety, coverage, and subgroup outcomes.  A controller then uses this evidence
+to request collection, generation, relabeling, reweighting, or a verification
+experiment within explicit human, compute, simulation, and robot budgets.
+
+The causal requirement matters.  Re-running the same loading and cleaning
+script is workflow automation.  Periodically fine-tuning on every new log is a
+model-update schedule.  Neither is a data engine unless evidence from the
+current learner determines which records are sought, changed, retained, or
+routed in the next round.
 
 Table~\ref{tab:data-engines} compares representative loops through five
 controller fields.  This exposes differences hidden by the common ``flywheel''
 label.  RoboCat and AutoRT close acquisition loops through practice and
 foundation-model task proposal~\cite{bousmalis2023robocat_2306_11706,ahn2024autort_2401_12963}.
 DexFlyWheel is a simulation-centered generative loop seeded by one human
-demonstration~\cite{zhu2025dexflywheel_2509_23829}.  RECAP, SOP, and LWD are
-post-training loops, but their data semantics and update cadence differ.
+demonstration~\cite{zhu2025dexflywheel_2509_23829}.  The $\pi^{*}_{0.6}$ report
+calls its experience-learning loop RECAP.  It combines outcome-derived value
+estimates with autonomous trials and optional human corrections.  The Scalable
+Online Post-Training system (SOP) and Learning While Deploying (LWD) are also
+post-training loops, but
+their data semantics and update cadence differ.
 Robot-Powered Data Flywheels uses deployment to adapt an upstream perception
 model, showing that the updated learner need not be the action policy
 ~\cite{grannen2025robot_2511_19647}.  The term names a systems pattern, not one
@@ -153,55 +165,59 @@ algorithm.
 
 \input{tables/data_engine_comparison}
 
-\subsection{RL, Post-Training, and Failure-Driven Evolution}
+\subsection{Reinforcement Learning, Post-Training, and Failure-Driven Evolution}
 
 Post-training changes preparation because the deployed policy determines which
 states are observed.  Offline demonstration data approximate an expert or
-collector distribution; on-policy data reveal the current model's induced error
-distribution.  Their value cannot be compared by hours alone.  SOP reports that,
+collector distribution.  Data collected by the current policy, commonly called
+on-policy data, reveal the states and errors that model itself produces.  Their
+value cannot be compared by hours alone.  SOP reports that,
 for one base model and task family, three hours of targeted on-policy interaction
 closed substantially more of the gap than an additional 80 hours of static
 demonstrations~\cite{pan2026sop_2601_03044}.  This is a within-paper finding, not
 a universal exchange rate.  It supports the narrower causal claim that
 failure-targeted experience can have high marginal value near deployment.
 
-The key operation is not ``add failures,'' but convert a rollout into typed
-training units.  A successful segment may be an imitation target; a valid prefix
-of a failed episode can train reaching or value prediction; an intervention
-provides both a takeover boundary and a corrective action; a near miss can be a
-reward-model negative; an unsafe action can calibrate a safety verifier but must
-not silently enter behavior cloning.  Ambiguous cases should be retained with
-uncertainty and routed to review.  RoboReward makes this distinction concrete:
-it augments success-heavy robot data with counterfactual relabeling and temporal
-clipping to construct negatives and near misses for a specialized reward VLM
+The key operation is not ``add failures,'' but to convert a rollout into training
+units with explicit roles.  A successful segment may be an imitation target.  A
+valid prefix of a failed episode can train reaching or value prediction.  An
+intervention provides both a takeover boundary and a corrective action.  A near
+miss can be a negative example for a model that scores task outcomes, while an
+unsafe action can calibrate a safety verifier but must not silently enter
+behavior cloning.  Ambiguous cases should be retained with uncertainty and
+routed to review.  RoboReward makes this distinction concrete.  It changes
+outcome labels and clips trajectories in time to construct negative and near-miss
+examples for a specialized reward VLM
 ~\cite{lee2026roboreward_2601_00675}.  Its real-robot study also cautions that a
 general embodied-reasoning model is not automatically a calibrated reward model
 for the target data distribution.
 
 RECAP combines demonstrations, autonomous rollouts, terminal outcomes, and
-human corrections; its value model predicts time to success or a large failure
-penalty, and an advantage-conditioned policy extracts improving actions
+human corrections.  Its value model predicts time to success or a large failure
+penalty.  The policy then favors actions estimated to improve over the reference
+behavior
 ~\cite{intelligence20250_2511_14759}.  Notably, the reported multi-round
-implementation fine-tunes each value/policy pair from the common pretrained
+implementation fine-tunes each value model and policy from the common pretrained
 checkpoint instead of the previous iteration, which the authors found useful
 for limiting drift.  SOP reduces the latency between failure and correction with
 distributed actors, balances tasks uniformly, clips each task's online fraction
 to $[0.2,0.8]$, and updates robot checkpoints only between episodes
-~\cite{pan2026sop_2601_03044}.  LWD instead retains heterogeneous returns with a
-distributional critic and uses mixed offline/online replay; during online
-updates, it freezes the VLM backbone and changes the action expert, another
-explicit stability choice~\cite{wang2026learning_2605_00416}.  These mechanisms
-show that \emph{data evolution and parameter evolution must be co-designed}:
-buffer composition, reward semantics, update latency, and trainable modules all
-determine whether a failure is useful.
+~\cite{pan2026sop_2601_03044}.  LWD instead models a distribution of possible
+returns rather than a single expected return and replays both offline and online
+experience.  During online updates, it freezes the VLM backbone and changes only
+the action-producing module, another explicit stability choice
+~\cite{wang2026learning_2605_00416}.  These mechanisms show that data and model
+updates must be designed together.  Buffer composition, reward semantics,
+update latency, and trainable modules all determine whether a failure is useful.
 
-Three evaluations are still rare.  First, a multi-round control must report the
-area under the utility--robot-cost curve, not only its final checkpoint.  Second,
-it must audit retained broad and safety capabilities, since correcting today's
-failure can erase yesterday's rare skill.  Third, it needs a counterfactual
-promotion test: compare the proposed new data with a volume- and compute-matched
-sample from the same collection round.  Without that control, a better successor
-may reflect more interaction, more updates, or a changed reward rather than the
+Three evaluation controls are still rare.  A multi-round system should report
+utility throughout the sequence of robot interactions, not only at its final
+checkpoint.  It should audit retained broad and safety capabilities because
+correcting today's failure can erase yesterday's rare skill.  It should also
+compare the proposed new data with a volume- and compute-matched sample from the
+same collection round before promoting a successor model.  Without that control,
+a better successor may reflect more interaction, more updates, or a changed
+reward rather than the
 engine's data decision.
 
 \subsection{From Static Curation to a Data-Preparation Agent}
@@ -214,44 +230,29 @@ predesigned collect--verify--route--train--deploy controller.  An L4
 data-preparation agent must additionally choose which operator or experiment to
 run, estimate its information value and cost, decide when evidence is sufficient,
 and stop or roll back under risk.  Existing systems demonstrate substantial
-pieces through L3; calling them fully autonomous L4 agents would overstate the
+pieces through L3.  Calling them fully autonomous L4 agents would overstate the
 evidence.
 
 \input{figures/tex/autonomy_ladder}
 
-Formally, an agent observes a versioned state
-\begin{equation}
-h_t=(\mathcal{D}_{\leq t},\theta_t,\mathcal{V}_t,\mathcal{C}_t,
-\mathcal{B}_t,\mathcal{R}_t),
-\end{equation}
-containing data/model lineage, verifier calibration, coverage gaps, remaining
-budget, and safety risk.  It chooses $u_t$ from a typed operator set
-\begin{equation}
-\begin{aligned}
-\mathcal{A}=\{&\text{acquire, repair, label, segment, filter, route, mix,}\\
-              &\text{generate, train, audit, rollback, stop}\},\qquad
-u_t\in\mathcal{A},
-\end{aligned}
-\end{equation}
-and receives intrinsic diagnostics, proxy scores, controlled training outcomes,
-or rollouts at different delays and costs.  The objective is long-horizon,
-constrained utility,
-\begin{equation}
-\begin{aligned}
-\max_{\pi_{\phi}}\quad&
-\mathbb{E}\sum_t\gamma^t[\Delta\utility_t-\lambda C_t-\nu R_t],\\
-\text{s.t.}\quad&\text{safety and anchor-retention constraints}.
-\end{aligned}
-\end{equation}
-not immediate improvement on a mutable judge.
+An L4 agent differs from a prescribed loop because it chooses the next
+experiment.  At each round, it needs access to versioned data and model lineage,
+verifier calibration, observed coverage gaps, remaining budget, and safety
+risk.  It may then acquire, repair, label, segment, filter, route, mix, generate,
+train, audit, roll back, or stop.  These choices produce evidence at different
+delays and costs.  A technical check may return immediately, while controlled
+policy training or a robot rollout may take hours and expose physical risk.  The
+agent should optimize policy utility over the full sequence of decisions, net of
+preparation cost and risk, rather than maximize an immediate score from a
+changing judge.
 
-This formulation creates four requirements beyond an automated data engine.
-The agent needs a typed and reversible operator library; calibrated uncertainty
-over delayed policy utility; causal experiment design that changes one data
-decision at a time; and governance that can abstain, enforce immutable anchors,
-canary-train, and roll back data and model versions together.  An LLM can serve
-as planner or semantic interface, but language fluency does not supply physical
-validation or permission to conduct risky exploration.  The route from L3 to L4
-is therefore not simply ``add an LLM.''  It is the construction of an auditable
-experimental controller whose autonomy grows only as its evidence and safety
-envelope grow.
+Moving from L3 to L4 requires more than automation.  Every operator needs an
+explicit input and output schema and a reversible record of its effects.  The
+agent must represent uncertainty about delayed policy utility and use controlled
+experiments that isolate one material data decision at a time.  Governance must
+allow abstention, preserve fixed reference data and capabilities, run small
+controlled training checks, and roll back data and model versions together.  An
+LLM can serve as a planner or semantic interface, but language fluency does not
+supply physical validation or permission for risky exploration.  The step from
+L3 to L4 is the construction of an auditable experimental controller whose
+authority expands only when its evidence and safety controls support it.

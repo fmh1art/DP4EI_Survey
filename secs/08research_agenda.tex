@@ -2,41 +2,43 @@
 \section{Open Challenges and Research Agenda}
 \label{sec:agenda}
 
-The taxonomy identifies gaps that are algorithmically concrete, not generic calls
-for ``more data'' or ``better generalization.''  We frame each challenge as an
-estimand or system property and state how progress could be falsified.
+The taxonomy identifies specific gaps rather than generic calls for ``more data''
+or ``better generalization.''  Each challenge below states a measurable target
+and the evidence that would show a proposed solution has not met it.
 
 \subsection{Calibrating Proxies to Policy Utility}
 
 Most preparation runs cannot afford retraining a policy for every candidate
 decision.  The central estimation problem is to predict
 $V(e\mid c,\mathcal{D})$ from cheap features while preserving ranking under
-changes in learner, budget, and target distribution.  Current proxies---smoothness,
-information, progress, influence, or foundation-model judgments---capture
-different projections and can disagree with downstream outcomes.
+changes in learner, budget, and target distribution.  Current proxies include
+smoothness, information, progress, influence, and foundation-model judgments.
+They capture different projections and can disagree with downstream outcomes.
 
-A promising design is a hierarchical calibrator that combines technical and
-semantic features with a small, actively selected set of retraining or rollout
-observations.  It should output uncertainty and decompose value into correctness,
+A promising design would combine technical and semantic features with a small,
+actively selected set of retraining or rollout observations.  The resulting
+estimator should report uncertainty and separate value into correctness,
 coverage, transfer, and risk rather than one opaque score.  Evaluation should
-measure rank calibration and regret of the resulting data decision across held-out
-learners and tasks, not only correlation on the calibration set.  An estimator is
-useful if it achieves near-oracle fixed-budget policy utility with substantially
-fewer retraining/robot queries and degrades gracefully under target shift.
+measure ranking accuracy and the downstream utility gap from an oracle across
+held-out learners and tasks, not only correlation on the calibration set.  An
+estimator is useful if it approaches oracle policy utility under a fixed budget
+with substantially fewer retraining or robot queries and degrades gradually
+under target shift.
 
 \subsection{Estimating Interaction and Marginal Value Below the Episode}
 
 Individual scores miss complementarity.  A grasp segment may be useless without
-its approach; two sources can conflict despite each being useful alone; a rare
-failure becomes valuable only when paired with a recovery.  Exact Shapley or
-leave-one-out retraining is infeasible at VLA scale, while pointwise influence
-approximations can ignore non-convex training and sequence dependence.
+its approach.  Two sources can conflict despite each being useful alone, and a
+rare failure becomes valuable only when paired with a recovery.  Exact marginal
+attribution through all data subsets or retraining after removing each unit is infeasible at
+VLA scale.  Pointwise influence approximations can also ignore sequence
+dependence and interactions among examples.
 
-Research should model value over hierarchical groups and interactions:
+Research should model value over hierarchical groups and interactions, from
 transition $\rightarrow$ primitive $\rightarrow$ episode $\rightarrow$ task
-$\rightarrow$ source.  Sparse group influence, low-rank datamodels, gradient
-sketches, and counterfactual curriculum experiments are candidate tools.  A
-benchmark can plant known complementary and conflicting groups and evaluate
+$\rightarrow$ source.  Promising methods can approximate group interactions from
+a limited set of subset-training runs or summaries of training gradients.  A
+benchmark can include known complementary and conflicting groups and evaluate
 whether selection preserves the combination under equal compute.  This directly
 tests whether an algorithm has learned data structure rather than a visible
 quality artifact.
@@ -44,166 +46,182 @@ quality artifact.
 \subsection{Learnable Cross-Embodiment Action Semantics}
 
 The field lacks a standard that expresses what an action \emph{does} across
-morphologies and controllers.  Fixed action vectors and masks solve serialization,
-not consequence alignment.  A stronger representation would condition on a
-kinematic graph, end-effector and controller specification, reference frame,
-latency, and uncertainty, and map actions through a shared transition-level
-latent.
+morphologies and controllers.  Fixed action vectors and masks provide a common
+storage format but do not align consequences.  A stronger representation would
+condition on a graph of robot links and joints, the end-effector and controller
+specification, reference frame,
+latency, and uncertainty.  Rather than sharing action-vector shape, it should
+represent the object-centric state change that an action is expected to cause.
 
-The representation should be tested by cycle consistency and physical outcome:
-map a source action to a target embodiment, execute or simulate it, and predict
-the same object-centric state change within tolerance.  Held-out morphology and
+The representation should be tested in both directions and by physical outcome.
+Mapping a source action to a target embodiment and back should recover the source
+meaning.  Executing or simulating the target action should produce the same
+object-centric state change within tolerance.  Held-out morphology and
 controller families are essential.  A mapping that improves cross-robot policy
 loss but violates target limits or contact should fail the benchmark.  Data formats
 should preserve original actions and reversible transformations so a learned
-standard can replace an earlier one without recollection.
+standard can replace an earlier one without collecting the data again.
 
 \subsection{Verification of Invisible Physical Errors}
 
-Generative models are optimized for observable likelihood or preference and can
-produce errors invisible in pixels: inconsistent depth across views, contact
-without force closure, an unreachable wrist pose, or an action label that does not
+Generative models are optimized to produce outputs that look likely or preferred and can
+produce errors invisible in pixels, including inconsistent depth across views,
+an unstable grasp, an unreachable wrist pose, or an action label that does not
 cause the shown transition.  The research problem is to estimate the probability
 that a generated unit is usable for a stated training role.
 
-Progress requires adversarial test suites with paired plausible/invalid examples
+Progress requires challenge sets with paired plausible and invalid examples
 at each validation layer, including subtle contact and controller errors.
 Verifiers should be evaluated on calibration under new generators and assets,
-not just accuracy on their own generator.  Generator--verifier dependence must be
-reported.  Selective promotion, in which uncertain samples are routed to
-simulation or real replay, can be measured by verified yield, downstream utility,
-and cost.  This turns ``synthetic data quality'' into a testable cascade-design
-problem.
+not just accuracy on their own generator.  Any shared training data or
+architecture
+between the generator and verifier must be reported.  Uncertain samples should be
+routed to simulation or real replay.  The resulting decision can be measured by
+the number of samples that pass the required checks, downstream utility, and
+cost.  This turns ``synthetic data
+quality'' into a sequence of testable validation decisions.
 
 \subsection{A Schema for Failure, Recovery, and Safety}
 
 Current datasets use inconsistent episode-level success fields and often omit
-takeover, retry, near miss, or failure cause.  A shared schema should record:
-outcome definition and confidence; first deviation or failure interval;
-precondition violated; human/automatic intervention; retry linkage; valid prefix;
-recovery strategy and result; safety severity; and whether actions remain valid
-targets.  It must allow multiple causes and uncertain temporal boundaries.
+takeover, retry, near miss, or failure cause.  A shared schema should record the
+outcome definition and its confidence, the first deviation or failure interval,
+and any violated precondition.  It should link human or automatic interventions
+to retries, valid prefixes, recovery attempts, and their results.  Safety
+severity and whether each action remains a valid target must also be explicit.
+The schema must allow multiple causes and uncertain temporal boundaries.
 
 The schema's value can be evaluated by holding raw trajectories fixed and testing
-whether structured routing improves recovery and worst-case safety over success-only,
-all-data, and binary failure baselines.  Inter-annotator/model agreement and
-cross-dataset mapping are necessary but not sufficient; the decisive outcome is
+whether structured routing improves recovery and worst-case safety over
+success-only, all-data, and binary failure baselines.  Agreement among human
+annotators and labeling models, together with cross-dataset mapping, is necessary
+but not sufficient.  The decisive outcome is
 whether a policy learns to identify and exit failure regions without imitating
 unsafe actions.
 
 \subsection{Stable, Safe Data Self-Evolution}
 
 A self-evolving engine is a feedback controller with delayed, biased, and costly
-observations.  Open questions include: How rapidly may mixture weights change?
-Which anchor distribution prevents forgetting?  How can verifier drift be
-detected without a fresh oracle?  When should the system collect, generate,
-relabel, or stop?  How can safety constraints be enforced while acquiring
-information?
+observations.  Its update rate must be fast enough to respond to failures without
+making the training distribution unstable.  It also needs an anchor distribution
+that preserves earlier capabilities and an audit that detects verifier drift
+without assuming access to a fresh oracle.  The remaining controller problem is
+to choose when to collect, generate, relabel, or stop while enforcing safety
+during information gathering.
 
 Evaluation should run multi-round closed-loop benchmarks, not one post-training
-iteration.  Metrics include cumulative robot cost, area under the utility curve,
-worst-group retention, calibration drift, error amplification, safety events, and
-rollback frequency.  Stress tests should seed a biased verifier or generator and
+iteration.  Utility should be measured after each round and reported together
+with cumulative robot cost.  Evaluation should also record worst-group
+retention, changes in whether predicted confidence matches observed outcomes,
+error amplification, safety events, and rollback frequency.  Stress tests should seed a biased verifier or generator and
 measure whether the loop detects and corrects the bias.  A method that obtains a
 short-term average gain while collapsing rare capabilities is unstable, even if
 its final aggregate success is high.  The recursive-data collapse result is not a
-robotics theorem, but it supplies an actionable stress test: progressively
-increase the fraction of self-generated experience while measuring tail coverage
-and keep-versus-replace policies under a fixed real anchor
+robotics theorem, but it supplies an actionable stress test.  The test should
+progressively increase the fraction of self-generated experience while measuring
+coverage of rare cases.  It should compare retaining earlier real data with replacing that
+data, using the same fixed real anchor in both cases
 ~\cite{shumailov2024collapse}.  RECAP's checkpoint restart, SOP's mixture bounds,
-and LWD's offline reference provide concrete controls to ablate rather than
-informal assurances~\cite{intelligence20250_2511_14759,pan2026sop_2601_03044,wang2026learning_2605_00416}.
+and LWD's offline reference provide concrete stability controls that can be
+tested by removing each one in turn
+~\cite{intelligence20250_2511_14759,pan2026sop_2601_03044,wang2026learning_2605_00416}.
 
 \subsection{From Fixed Data Engines to Autonomous Preparation Agents}
 
-Most current engines automate a controller designed by people: which buffer to
+Most current engines automate a controller designed by people.  Which buffer to
 sample, which failures trigger intervention, which generator to call, and when to
 retrain are fixed in advance.  The L4 problem in
-Figure~\ref{fig:autonomy-ladder} is harder: an agent must select preparation
-operators and information-gathering experiments under delayed, noisy utility.
+Figure~\ref{fig:autonomy-ladder} is harder because an agent must select preparation
+operators and information-gathering experiments when utility is observed only
+after a delay and with noise.
 For example, after detecting weak performance on deformable objects, it must
 choose among collecting demonstrations, preserving failed prefixes, requesting
 corrections, generating scenes, changing a mixture, calibrating a verifier, or
-first running a diagnostic rollout.  These actions have different cost, delay,
-identifiability, and safety.
+first running a diagnostic rollout.  These actions differ in cost, delay, safety,
+and how clearly the eventual outcome can be attributed to the choice.
 
 This can be studied without granting unrestricted real-robot autonomy.  A
-benchmark should expose a versioned raw pool, typed operator library, fixed
-learners, simulator and limited hidden real audits, a cost model, and planted
+benchmark should expose a versioned raw pool, an operator library with explicit
+input and output schemas, fixed learners, a simulator, limited hidden real-robot
+audits, a cost model, and deliberately constructed
 defects or coverage gaps.  At each round an agent receives only the evidence it
-purchased, emits an executable preparation plan and predicted gain, and may
+requested, emits an executable preparation plan and predicted gain, and may
 promote, abstain, stop, or roll back.  Comparisons should include a fixed expert
-pipeline, random and bandit allocation, an oracle with defect labels, and an
-LLM planner without learner/rollout feedback.  Metrics are cumulative utility
-regret, evidence and robot cost, safety violations, worst-group retention,
+pipeline, random allocation, adaptive allocation that learns from earlier rounds,
+an oracle with defect labels, and an LLM planner without learner or rollout
+feedback.  Metrics should include the cumulative utility gap from the best
+affordable sequence, evidence and robot cost, safety violations, worst-group
+retention,
 calibration of predicted gains, unnecessary rollbacks, and exact replayability
 from lineage.
 
-Four capabilities are falsifiable milestones.  \emph{Operator competence}
-requires valid, reversible transformations.  \emph{Experimental competence}
-requires isolating a data decision with matched controls rather than changing
-the learner simultaneously.  \emph{Transfer competence} requires the chosen
-pipeline to help a held-out learner or deployment shift.  \emph{Governance
-competence} requires respecting authority boundaries, immutable anchors, and
-safety budgets even when a proxy predicts a gain.  An LLM that writes a fluent
-pipeline but cannot meet these criteria is an interface to preparation, not an
-autonomous preparation agent.
+Progress toward such an agent can be tested in stages.  Its transformations must
+first be valid and reversible.  It must then isolate a data decision with matched
+controls instead of changing the learner at the same time.  A stronger test asks
+whether the selected pipeline also helps a held-out learner or deployment shift.
+Throughout these stages, the agent must respect authority boundaries, fixed
+anchor data, and safety budgets even when a proxy predicts a gain.  An LLM that
+writes a fluent pipeline but cannot meet these criteria is an interface to
+preparation, not an autonomous preparation agent.
 
-\subsection{Cost--Benefit and Environmental Accounting}
+\subsection{Cost and Resource Accounting}
 
 Preparation papers rarely include full costs, making an expensive selector appear
-data-efficient.  We need standardized accounts for human review, model inference,
-subset-training runs, simulation, storage/decode, network movement, target-robot
-hours, interventions, and discarded collection.  Benefits should be expressed as
-utility reached at a total cost and as amortization across downstream models.
+data-efficient.  Standardized accounts should include human review, model
+inference, subset-training runs, simulation, storage and decoding, network
+transfer, target-robot hours, interventions, energy use, and discarded
+collection.  Benefits should be expressed as utility reached at a total cost and
+should state how preparation cost is shared across downstream models.
 
-This supports principled cascades.  For example, a deterministic gate may remove
-known corruption, a small model may route obvious semantic cases, and influence
-or rollout evidence may be purchased only for uncertain high-value groups.  The
-optimal cascade is context-dependent; benchmark tracks should therefore impose
-several resource profiles rather than one hidden budget.
+Such accounting makes staged validation comparable.  A deterministic check may
+remove known corruption, a small model may route obvious semantic cases, and
+influence or rollout evidence may be reserved for uncertain high-value groups.
+The best sequence depends on the deployment context.  Benchmark tracks should
+use several explicit resource profiles rather than one hidden budget.
 
 \subsection{Bias, Consent, Licensing, and Auditability}
 
 Human and community data introduce privacy, consent, worker, and geographic
-representation questions; web video introduces licensing and identity risk;
-foundation-model filters can systematically reject unfamiliar homes, tools, or
-bodies; autonomous collection can record bystanders or unsafe attempts.  These
+representation questions.  Web video introduces licensing and identity risk.
+Foundation-model filters can systematically reject unfamiliar homes, tools, or
+bodies, while autonomous collection can record bystanders or unsafe attempts.
+These
 are preparation decisions because filters, retention policies, provenance, and
 access control determine what enters training.
 
-Datasheets should expose source license and consent, sensitive fields, demographic
-or environment proxies where lawful, filter rejection rates by subgroup, and
-known blind spots.  Provenance must survive synthesis: a generated derivative
+Dataset documentation should expose source license and consent, sensitive
+fields, lawful summary variables for demographic or environmental representation,
+filter rejection rates
+by subgroup, and
+known blind spots.  Provenance must survive synthesis.  A generated derivative
 should retain source and model lineage.  Utility optimization should include
 worst-group and safety constraints so rare environments are not removed merely
 because they are harder for a pretrained judge.
 
-\subsection{EvoDataPrep: A Unifying System Hypothesis}
+\subsection{A Practical Evaluation Path}
 
-We propose \evodataprep as a research framework, not a claim of a completed
-system.  It comprises nine modules: (1) immutable raw store and lineage graph;
-(2) typed operator library; (3) hierarchical data units; (4) multidimensional
-quality estimators; (5) learner-conditional utility model; (6) role and mixture
-router; (7) generator/augmenter; (8) layered independent verifiers; and (9) an
-active controller that allocates collection, simulation, labeling, and training
-budget.
+The preceding challenges can be studied without first building a general
+autonomous system.  A useful initial experiment would start from an unchanged raw
+pool with complete lineage and an open VLA learner.  The available decisions
+could be restricted to segmentation, a small set of curation signals, source
+mixture weights, and one validation rule for synthetic data.  Contamination,
+target shift, and coverage gaps would be varied independently so that each gain
+can be attributed to a specific decision.
 
-Given a context and budget, the controller selects a pipeline and routing policy
-from composable operators, observes fixed-budget learner and rollout outcomes,
-updates its utility model, and promotes a version only if it improves a
-multi-objective safety-constrained criterion.  Every decision is reversible
-because the raw data and transformation graph remain immutable.  A practical
-first study can restrict the search space to segmentation, three curation signals,
-mixture weights, and a synthetic-data gate on an open VLA learner.  It should use
-multiple contamination and target shifts, compare Bayesian optimization or
-bandit allocation with hand pipelines, and measure utility regret plus total cost.
+At each round, a controller would choose one preparation decision and purchase a
+fixed amount of training, simulation, or robot evidence.  Hand-designed and
+random pipelines would provide reference baselines, while an oracle with hidden
+defect labels would bound the available improvement.  A data and model version
+would be promoted only after a matched comparison shows higher policy utility
+without violating safety or retained-capability constraints.  Evaluation would
+report the utility gap from the oracle, total resource cost, worst-group
+retention, and whether the full sequence can be replayed from its lineage.
 
-The stronger long-term hypothesis is that data preparation can be learned as a
-policy while remaining auditable---the transition from the L3 engine to the L4
-agent.  It is falsified if learned pipelines fail to transfer beyond their
-calibration learner, consume more total resources than fixed baselines, cannot
-attribute their gains to a data decision, or amplify errors across rounds.
-Stating these failure criteria is important: ``automation'' alone is not an
-academic contribution unless it improves the correctness--coverage--cost frontier
-under controlled evidence and can safely decline authority it has not earned.
+The longer-term hypothesis is that preparation decisions can be learned while
+remaining auditable, which is the transition from an L3 engine to an L4 agent.
+Evidence would reject this hypothesis if learned pipelines fail to transfer
+beyond their calibration learner, consume more resources than fixed baselines,
+cannot attribute gains to a data decision, or amplify errors across rounds.
+Automation alone is not an academic contribution.  It must improve the
+correctness--coverage--cost trade-off under controlled evidence and decline
+authority when the required validation is unavailable.

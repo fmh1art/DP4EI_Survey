@@ -10,10 +10,10 @@ an upper row does not imply passing a lower row.}
 Layer & Typical question & Example signal \\
 \midrule
 Technical & Is the record readable and synchronized? & Schema, timestamps, missingness \\
-Semantic & Does the record express the requested task? & VLM judgment, label consistency \\
+Semantic & Does the record express the requested task? & VLM judgment and label consistency \\
 Geometric & Are pose, scale, visibility, and collision plausible? & Reconstruction, collision checks \\
-Kinematic & Can the target embodiment realize the motion? & IK, joint and velocity limits \\
-Dynamic / contact & Are forces and interactions physically credible? & Simulation replay, contact constraints \\
+Kinematic & Can the target embodiment realize the motion? & Inverse kinematics and joint or velocity limits \\
+Dynamics and contact & Are forces and interactions physically credible? & Simulation replay and contact constraints \\
 Policy & Does training on it improve behavior? & Fixed-budget rollout utility \\
 Deployment & Does the gain survive the target distribution? & Real success, recovery, safety \\
 \bottomrule
